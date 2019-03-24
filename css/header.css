@@ -1,0 +1,19 @@
+ul,li, img{
+display:inline-block;
+}
+.row, .logoMenu{
+  background-color: #314e7c;
+  margin: 0px;
+  padding: 0px;
+}
+.mainLogo{
+  margin:10px;
+  height:40px;
+  width:40px;
+}
+.navHeader{
+margin:2em;
+}
+.menuRight{
+
+}
