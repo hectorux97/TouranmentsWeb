@@ -1,0 +1,47 @@
+ul,li, img{
+display:inline-block;
+}
+.row, .logoMenu{
+  background-color: #314e7c;
+  margin: 0px;
+  padding: 0px;
+}
+.mainLogo{
+  margin:10px;
+  height:40px;
+  width:40px;
+}
+.navHeader{
+margin:2em;
+}
+.inclinado{
+-webkit-transform:skewX(20deg);
+background-color: #3d444c;
+margin-left:1em;
+}
+.inclinado > * {
+  transform: skew(-20deg);
+}
+li > a:hover {
+  -webkit-transform:skewX(-5deg);
+  color: #a8c916;
+}
+li > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #a8c916;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+li > a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
