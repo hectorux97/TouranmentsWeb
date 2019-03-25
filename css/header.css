@@ -12,19 +12,16 @@ display:inline-block;
   height:40px;
   width:40px;
 }
-.navHeader{
-margin:2em;
-}
 .inclinado{
 -webkit-transform:skewX(20deg);
 background-color: #3d444c;
-margin-left:1em;
+margin-left:0.5em;
 }
 .inclinado > * {
   transform: skew(-20deg);
 }
 li > a:hover {
-  -webkit-transform:skewX(-5deg);
+  /*-webkit-transform:skewX(-5deg);*/
   color: #a8c916;
 }
 li > a:before {
