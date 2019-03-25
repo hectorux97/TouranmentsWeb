@@ -54,10 +54,10 @@ li.rightHeader > a:hover {
 li.rightHeader > a:before {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 85%;
   height: 2px;
   bottom: 0;
-  left: 0.5em;
+  left: 0.4em;
   background-color: #a8c916;
   visibility: hidden;
   -webkit-transform: scaleX(0);
