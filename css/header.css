@@ -3,12 +3,12 @@ display:inline-block;
 }
 
 .row, .logoMenu{
-  background-color: #314e7c;
+  background-color: #2d3238;
   margin: 0px;
   padding: 0px;
 }
 .mainLogo{
-  margin:0px; 
+  margin:0px;
   height:80px;
   width:80px;
 }
@@ -16,14 +16,15 @@ display:inline-block;
 -webkit-transform:skewX(20deg);
 background-color: #3d444c;
 margin-left:1em;
+margin-right:1em;
 }
-.inclinado > * {
-  transform: skew(-20deg);
+.inclinado > *,.rightHeader > *  {
+  -webkit-transform: skew(-20deg);
 }
 li.inclinado > a:hover {
   color: #a8c916;
 }
-li.inclinado > a:before {
+li.inclinado > a:before,.navbar-nav > li > .dropdown-menu>.dropdown-item>a:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -37,16 +38,13 @@ li.inclinado > a:before {
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-li.inclinado > a:hover:before {
+li.inclinado > a:hover:before,li.rightHeader>a:hover:before,.navbar-nav > li > .dropdown-menu>.dropdown-item>a:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 .rightHeader{
   transform: skew(20deg);
-}
-.rightHeader > * {
-  transform: skew(-20deg);
 }
 li.rightHeader > a:hover {
   color: #a8c916;
@@ -65,11 +63,7 @@ li.rightHeader > a:before {
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-li.rightHeader > a:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
-}
+
 hr{
 
     border:         none;
@@ -77,4 +71,33 @@ hr{
     height:         1em;
     width:          1px;
     /*transform: skew(20deg);*/
+}
+.perfilImage{
+  margin:0.2em;
+  height:30px;
+  width:30px;
+  display: inline-block;
+}
+.navbar-nav > li > .dropdown-menu {
+  background-color: #2d3238;
+  -webkit-transform: skew(0deg);
+
+}
+.navbar-nav > li > .dropdown-menu>.dropdown-item{
+
+  -webkit-transform: skew(0deg);
+
+
+}
+.navbar-nav > li > .dropdown-menu>.dropdown-item:hover{
+
+  background-color: #3d444c;
+
+
+}
+.navbar-nav > li > .dropdown-menu>.dropdown-item>a{
+
+  background-color: inherit;
+  margin:0px;
+  -webkit-transform: skew(-20deg);
 }
