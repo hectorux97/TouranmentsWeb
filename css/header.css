@@ -78,6 +78,9 @@ hr{
   width:30px;
   display: inline-block;
 }
+.dropdown{
+  background-color: #5d7523;
+}
 .navbar-nav > li > .dropdown-menu {
   background-color: #2d3238;
   -webkit-transform: skew(0deg);
@@ -92,8 +95,6 @@ hr{
 .navbar-nav > li > .dropdown-menu>.dropdown-item:hover{
 
   background-color: #3d444c;
-
-
 }
 .navbar-nav > li > .dropdown-menu>.dropdown-item>a{
 
