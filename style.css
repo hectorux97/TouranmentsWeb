@@ -9,15 +9,21 @@ body {
 }
 header {margin-top:0px;}
 .separador {
-	height:80px;
-	background-color:#3d444c;
+	height:auto;
+	 background-color:#2d3238;
+      margin-bottom:30px;
 	width:100%;
-	border-radius: 15px;
+	margin-top:20px;
 }
 .separadorletras {
 	color:white;
 	text-align:center;
 	margin-top:0.2em;
+	background-color: #333;
+    letter-spacing: .1em;
+     
+	 text-decoration: underline  #a8c916 ;
+    
 }
 .logojuegotorneo {
  
@@ -30,6 +36,8 @@ transition:filter 0.2s;
 -webkit-transition:-webkit-filter 1s;
  
 width:150px;
+
+-webkit-transition:width 0.5s;
 
 }
 
