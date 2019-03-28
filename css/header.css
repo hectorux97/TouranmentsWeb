@@ -2,7 +2,7 @@ ul,li, img{
 display:inline-block;
 }
 
-.row, .logoMenu{
+ .logoMenu{
   background-color: #2d3238;
   margin: 0px;
   padding: 0px;
