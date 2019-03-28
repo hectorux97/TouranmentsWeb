@@ -19,6 +19,31 @@ header {margin-top:0px;}
 	text-align:center;
 	margin-top:0.2em;
 }
+.logojuegotorneo {
+ 
+filter: grayscale(100%);
+ 
+-webkit-filter: grayscale(100%);
+ 
+transition:filter 0.2s;
+ 
+-webkit-transition:-webkit-filter 1s;
+ 
+width:150px;
+
+}
+
+.logojuegotorneo:hover {
+ 
+filter: grayscale(0);
+ 
+-webkit-filter: grayscale(0);
+ 
+ width:170px;
+ 
+ -webkit-transition:width 0.5s;
+}
+}
 .logolocal {
 	height:75px;
 	margin:10px;
