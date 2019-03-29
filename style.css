@@ -19,11 +19,16 @@ header {margin-top:0px;}
 	color:white;
 	text-align:center;
 	margin-top:0.2em;
-	background-color: #333;
+    letter-spacing: .1em;   
+}
+.tituloseccion {
+	text-decoration: underline  #a8c916 ;
+	color:gray;
+	text-align:center;
+	margin-top:0.2em;
     letter-spacing: .1em;
-     
-	 text-decoration: underline  #a8c916 ;
-    
+		text-align:left;
+		font-size:27px;
 }
 .logojuegotorneo {
  
@@ -51,11 +56,10 @@ filter: grayscale(0);
  
  -webkit-transition:width 0.5s;
 }
-}
+
 .logolocal {
 	height:75px;
-	margin:10px;
-	margin-left:30px;	
+	margin:10px;	
 }
 .margendivs {
 	margin-top:50px;
@@ -86,12 +90,7 @@ width:40%;
 	height:30px;
 	
 }
-html {
-  height: 100%;
-}
-body {
- 
-}
+
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -150,6 +149,19 @@ body {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.05rem;
+}
+
+/* Footer
+------------------------- */
+.footer2{
+	height:100px;
+	width:100%;
+	color:white;
+	text-align:center;
+	margin-bottom:0px !important;
+}
+a.footer2 {
+	color:white;
 }
 
 
