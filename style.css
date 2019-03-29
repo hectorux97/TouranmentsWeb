@@ -3,8 +3,8 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 90px;
+  padding-bottom: 0rem;
   color: #5a5a5a;
 }
 header {margin-top:0px;}
@@ -90,7 +90,21 @@ width:40%;
 	height:30px;
 	
 }
+li.menujuegos {
+	width:170px;
+	height:100px;
+	
+}
+.menujuegos {
+	height:100px;
+}
 
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+	height:100px;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
