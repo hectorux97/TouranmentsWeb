@@ -54,18 +54,23 @@
           <li class="nav-item active inclinado shadow-sm">
             <a class="nav-link" href="#">Contacto</a>
           </li>
-          <!--Ejemplo Dropdown
-          <li class="nav-item active">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          !-->
+         
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
+		<li class="nav-item active">
+            <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
+            <ul class="navbar-nav mr-auto" style="display:inline">
+              <li class="dropdown nav-item active inclinado shadow-sm ">
+                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item active rightHeader" >
             <a class="nav-link" href="#">Login</a>
           </li>
@@ -184,10 +189,10 @@
 	
 	</div>
 	</div>
-    <div class="container">
-		<div class="col-md-4"></div>
-		<div class="col-md-12 center ">
-		<div style="height:100px;" class="">
+    <div class="container center-block">
+		
+		<div class="row">
+		<div style="height:100px;" class="center-block">
   <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     </img>
    <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
