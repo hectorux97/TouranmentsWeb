@@ -23,7 +23,21 @@
         -ms-user-select: none;
         user-select: none;
       }
+      .backgroundImage{
 
+          /*height: 2px;*/
+          background-position:top;
+          background-repeat: repeat,round;
+          background-size:auto;
+          background-image:url("img/rejilla3.png"), -webkit-linear-gradient(left,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,0) 70%,
+    rgba(0,0,0,0.9)100%);
+    background-blend-mode:multiply ;
+        /*  background-color: #161b41;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23d6efed' fill-opacity='0.68' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");*/
+      }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -31,9 +45,9 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    
+
   </head>
-  <body>
+  <body class="backgroundImage">
     <header>
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="margin:0px;">
       <img class="mainLogo" src="img/IconoWeb.png" alt=""/>
@@ -54,7 +68,7 @@
           <li class="nav-item active inclinado shadow-sm">
             <a class="nav-link" href="#">Contacto</a>
           </li>
-         
+
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
 		<li class="nav-item active">
@@ -99,7 +113,7 @@
       </div>
     </nav>
 </header>
-<main role="main">
+<main role="main ">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -155,7 +169,7 @@
 
   <div class="container">
 
-    
+
     <div class="row">
       <div class="col-lg-4">
         <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
@@ -184,11 +198,11 @@
 	<div class="container-fluid separador">
 	<h1 class="separadorletras">Competiciones</h1>
 	<h5 class="separadorletras"> Nuestros torneos activos en cada juego </h5>
-	
+
 	</div>
 	</div>
-    <div class="container">	
-		<div class="row menujuegos"> 
+    <div class="container">
+		<div class="row menujuegos">
 		<ul class="navbar navbar-expand-md  navbar-center">
           <li class="menujuegos">
             <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -212,18 +226,18 @@
           </li>
         </ul>
 		</div>
-	
+
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
   </div>
 </div>
 
-	
-	
+
+
 	</div>
 <div class="container margendivs">
-	
+
 	<div class="container">
     <div class="row ">
       <div class="col-md-7">
@@ -240,7 +254,7 @@
 			<span class="fechapartido">04/03/2019 13:00</span><br>
 			VS
 			</td>
-			
+
 			<td class="visitante">
 			<img class="logovisitante" src="img/heretics.png"></img>
 			</td>
@@ -256,7 +270,7 @@
 			<span class="fechapartido">04/03/2019 13:00</span><br>
 			VS
 			</td>
-			
+
 			<td class="visitante">
 			<img class="logovisitante" src="img/heretics.png"></img>
 			</td>
@@ -272,7 +286,7 @@
 			<span class="fechapartido">04/03/2019 13:00</span><br>
 			VS
 			</td>
-			
+
 			<td class="visitante">
 			<img class="logovisitante" src="img/heretics.png"></img>
 			</td>
@@ -287,7 +301,7 @@
     </div>
 </div>
 <div style="height:100px;" class="center-block"></div>
-    
+
 
 </main>
   <!-- FOOTER -->
