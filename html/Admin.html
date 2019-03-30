@@ -5,10 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <link rel="icon" type="image/png" href="../img/IconoWeb.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../img/IconoWeb.png">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
-
+    <link rel="stylesheet" type="text/css" href="../css/AdminStyles.css">
     <title>TournamentsWeb</title>
   </head>
 <body style="margin:0px;">
@@ -80,12 +80,37 @@
           </li>
         </ul>
     </nav>
-    <div id="BlanckForHeader" style="height:100px;">
+    <div id="BlanckForHeader" style="height:100px;background-color: #2d3238;">
 
     </div>
     <!--Table for tournaments -->
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h1" style="font-weight:bold">Mis Torneos</h1>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3" >
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="background-color: #2d3238;padding:0px; ">
+          <div class="sidebar-sticky" style="background-color: #2d3238;">
+            <ul class="nav flex-column text-center" style="background-color: #2d3238;">
+              <li class="nav-item menuAdmin  shadow-sm ">
+                <a class="nav-link active" href="#">
+                  Mi Perfil <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item menuAdmin  shadow-sm ">
+                <a class="nav-link active" href="#">
+                  Noticias <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item menuAdmin  shadow-sm ">
+                <a class="nav-link active" href="#">
+                  Torneos <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item menuAdmin  shadow-sm ">
+                <a class="nav-link active" href="#">
+                  Partidos Activos <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
     </div>
 <!--	<header class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
     <div class="row logoMenu">
