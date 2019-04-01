@@ -157,6 +157,70 @@ filter: grayscale(0);
 
 
 }
+.menubar {
+	margin-top:0px;
+}
+.juegos {
+	margin:5px;
+	width:350px;
+	height:200px;
+	
+}
+#juego1 {
+	 background: url(img/juego1.png) no-repeat; 
+	 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+display:block;
+}
+#juego2{
+	background: url(img/juego2.png) no-repeat;
+	 transition: all .7s ease;
+-webkit-transition: all .7s ease;	
+display:block;
+}
+#juego3 {
+	background: url(img/juego3.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego4 {
+	background: url(img/juego4.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego5 {
+	background: url(img/juego5.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego1:hover {
+	 background: url(img/hover1.png) no-repeat; 
+	 	 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego2:hover{
+	background: url(img/hover2.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego3:hover {
+	background: url(img/hover3.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego4:hover {
+	background: url(img/hover4.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#juego5:hover {
+	background: url(img/hover5.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+.competicionesmargen {
+	margin-top:500px;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
