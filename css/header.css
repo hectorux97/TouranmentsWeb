@@ -31,11 +31,12 @@ margin-bottom: 0.5em;
 }
 .inclinado > *,.rightHeader > *  {
   -webkit-transform: skew(-20deg);
+  color:white;
 }
-li.inclinado > a:hover {
+.inclinado > a:hover,.inclinado .dropdown>.dropdown-menu>.dropdown-item>a:hover {
   color: #a8c916;
 }
-li.inclinado > a:before,.navbar-nav > li > .dropdown-menu>.dropdown-item>a:before {
+.inclinado > a:before,.inclinado.dropdown>.dropdown-menu>.dropdown-item>a:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -49,7 +50,7 @@ li.inclinado > a:before,.navbar-nav > li > .dropdown-menu>.dropdown-item>a:befor
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-li.inclinado > a:hover:before,li.rightHeader>a:hover:before,.navbar-nav > li > .dropdown-menu>.dropdown-item>a:hover:before {
+.inclinado > a:hover:before,li.rightHeader>a:hover:before,.dropdown.inclinado  > .dropdown-menu>.dropdown-item>a:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
@@ -89,25 +90,21 @@ hr{
   width:30px;
   display: inline-block;
 }
-.dropdown{
+.perfil{
   background-color: #5d7523;
 }
-.navbar-nav > li > .dropdown-menu {
+.inclinado > .dropdown-menu {
   background-color: #2d3238;
   -webkit-transform: skew(0deg);
 
 }
-.navbar-nav > li > .dropdown-menu>.dropdown-item{
-
+.inclinado > .dropdown-menu>.dropdown-item{
   -webkit-transform: skew(0deg);
-
-
 }
-.navbar-nav > li > .dropdown-menu>.dropdown-item:hover{
-
-  background-color: #3d444c;
+.inclinado > .dropdown-menu>.dropdown-item:hover{
+  background-color:#3d444c;
 }
-.navbar-nav > li > .dropdown-menu>.dropdown-item>a{
+.inclinado > .dropdown-menu>.dropdown-item>a{
 
   background-color: inherit;
   margin:0px;

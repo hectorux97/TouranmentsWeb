@@ -15,19 +15,102 @@
   </head>
 <body style="margin:0px;">
 <header>
-  <!--Things of Admin-->
-  <button class="navbar-toggler fixed-top coolapse show" id="toogle1" style="margin-top:95px;background-color: #2d3238;width:1.2em;padding:0px;" type="button" data-toggle="collapse" data-target="#leftMenu, #leftMenuToogle,#toogle1" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
-    <i class="fas fa-bars" style="font-size:20px;color:#e1e4ea;" ></i>
-  </button>
-  <nav class="navbar fixed-top navbar-expand-md" style="background-color: none;padding:0px;margin-top: 95px;">
 
-    <div class="collapse navbar-collapse" id="leftMenu" style="background-color:#2d3238;">
-      <div class="collapse" id="leftMenuToogle" style="background-color: #2d3238;">
-        <button class="navbar-toggler fixed-top" style="margin-top:95px;background-color: #2d3238;width:1.2em;padding:0px;" type="button" data-toggle="collapse" data-target="#leftMenu, #leftMenuToogle ,#toogle1" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
-          <i class="fas fa-bars" style="font-size:20px;color:#e1e4ea;" ></i>
+
+  <nav class="navbar navbar-expand-md fixed-top w-100 p-0 h-md-10" style="margin:0px;">
+
+    <!--Standard header-->
+    <div class="navbar-item w-100 h-10 ">
+      <div class="navbar" style="background-color: #2d3238;">
+        <!--Buttons collapsed header-->
+        <img class="mainLogo" src="../img/IconoWeb.png" alt=""/>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#PrincipalHeader,#NoramlPerfilDropdown,#CollapsePerfilDropdown" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+          <i class="fas fa-bars" style="font-size:40px;color:#e1e4ea;" ></i>
         </button>
-      </div>
-      <ul id="TablaNoticias" class="nav col-2 flex-column text-center " style="min-width:340px;background-color: #2d3238;margin-top:1em;">
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#leftMenu" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+          <i class="fas  fa-user-circle" style="font-size:40px;color:#e1e4ea;" ></i>
+        </button>
+        <!--Normal Header-->
+        <div class="collapse navbar-collapse"  id="PrincipalHeader">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
+          <!--Right Part-->
+          <ul class="nav-item pl-0 mr-4" >
+            <!--Perfil Part!-->
+            <li class=" active">
+              <img class="perfilImage" src="../img/IconoWeb.png" alt="perfilImage"/>
+              <ul class="navbar-nav mr-auto" style="display:inline">
+                <li class="nav-item active shadow-sm collapse show" id="NoramlPerfilDropdown">
+                  <div class="dropdown inclinado perfil">
+                    <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu ">
+                      <li class="dropdown-item"><a  class="nav-link text-white" href="#">Mis Torneos</a></li>
+                      <li class="dropdown-item"><a  class="nav-link text-white" href="#">Perfil</a></li>
+                      <li class="dropdown-item"><a  class="nav-link text-white" href="#">Log out</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item active inclinado shadow-sm collapse perfil" id="CollapsePerfilDropdown">
+                  <a class="nav-link" href="#">Mi Perfil</a>
+                </li>
+              </ul>
+            </li>
+              <!--Login Register Part!-->
+            <li class=" active" style="display:none">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active rightHeader" >
+                  <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item disable">
+                <hr />
+                </li>
+                <li class="nav-item active rightHeader">
+                  <a class="nav-link " href="#">Register</a>
+                </li>
+              </ul>
+            </li>
+            <!--Icons part-->
+            <li class="active">
+              <ul class="">
+                <li class="active" >
+                  <a class="mr-1" href="#">
+                    <i class="fa fa-facebook-official" style="font-size:24px;color:#3B5998; "></i>
+                  </a>
+                </li>
+                <li class="active" >
+                  <a class="mr-1" href="#">
+                    <i class="fa fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+                  </a>
+                </li>
+                <li class="active" >
+                  <a class="mr-1" href="#">
+                    <i class="fa fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <!--Things of Admin ELIMINAR PARA EL RESTO-->
+    <div class=" navbar-item collapse-sm show" id="leftMenu">
+      <ul  class="nav flex-column text-center col-md-2 col-sm-12 " style="background-color: #2d3238;">
         <li class="nav-item menuAdmin  shadow-sm ">
           <a class="nav-link active" href="#">
             Mi Perfil <span class="sr-only">(current)</span>
@@ -56,84 +139,10 @@
       </ul>
     </div>
   </nav>
-    <!--Standard header-->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="margin:0px;">
-      <img class="mainLogo" src="../img/IconoWeb.png" alt=""/>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
-        <i class="fas fa-bars" style="font-size:40px;color:#e1e4ea;" ></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link text-center" href="#">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link text-center" href="#">Noticias</a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link text-center" href="#">Competiciones</a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link text-center" href="#">TV</a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link text-center" href="#">Contacto</a>
-          </li>
-        </ul>
-        <!--Right Part-->
-        <ul class="nav-item pl-0 mr-4" >
-          <!--Perfil Part!-->
-          <li class=" active">
-            <img class="perfilImage" src="../img/IconoWeb.png" alt="perfilImage"/>
-            <ul class="navbar-nav mr-auto" style="display:inline">
-              <li class="dropdown nav-item active inclinado shadow-sm ">
-                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
-                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
-                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-            <!--Login Register Part!-->
-          <li class=" active" style="display:none">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active rightHeader" >
-                <a class="nav-link" href="#">Login</a>
-              </li>
-              <li class="nav-item disable">
-              <hr />
-              </li>
-              <li class="nav-item active rightHeader">
-                <a class="nav-link " href="#">Register</a>
-              </li>
-            </ul>
-          </li>
-          <!--Icons part-->
-          <li class="active">
-            <ul class="">
-              <li class="active" >
-                <a class="mr-1" href="#">
-                  <i class="fa fa-facebook-official" style="font-size:24px;color:#3B5998; "></i>
-                </a>
-              </li>
-              <li class="active" >
-                <a class="mr-1" href="#">
-                  <i class="fa fa-instagram" style="font-size:24px;color:#3F729B; "></i>
-                </a>
-              </li>
-              <li class="active" >
-                <a class="mr-1" href="#">
-                  <i class="fa fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-    </div>
-  </nav>
+
+  <!--<nav class="navbar fixed-top navbar-expand-md mt-md-6" style="background-color: none;padding:0px;">
+
+  </nav>-->
 </header>
 
 
@@ -171,7 +180,7 @@
           </div>
         </nav>
       -->
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <main role="main" class="col-md-10 ml-sm-0 pt-3 px-4">
         <div style="display:inline;position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
           <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
             <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
