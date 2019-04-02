@@ -108,15 +108,16 @@ li.menujuegos {
 }
 
 .navbar-center {
-    position: absolute;
+   position: absolute;
     left: 50%;
     transform: translatex(-50%);
 	height:100px;
 }
 .centrartabla {
-	position: absolute;
+position: relative;
     left: 50%;
     transform: translatex(-50%);
+	margin-left:20px;
 }
 .backgroundImage{
 
@@ -315,4 +316,67 @@ a.footer2 {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  
+.menujuegos{
+	height:500px;
+}
+.centrarmovil {
+	margin-left:15%;
+	
+}
+.logovisitante {
+	height:50px;
+	margin:7px;
+	
+}
+.logolocal {
+	height:50px;
+	margin:7px;
+}
+.versus {
+	font-size:17px;
+	margin-left:50px;
+	margin-right:50px;
+	width:20%;
+	text-align:center;
+}
+.logojuego{
+	height:25px;
+	margin-left:15px;
+
+}
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  .menujuegos{
+	height:500px;
+}
+.logovisitante {
+	height:45px;
+	margin:5px;
+	
+}
+.logolocal {
+	height:45px;
+	margin:5px;
+}
+.versus {
+	font-size:15px;
+	margin-left:50px;
+	margin-right:50px;
+	width:20%;
+	text-align:center;
+}
+.logojuego{
+	height:20px;
+	margin-left:15px;
+
+}
+.centrarmovil {
+	margin-left:15%;
+	
+}
+  
 }

@@ -10,9 +10,12 @@
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/header.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/AdminStyles.css">
 <link href="style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="icon" type="image/png" href="../images/IconoWeb.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="icon" type="image/png" href="img/IconoWeb.png">
 <link rel="icon" type="image/png" href="img/IconoWeb.png">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
 
     <style>
       .bd-placeholder-img {
@@ -35,27 +38,30 @@
   </head>
   <body>
     <header>
- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="margin:0px;">
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top " style="margin:0px;">
       <img class="mainLogo" href="index.html" src="img/IconoWeb.png" alt=""/>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	   
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#HeaderResponsive" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+          <i class="fas fa-bars" style="font-size:40px;color:#e1e4ea;" ></i>
+        </button>
+      <div class="collapse navbar-collapse" id="PrincipalHeader">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link" href="#">Noticias</a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link" href="competiciones.html">Competiciones</a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link" href="#">TV</a>
-          </li>
-          <li class="nav-item active inclinado shadow-sm">
-            <a class="nav-link" href="#">Contacto</a>
-          </li>
-
-        </ul>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
         <ul class="navbar-nav my-2 my-lg-0">
 		<li class="nav-item active">
             <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
@@ -82,22 +88,79 @@
           </li>
           <li class="nav-item active" >
             <a class="nav-link" href="#">
-              <i class="fa fa-facebook-official" style="font-size:24px;color:#3B5998; "></i>
+              <i class="fab fa-facebook-square" style="font-size:24px;color:#3B5998; "></i>
             </a>
           </li>
           <li class="nav-item active" >
             <a class="nav-link" href="#">
-              <i class="fa fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+              <i class="fab fa-instagram" style="font-size:24px;color:#3F729B; "></i>
             </a>
           </li>
           <li class="nav-item active" >
             <a class="nav-link" href="#">
-              <i class="fa fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+              <i class="fab fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
             </a>
           </li>
         </ul>
       </div>
     </nav>
+	<div class="collapse navbar-collapse hidden bg-dark" id="HeaderResponsive">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+		<li class="nav-item active">
+            <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
+            <ul class="navbar-nav mr-auto" style="display:inline">
+              <li class="dropdown nav-item active inclinado shadow-sm ">
+                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
+                </ul>
+              </li>
+			  <li class="nav-item active rightHeader" >
+            <a class="nav-link" href="#">Login</a>
+          </li>
+		  <li class="nav-item active rightHeader" >
+            <a class="nav-link " href="#">Register</a>
+          </li>
+		  <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-square" style="font-size:24px;color:#3B5998; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+            </a>
+          </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
 </header>
 <main role="main ">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -262,10 +325,10 @@
 <div class="container margendivs">
 
 	<div class="container">
-    <div class="row ">
+    <div class="row">
       <div class="col-md-7">
 	  <h2 class="tituloseccion text-center">Ultimos partidos</h2>
-        <table id="partidos">
+        <table id="partidos" class="centrartabla">
 		<tr class="partido">
 			<td class="juego">
 			<img class="logojuego" src="img/csgo.png"></img>
@@ -322,7 +385,7 @@
 		</tr>
 		</table>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 centrarmovil">
 	  <h2 class="tituloseccion">Patrocinadores </h2><br>
 	  <img class="patrocinadores" src="img/Movistar_footer.png"></img><br>
 	  <img class="patrocinadores" src="img/intel-extreme-masters-200.png"></img><br>
@@ -332,7 +395,7 @@
 	  </div>
     </div>
 </div>
-<div style="height:100px;" class="center-block"></div>
+<div style="height:100px;" class=""></div>
 
 
 </main>
