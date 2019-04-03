@@ -111,7 +111,7 @@ li.menujuegos {
    position: absolute;
     left: 50%;
     transform: translatex(-50%);
-	height:100px;
+	height:auto;
 }
 .centrartabla {
 position: relative;
@@ -165,13 +165,15 @@ filter: grayscale(0);
 	margin:5px;
 	width:350px;
 	height:200px;
-	display:inline;
+	
+	
 	
 }
 #juego1 {
 	 background: url(img/juego1.png) no-repeat; 
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;
+
 
 }
 #juego2{
@@ -216,6 +218,68 @@ filter: grayscale(0);
 -webkit-transition: all .7s ease;
 }
 #juego5:hover {
+	background: url(img/hover5.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+.juego1 {
+	 background: url(img/juego1.png) no-repeat; 
+	 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+width:350px;
+height:200px;
+
+}
+.juego2{
+	background: url(img/juego2.png) no-repeat;
+	 transition: all .7s ease;
+-webkit-transition: all .7s ease;	
+width:350px;
+height:200px;
+
+}
+.juego3 {
+	background: url(img/juego3.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+width:350px;
+height:200px;
+}
+.juego4 {
+	background: url(img/juego4.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+width:350px;
+height:200px;
+}
+.juego5 {
+	background: url(img/juego5.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+width:350px;
+height:200px;
+}
+.juego1:hover {
+	 background: url(img/hover1.png) no-repeat; 
+	 	 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+.juego2:hover{
+	background: url(img/hover2.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+.juego3:hover {
+	background: url(img/hover3.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+.juego4:hover {
+	background: url(img/hover4.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+.juego5:hover {
 	background: url(img/hover5.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
@@ -383,8 +447,7 @@ a.footer2 {
 	margin-left:15%;
 	
 }
-.listajuegosmargen {
-	margin-top:600px;
+.textomovil{
+	font-size:12px;
 }
-  
 }
