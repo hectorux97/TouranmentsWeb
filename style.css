@@ -165,19 +165,20 @@ filter: grayscale(0);
 	margin:5px;
 	width:350px;
 	height:200px;
+	display:inline;
 	
 }
 #juego1 {
 	 background: url(img/juego1.png) no-repeat; 
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;
-display:block;
+
 }
 #juego2{
 	background: url(img/juego2.png) no-repeat;
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;	
-display:block;
+
 }
 #juego3 {
 	background: url(img/juego3.png) no-repeat; 
@@ -222,6 +223,10 @@ display:block;
 .competicionesmargen {
 	margin-top:500px;
 }
+.listajuegosmargen {
+	margin-top:300px;
+}
+
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -377,6 +382,9 @@ a.footer2 {
 .centrarmovil {
 	margin-left:15%;
 	
+}
+.listajuegosmargen {
+	margin-top:600px;
 }
   
 }
