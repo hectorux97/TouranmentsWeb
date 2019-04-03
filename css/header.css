@@ -110,3 +110,10 @@ hr{
   margin:0px;
   -webkit-transform: skew(-20deg);
 }
+
+.front{
+  z-index:4000;
+}
+.behind{
+  z-index:10;
+}
