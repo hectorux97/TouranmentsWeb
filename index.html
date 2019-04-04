@@ -4,12 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>National League - Website</title>
+    <title>Bambu Gaming - Torneos Online</title>
 
 
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">
-
+<link href="css/header.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/AdminStyles.css">
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="icon" type="image/png" href="img/IconoWeb.png">
+<link rel="icon" type="image/png" href="img/IconoWeb.png">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
 
     <style>
       .bd-placeholder-img {
@@ -20,7 +26,7 @@
         -ms-user-select: none;
         user-select: none;
       }
-
+ 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -28,50 +34,135 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+
   </head>
   <body>
     <header>
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <a class="navbar-brand" href="index.html"><img class="logonational" src="img/logo2.png"></img></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="menu cf">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="news.html">Noticias</a>
-        </li>
-		 <li class="nav-item">
-          <a class="nav-link" href="equipos.html">Equipos</a>
-        </li>
-		 <li class="nav-item">
-          <a class="nav-link" href="clasi.html">Clasificación</a>
-        </li>
-		 <li class="nav-item">
-          <a class="nav-link" href="patros.html">Patrocinadores</a>
-        </li>
-      </ul>
-     <ul class="social-networks">
-        <li class="twitter">
-          <a class="nav-link" href="https://www.twitter.es"><img src="img/twitter.png"></img></a>
-        </li>
-        <li class="twitter">
-          <a class="nav-link" href="https://www.facebook.es"><img src="img/facebook.png"></img></a>
-        </li>
-		 <li class="twitter">
-          <a class="nav-link" href="https://www.instagram.es"><img src="img/instagram.png"></img></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top " style="margin:0px;">
+      <img class="mainLogo" href="index.html" src="img/IconoWeb.png" alt=""/>
+	   
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#HeaderResponsive" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+          <i class="fas fa-bars" style="font-size:40px;color:#e1e4ea;" ></i>
+        </button>
+      <div class="collapse navbar-collapse" id="PrincipalHeader">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+		<li class="nav-item active">
+            <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
+            <ul class="navbar-nav mr-auto" style="display:inline">
+              <li class="dropdown nav-item active inclinado shadow-sm ">
+                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item active rightHeader" >
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item disable" >
+          <hr />
+          </li>
+          <li class="nav-item active rightHeader" >
+            <a class="nav-link " href="#">Register</a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-square" style="font-size:24px;color:#3B5998; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+	<div class="collapse navbar-collapse hidden bg-dark" id="HeaderResponsive">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+		<li class="nav-item active">
+            <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
+            <ul class="navbar-nav mr-auto" style="display:inline">
+              <li class="dropdown nav-item active inclinado shadow-sm ">
+                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
+                </ul>
+              </li>
+			  <li class="nav-item active rightHeader" >
+            <a class="nav-link" href="#">Login</a>
+          </li>
+		  <li class="nav-item active rightHeader" >
+            <a class="nav-link " href="#">Register</a>
+          </li>
+		  <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-square" style="font-size:24px;color:#3B5998; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+            </a>
+          </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
 </header>
-
-<main role="main">
-
+<main role="main ">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -121,136 +212,199 @@
   </div>
 
 
-  <!-- Marketing messaging and featurettes
+  <!-- Noticias
   ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <!-- Noticias. -->
 
-  <div class="container marketing">
+  <div class="container">
 
-    <!-- Three columns of text below the carousel -->
+
     <div class="row">
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img " width="300" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
         <h2>Heading</h2>
         <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img" width="300" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <svg class="bd-placeholder-img" width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
         <h2>Heading</h2>
         <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img " width="300" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
         <h2>Heading</h2>
         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
-
-
-    <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-<div class="container">
-	<h1>Calendario</h1>
 	</div>
-    <div class="row featurette">
+
+
+    <!-- Competiciones -->
+	<div class="row">
+	<div class="container-fluid separador backgroundImage">
+	<h1 class="separadorletras">Competiciones</h1>
+	<h5 class="separadorletras"> Nuestros torneos activos en cada juego </h5>
+
+	</div>
+	</div>
+    <div class="container">
+		<div class="row menujuegos">
+		<ul class="navbar navbar-expand-md  navbar-center">
+          <li class="menujuegos">
+            <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+          <li class=" menujuegos">
+            <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+          <li class=" menujuegos ">
+           <img src="img/fortnite.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+          <li class="menujuegos">
+            <img src="img/lol.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+		  <li class="menujuegos">
+            <img src="img/rainbow.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+        </ul>
+		</div>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <table id="ultimostorneos">
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+	
+	</table>
+  </div>
+</div>
+
+
+
+	</div>
+<div class="container margendivs">
+
+	<div class="container">
+    <div class="row">
       <div class="col-md-7">
-        <table id="partidos">
-		<tr>
+	  <h2 class="tituloseccion text-center">Ultimos partidos</h2>
+        <table id="partidos" class="centrartabla">
+		<tr class="partido">
 			<td class="juego">
 			<img class="logojuego" src="img/csgo.png"></img>
 			</td>
 			<td class="local">
-			<img class="logolocal" src="img/arctic.png"></img>
+			<img class="logolocal" src="img/arctic.png"></img><br>
+			<span>Arctic Gaming </span>
 			</td>
 			<td class="versus">
 			<span class="fechapartido">04/03/2019 13:00</span><br>
 			VS
 			</td>
-			
+
 			<td class="visitante">
-			<img class="logovisitante" src="img/heretics.png"></img>
+			<img class="logovisitante" src="img/heretics.png"></img><br>
+			<span>Team Heretics </span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="partido">
 			<td class="juego">
 			<img class="logojuego" src="img/csgo.png"></img>
 			</td>
 			<td class="local">
-			<img class="logolocal" src="img/arctic.png"></img>
+			<img class="logolocal" src="img/arctic.png"></img><br>
+			<span>Arctic Gaming </span>
 			</td>
 			<td class="versus">
 			<span class="fechapartido">04/03/2019 13:00</span><br>
 			VS
 			</td>
-			
+
 			<td class="visitante">
-			<img class="logovisitante" src="img/heretics.png"></img>
+			<img class="logovisitante" src="img/heretics.png"></img><br>
+			<span>Team Heretics </span>
 			</td>
 		</tr>
-				<tr>
+				<tr class="partido">
 			<td class="juego">
 			<img class="logojuego" src="img/csgo.png"></img>
 			</td>
 			<td class="local">
-			<img class="logolocal" src="img/arctic.png"></img>
+			<img class="logolocal" src="img/arctic.png"></img><br>
+			<span>Arctic Gaming </span>
 			</td>
 			<td class="versus">
 			<span class="fechapartido">04/03/2019 13:00</span><br>
 			VS
 			</td>
-			
+
 			<td class="visitante">
-			<img class="logovisitante" src="img/heretics.png"></img>
+			<img class="logovisitante" src="img/heretics.png"></img><br>
+			<span>Team Heretics </span>
 			</td>
 		</tr>
 		</table>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      <div class="col-md-5 centrarmovil">
+	  <h2 class="tituloseccion">Patrocinadores </h2><br>
+	  <img class="patrocinadores" src="img/Movistar_footer.png"></img><br>
+	  <img class="patrocinadores" src="img/intel-extreme-masters-200.png"></img><br>
+	  <img class="patrocinadores" src="img/intel-logo-region.jpg"></img>
+        
       </div>
+	  </div>
     </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
-  </div><!-- /.container -->
+</div>
+<div style="height:100px;" class=""></div>
 
 
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
 </main>
+  <!-- FOOTER -->
+  <footer class="footer backgroundImage bg-dark footer2 center-block">
+    <br>
+    <p class="separadorletras">&copy; 2019 Bambing Gaming, Inc. &middot; Todos los derechos reservados</p>
+  </footer>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="js/bootstrap.js" ></script></body>
 </html>
