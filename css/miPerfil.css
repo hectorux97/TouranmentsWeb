@@ -1,16 +1,58 @@
-.perfilImageButton{
+.perfilImageButtonImg{
   width: 150px;
   height:150px;
-  margin:0px;
+  margin:0.4em;
   border-radius:10px;
-  border-width: 5px;
+  border-width: 2px;
+  background-color: #3d444c;
 }
-input[type="number"]::-webkit-outer-spin-button,
- input[type="number"]::-webkit-inner-spin-button {
+.perfilImageButton{
+  background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     color:red;
 }
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.form-control{
+  background-color: #3d444c;
+  color:white;
+  width:90%;
+}
+.form-control:focus{
+  color:white;
+  background-color: #3d444c !important;
+  border-color: #a8c916 !important;
+  box-shadow: inset 0 1px 1px rgba(66, 79, 9, 0.075), 0 0 8px rgba(66, 79, 9, 1) !important;
+}
+.form-control::placeholder{
+  color:#a8abaf;
+}
+.form{
+  color:white;
+  background-position:top;
+  background-repeat: repeat,round;
+  background-size:auto;
+  background-image:url("..//img/rejilla3.png"), -webkit-linear-gradient(left,
+rgba(0,0,0,0.7) 0%,
+rgba(0,0,0,0.2) 50%,
+rgba(0,0,0,0.7)100%);
+background-blend-mode:multiply ;
+}
+.col{
+  padding-right: 0px;
+  width:45%;
+}
+.row{
+  width:95%;
 }
