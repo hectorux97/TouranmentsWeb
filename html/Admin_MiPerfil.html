@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="../img/IconoWeb.png">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
-    <link rel="stylesheet" type="text/css" href="../css/AdminStyles.css">
-    <link rel="stylesheet" type="text/css" href="../css/miPerfil.css">
+    <link rel="stylesheet" type="text/css" href="../css/Admin-Style.css">
     <link href="../style.css" rel="stylesheet">
     <title>TournamentsWeb</title>
   </head>
@@ -145,28 +144,31 @@
 
 <!--Perfil-->
 <div>
-  <form class="left form mx-md-2 my-4 pl-2 rounded" action="index.html" method="post">
+  <form class="left form mx-md-2 my-3 pl-2 rounded" action="index.html" method="post">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
       <h1 class="h2">Mi Perfil</h1>
     </div>
     <div class="form-group text-center">
-      <button type="button"class="perfilImageButton" name="button">
-        <a href="#">
-          <img class="img-thumbnail perfilImageButtonImg" src="../img/IconoWeb.png"/>
-        </a>
-      </button>
+
     </div>
     <br />
-    <div class="form-group row-1 ">
+    <div class="form-group row-1 mb-0">
       <div class="row m-auto">
-        <div class="col form-group">
+        <div class="col-2 form-group">
+          <button type="button"class="perfilImageButton" name="button">
+            <a href="#">
+              <img class="perfilImageButtonImg" src="../img/IconoWeb.png"/>
+            </a>
+          </button>
+        </div>
+        <div class="col-5 form-group">
           <label for="nombre">Nombre</label>
           <input class="form-control rounded-0" type="text" name="nombre" value="" placeholder="Nombre"><br />
-        </div>
-        <div class="col form-group" >
+
           <label for="apellidos">Apellidos</label>
           <input class="form-control rounded-0" type="text" name="apellidos" value="" placeholder="Apellidos"><br />
-        </div>
+
+      </div>
       </div>
     </div>
     <div class="form-group row-1">
@@ -440,12 +442,13 @@
         <label for="telefono">Teléfono</label>
         <input class="form-control rounded-0" type="text" name="telefono" value="" placeholder="64473920923"><br />
         </div>
+        <div class="form-group text-center col">
+          <label for="edad">Edad</label>
+          <input type="number"class="form-control rounded-0 w-50 text-center m-auto"  name="edad" value="" min="0" max="999" placeholder="21"><br />
+        </div>
       </div>
     </div>
-      <div class="form-group text-center">
-        <label for="edad">Edad</label>
-        <input type="number"class="form-control rounded-0 w-50 text-center m-auto"  name="edad" value="" min="0" max="999" placeholder="21"><br />
-      </div>
+
       <div class="form-group text-center pb-2">
         <div class="inclinado w-25 m-auto ">
           <a class="nav-link mb-3"href="#">Guardar Cambios</a>
