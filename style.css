@@ -305,6 +305,23 @@ height:200px;
 	-webkit-transition: all 0.5s ease;
 	
 }
+.infotorneo {
+	width:102px;
+	height:50px;
+	
+}
+.infotorneo:hover {
+	width:100px;
+	height:50px;
+	border-top: solid 2px #a8c916;
+	border-left: solid 2px #a8c916;
+	border-right: solid 2px #a8c916;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-webkit-transition: all 0.5s ease;
+	
+}
+
 .imagentv {
 	width:150px;
 	vertical-align:middle;
