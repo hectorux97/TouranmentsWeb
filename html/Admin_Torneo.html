@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="../js/Admin_Noticias.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,8 +12,9 @@
     <link rel="stylesheet" type="text/css" href="../css/Admin-Style.css">
     <link href="../style.css" rel="stylesheet">
     <title>TournamentsWeb</title>
+    <s
   </head>
-<body style="margin:0px;" onload="Init();">
+<body style="margin:0px;">
 <header>
   <nav class="navbar navbar-expand-md fixed-top w-100 p-0 h-md-10 front border border-bottom border-dark" style="margin:0px;">
     <!--Standard header-->
@@ -143,38 +143,41 @@
 <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind" >
   <!--Cabecera-->
 
-<!--Perfil-->
+<!--Torneo-->
 <div>
   <form class="left form mx-md-2 my-3 pl-2 rounded" action="index.html" method="post">
     <div class="d-flex flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
       <div class="inclinado ">
-        <a class="nav-link" href="Admin_Noticias.html">Publicar Noticia</a>
-      </div>
-      <div class="inclinado ">
-        <a class="nav-link" href="#">Mis Noticias</a>
+        <a class="nav-link" href="#">Publicar Torneo</a>
       </div>
     </div>
-    <table class="table w-75 border-bottom">
-      <thead class="thead-dark">
-        <tbody  id="table">
+    <div class="form-group text-center">
 
+    </div>
+    <br />
+    <div class="form-group row-1 mb-0 ml-4">
+        <div class="form-group">
+          <label for="tituloNoticia">Nombre Torneo</label>
+          <input class="form-control rounded-0 w-25" type="text" name="tituloNoticia" value="" placeholder="Nombre"><br />
 
-      <tr class="">
-        <th scope="col">Titulo</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Check</th>
-      </tr>
-    </thead>
+          <label for="descripcion">Descripción</label>
+          <textarea name="descripcion" rows="2" class=" form-control rounded-0 w-50 resize-none" placeholder="Descripcion corta de la noticia"></textarea>
 
-    </tbody>
-    </table>
+          <label for="noticia">Noticia</label>
+          <textarea name="noticia" rows="10" class="form-control rounded-0 w-75" placeholder="Descripcion corta de la noticia"></textarea>
+        </div>
 
-    <div class="form-group text-center pb-2 row">
-      <div class="inclinado w-25 m-auto ">
-        <a class="nav-link " onclick="BorrarNoticias();">Borrar Noticia</a>
-      </div>
-      <div class="inclinado w-25 m-auto " >
-        <a class="nav-link " href="Admin_Noticias.html">Publicar Noticia</a>
+    <div class="form-group text-center">
+      <button type="button"class="noticiaImgButton m-auto w-75" name="destacadaIMG">
+        <a href="#">
+          <img class="noticiaImg " src="../img/IconoWeb.png"/>
+        </a>
+      </button>
+    </div>
+      <div class="form-group text-center pb-2">
+        <div class="inclinado w-25 m-auto ">
+          <a class="nav-link mb-3"href="#">Publicar Noticia</a>
+        </div>
       </div>
     </div>
   </form>
