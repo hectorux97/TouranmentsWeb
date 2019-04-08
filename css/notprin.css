@@ -1,0 +1,63 @@
+
+
+/*El botón de más noticias */
+.masnot{
+    background-color: #4A5D78;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    opacity: 0.6;
+    transition: 0.3s;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border: 0px solid #000000;
+}
+
+.masnot:hover {
+        opacity:1;
+        color: white;
+}
+
+/* Para que queda la letra más bonita*/
+body {
+    -webkit-font-smoothing: antialiased;
+    
+}
+
+/*Efecto Zoom de las cartas y el jumbotron*/
+.card {
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+.jumbotron {
+    transition: transform .2s;
+    color: black;
+    background-image:url(/img/anno_1800.jpg);
+}
+
+.jumbotron:hover {
+    transform: scale(1.02);
+    color: black;
+    cursor: pointer;
+    
+    
+}
+
+
+
+
+/*Override del efecto gráfico de los links*/
+a:hover {
+    text-decoration: none;
+}

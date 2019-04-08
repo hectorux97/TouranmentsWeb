@@ -1,0 +1,77 @@
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 3; 
+    color: white;
+    background-color: rgba(0,0,0,1) !important;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border: 0px solid #000000;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+
+.card{
+height: 680px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+
+}
+.container{
+height: 100%;
+align-content: center;
+}
+
+html,body{
+background-image: url('/img/bambgaming1.png');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+/*font-family: 'Nuans', sans-serif;*/
+-webkit-font-smoothing: antialiased;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #a8c916;
+color: black;
+border:0 !important;
+}
+
+.card-header h3{
+color: white;
+text-align: center;
+font-size: 30px;
+}
+.links a{
+margin-left: 4px;
+}
+.links{
+color: white;
+}

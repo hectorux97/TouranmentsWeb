@@ -1,0 +1,51 @@
+/*!
+ * Start Bootstrap - Blog Post (https://startbootstrap.com/template-overviews/blog-post)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-post/blob/master/LICENSE)
+ */
+body {
+    padding-top: 56px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.blockquote {
+    background-color:cadetblue;
+    background-blend-mode: hard-light;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border: 0px solid #000000;
+    
+    
+}
+.blockquote-footer {
+    color: whitesmoke;
+    padding-left: 2em;
+}
+
+.mb-0 {
+    padding-left: 0.5em;
+    padding-right: 0.1em;
+}
+
+.btn {
+    background-color: #4A5D78;
+}
+
+h5.mt-0 {
+    text-decoration:overline;
+    text-decoration-color:dimgrey
+}
+
+h2 {
+    font-size: 20px;
+}
+.h-100{
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.h-100:last-child{
+    margin-bottom: 1em;
+}

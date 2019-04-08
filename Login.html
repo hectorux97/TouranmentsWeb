@@ -17,39 +17,175 @@
     
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/AdminStyles.css">
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="icon" type="image/png" href="img/IconoWeb.png">
+<link rel="icon" type="image/png" href="img/IconoWeb.png">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="css/Login.css">
+    
 </head>
 <body>
+<header>
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top " style="margin:0px;">
+      <img class="mainLogo" href="index.html" src="img/IconoWeb.png" alt=""/>
+	   
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#HeaderResponsive" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+          <i class="fas fa-bars" style="font-size:40px;color:#e1e4ea;" ></i>
+        </button>
+      <div class="collapse navbar-collapse" id="PrincipalHeader">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+		<li class="nav-item active">
+            <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
+            <ul class="navbar-nav mr-auto" style="display:inline">
+              <li class="dropdown nav-item active inclinado shadow-sm ">
+                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item active rightHeader" >
+            <a class="nav-link" href="Login.html">Login</a>
+          </li>
+          <li class="nav-item disable" >
+          <hr />
+          </li>
+          <li class="nav-item active rightHeader" >
+            <a class="nav-link " href="regis.html">Register</a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-square" style="font-size:24px;color:#3B5998; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+	<div class="collapse navbar-collapse hidden bg-dark" id="HeaderResponsive">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Noticias</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">TV</a>
+            </li>
+            <li class="nav-item active inclinado shadow-sm">
+              <a class="nav-link text-center" href="#">Contacto</a>
+            </li>
+          </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+		<li class="nav-item active">
+            <img class="perfilImage" src="img/IconoWeb.png" alt="perfilImage"/>
+            <ul class="navbar-nav mr-auto" style="display:inline">
+              <li class="dropdown nav-item active inclinado shadow-sm ">
+                <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Mis Torneos</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Perfil</a></li>
+                  <li class="dropdown-item"><a  class="nav-link" href="#">Log out</a></li>
+                </ul>
+              </li>
+			  <li class="nav-item active rightHeader" >
+            <a class="nav-link" href="#">Login</a>
+          </li>
+		  <li class="nav-item active rightHeader" >
+            <a class="nav-link " href="#">Register</a>
+          </li>
+		  <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-square" style="font-size:24px;color:#3B5998; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram" style="font-size:24px;color:#3F729B; "></i>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#">
+              <i class="fab fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
+            </a>
+          </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </header>
+
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
+				<h3>Login</h3>
+    <!-- Iconos de twiter y tal que creo que sobran
 				<div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
 					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
+				</div>-->
+                
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="post" action="#">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">
+						<input type="text" class="form-control" placeholder="Usuario">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password">
+						<input type="password" class="form-control" placeholder="Contraseña">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						<input type="checkbox">Recordarme
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">
@@ -58,14 +194,22 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
+					¿No tienes una cuenta?<a href="regis.html" style="font-size: 2.2vh">¡Regístrate!</a>
+				</div> 
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a href="#" style="font-size: 2.1vh">¿Has olvidaddo tu contraseña?</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+    <!-- Footer -->
+<footer class="footer backgroundImage bg-dark footer2 center-block">
+    <br>
+    <p class="separadorletras">&copy; 2019 Bambing Gaming, Inc. &middot; Todos los derechos reservados</p>
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="js/bootstrap.js" ></script>
 </body>
 </html>
