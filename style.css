@@ -304,23 +304,39 @@ height:200px;
 	border-top-right-radius: 10px;
 	-webkit-transition: all 0.5s ease;
 	
+	
 }
 .infotorneo {
 	width:102px;
-	height:50px;
-	
-}
-.infotorneo:hover {
-	width:100px;
-	height:50px;
-	border-top: solid 2px #a8c916;
+	height:30px;
+		border-top: solid 2px #a8c916;
 	border-left: solid 2px #a8c916;
 	border-right: solid 2px #a8c916;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+	border-bottom: solid 2px #a8c916;
 	-webkit-transition: all 0.5s ease;
-	
+	font-family: "Arial Black", Gadget, sans-serif;
+font-size: 12px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #000000;
+font-weight: 300;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;	
+
+
 }
+.infotorneo a {
+	color:black;
+	margin-top:30%;
+	 
+}
+.infotorneo a:hover {
+	color:black;
+	margin-top:30%;
+}
+
 .imagentv {
 	width:150px;
 	vertical-align:middle;
@@ -332,7 +348,14 @@ height:200px;
     bottom: 0;
     margin: auto;
 }
-
+#reloj {
+	size:7x;
+	margin-right:10px;
+}
+#fechainicio {
+	border: solid 1px gray;
+	padding: 10px;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
