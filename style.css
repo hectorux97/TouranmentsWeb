@@ -356,6 +356,15 @@ text-transform: none;
 	border: solid 1px gray;
 	padding: 10px;
 }
+#juegousado{
+	margin-left:10px;
+}
+#modo1{
+	margin-left:10px;
+}
+#premio1{
+	margin-left:10px;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
