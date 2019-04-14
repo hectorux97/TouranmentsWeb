@@ -13,7 +13,7 @@
             <%@include file="/includes/headerUser.html" %>
         </header>
         <!--Set here the body -->
-        <%@include file="/includes/principal/initial.html" %>
+        <%@include file="/includes/principal/principal.jsp" %>
         
         <%@include file="/includes/footer.html" %>
     </body>

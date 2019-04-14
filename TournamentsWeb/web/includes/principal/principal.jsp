@@ -1,0 +1,260 @@
+
+    <head>
+        
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+ 
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+
+  </head>
+   
+<main role="main ">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="bd-placeholder-img" width="100%" height="100%" src="img/fondo1.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></img>
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>Example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="bd-placeholder-img" width="100%" height="100%" src="img/fondo2.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></img>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="bd-placeholder-img" width="100%" height="100%" src="img/fondo3.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></img>
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>One more for good measure.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Noticias
+  ================================================== -->
+  <!-- Noticias. -->
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img" width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+	</div>
+
+
+    <!-- Competiciones -->
+	<div class="w-100">
+	<div class="container-fluid separador backgroundImage p-3">
+	<h1 class="separadorletras">Competiciones</h1>
+	<h5 class="separadorletras"> Nuestros torneos activos en cada juego </h5>
+
+	</div>
+	</div>
+    <div class="container">
+		<div class="row menujuegos">
+		<ul class="navbar navbar-expand-md  navbar-center">
+          <li class="menujuegos">
+            <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+          <li class=" menujuegos">
+            <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+          <li class=" menujuegos ">
+           <img src="img/fortnite.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+          <li class="menujuegos">
+            <img src="img/lol.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+		  <li class="menujuegos">
+            <img src="img/rainbow.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    </img>
+          </li>
+        </ul>
+		</div>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <table id="ultimostorneos">
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-instagram"></i></td>
+			<td>31/03/2019 16:00</td>
+			<td><img class="icono" src="img/lolico.png"></img></td>
+			<td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+			<td><span> 9 equipos </span></td>
+		</tr>
+	
+	</table>
+  </div>
+</div>
+
+
+
+	</div>
+<div class="container margendivs">
+
+	<div class="container">
+    <div class="row">
+      <div class="col-md-7">
+	  <h2 class="tituloseccion text-center">Ultimos partidos</h2>
+        <table id="partidos" class="centrartabla">
+		<tr class="partido">
+			<td class="juego">
+			<img class="logojuego" src="img/csgo.png"></img>
+			</td>
+			<td class="local">
+			<img class="logolocal" src="img/arctic.png"></img><br>
+			<span>Arctic Gaming </span>
+			</td>
+			<td class="versus">
+			<span class="fechapartido">04/03/2019 13:00</span><br>
+			VS
+			</td>
+
+			<td class="visitante">
+			<img class="logovisitante" src="img/heretics.png"></img><br>
+			<span>Team Heretics </span>
+			</td>
+		</tr>
+		<tr class="partido">
+			<td class="juego">
+			<img class="logojuego" src="img/csgo.png"></img>
+			</td>
+			<td class="local">
+			<img class="logolocal" src="img/arctic.png"></img><br>
+			<span>Arctic Gaming </span>
+			</td>
+			<td class="versus">
+			<span class="fechapartido">04/03/2019 13:00</span><br>
+			VS
+			</td>
+
+			<td class="visitante">
+			<img class="logovisitante" src="img/heretics.png"></img><br>
+			<span>Team Heretics </span>
+			</td>
+		</tr>
+				<tr class="partido">
+			<td class="juego">
+			<img class="logojuego" src="img/csgo.png"></img>
+			</td>
+			<td class="local">
+			<img class="logolocal" src="img/arctic.png"></img><br>
+			<span>Arctic Gaming </span>
+			</td>
+			<td class="versus">
+			<span class="fechapartido">04/03/2019 13:00</span><br>
+			VS
+			</td>
+
+			<td class="visitante">
+			<img class="logovisitante" src="img/heretics.png"></img><br>
+			<span>Team Heretics </span>
+			</td>
+		</tr>
+		</table>
+      </div>
+      <div class="col-md-5 centrarmovil">
+	  <h2 class="tituloseccion">Patrocinadores </h2><br>
+	  <img class="patrocinadores" src="img/Movistar_footer.png"></img><br>
+	  <img class="patrocinadores" src="img/intel-extreme-masters-200.png"></img><br>
+	  <img class="patrocinadores" src="img/intel-logo-region.jpg"></img>
+        
+      </div>
+	  </div>
+    </div>
+</div>
+<div style="height:100px;" class=""></div>
+
+
+</main>
