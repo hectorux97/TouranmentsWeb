@@ -1,5 +1,8 @@
 
-    <head>
+    <%@page import="DAO.GlobalInfoDAO"%>
+<%@page import="beans.Juego"%>
+<%@page import="java.util.ArrayList"%>
+<head>
         
     <style>
       .bd-placeholder-img {
@@ -110,34 +113,42 @@
 	</div>
 	</div>
     <div class="container">
-		<div class="row menujuegos">
-		<ul class="navbar navbar-expand-md  navbar-center">
-          <li class="menujuegos">
-            <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    </img>
-          </li>
-          <li class=" menujuegos">
-            <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    </img>
-          </li>
-          <li class=" menujuegos ">
-           <img src="img/fortnite.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    </img>
-          </li>
-          <li class="menujuegos">
-            <img src="img/lol.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    </img>
-          </li>
-		  <li class="menujuegos">
-            <img src="img/rainbow.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    </img>
-          </li>
-        </ul>
-		</div>
+        <div class="row menujuegos">
+            <ul class="navbar navbar-expand-md  navbar-center">
+                <% GlobalInfoDAO info=new GlobalInfoDAO();
+                    ArrayList<Juego> listaJuegos= info.GetJuegos();
+                    for(Juego j: listaJuegos){%>
+                        <li class="menujuegos">
+                          <img <%="src='"+j.getImagenUrlNombre()+"'"%> class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          </img>
+                        </li> 
+                    <%}%>
+               <!-- <li class="menujuegos">
+                  <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  </img>
+                </li>
+                <li class=" menujuegos">
+                  <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  </img>
+                </li>
+                <li class=" menujuegos ">
+                 <img src="img/fortnite.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  </img>
+                </li>
+                <li class="menujuegos">
+                  <img src="img/lol.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  </img>
+                </li>
+                        <li class="menujuegos">
+                  <img src="img/rainbow.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  </img>
+                </li>-->
+            </ul>
+        </div>
 
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <table id="ultimostorneos">
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <table id="ultimostorneos">
 		<tr>
 			<td><i class="fa fa-instagram"></i></td>
 			<td>31/03/2019 16:00</td>
@@ -174,13 +185,13 @@
 			<td><span> 9 equipos </span></td>
 		</tr>
 	
-	</table>
-  </div>
+            </table>
+        </div>
+    </div>
+
+
+
 </div>
-
-
-
-	</div>
 <div class="container margendivs">
 
 	<div class="container">

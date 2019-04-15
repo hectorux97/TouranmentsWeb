@@ -15,15 +15,21 @@ public class DAOExtend {
     
     protected Connection conexion;
     
+    public DAOExtend(){
+         System.out.println("XXC");
+        conexion=getConection();
+        if(conexion==null){
+            System.out.println("XXF");
+        }
+    }
     protected Connection getConection() {
         
-        Connection con;
-        
+        Connection con;  
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:8080/TournamentsManager","root","");
-             return con;
-        }catch(SQLException e){}catch(ClassNotFoundException e){}    
+            Class.forName("com.mysql.jdbc.Driver");             
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");          
+            return con;
+        }catch(SQLException | ClassNotFoundException e){}    
         return null;
     }
 }

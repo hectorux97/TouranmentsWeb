@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import beans.Juego;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,12 +18,13 @@ public class GlobalInfoDAO extends DAOExtend{
 
     
     public GlobalInfoDAO(){
-        conexion=getConection();
+       super();
     }    
     
     public boolean GuardarNuevoJuego(String juego){
                
         try{
+           
             Statement st=conexion.createStatement();
             st.executeUpdate("INSERT INTO Juegos VALUES ('"+juego+"')");
             return true;
@@ -39,5 +42,24 @@ public class GlobalInfoDAO extends DAOExtend{
         }catch(SQLException e){}
         
         return false;
+    }
+    
+    public ArrayList<Juego> GetJuegos(){
+        
+        ArrayList<Juego> listaJuegos= new ArrayList<>();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM Juegos ");
+            
+            while(rs.next()){
+                Juego j= new Juego(rs.getString("nombreJuego"));
+                listaJuegos.add(j);
+            }
+            
+            return listaJuegos;
+           
+        }catch(SQLException e){}
+        
+        return listaJuegos;
     }
 }

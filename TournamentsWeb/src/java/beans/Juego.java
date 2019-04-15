@@ -32,7 +32,7 @@ public class Juego {
         return "/img/juegos/"+nombre+"/"+nombre+"Logo.png";
     }
     public String getImagenUrlNombre(){
-        return "/img/juegos/"+nombre+"/"+nombre+"Nombre.jpg";
+        return "/img/juegos/"+nombre+"/"+nombre+"Nombre.png";
     }
     public String getImagenUrlCompeticion(){
         return "/img/juegos/"+nombre+"/"+nombre+"Competicion.png";

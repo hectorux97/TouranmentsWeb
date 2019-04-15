@@ -2,6 +2,7 @@
 package Controlador;
 
 import beans.Usuario;
+import Gestor.GestorUsuario;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +23,8 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         Usuario user= (Usuario)request.getAttribute("user");
-        
+        GestorUsuario gestor=new GestorUsuario();
+        user= gestor.Login(user);
         if(user!=null){
             
             HttpSession sesion= request.getSession(true);
