@@ -1,0 +1,138 @@
+CREATE SCHEMA IF NOT EXISTS `TournamentsManager` DEFAULT CHARACTER SET utf8 ;
+USE `TournamentsManager` ;
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Usuarios` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `nombreUsuario` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(305) NOT NULL,
+  `imagen` VARCHAR(300) NULL,
+  `fechaCreacionUsuario` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idUsuario`),
+  UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `idUsuario_UNIQUE` (`idUsuario` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`Torneos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Torneos` (
+  `idTorneos` INT NOT NULL AUTO_INCREMENT,
+  `nombreTorneo` VARCHAR(45) NOT NULL,
+  `fechaPublcicacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fechaInicio` DATE NULL,
+  PRIMARY KEY (`idTorneos`),
+  UNIQUE INDEX `idTorneos_UNIQUE` (`idTorneos` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`Noticias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Noticias` (
+  `idNoticias` INT NOT NULL AUTO_INCREMENT,
+  `titular` VARCHAR(45) NOT NULL,
+  `resumen` VARCHAR(300) NOT NULL,
+  `noticiaTexto` LONGTEXT NOT NULL,
+  `imagenNoticia` VARCHAR(45) NULL,
+  PRIMARY KEY (`idNoticias`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`UsuarioToNoticias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`UsuarioToNoticias` (
+  `idUsuario` INT NOT NULL,
+  `idNoticias` INT NOT NULL,
+  PRIMARY KEY (`idUsuario`, `idNoticias`),
+  INDEX `idNoticia_idx` (`idNoticias` ASC) VISIBLE,
+  CONSTRAINT `idUsuario`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `TournamentsManager`.`Usuarios` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idNoticia`
+    FOREIGN KEY (`idNoticias`)
+    REFERENCES `TournamentsManager`.`Noticias` (`idNoticias`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`UsurioGestorTorneo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`UsurioGestorTorneo` (
+  `idUsurio` INT NOT NULL,
+  `idTorneo` INT NOT NULL,
+  PRIMARY KEY (`idUsurio`, `idTorneo`),
+  INDEX `idTorneo_idx` (`idTorneo` ASC) VISIBLE,
+  CONSTRAINT `idUsuario`
+    FOREIGN KEY (`idUsurio`)
+    REFERENCES `TournamentsManager`.`Usuarios` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idTorneo`
+    FOREIGN KEY (`idTorneo`)
+    REFERENCES `TournamentsManager`.`Torneos` (`idTorneos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`UsuarioApuntadoTorneo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`UsuarioApuntadoTorneo` (
+  `idUsuario` INT NOT NULL,
+  `idTorneo` INT NOT NULL,
+  PRIMARY KEY (`idUsuario`, `idTorneo`),
+  INDEX `idTorneo_idx` (`idTorneo` ASC) VISIBLE,
+  CONSTRAINT `idUsuario`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `TournamentsManager`.`Usuarios` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idTorneo`
+    FOREIGN KEY (`idTorneo`)
+    REFERENCES `TournamentsManager`.`Torneos` (`idTorneos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`Juegos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Juegos` (
+  `nombreJuego` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`nombreJuego`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TournamentsManager`.`JuegosPorTorneo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TournamentsManager`.`JuegosPorTorneo` (
+  `idTorneo` INT NOT NULL,
+  `nombreJuego` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`idTorneo`, `nombreJuego`),
+  INDEX `nombreJuego_idx` (`nombreJuego` ASC) VISIBLE,
+  UNIQUE INDEX `idTorneo_UNIQUE` (`idTorneo` ASC) VISIBLE,
+  CONSTRAINT `idTorneo`
+    FOREIGN KEY (`idTorneo`)
+    REFERENCES `TournamentsManager`.`Torneos` (`idTorneos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `nombreJuego`
+    FOREIGN KEY (`nombreJuego`)
+    REFERENCES `TournamentsManager`.`Juegos` (`nombreJuego`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;

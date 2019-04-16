@@ -1,4 +1,5 @@
 
+<%@page import="beans.GlobalInfo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,9 @@
     <body>
         <header>
             <%@include file="/includes/header.jsp" %>
-            <%@include file="/includes/headerUser.html" %>
+           
+            
+
         </header>
         <!--Set here the body -->
         <%@include file="/includes/principal/principal.jsp" %>

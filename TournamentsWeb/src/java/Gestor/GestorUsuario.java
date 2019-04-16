@@ -23,9 +23,15 @@ public class GestorUsuario {
         return null;
     }
     
-    public Usuario Register(Usuario user){
-        
-        return user;
+    public Usuario Register(Usuario user){        
+        UsuarioDAO udao=new UsuarioDAO();
+        Usuario checkUser=udao.GetUsuario(user.getNombre());
+        if(checkUser!=null){
+            if(udao.GuardarNuevoUsuario(user)){
+            return user;
+            }
+        }
+        return null;
     }
     
     

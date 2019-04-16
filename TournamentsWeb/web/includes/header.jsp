@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-md fixed-top w-100 p-0 h-md-10 front" style="margin:0px;">
     <!--Standard header-->
     <div class="navbar-item w-100 h-10 ">

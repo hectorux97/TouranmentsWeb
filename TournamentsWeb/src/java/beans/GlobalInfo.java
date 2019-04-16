@@ -1,21 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package beans;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author hector
- */
+
 public class GlobalInfo {
     
-    ArrayList<Juego> juegos;
+    private ArrayList<Juego> juegos;
+    private int myPanel;
     
     public GlobalInfo(){
         
     }
+    
+    public int getMyPanel() {
+        return myPanel;
+    }
+
+    public void setMyPanel(int myPanel) {
+        this.myPanel = myPanel;
+    }
+
+    public ArrayList<Juego> getJuegos() {
+        return juegos;
+    }
+
+    public void setJuegos(ArrayList<Juego> juegos) {
+        this.juegos = juegos;
+    }
+    
 }
