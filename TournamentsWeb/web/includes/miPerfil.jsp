@@ -1,9 +1,4 @@
 
-<head>
-  
-    
-  
-  </head>
 <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind" >
   <!--Cabecera-->
 

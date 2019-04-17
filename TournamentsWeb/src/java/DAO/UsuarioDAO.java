@@ -24,7 +24,7 @@ public class UsuarioDAO extends DAOExtend{
 
         try{
             Statement st=conexion.createStatement();
-            st.executeUpdate("INSERT INTO Usuarios(nombreUsuario,password,email) VALUES ('"
+            st.executeUpdate("INSERT INTO usuarios(nombreUsuario,password,email) VALUES ('"
                     +user.getNombre()+"','"
                     +user.getPassword()+"','"
                     +user.getEmail()+"')");
@@ -37,7 +37,7 @@ public class UsuarioDAO extends DAOExtend{
     public boolean CheckJuegoExist(String userName){
          try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM Usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
+            ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
             return rs.next();
 
         }catch(SQLException e){}
@@ -47,7 +47,7 @@ public class UsuarioDAO extends DAOExtend{
     public Usuario GetUsuario(String userName){
          try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM Usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
+            ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
             if(rs.next()){
             return new Usuario(rs.getInt("idUsuario"),rs.getString("nombreUsuario"),rs.getString("password"),
                     rs.getString("email"),rs.getDate("fechaCreacionUsuario"));
@@ -57,5 +57,20 @@ public class UsuarioDAO extends DAOExtend{
         }catch(SQLException e){}
 
         return null;
+    }
+    
+     public boolean ModificarUsuario(Usuario user){
+
+        try{
+            Statement st=conexion.createStatement();
+            st.executeUpdate("UPDATE usuarios SET nombreUsuario ='"+user.getNombre()+"'," 
+                    +"password= '"+user.getPassword()+"','"
+                    +"email= '"+user.getEmail()+"','"
+                    +"imagen= '"+user.getImageURL()+"','"
+                    +"' WHERE idUsuario="+ user.getId()+";");
+            return true;
+        }catch(SQLException e){}
+
+        return false;
     }
 }

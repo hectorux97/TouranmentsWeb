@@ -14,14 +14,13 @@
     </head>
     <body>
         <header>
-            <%@include file="/includes/header.jsp" %>
-           
+            <%@include file="/includes/header.jsp" %>           
             <%@include file="/includes/headerUser.html" %>
             
         </header>
             
-            <%@include file="/includes/miPerfil.jsp" %>
+            <%@include file="/includes/miPerfil.jsp"%>
             
-             <%@include file="/includes/footer.html" %>
+             <%@include file="/includes/footer.html"%>
     </body>
 </html>
