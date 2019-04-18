@@ -16,7 +16,7 @@ public class DAOExtend {
     protected Connection conexion;
     
     public DAOExtend(){
-         System.out.println("XXC");
+        System.out.println("XXC");
         conexion=getConection();
         if(conexion==null){
             System.out.println("XXF");

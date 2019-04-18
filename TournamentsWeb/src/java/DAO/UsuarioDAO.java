@@ -34,7 +34,7 @@ public class UsuarioDAO extends DAOExtend{
         return false;
     }
 
-    public boolean CheckJuegoExist(String userName){
+    public boolean CheckUserExist(String userName){
          try{
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
