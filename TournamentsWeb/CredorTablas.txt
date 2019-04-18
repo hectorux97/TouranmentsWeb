@@ -1,138 +1,66 @@
-CREATE SCHEMA IF NOT EXISTS `TournamentsManager` DEFAULT CHARACTER SET utf8 ;
-USE `TournamentsManager` ;
+CREATE DATABASE `tournamentsmanager` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
--- -----------------------------------------------------
--- Table `TournamentsManager`.`Usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Usuarios` (
-  `idUsuario` INT NOT NULL AUTO_INCREMENT,
-  `nombreUsuario` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(305) NOT NULL,
-  `imagen` VARCHAR(300) NULL,
-  `fechaCreacionUsuario` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idUsuario`),
-  UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  UNIQUE INDEX `idUsuario_UNIQUE` (`idUsuario` ASC) VISIBLE)
-ENGINE = InnoDB;
+CREATE TABLE `juegos` (
+  `nombreJuego` varchar(20) NOT NULL,
+  PRIMARY KEY (`nombreJuego`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `noticias` (
+  `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
+  `titular` varchar(45) NOT NULL,
+  `resumen` varchar(300) NOT NULL,
+  `noticiaTexto` longtext NOT NULL,
+  `imagenNoticia` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idNoticias`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `TournamentsManager`.`Torneos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Torneos` (
-  `idTorneos` INT NOT NULL AUTO_INCREMENT,
-  `nombreTorneo` VARCHAR(45) NOT NULL,
-  `fechaPublcicacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fechaInicio` DATE NULL,
-  PRIMARY KEY (`idTorneos`),
-  UNIQUE INDEX `idTorneos_UNIQUE` (`idTorneos` ASC) VISIBLE)
-ENGINE = InnoDB;
+CREATE TABLE `torneoforusuario` (
+  `idUsuario` int(11) NOT NULL,
+  `idTorneo` int(11) NOT NULL,
+  PRIMARY KEY (`idUsuario`,`idTorneo`),
+  KEY `Foreign_torneoID_idx` (`idTorneo`),
+  CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Foreign_usuarioID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `torneos` (
+  `idTorneos` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreTorneo` varchar(45) NOT NULL,
+  `fechaPublcicacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fechaInicio` date DEFAULT NULL,
+  PRIMARY KEY (`idTorneos`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `TournamentsManager`.`Noticias`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Noticias` (
-  `idNoticias` INT NOT NULL AUTO_INCREMENT,
-  `titular` VARCHAR(45) NOT NULL,
-  `resumen` VARCHAR(300) NOT NULL,
-  `noticiaTexto` LONGTEXT NOT NULL,
-  `imagenNoticia` VARCHAR(45) NULL,
-  PRIMARY KEY (`idNoticias`))
-ENGINE = InnoDB;
+CREATE TABLE `usuariointorneo` (
+  `idUsuario` int(11) NOT NULL,
+  `idTorneo` int(11) NOT NULL,
+  PRIMARY KEY (`idUsuario`,`idTorneo`),
+  KEY `Foreign_torneoID` (`idTorneo`),
+  CONSTRAINT `Foreign_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Foreign_userID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreUsuario` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(305) NOT NULL,
+  `imagen` varchar(300) DEFAULT NULL,
+  `fechaCreacionUsuario` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nombreReal` varchar(20) DEFAULT NULL,
+  `apellidosReal` varchar(50) DEFAULT NULL,
+  `edad` int(3) DEFAULT NULL,
+  `pais` varchar(30) DEFAULT NULL,
+  `telefono` int(13) DEFAULT NULL,
+  `tipoUsuario` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idUsuario`,`nombreUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `TournamentsManager`.`UsuarioToNoticias`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`UsuarioToNoticias` (
-  `idUsuario` INT NOT NULL,
-  `idNoticias` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`, `idNoticias`),
-  INDEX `idNoticia_idx` (`idNoticias` ASC) VISIBLE,
-  CONSTRAINT `idUsuario`
-    FOREIGN KEY (`idUsuario`)
-    REFERENCES `TournamentsManager`.`Usuarios` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `idNoticia`
-    FOREIGN KEY (`idNoticias`)
-    REFERENCES `TournamentsManager`.`Noticias` (`idNoticias`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TournamentsManager`.`UsurioGestorTorneo`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`UsurioGestorTorneo` (
-  `idUsurio` INT NOT NULL,
-  `idTorneo` INT NOT NULL,
-  PRIMARY KEY (`idUsurio`, `idTorneo`),
-  INDEX `idTorneo_idx` (`idTorneo` ASC) VISIBLE,
-  CONSTRAINT `idUsuario`
-    FOREIGN KEY (`idUsurio`)
-    REFERENCES `TournamentsManager`.`Usuarios` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `idTorneo`
-    FOREIGN KEY (`idTorneo`)
-    REFERENCES `TournamentsManager`.`Torneos` (`idTorneos`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TournamentsManager`.`UsuarioApuntadoTorneo`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`UsuarioApuntadoTorneo` (
-  `idUsuario` INT NOT NULL,
-  `idTorneo` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`, `idTorneo`),
-  INDEX `idTorneo_idx` (`idTorneo` ASC) VISIBLE,
-  CONSTRAINT `idUsuario`
-    FOREIGN KEY (`idUsuario`)
-    REFERENCES `TournamentsManager`.`Usuarios` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `idTorneo`
-    FOREIGN KEY (`idTorneo`)
-    REFERENCES `TournamentsManager`.`Torneos` (`idTorneos`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TournamentsManager`.`Juegos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`Juegos` (
-  `nombreJuego` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`nombreJuego`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TournamentsManager`.`JuegosPorTorneo`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TournamentsManager`.`JuegosPorTorneo` (
-  `idTorneo` INT NOT NULL,
-  `nombreJuego` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`idTorneo`, `nombreJuego`),
-  INDEX `nombreJuego_idx` (`nombreJuego` ASC) VISIBLE,
-  UNIQUE INDEX `idTorneo_UNIQUE` (`idTorneo` ASC) VISIBLE,
-  CONSTRAINT `idTorneo`
-    FOREIGN KEY (`idTorneo`)
-    REFERENCES `TournamentsManager`.`Torneos` (`idTorneos`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `nombreJuego`
-    FOREIGN KEY (`nombreJuego`)
-    REFERENCES `TournamentsManager`.`Juegos` (`nombreJuego`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE `usuariotonoticia` (
+  `idUsuario` int(11) NOT NULL,
+  `idNoticia` int(11) NOT NULL,
+  PRIMARY KEY (`idUsuario`,`idNoticia`),
+  KEY `FK_noticiaID` (`idNoticia`),
+  CONSTRAINT `FK_noticiaID` FOREIGN KEY (`idNoticia`) REFERENCES `noticias` (`idNoticias`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_userID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
