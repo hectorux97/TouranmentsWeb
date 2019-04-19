@@ -1,5 +1,7 @@
 
 package beans;
+import java.time.*;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Usuario {
@@ -17,7 +19,7 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String pais;
-    private int edad;
+    private Date edad;
     private int telefono;
     
    // private ArrayList <Torneo>
@@ -40,7 +42,7 @@ public class Usuario {
    
     }
 
-    public Usuario(int id, String alias,String image, String password, String email, Date fechaCreacion, String nombre, String apellidos, String pais, int edad, int telefono) {
+    public Usuario(int id, String alias,String image, String password, String email, Date fechaCreacion, String nombre, String apellidos, String pais, Date edad, int telefono) {
         this.id = id;
         this.alias = alias;
         this.password = password;
@@ -146,14 +148,21 @@ public class Usuario {
         this.pais = pais;
     }
 
-    public int getEdad() {
+    public Date getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Date edad) {
         this.edad = edad;
     }
-
+    
+    public int getEdadNum(){
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate dob= this.edad.toInstant().atZone(defaultZoneId).toLocalDate();
+        LocalDate curDate = LocalDate.now();
+        return Period.between(dob, curDate).getYears();
+    }
+    
     public int getTelefono() {
         return telefono;
     }

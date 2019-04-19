@@ -49,8 +49,25 @@ public class UsuarioDAO extends DAOExtend{
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
             if(rs.next()){
-            return new Usuario(rs.getInt("idUsuario"),rs.getString("nombreUsuario"),rs.getString("password"),
-                    rs.getString("email"),rs.getDate("fechaCreacionUsuario"));
+            return new Usuario(rs.getInt("idUsuario"),rs.getString("nombreUsuario"),rs.getString("imagen"),rs.getString("password"),
+                    rs.getString("email"),rs.getDate("fechaCreacionUsuario"),rs.getString("nombreReal"),
+                    rs.getString("apellidosReal"),rs.getString("pais"),rs.getDate("edad"),rs.getInt("telefono"));
+            }else{
+                return null;
+            }
+        }catch(SQLException e){}
+
+        return null;
+    }
+    
+     public Usuario GetUsuario(int userID){
+         try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( idUsuario LIKE '"+userID+"')");
+            if(rs.next()){
+            return new Usuario(rs.getInt("idUsuario"),rs.getString("nombreUsuario"),rs.getString("imagen"),rs.getString("password"),
+                    rs.getString("email"),rs.getDate("fechaCreacionUsuario"),rs.getString("nombreReal"),
+                    rs.getString("apellidosReal"),rs.getString("pais"),rs.getDate("edad"),rs.getInt("telefono"));
             }else{
                 return null;
             }
@@ -73,4 +90,24 @@ public class UsuarioDAO extends DAOExtend{
 
         return false;
     }
+     
+     public boolean EliminarUsuario(int usuarioId){
+          try{            
+            Statement st=conexion.createStatement();
+            st.executeQuery("DELETE FROM usuariointorneo WHERE ( idUsuario = "+usuarioId+")");
+            ResultSet rs=st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idUsuario = "+usuarioId+")");
+            st.executeQuery("DELETE FROM torneoforusuario WHERE ( idUsuario = "+usuarioId+")");
+            while(rs.next()){
+                st.executeQuery("DELETE FROM torneos WHERE ( idTorneos = "+rs.getInt("idTorneo")+")");
+            }
+            rs=st.executeQuery("SELECT * FROM usuariotonoticia WHERE ( idUsuario = "+usuarioId+")");
+            st.executeQuery("DELETE FROM usuariotonoticia WHERE ( idUsuario = "+usuarioId+")");
+            while(rs.next()){
+                st.executeQuery("DELETE FROM noticias WHERE ( idNoticias = "+rs.getInt("idNoticia")+")");
+            }
+            return true;
+        }catch(SQLException e){}
+
+        return false;
+     }
 }
