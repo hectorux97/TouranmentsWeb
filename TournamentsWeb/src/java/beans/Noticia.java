@@ -18,24 +18,31 @@ public class Noticia {
     private int tipoNoticia;
     private Date fechaNoticia;
     private String autor;
+    private int status;
     
     //he añadido 2 variables más y estoy pensando en poner otra que sea boolean destacada
     //hay que cambiar la tabla
+    //he anadido también status... si fuera 1 se vería la noticia y si fuera 0 no se verá
     
     
     //contructor vacio para el Bean
     public Noticia () {};
     
-    // contructor para las tiles(cuadraditos)
-    public Noticia (String titular,String resumen,String imgNoticia, int tipoNoticia) {
+    // contructor para las tiles(cuadraditos) auque creo que se pueden quedar estáticas
+    public Noticia (String titular,String imgNoticia, int tipoNoticia) {
     this.titular=titular;
-    this.resumen=resumen;
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     }
+    // constructot para los tipos de noticias
+    public Noticia (String titular,String resumen, String imgNoticia) {
+    this.titular=titular;
+    this.resumen=resumen;
+    this.imgNoticia=imgNoticia;
+    }
     
     // constructor para las noticias en jsp independiente
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, int tipoNoticia,Date fechaNoticia, String autor) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, int tipoNoticia,Date fechaNoticia, String autor, int status) {
     this.titular=titular;
     this.resumen=resumen;
     this.noticiaTexto=noticiaTexto;
@@ -43,6 +50,7 @@ public class Noticia {
     this.tipoNoticia=tipoNoticia;
     this.fechaNoticia=fechaNoticia;
     this.autor=autor;
+    this.status=status;
     }
     //Creo que en ambos constructores no es necesario añadir el id de la noticia, 
     //aun así lo dejo entrecomillado por si es de utilidad
@@ -126,7 +134,13 @@ public class Noticia {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-    
-    
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
     
 }
