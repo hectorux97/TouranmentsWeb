@@ -1,6 +1,7 @@
 
 package beans;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class Usuario {
     private String pais;
     private Date edad;
     private int telefono;
+    private ArrayList<NickUsuario> nicks;
     
    // private ArrayList <Torneo>
     
