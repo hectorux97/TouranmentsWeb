@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="es" >
 <head>
     <meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,19 +32,19 @@
         <div class="collapse navbar-collapse"  id="PrincipalHeader">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="#">Inicio <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-center" href="index.html">Inicio <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="#">Noticias</a>
+              <a class="nav-link text-center" href="noticias.html">Noticias</a>
             </li>
             <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="#">Competiciones</a>
+              <a class="nav-link text-center" href="competiciones.html">Competiciones</a>
             </li>
             <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="#">TV</a>
+              <a class="nav-link text-center" href="tv.html">TV</a>
             </li>
             <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="#">Contacto</a>
+              <a class="nav-link text-center" href="contacto.html">Contacto</a>
             </li>
           </ul>
           <!--Right Part-->
@@ -73,13 +73,13 @@
             <li class=" active" style="display:none">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active rightHeader" >
-                  <a class="nav-link" href="#">Login</a>
+                  <a class="nav-link" href="Login.html">Login</a>
                 </li>
                 <li class="nav-item disable">
                 <hr />
                 </li>
                 <li class="nav-item active rightHeader">
-                  <a class="nav-link " href="#">Register</a>
+                  <a class="nav-link " href="regis.html">Register</a>
                 </li>
               </ul>
             </li>
@@ -112,17 +112,17 @@
   <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">
     <ul class="nav flex-column text-center sidebar-sticky" style="background-color: #2d3238;width:100%;">
       <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="Admin_MiPerfil.html">
           Mi Perfil <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="Admin_Noticias.html">
           Noticias <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="Admin_Torneo.html">
           Torneos <span class="sr-only">(current)</span>
         </a>
       </li>
@@ -150,6 +150,9 @@
       <div class="inclinado ">
         <a class="nav-link" href="#">Publicar Torneo</a>
       </div>
+	  <div class="inclinado ">
+        <a class="nav-link" href="Admin_MisNoticias.html">Administrar Torneos</a>
+      </div>
     </div>
     <div class="form-group text-center">
 
@@ -163,20 +166,31 @@
           <label for="descripcion">Descripci√≥n</label>
           <textarea name="descripcion" rows="2" class=" form-control rounded-0 w-50 resize-none" placeholder="Descripcion corta de la noticia"></textarea>
 
-          <label for="noticia">Noticia</label>
+          <label for="noticia">Reglas del torneo</label>
           <textarea name="noticia" rows="10" class="form-control rounded-0 w-75" placeholder="Descripcion corta de la noticia"></textarea>
+		  
+		  <label for="tituloNoticia">Numero m·ximo de Jugadores</label>
+          <input class="form-control rounded-0 w-25" type="text" name="tituloNoticia" value="" placeholder="Nombre"><br />
+		  
+		  <label for="tituloNoticia">Premio</label>
+          <input class="form-control rounded-0 w-25" type="text" name="tituloNoticia" value="" placeholder="Nombre"><br />
+		  
+		  <label for="tituloNoticia">Juego del torneo</label>
+          <select name="juegodeltorneo"class="selectpicker form-control rounded-0">
+          <option disabled value="">Juego</option>
+          <option value="LOL">League of Legends</option>
+          <option value="Fortnite">Fortnite</option>
+          <option value="CR">Clash Royale</option>
+          <option value="CSGO">CSGO</option>
+          <option value="Fifa">Fifa</option>
+          <option value="Rainbow">RainBow Six</option>
+		  </select>
         </div>
 
-    <div class="form-group text-center">
-      <button type="button"class="noticiaImgButton m-auto w-75" name="destacadaIMG">
-        <a href="#">
-          <img class="noticiaImg " src="../img/IconoWeb.png"/>
-        </a>
-      </button>
-    </div>
+   
       <div class="form-group text-center pb-2">
         <div class="inclinado w-25 m-auto ">
-          <a class="nav-link mb-3"href="#">Publicar Noticia</a>
+          <a class="nav-link mb-3"href="#">Publicar Torneo</a>
         </div>
       </div>
     </div>
