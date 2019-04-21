@@ -13,16 +13,16 @@
             <%@include file="/includes/header.jsp" %>
            
             
-
+            <%@include file="/includes/headerUser.html"%>
         </header>
             <%@include file="/includes/HeaderJugador.html"%>
              <center>
-	<section role="main"style="background-color: #779442;" >
+	<section role="main" style="overflow: scroll;">
     <% ArrayList torneos=(ArrayList)request.getAttribute("torneos");
        if (torneos != null){
     %>	
         <h1 style="color: #a8c916">Mis Torneos</h1>
-	<div id="Torneos" class="container">
+	<div id="Torneos" class="container"style="background-color: #779442;">
 	   <table style="width:100%; background-color: #ffb82c; overflow: scroll;"class="table">
              <thead>
                <tr>
@@ -46,9 +46,11 @@
     
            </table>
 <br/><br/>
-<%} {%><h1 style="color: #a8c916">No esta inscrito en ningun torneo actualmente</h1>
-             <a href="competiciones.html">Inscribete a uno ahora</a 
- <%}%>            
+<%}}else {%> <div>
+             <h1>No esta inscrito en ningun torneo actualmente</h1>
+             <a style="color: #a8c916; " href="competiciones.html">Inscribete a uno ahora</a>
+              </div>
+ <%}%>      
 </center>
             
         <%@include file="/includes/footer.html" %>

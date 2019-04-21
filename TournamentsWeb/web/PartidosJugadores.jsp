@@ -17,12 +17,12 @@
         </header>
             <%@include file="/includes/HeaderJugador.html"%>
              <center>
-	<section role="main"style="background-color: #779442;" >
+	<section role="main"style="overflow: scroll;" >
     <% ArrayList partidos=(ArrayList)request.getAttribute("partidos");
        if (partidos != null){
     %>	
         <h1 style="color: #a8c916">Proximos Partidos</h1>
-	<div id="partidos" class="container">
+	<div id="partidos" class="container" style="background-color: #779442;">
 	   <table style="background-color: #ffb82c;"class="table">
              <thead>
                 <tr>
@@ -47,7 +47,7 @@
     
            </table>
 <br/><br/>
-<%}{%><h1 style="color: #a8c916">No tienes ningun partido proximamante</h1>
+<%}{%><h1>No tienes ningun partido proximamante</h1>
               
  <%}%>            
 </center>
