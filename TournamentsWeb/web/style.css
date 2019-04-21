@@ -4,7 +4,7 @@
 
 body {
   padding-top: 90px;
-  padding-bottom: 0rem;
+  padding-bottom: 0px;
   color: #5a5a5a;
 }
 header {margin-top:0px;}
@@ -365,7 +365,9 @@ text-transform: none;
 #premio1{
 	margin-left:10px;
 }
-
+.imagenavatar {
+	width:150px;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -433,6 +435,7 @@ text-transform: none;
 	color:white;
 	text-align:center;
 	margin-bottom:0px !important;
+	bottom:0;
 }
 a.footer2 {
 	color:white;
@@ -524,4 +527,5 @@ a.footer2 {
 .textomovil{
 	font-size:12px;
 }
+
 }
