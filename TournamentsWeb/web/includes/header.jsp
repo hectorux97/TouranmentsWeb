@@ -60,13 +60,13 @@
                     <li class=" active" >
                         <ul class="navbar-nav mr-auto d-inline">
                             <li class="nav-item active rightHeader" >
-                                <a class="nav-link" href="../Login.html">Login</a>
+                                <a class="nav-link" href="../Login.jsp">Login</a>
                             </li>
                             <li class="nav-item disable" style="height:27px;">
                                 <hr />
                             </li>
                             <li class="nav-item active rightHeader">
-                                <a class="nav-link " href="#">Register</a>
+                                <a class="nav-link " href="../Register.jsp">Register</a>
                             </li>
                         </ul>
                     </li>
