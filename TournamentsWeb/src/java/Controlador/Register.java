@@ -29,7 +29,7 @@ public class Register extends HttpServlet {
         user= gestor.Register(user);
         if(user!=null){            
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/VistaN.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
            
         }else{

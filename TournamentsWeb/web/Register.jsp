@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="usuario" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
-<jsp:setProperty name="usuario" property="*"></jsp:setProperty>
+<jsp:useBean id="user" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
+<jsp:setProperty name="user" property="*"></jsp:setProperty>
 <% if(request.getParameter("alias")!=null){%>
     <jsp:forward page="/Controlador/Register"/>    
 <%}%>

@@ -34,7 +34,7 @@
                 <!--Right Part-->
                 <ul class="nav-item pl-0 mr-4" >
                     <!--Perfil Part!-->
-                    <%if(session.isNew()){%>
+                    <%if(session.getAttribute("user")!=null){%>
                     <li class=" active">
                         <img class="perfilImage" src="../img/IconoWeb.png" alt="perfilImage"/>
                         

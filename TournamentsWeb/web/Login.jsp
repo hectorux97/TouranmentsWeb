@@ -1,16 +1,28 @@
-<%-- 
-    Document   : Login
-    Created on : 23-abr-2019, 16:31:04
-    Author     : hector
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="usuario" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
-<jsp:setProperty name="usuario" property="*"></jsp:setProperty>
+<%@page import="javax.servlet.http.Cookie"%>
+<jsp:useBean id="user" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
+<jsp:setProperty name="user" property="*"></jsp:setProperty>
 <% if(request.getParameter("alias")!=null){%>
-    <jsp:forward page="/Controlador/Login"/>
-    
+    <jsp:forward page="/Controlador/Login"/>    
 <%}%>
+<% Cookie[] cookies = request.getCookies();
+    boolean remember=false;
+    String username="";
+    String password="";
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+           if(cookie.getName().equals("remember")){
+               if(cookie.getValue().equals("true")){
+                  remember=true; 
+               }
+           }else if(cookie.getName().equals("user")){
+              username=cookie.getValue();
+           }else if(cookie.getName().equals("password")){
+              password=cookie.getValue();
+           }
+        }
+}%>
 <!DOCTYPE html>
 <html>
     <head>       
@@ -37,32 +49,36 @@
 
                 </div>
                 <div class="card-body">
-                    <form method="post" >
+                    <form method="post" onsubmit="validateForm()">
+                         <% if(request.getParameter("Error")!=null){%> 
+                            <div style="color:red;">Error en Usuario o Contraseña</div>
+                        <%}%>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="alias" placeholder="Usuario">
+                            
+                            <input type="text" class="form-control" name="alias" placeholder="Usuario" <%=(remember?"value="+username:"")%> required >
 
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña" <%=(remember?"value="+password:"")%> required>
                         </div>
                         <div class="row align-items-center remember">
-                            <input type="checkbox">Recordarme
+                            <input type="checkbox" name="remember" value="remember" <%=(remember?"checked":"")%>>Recordarme
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                            <input type="submit" value="Login" class="btn float-right login_btn" >
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
 
-                        ¿No tienes una cuenta?<a href="regis.html" style="color:white;">¡Regístrate!</a>
+                        ¿No tienes una cuenta?<a href="Register.jsp" style="color:white;">¡Regístrate!</a>
 
                     </div> 
                     <div class="d-flex justify-content-center">
@@ -71,7 +87,7 @@
                 </div>
             </div>
         </div>
-        
+      
         <%@include file="/includes/footer.html" %>
     </body>
 </html>

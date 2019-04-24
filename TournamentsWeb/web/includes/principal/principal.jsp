@@ -1,5 +1,5 @@
 
-    <%@page import="DAO.GlobalInfoDAO"%>
+<%@page import="DAO.GlobalInfoDAO"%>
 <%@page import="beans.Juego"%>
 <%@page import="java.util.ArrayList"%>
 <head>

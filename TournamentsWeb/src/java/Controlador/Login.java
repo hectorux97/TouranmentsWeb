@@ -4,9 +4,11 @@ package Controlador;
 import beans.Usuario;
 import Gestor.GestorUsuario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,16 +26,23 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Usuario user= (Usuario)request.getAttribute("user");
-        if(user!=null){
+        Usuario user= (Usuario)request.getAttribute("user");       
+       
+        
         GestorUsuario gestor=new GestorUsuario();
         user= gestor.Login(user);
-        }
+        
         if(user!=null){
             
             HttpSession sesion= request.getSession(true);
             sesion.setAttribute("user", user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/VistaN.jsp");
+            if(request.getParameter("remember").equals("remember")){
+                
+                response.addCookie( new Cookie("remember", "true"));
+                response.addCookie( new Cookie("user", user.getAlias()));
+                response.addCookie( new Cookie("password", user.getPassword()));
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
             
         }else{
