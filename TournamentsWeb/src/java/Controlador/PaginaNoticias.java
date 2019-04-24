@@ -37,18 +37,34 @@ public class PaginaNoticias extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String noticia = request.getParameter("noticia");
-        
+        /* ESTO ES POR SI LO SACO CON EL ARRAY
         if (noticia.equals("mostrar")) {
             NoticiasDAO notiDAO = new NoticiasDAO();
             ArrayList noticias;
             int tipo = Integer.parseInt(request.getParameter("tipoNoticia"));
             int id = Integer.parseInt(request.getParameter("idNoticia"));
-            noticias = notiDAO.getNoticiasRecomendadas(tipo, id);
+            //noticias = notiDAO.getNoticiasRecomendadas(tipo, id);
             request.setAttribute("noticias", noticias);
             RequestDispatcher rd=request.getRequestDispatcher("/noticia.jsp");
             rd.forward(request,response);
         }  
-        
+        */
+        if (noticia.equals("insertar")) {
+            NoticiasDAO notiDAO = new NoticiasDAO();
+            Noticia noti = (Noticia)request.getAttribute("noticia");
+            boolean aux = notiDAO.subirNoticia(noti);
+            if(aux==true){
+                ///Ver mejor con las cosas de clase
+            }
+            else {
+                //Poner lo del error
+            }
+            response.sendRedirect("inicio.html"); // por poner algo
+            
+        }
+        if (noticia.equals("inicionoticias")) {
+            
+        }
         
     }
 

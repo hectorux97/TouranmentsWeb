@@ -45,7 +45,37 @@ public class NoticiasDAO extends DAOExtend{
         return false;
     }
     
-    
+    public Noticia mostrarNoticia(int idNot){
+        
+        Noticia minoticia = new Noticia();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"'");
+            
+                minoticia.setIdNot(idNot);
+                minoticia.setTitular(rs.getString("titular"));
+                minoticia.setResumen(rs.getString("resumen"));
+                minoticia.setNoticiaTexto(rs.getString("textoNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setAutor(rs.getString("autor"));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
+            
+            return minoticia;
+           
+        }catch(SQLException e){}
+        
+        return null;
+    }
+    /*
+        private int idNot;
+    private String titular;
+    private String resumen;
+    private String noticiaTexto;
+    private String imgNoticia;
+    private int tipoNoticia;
+    private Date fechaNoticia;
+    private String autor;
+        */
     
     //ELIMINAR NOTICIA
     
@@ -116,7 +146,7 @@ public class NoticiasDAO extends DAOExtend{
         return null;
     }
     
-    
+    /*ESTO ES POR SI ACASO LO PUEDO HACER CON UNA SOLA BUSQUEDA
     // Para añadirlo a las jsp de notcias simples en el lateral o abajo
     // Tengo que hacer un if para que no coincida con la misma noticia en la que estamos
     public ArrayList<Noticia> getNoticiasRecomendadas(int tipoNoticia, int idNot ){
@@ -132,7 +162,8 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setIdNot(rs.getInt("idNoticias"));
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
-                minoticia.setImgNoticia(rs.getNString("imagenNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setTipoNoticia(rs.getInt("tipoNoticia"));
                 listaRecomendadasNoticias.add(minoticia);
                 cont++;
             }
@@ -143,6 +174,7 @@ public class NoticiasDAO extends DAOExtend{
         
         return null;
     }
+    */
     /*
         private int idNot;
     private String titular;
@@ -189,8 +221,8 @@ public class NoticiasDAO extends DAOExtend{
         Noticia minoticia = new Noticia();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE idNoticias ='"+idNot+"'");
-            int cont = 0;
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"'");
+            
                 minoticia.setIdNot(idNot);
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
