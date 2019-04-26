@@ -66,6 +66,22 @@ public class TorneoDAO extends DAOExtend{
 
         return null;
     }
+    public ArrayList<Torneo> GetTorneo(){
+         try{
+             ArrayList<Torneo> listaTorneos= new ArrayList<>();
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM torneos");
+            if(rs.next()){
+                Torneo t= new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"));
+                listaTorneos.add(t);              
+                
+            }
+                return listaTorneos ;
+           
+        }catch(SQLException e){}
+
+        return null;
+    }
     
      public Torneo GetTorneo(int idTorneo){
          try{

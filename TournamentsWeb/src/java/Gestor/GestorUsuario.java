@@ -16,17 +16,24 @@ public class GestorUsuario {
     
     public Usuario Login(Usuario user){
         UsuarioDAO udao=new UsuarioDAO();
-        Usuario checkUser=udao.GetUsuario(user.getNombre());
-        if(user.getNombre().equals(checkUser.getNombre()) && user.getPassword().equals(checkUser.getPassword()) ){
+        Usuario checkUser=udao.GetUsuario(user.getAlias());
+        
+        
+            if(user.getAlias().equals(checkUser.getAlias()) && user.getPassword().equals(checkUser.getPassword())){
+                
+                return user;
+            }
+        
+        /*if(user.getNombre().equals("asdadf") && user.getPassword().equals("d")){
             return user;
-        }
+        }/*/
         return null;
     }
     
     public Usuario Register(Usuario user){        
         UsuarioDAO udao=new UsuarioDAO();
         Usuario checkUser=udao.GetUsuario(user.getNombre());
-        if(checkUser!=null){
+        if(checkUser==null){
             if(udao.GuardarNuevoUsuario(user)){
             return user;
             }

@@ -15,7 +15,7 @@ public class Noticia {
     private String resumen;
     private String noticiaTexto;
     private String imgNoticia;
-    private int tipoNoticia;
+    private String tipoNoticia;
     private Date fechaNoticia;
     private String autor;
     private int status;
@@ -29,20 +29,21 @@ public class Noticia {
     public Noticia () {};
     
     // contructor para las tiles(cuadraditos) auque creo que se pueden quedar estáticas
-    public Noticia (String titular,String imgNoticia, int tipoNoticia) {
+    public Noticia (String titular,String imgNoticia, String tipoNoticia) {
     this.titular=titular;
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     }
-    // constructot para los tipos de noticias
-    public Noticia (String titular,String resumen, String imgNoticia) {
+    // constructor para los tipos de noticias
+    public Noticia (String titular,String resumen,String tipoNoticia,String imgNoticia) {
     this.titular=titular;
     this.resumen=resumen;
     this.imgNoticia=imgNoticia;
+    this.tipoNoticia=tipoNoticia;
     }
     
     // constructor para las noticias en jsp independiente
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, int tipoNoticia,Date fechaNoticia, String autor, int status) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, String autor, int status) {
     this.titular=titular;
     this.resumen=resumen;
     this.noticiaTexto=noticiaTexto;
@@ -111,11 +112,11 @@ public class Noticia {
         this.imgNoticia = imgNoticia;
     }
 
-    public int getTipoNoticia() {
+    public String getTipoNoticia() {
         return tipoNoticia;
     }
 
-    public void setTipoNoticia(int tipoNoticia) {
+    public void setTipoNoticia(String tipoNoticia) {
         this.tipoNoticia = tipoNoticia;
     }
 

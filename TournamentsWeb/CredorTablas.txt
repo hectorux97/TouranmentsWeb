@@ -1,4 +1,4 @@
-CREATE DATABASE `tournamentsmanager` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE SCHEMA `tournamentsmanager` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 CREATE TABLE `juegos` (
   `nombreJuego` varchar(20) NOT NULL,

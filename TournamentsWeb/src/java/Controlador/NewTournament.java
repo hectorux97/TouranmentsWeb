@@ -1,39 +1,39 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 
-import beans.Usuario;
-import Gestor.GestorUsuario;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author hector
  */
-@WebServlet(urlPatterns = {"/Controlador/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "NewTournament", urlPatterns = {"/NewTournament"})
+public class NewTournament extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        Usuario user= (Usuario)request.getAttribute("user");
-        GestorUsuario gestor=new GestorUsuario();
-        user= gestor.Register(user);
-        if(user!=null){            
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
-           
-        }else{
-            response.sendRedirect("Register.jsp?error=PASSWORD_USER_ERROR");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewTournament</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewTournament at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
