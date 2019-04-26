@@ -45,7 +45,37 @@ public class NoticiasDAO extends DAOExtend{
         return false;
     }
     
-    
+    public Noticia mostrarNoticia(int idNot){
+        
+        Noticia minoticia = new Noticia();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"'");
+            
+                minoticia.setIdNot(idNot);
+                minoticia.setTitular(rs.getString("titular"));
+                minoticia.setResumen(rs.getString("resumen"));
+                minoticia.setNoticiaTexto(rs.getString("textoNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setAutor(rs.getString("autor"));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
+            
+            return minoticia;
+           
+        }catch(SQLException e){}
+        
+        return null;
+    }
+    /*
+        private int idNot;
+    private String titular;
+    private String resumen;
+    private String noticiaTexto;
+    private String imgNoticia;
+    private int tipoNoticia;
+    private Date fechaNoticia;
+    private String autor;
+        */
     
     //ELIMINAR NOTICIA
     
@@ -116,22 +146,24 @@ public class NoticiasDAO extends DAOExtend{
         return null;
     }
     
-    
+    /*ESTO ES POR SI ACASO LO PUEDO HACER CON UNA SOLA BUSQUEDA
     // Para añadirlo a las jsp de notcias simples en el lateral o abajo
-    public ArrayList<Noticia> getNoticiasRecomendadas(int tipoNoticia){
+    // Tengo que hacer un if para que no coincida con la misma noticia en la que estamos
+    public ArrayList<Noticia> getNoticiasRecomendadas(int tipoNoticia, int idNot ){
         
         ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status=1 AND tipoNoticia ='"+tipoNoticia+"'");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"' UNION "
+                    + "SELECT * FROM noticias WHERE status = 1 AND idNoticias !='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"'");
             int cont = 0;
-            while(rs.next()&& cont<2){
-                
+            while(rs.next()&& cont<3){ 
                 Noticia minoticia= new Noticia();
                 minoticia.setIdNot(rs.getInt("idNoticias"));
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
-                minoticia.setImgNoticia(rs.getNString("imagenNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setTipoNoticia(rs.getInt("tipoNoticia"));
                 listaRecomendadasNoticias.add(minoticia);
                 cont++;
             }
@@ -142,6 +174,7 @@ public class NoticiasDAO extends DAOExtend{
         
         return null;
     }
+    */
     /*
         private int idNot;
     private String titular;
@@ -156,12 +189,13 @@ public class NoticiasDAO extends DAOExtend{
     //La noticia que queramos mostrar a través de su id sacamos toda la informacion
     
     
-    public Noticia mostrarNoticia(int idNot){
+    /*public Noticia mostrarNoticia(int idNot){
         
         Noticia minoticia = new Noticia();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE idNoticias ='"+idNot+"'");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"'");
+            
             int cont = 0;
                 
                 minoticia.setTitular(rs.getString("titular"));
@@ -176,7 +210,7 @@ public class NoticiasDAO extends DAOExtend{
         }catch(SQLException e){}
         
         return null;
-    }
+    }*/
     
     //Para las tiles (cuadraditos)
     //Sería para una noticia destacada de la que sabemos su id
@@ -187,14 +221,40 @@ public class NoticiasDAO extends DAOExtend{
         Noticia minoticia = new Noticia();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE idNoticias ='"+idNot+"'");
-            int cont = 0;
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"'");
+            
                 minoticia.setIdNot(idNot);
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
             
             return minoticia;
+           
+        }catch(SQLException e){}
+        
+        return null;
+    }
+    
+    //Para cuando pulsamos en un autor que nos salgan sus noticias
+    public ArrayList<Noticia> getNoticiasAutor(String autor){
+        
+        ArrayList<Noticia> listaAutorNoticias= new ArrayList<>();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status=1 AND autor ='"+autor+"'");
+            int cont = 0;
+            while(rs.next()&& cont<2){
+                
+                Noticia minoticia= new Noticia();
+                minoticia.setIdNot(rs.getInt("idNoticias"));
+                minoticia.setTitular(rs.getString("titular"));
+                minoticia.setResumen(rs.getString("resumen"));
+                minoticia.setImgNoticia(rs.getNString("imagenNoticia"));
+                listaAutorNoticias.add(minoticia);
+                cont++;
+            }
+            
+            return listaAutorNoticias;
            
         }catch(SQLException e){}
         
