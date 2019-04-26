@@ -369,6 +369,21 @@ text-transform: none;
 	width:150px;
 }
 
+/* Tabla partidos -----------------------------------------------------> */
+
+.versuspartido {
+	font-size:30px;
+	margin-left:50px;
+	margin-right:50px;
+	width:20%;
+	text-align:center;
+}
+.scorepartido{
+	font-size:30px;
+	font-weight:bold;
+}
+
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 

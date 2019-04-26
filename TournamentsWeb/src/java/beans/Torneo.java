@@ -42,6 +42,13 @@ public class Torneo {
         this.creador = creador;
         this.participantes = participantes;
     }
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaInicio = fechaInicio;
+        
+    }
 
     public Torneo(String nombre, Usuario creador) {
         this.nombre = nombre;

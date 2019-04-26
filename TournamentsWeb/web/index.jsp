@@ -1,4 +1,6 @@
 
+<%@page import="beans.Torneo"%>
+<%@page import="DAO.TorneoDAO"%>
 <%@page import="beans.GlobalInfo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.GlobalInfoDAO"%>
@@ -153,45 +155,23 @@
                              </li>-->
                         </ul>
                     </div>
-
+                
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             <table id="ultimostorneos">
-                                <tr>
+                                <% TorneoDAO torneo = new TorneoDAO();
+                                ArrayList<Torneo> listaTorneos = torneo.GetTorneo();
+                                for (Torneo t : listaTorneos) {%>
+                            <tr>
                                     <td><i class="fa fa-instagram"></i></td>
-                                    <td>31/03/2019 16:00</td>
+                                    <td><%=  t.getFechaInicio()%></td>
                                     <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
+                                    <td><a href="torneo1.html"><%=  t.getNombre()%></a></td>
                                     <td><span> 9 equipos </span></td>
                                 </tr>
-                                <tr>
-                                    <td><i class="fa fa-instagram"></i></td>
-                                    <td>31/03/2019 16:00</td>
-                                    <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
-                                    <td><span> 9 equipos </span></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa fa-instagram"></i></td>
-                                    <td>31/03/2019 16:00</td>
-                                    <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
-                                    <td><span> 9 equipos </span></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa fa-instagram"></i></td>
-                                    <td>31/03/2019 16:00</td>
-                                    <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
-                                    <td><span> 9 equipos </span></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa fa-instagram"></i></td>
-                                    <td>31/03/2019 16:00</td>
-                                    <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html">#Torneo Inagural de League of Legends</a></td>
-                                    <td><span> 9 equipos </span></td>
-                                </tr>
+                            <%}%>
+                                
+                                
 
                             </table>
                         </div>

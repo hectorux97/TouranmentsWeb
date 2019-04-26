@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse"  id="PrincipalHeader">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="../VistaN.jsp">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-center" href="../index.jsp">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
                         <a class="nav-link text-center" href="#">Noticias</a>
