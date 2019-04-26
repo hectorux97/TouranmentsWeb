@@ -30,7 +30,7 @@ public class NoticiasDAO extends DAOExtend{
             String resumen = minoticia.getResumen();
             String texto = minoticia.getNoticiaTexto();
             String img = minoticia.getImgNoticia();
-            int tipo = minoticia.getTipoNoticia();
+            String tipo = minoticia.getTipoNoticia();
             Date fecha = minoticia.getFechaNoticia();
             String autor = minoticia.getAutor();
             int status = minoticia.getStatus();
@@ -93,7 +93,7 @@ public class NoticiasDAO extends DAOExtend{
     //Mostrar Noticias por Tipología
     //Al pulsar en las 'tags' se debe activar
     
-    public ArrayList<Noticia> getNotiasTipo(int tipoNoticia){
+    public ArrayList<Noticia> getNotiasTipo(String tipoNoticia){
         
         ArrayList<Noticia> listaTipoNoticias= new ArrayList<>();
         try{
@@ -106,7 +106,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setIdNot(rs.getInt("idNoticias"));
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
-                minoticia.setImgNoticia(rs.getNString("imagenNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 listaTipoNoticias.add(minoticia);
             }
             
@@ -134,7 +134,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setIdNot(rs.getInt("idNoticias"));
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
-                minoticia.setImgNoticia(rs.getNString("imagenNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 listaUltimasNoticias.add(minoticia);
                 cont++;
             }
@@ -148,8 +148,8 @@ public class NoticiasDAO extends DAOExtend{
     
     /*ESTO ES POR SI ACASO LO PUEDO HACER CON UNA SOLA BUSQUEDA
     // Para añadirlo a las jsp de notcias simples en el lateral o abajo
-    // Tengo que hacer un if para que no coincida con la misma noticia en la que estamos
-    public ArrayList<Noticia> getNoticiasRecomendadas(int tipoNoticia, int idNot ){
+    // Tengo que hacer un if para que no coincida con la misma noticia en la que estamos*/
+    /*public ArrayList<Noticia> getNoticiaYRecomendadas(String tipoNoticia, int idNot ){
         
         ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
         try{
@@ -163,7 +163,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
-                minoticia.setTipoNoticia(rs.getInt("tipoNoticia"));
+                minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 listaRecomendadasNoticias.add(minoticia);
                 cont++;
             }
@@ -260,6 +260,30 @@ public class NoticiasDAO extends DAOExtend{
         
         return null;
     }
-    
+    public ArrayList<Noticia> getNoticiaYRecomendadas(String tipoNoticia, int idNot ){
+        
+        ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias >='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"' LIMIT 3");
+            while(rs.next()){ 
+                Noticia minoticia= new Noticia();
+                minoticia.setIdNot(rs.getInt("idNoticias"));
+                minoticia.setTitular(rs.getString("titular"));
+                minoticia.setResumen(rs.getString("resumen"));
+                minoticia.setResumen(rs.getString("textoNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setTipoNoticia(tipoNoticia);
+                minoticia.setAutor(rs.getString("autor"));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
+                listaRecomendadasNoticias.add(minoticia);
+            }
+            
+            return listaRecomendadasNoticias;
+           
+        }catch(SQLException e){}
+        
+        return null;
+    }
 }
 

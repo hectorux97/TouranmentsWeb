@@ -37,18 +37,18 @@ public class PaginaNoticias extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String noticia = request.getParameter("noticia");
-        /* ESTO ES POR SI LO SACO CON EL ARRAY
+        
         if (noticia.equals("mostrar")) {
             NoticiasDAO notiDAO = new NoticiasDAO();
             ArrayList noticias;
-            int tipo = Integer.parseInt(request.getParameter("tipoNoticia"));
+            String tipo = request.getParameter("tipoNoticia");
             int id = Integer.parseInt(request.getParameter("idNoticia"));
-            //noticias = notiDAO.getNoticiasRecomendadas(tipo, id);
+            noticias = notiDAO.getNoticiaYRecomendadas(tipo, id);
             request.setAttribute("noticias", noticias);
-            RequestDispatcher rd=request.getRequestDispatcher("/noticia.jsp");
+            RequestDispatcher rd=request.getRequestDispatcher("/blog2.jsp");
             rd.forward(request,response);
         }  
-        */
+        
         if (noticia.equals("insertar")) {
             NoticiasDAO notiDAO = new NoticiasDAO();
             Noticia noti = (Noticia)request.getAttribute("noticia");
@@ -66,6 +66,24 @@ public class PaginaNoticias extends HttpServlet {
             
         }
         
+        if (noticia.equals("tipo")) {
+            NoticiasDAO notiDAO = new NoticiasDAO();
+            ArrayList noticias;
+            String tipo = request.getParameter("tipoNoticia");
+            noticias = notiDAO.getNotiasTipo(tipo);
+            request.setAttribute("noticias", noticias);
+            RequestDispatcher rd=request.getRequestDispatcher("/posttipo.jsp");
+            rd.forward(request,response);
+        } 
+        if (noticia.equals("autor")) {
+            NoticiasDAO notiDAO = new NoticiasDAO();
+            ArrayList noticias;
+            String autor = request.getParameter("autor");
+            noticias = notiDAO.getNoticiasAutor(autor);
+            request.setAttribute("noticias", noticias);
+            RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
+            rd.forward(request,response);
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

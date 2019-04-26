@@ -20,17 +20,18 @@
     </header>
     <body>
         <!-- Recuperamos la noticia -->
-      <% Noticia mensajes =(Noticia)request.getAttribute("noticia");%>
-      <% int id = mensajes.getIdNot(); %>
-      <% String res = mensajes.getTitular();%>
-      <% String titulo = mensajes.getResumen();%>
-      <% String texto = mensajes.getNoticiaTexto();%>
-      <% String img = mensajes.getImgNoticia();%>
-      <% String autor = mensajes.getAutor();%>
-      <% Date date = mensajes.getFechaNoticia();%>
-       
-      
-      
+    <% ArrayList noticias =(ArrayList)request.getAttribute("noticias");
+        for(int i=0;i<1;i++){
+            Noticia n=(Noticia)noticias.get(i);%>
+                <% int id = n.getIdNot(); %>
+                <% String res = n.getTitular();%>
+                <% String titulo = n.getResumen();%>
+                <% String texto = n.getNoticiaTexto();%>
+                <% String img = n.getImgNoticia();%>
+                <% String autor = n.getAutor();%>
+                <% Date date = n.getFechaNoticia();%>
+                <% String tipo = n.getTipoNoticia();%>
+                
        <!-- Page Content -->
   <div class="container">
 
@@ -61,7 +62,7 @@
         
         </div>
         
-        
+        <%}%>
         
         
     
@@ -77,10 +78,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">#B Gamer</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=gamer">#B Gamer</a>
                   </li>
                   <li>
-                    <a href="#">#B ESports</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=esports">#B ESports</a>
                   </li>
                   
                 </ul>
@@ -88,10 +89,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">#B Novedades</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=novedades">#B Novedades</a>
                   </li>
                   <li>
-                    <a href="#">#B Review</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=review">#B Review</a>
                   </li>
                   
                 </ul>
@@ -99,20 +100,30 @@
             </div>
           </div>
         </div>
-    
+        
+        
+        <!-- Las noticias relacionadas
+         Tenemos que darles estilos al a con id 1 y 2 para que se vea bien-->
+        
         <div class="card my-4">
           <h5 class="card-header">Quizás te interese...</h5>
+          <%for(int i=1;i<3;i++){
+            Noticia n=(Noticia)noticias.get(i);%>
+                <% int id = n.getIdNot(); %>
+                <% String res = n.getTitular();%>
+                <% String titulo = n.getResumen();%>
+                <% String img = n.getImgNoticia();%>
+                <% String tipo = n.getTipoNoticia();%>
+                <a href="PaginaNoticias?noticia=mostrar idNoticia= <%=id%> tipoNoticia= <%=tipo%>" id="<%=i%>">
           <div class="card h-100">
-              <jsp:include page="blogrel.jsp" flush="true">
-                  <jsp:param name="idNot" value="<%=(id+1)%>"/>
-              </jsp:include>
+              <img class="card-img-top" src="img/<%=img%>" alt="">
+          <div class="card-body">
+            <h2 class="card-title"><%=titulo%></h2>
+            <p class="card-text"><%=res%></p>
           </div>
-              
-          <div class="card h-100">
-              <jsp:include page="blogrel2.jsp" flush="true">
-                  <jsp:param name="idNot" value="<%=(id+2)%>"/>
-              </jsp:include>
           </div>
+               </a>
+          <%}%>
         </div>
 
       </div>
@@ -125,9 +136,6 @@
         
         <%@include file="/includes/principal/principal.jsp" %>
         <%@include file="/includes/footer.html" %>
-    </body>
-    <!--<div onclick="-->
-             <%//if(request.getParameter("textoNoticia")!=null){%>
-    <%//}%>" 
+    </body> 
 </html>
 
