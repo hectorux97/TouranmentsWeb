@@ -1,55 +1,55 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 
-import beans.Usuario;
 import Gestor.GestorUsuario;
+import beans.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author hector
  */
-@WebServlet(urlPatterns = {"/Controlador/Login"})
-public class Login extends HttpServlet {
+@WebServlet(urlPatterns = {"/Controlador/ModificarUsuario"})
+public class ModificarUsuario extends HttpServlet {
 
-   
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        Usuario user= (Usuario)request.getAttribute("user");       
        
-        
+       
+        Usuario user= (Usuario)request.getAttribute("user");
         GestorUsuario gestor=new GestorUsuario();
-        user= gestor.Login(user);
-        
-        if(user!=null){
+        user= gestor.Modificar(user);
+        if(user!=null){            
             
-            HttpSession sesion= request.getSession(true);
-            sesion.setAttribute("user", user);
-            if(request.getParameter("remember")!=null){
-                if(request.getParameter("remember").equals("remember")){
-
-                    response.addCookie( new Cookie("remember", "true"));
-                    response.addCookie( new Cookie("user", user.getAlias()));
-                    response.addCookie( new Cookie("password", user.getPassword()));
-                }
-            }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
-            
+           
         }else{
-            response.sendRedirect("Login.jsp?Error=USER_PASSWORD_ERROR");
+            response.sendRedirect("Profile.jsp?error=UPDATE_ERROR");
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

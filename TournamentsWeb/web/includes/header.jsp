@@ -45,7 +45,7 @@
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu ">
                                         <li class="dropdown-item"><a  class="nav-link text-white" href="#">Mis Torneos</a></li>
-                                        <li class="dropdown-item"><a  class="nav-link text-white" href="#">Perfil</a></li>
+                                        <li class="dropdown-item"><a  class="nav-link text-white" href="../Profile.jsp">Perfil</a></li>
                                         <li class="dropdown-item"><a  class="nav-link text-white" href="#">Log out</a></li>
                                     </ul>
                                 </div>
