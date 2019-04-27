@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package Controlador;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import Gestor.GestorUsuario;
 import beans.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +41,11 @@ public class ModificarUsuario extends HttpServlet {
        
         Usuario user= (Usuario)request.getAttribute("user");
         GestorUsuario gestor=new GestorUsuario();
+        try {
+        Date edad= new SimpleDateFormat("yyyy/MM/dd").parse(request.getParameter("fechaNacimiento"));
+        java.sql.Date parseDate= new java.sql.Date(edad.getTime());
+        user.setEdad(parseDate);
+        }catch(ParseException e){}
         user= gestor.Modificar(user);
         if(user!=null){            
             

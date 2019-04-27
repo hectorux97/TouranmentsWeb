@@ -3,7 +3,7 @@ package beans;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 public class Usuario {
     //LOGIN INFO
@@ -63,9 +63,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre,String password, String image,byte privilegios, String email, Date fechaCreacion) {
+    public Usuario(int id, String alias,String password, String image,byte privilegios, String email, Date fechaCreacion) {
         this.id = id;
-        this.alias = nombre;
+        this.alias = alias;
         this.password=password;
         this.imageURL=image;
         this.privilegios=privilegios;
@@ -73,8 +73,8 @@ public class Usuario {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Usuario(String nombre, String password, String email) {
-        this.alias = nombre;
+    public Usuario(String alias, String password, String email) {
+        this.alias = alias;
         this.password = password;
         this.email = email;
     }
@@ -167,8 +167,8 @@ public class Usuario {
 
     public void setEdad(Date edad) {
         this.edad = edad;
-    }
-    
+    }    
+  
     public int getEdadNum(){
         ZoneId defaultZoneId = ZoneId.systemDefault();
         LocalDate dob= this.edad.toInstant().atZone(defaultZoneId).toLocalDate();

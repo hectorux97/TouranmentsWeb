@@ -32,7 +32,7 @@ public class GestorUsuario {
     
     public Usuario Register(Usuario user){        
         UsuarioDAO udao=new UsuarioDAO();
-        Usuario checkUser=udao.GetUsuario(user.getNombre());
+        Usuario checkUser=udao.GetUsuario(user.getAlias());
         if(checkUser==null){
             if(udao.GuardarNuevoUsuario(user)){
             return user;
@@ -43,7 +43,8 @@ public class GestorUsuario {
     
     public Usuario Modificar(Usuario user){
          UsuarioDAO udao=new UsuarioDAO();
-        Usuario checkUser=udao.GetUsuario(user.getNombre());
+        Usuario checkUser=udao.GetUsuario(user.getAlias());
+        System.out.println(checkUser.getAlias());
         if(checkUser!=null){
             if(udao.ModificarUsuario(user)){
                 return user;
