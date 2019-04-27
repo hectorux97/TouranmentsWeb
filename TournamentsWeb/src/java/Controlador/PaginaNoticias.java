@@ -49,17 +49,17 @@ public class PaginaNoticias extends HttpServlet {
             rd.forward(request,response);
         }  
         
-        if (noticia.equals("insertar")) {
-            NoticiasDAO notiDAO = new NoticiasDAO();
-            Noticia noti = (Noticia)request.getAttribute("noticia");
-            boolean aux = notiDAO.subirNoticia(noti);
-            if(aux==true){
+        else if (noticia.equals("insertar")) {
+                 NoticiasDAO notiDAO = new NoticiasDAO();
+                 Noticia noti = (Noticia)request.getAttribute("noticia");
+                 boolean aux = notiDAO.subirNoticia(noti);
+                 if(aux==true){
                 ///Ver mejor con las cosas de clase
-            }
-            else {
+                 }
+                 else {
                 //Poner lo del error
-            }
-            response.sendRedirect("inicio.html"); // por poner algo
+                 }
+            response.sendRedirect("index.jsp"); // por poner algo
             
         }
         if (noticia.equals("inicionoticias")) {
@@ -84,6 +84,16 @@ public class PaginaNoticias extends HttpServlet {
             RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
             rd.forward(request,response);
         } 
+        if (noticia.equals("inicionoticias")) {
+            NoticiasDAO notiDAO = new NoticiasDAO();
+            ArrayList noticias;
+            int id = Integer.parseInt(request.getParameter("idNoticia"));
+            noticias = notiDAO.getNoticiaInicial(id);
+            request.setAttribute("noticias", noticias);
+            RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
+            rd.forward(request,response);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -146,24 +146,27 @@ public class NoticiasDAO extends DAOExtend{
         return null;
     }
     
-    /*ESTO ES POR SI ACASO LO PUEDO HACER CON UNA SOLA BUSQUEDA
-    // Para añadirlo a las jsp de notcias simples en el lateral o abajo
-    // Tengo que hacer un if para que no coincida con la misma noticia en la que estamos*/
-    /*public ArrayList<Noticia> getNoticiaYRecomendadas(String tipoNoticia, int idNot ){
+    
+    // Para añadir las ultimas noticcias debajo en la página inicial
+    // Tengo que hacer un if para que no coincida con la misma noticia en la que estamos
+    // Quizás un problema con el LIMIT 4 así que lo dejo en LIMIT 3
+    public ArrayList<Noticia> getNoticiaInicial(int idNot){
         
         ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"' UNION "
-                    + "SELECT * FROM noticias WHERE status = 1 AND idNoticias !='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"'");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias ='"+idNot+"' UNION "
+                    + "SELECT * FROM noticias WHERE status = 1 AND idNoticias !='"+idNot+"' ORDER BY fechaPublicacion LIMIT 4");
             int cont = 0;
-            while(rs.next()&& cont<3){ 
+            while(rs.next()&& cont<5){ 
                 Noticia minoticia= new Noticia();
                 minoticia.setIdNot(rs.getInt("idNoticias"));
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
+                minoticia.setAutor(rs.getString("autor"));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
                 listaRecomendadasNoticias.add(minoticia);
                 cont++;
             }
@@ -174,7 +177,7 @@ public class NoticiasDAO extends DAOExtend{
         
         return null;
     }
-    */
+    
     /*
         private int idNot;
     private String titular;
@@ -249,7 +252,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setIdNot(rs.getInt("idNoticias"));
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
-                minoticia.setImgNoticia(rs.getNString("imagenNoticia"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 listaAutorNoticias.add(minoticia);
                 cont++;
             }
