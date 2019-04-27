@@ -41,5 +41,15 @@ public class GestorUsuario {
         return null;
     }
     
-    
+    public Usuario Modificar(Usuario user){
+         UsuarioDAO udao=new UsuarioDAO();
+        Usuario checkUser=udao.GetUsuario(user.getNombre());
+        if(checkUser!=null){
+            if(udao.ModificarUsuario(user)){
+                return user;
+            }
+        }
+        return null;
+        
+    }
 }

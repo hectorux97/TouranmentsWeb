@@ -33,10 +33,15 @@ margin-bottom: 0.5em;
   -webkit-transform: skew(-20deg);
   color:white;
 }
-.inclinado > a:hover,.inclinado .dropdown>.dropdown-menu>.dropdown-item>a:hover {
+.inclinado > input{
+    background-color: inherit;
+    border:none;
+    width:90%;
+}
+.inclinado > a:hover,.inclinado .dropdown>.dropdown-menu>.dropdown-item>a:hover , .inclinado > input:hover{
   color: #a8c916;
 }
-.inclinado > a:before,.inclinado.dropdown>.dropdown-menu>.dropdown-item>a:before {
+.inclinado > a:before,.inclinado.dropdown>.dropdown-menu>.dropdown-item>a:before, .inclinado > input:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -50,7 +55,7 @@ margin-bottom: 0.5em;
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-.inclinado > a:hover:before,li.rightHeader>a:hover:before,.dropdown.inclinado  > .dropdown-menu>.dropdown-item>a:hover:before {
+.inclinado > a:hover:before,li.rightHeader>a:hover:before,.dropdown.inclinado  > .dropdown-menu>.dropdown-item>a:hover:before, .inclinado > input:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);

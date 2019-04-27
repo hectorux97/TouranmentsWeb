@@ -14,8 +14,6 @@ import java.sql.*;
  */
 public class UsuarioDAO extends DAOExtend{
     
-
-    
     public UsuarioDAO(){
         conexion=getConection();
     }
@@ -80,10 +78,15 @@ public class UsuarioDAO extends DAOExtend{
 
         try{
             Statement st=conexion.createStatement();
-            st.executeUpdate("UPDATE usuarios SET nombreUsuario ='"+user.getNombre()+"'," 
+            st.executeUpdate("UPDATE usuarios SET nombreUsuario ='"+user.getAlias()+"'," 
                     +"password= '"+user.getPassword()+"','"
                     +"email= '"+user.getEmail()+"','"
                     +"imagen= '"+user.getImageURL()+"','"
+                    +"nombreReal= '"+user.getNombre()+"','"
+                    +"apellidosReal= '"+user.getApellidos()+"','"
+                    +"edad= "+user.getEdad()+",'"
+                    +"pais= '"+user.getPais()+"','"
+                    +"telefono= '"+user.getTelefono()
                     +"' WHERE idUsuario="+ user.getId()+";");
             return true;
         }catch(SQLException e){}
