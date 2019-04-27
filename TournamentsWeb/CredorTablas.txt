@@ -1,10 +1,17 @@
-CREATE SCHEMA `tournamentsmanager` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
+CREATE DATABASE `tournamentsmanager` /*!40100 DEFAULT CHARACTER SET utf8 */;
 CREATE TABLE `juegos` (
   `nombreJuego` varchar(20) NOT NULL,
   PRIMARY KEY (`nombreJuego`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+CREATE TABLE `nickjuegos` (
+  `nomberJuego` varchar(25) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `nick` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`nomberJuego`,`idUsuario`),
+  KEY `usuarioFK` (`idUsuario`),
+  CONSTRAINT `juegoFK` FOREIGN KEY (`nomberJuego`) REFERENCES `juegos` (`nombreJuego`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `usuarioFK` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `noticias` (
   `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
   `titular` varchar(45) NOT NULL,
@@ -13,7 +20,14 @@ CREATE TABLE `noticias` (
   `imagenNoticia` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idNoticias`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+CREATE TABLE `torneoforjuego` (
+  `nombreJuego` varchar(45) NOT NULL,
+  `idTorneo` int(11) NOT NULL,
+  PRIMARY KEY (`nombreJuego`,`idTorneo`),
+  KEY `torneoFK` (`idTorneo`),
+  CONSTRAINT `juego_FK` FOREIGN KEY (`nombreJuego`) REFERENCES `juegos` (`nombreJuego`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `torneoFK` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `torneoforusuario` (
   `idUsuario` int(11) NOT NULL,
   `idTorneo` int(11) NOT NULL,
@@ -22,7 +36,6 @@ CREATE TABLE `torneoforusuario` (
   CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Foreign_usuarioID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `torneos` (
   `idTorneos` int(11) NOT NULL AUTO_INCREMENT,
   `nombreTorneo` varchar(45) NOT NULL,
@@ -30,7 +43,6 @@ CREATE TABLE `torneos` (
   `fechaInicio` date DEFAULT NULL,
   PRIMARY KEY (`idTorneos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `usuariointorneo` (
   `idUsuario` int(11) NOT NULL,
   `idTorneo` int(11) NOT NULL,
@@ -39,7 +51,6 @@ CREATE TABLE `usuariointorneo` (
   CONSTRAINT `Foreign_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Foreign_userID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombreUsuario` varchar(45) NOT NULL,
@@ -54,8 +65,7 @@ CREATE TABLE `usuarios` (
   `telefono` int(13) DEFAULT NULL,
   `tipoUsuario` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idUsuario`,`nombreUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 CREATE TABLE `usuariotonoticia` (
   `idUsuario` int(11) NOT NULL,
   `idNoticia` int(11) NOT NULL,
