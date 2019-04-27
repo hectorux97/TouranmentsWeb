@@ -50,7 +50,7 @@ public class UsuarioDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
             if(rs.next()){
             return new Usuario(rs.getInt("idUsuario"),rs.getString("nombreUsuario"),rs.getString("imagen"),rs.getString("password"),
-                    rs.getString("email"),rs.getDate("fechaCreacionUsuario"),rs.getString("nombreReal"),
+                    rs.getString("email"), (byte)rs.getInt("tipoUsuario"),rs.getDate("fechaCreacionUsuario"),rs.getString("nombreReal"),
                     rs.getString("apellidosReal"),rs.getString("pais"),rs.getDate("edad"),rs.getInt("telefono"));
             }else{
                 return null;
@@ -66,7 +66,7 @@ public class UsuarioDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( idUsuario LIKE '"+userID+"')");
             if(rs.next()){
             return new Usuario(rs.getInt("idUsuario"),rs.getString("nombreUsuario"),rs.getString("imagen"),rs.getString("password"),
-                    rs.getString("email"),rs.getDate("fechaCreacionUsuario"),rs.getString("nombreReal"),
+                    rs.getString("email"),(byte)rs.getInt("tipoUsuario"), rs.getDate("fechaCreacionUsuario"),rs.getString("nombreReal"),
                     rs.getString("apellidosReal"),rs.getString("pais"),rs.getDate("edad"),rs.getInt("telefono"));
             }else{
                 return null;
@@ -105,6 +105,8 @@ public class UsuarioDAO extends DAOExtend{
             while(rs.next()){
                 st.executeQuery("DELETE FROM noticias WHERE ( idNoticias = "+rs.getInt("idNoticia")+")");
             }
+            
+            st.executeQuery("DELETE FROM nickjuegos WHERE ( idUsuario = "+usuarioId+")");
             return true;
         }catch(SQLException e){}
 

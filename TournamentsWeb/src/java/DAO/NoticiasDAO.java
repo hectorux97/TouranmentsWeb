@@ -263,9 +263,10 @@ public class NoticiasDAO extends DAOExtend{
     public ArrayList<Noticia> getNoticiaYRecomendadas(String tipoNoticia, int idNot ){
         
         ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
+        int cont=3;
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias >='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"' LIMIT 3");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias >='"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"' LIMIT "+cont);
             while(rs.next()){ 
                 Noticia minoticia= new Noticia();
                 minoticia.setIdNot(rs.getInt("idNoticias"));
@@ -277,8 +278,23 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setAutor(rs.getString("autor"));
                 minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
                 listaRecomendadasNoticias.add(minoticia);
+                cont--;
             }
-            
+            if(cont>0){
+                rs= st.executeQuery("SELECT * FROM noticias WHERE status = 1 AND idNoticias <'"+idNot+"' AND tipoNoticia ='"+tipoNoticia+"' LIMIT "+cont);
+                while(rs.next()){ 
+                    Noticia minoticia= new Noticia();
+                    minoticia.setIdNot(rs.getInt("idNoticias"));
+                    minoticia.setTitular(rs.getString("titular"));
+                    minoticia.setResumen(rs.getString("resumen"));
+                    minoticia.setResumen(rs.getString("textoNoticia"));
+                    minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                    minoticia.setTipoNoticia(tipoNoticia);
+                    minoticia.setAutor(rs.getString("autor"));
+                    minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
+                    listaRecomendadasNoticias.add(minoticia);
+                }
+            }
             return listaRecomendadasNoticias;
            
         }catch(SQLException e){}

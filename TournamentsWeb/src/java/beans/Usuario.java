@@ -11,7 +11,7 @@ public class Usuario {
     private String alias;
     private String password;    
     private String imageURL;
-
+    private byte privilegios;
     
     private String email;
     private Date fechaCreacion;
@@ -34,6 +34,7 @@ public class Usuario {
         this.alias = user.alias;
         this.password = user.password;
         this.imageURL= user.imageURL;
+        this.privilegios=user.privilegios;
         this.email = user.email;
         this.fechaCreacion = user.fechaCreacion;
         this.nombre = user.nombre;
@@ -44,11 +45,12 @@ public class Usuario {
    
     }
 
-    public Usuario(int id, String alias,String image, String password, String email, Date fechaCreacion, String nombre, String apellidos, String pais, Date edad, int telefono) {
+    public Usuario(int id, String alias,String image, String password, String email,byte privilegios, Date fechaCreacion, String nombre, String apellidos, String pais, Date edad, int telefono) {
         this.id = id;
         this.alias = alias;
         this.password = password;
         this.imageURL= image;
+        this.privilegios=privilegios;
         this.email = email;
         this.fechaCreacion = fechaCreacion;
         this.nombre = nombre;
@@ -61,11 +63,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre,String password, String image, String email, Date fechaCreacion) {
+    public Usuario(int id, String nombre,String password, String image,byte privilegios, String email, Date fechaCreacion) {
         this.id = id;
         this.alias = nombre;
         this.password=password;
         this.imageURL=image;
+        this.privilegios=privilegios;
         this.email = email;
         this.fechaCreacion = fechaCreacion;
     }
@@ -112,6 +115,14 @@ public class Usuario {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public byte getPrivilegios() {
+        return privilegios;
+    }
+
+    public void setPrivilegios(byte privilegios) {
+        this.privilegios = privilegios;
     }
     
     public void setEmail(String email) {
@@ -171,6 +182,14 @@ public class Usuario {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public ArrayList<NickUsuario> getNicks() {
+        return nicks;
+    }
+
+    public void setNicks(ArrayList<NickUsuario> nicks) {
+        this.nicks = nicks;
     }
     
 }
