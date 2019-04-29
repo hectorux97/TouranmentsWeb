@@ -65,7 +65,7 @@
         
         
         
-        <%@include file="/includes/principal/principal.jsp" %>
+        
         <%@include file="/includes/footer.html" %>
     </body> 
 </html>
