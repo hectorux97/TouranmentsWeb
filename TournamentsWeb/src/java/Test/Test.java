@@ -21,8 +21,8 @@ public class Test {
         
         
             Date date= new Date(2,2,2);
-            Usuario usuario = new Usuario(1, "asdadf","", "XX",(byte)0, "asdad@gmail.com", date);
-            
+            Usuario usuario = new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com", date);
+            usuario.setApellidos("XXD");
             usuario.setEdad(date);
             GestorUsuario ug= new GestorUsuario();
             if(ug.Modificar(usuario)!=null){
