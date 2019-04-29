@@ -6,7 +6,10 @@
 package Test;
 
 import DAO.GlobalInfoDAO;
+import Gestor.GestorUsuario;
 import beans.Juego;
+import beans.Usuario;
+import java.sql.Date;
 
 /**
  *
@@ -17,9 +20,15 @@ public class Test {
     public static void main(String[] args){
         
         
-        Juego j= new Juego("LeagueOfLegends");
-        GlobalInfoDAO g= new GlobalInfoDAO();        
-        g.GuardarNuevoJuego("LeagueOfLegends");
+            Date date= new Date(2,2,2);
+            Usuario usuario = new Usuario(1, "asdadf","", "XX",(byte)0, "asdad@gmail.com", date);
+            
+            usuario.setEdad(date);
+            GestorUsuario ug= new GestorUsuario();
+            if(ug.Modificar(usuario)!=null){
+                System.out.println("Succes");
+            }
+            
         
         
     }

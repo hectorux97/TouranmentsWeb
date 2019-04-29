@@ -4,11 +4,15 @@
     Author     : hector
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="user" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
 <jsp:setProperty name="user" property="*"></jsp:setProperty>
 <% if(request.getParameter("nombre")!=null){%>
-    <jsp:forward page="/Controlador/Login"/>    
+    
+    <jsp:forward page="/Controlador/ModificarUsuario"/>    
 <%}%>
 
 <!DOCTYPE html>
@@ -21,10 +25,45 @@
     <body>
         <header>
             <%@include file="/includes/header.jsp" %>           
-            <%@include file="/includes/headerPerfil.jsp" %>            
+            <%@include file="/includes/headerPerfil.jsp" %>             
         </header>
+            <%  
+                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+                
+                Date edad= new SimpleDateFormat("yyyy/MM/dd").parse(new Date().toString());
+                java.sql.Date parseDate= new java.sql.Date(edad.getTime());
+                user.setEdad(parseDate);
+                Usuario usuario = new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
+                usuario.setEdad(parseDate);
             
-            
+            %>
+            <%!
+                String SetValueName(String s){
+                String res="value='";
+                     if(s!="" && s!=null){
+                         res+=s;
+                     }  
+                res+="'";
+                return res;
+                }
+                String SetValueName(Date s){
+                    String res="value='";
+                     if(s!=null){
+                        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+                        res+=ft.format(s);
+                     }  
+                res+="'";
+                return res;
+                }
+                String SetValueName(int s){
+                    String res="value='";
+                     if(s!=0){
+                         res+=s;
+                     }  
+                res+="'";
+                return res;
+                }
+                %>
             <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind" >
                 <!--Cabecera-->
 
@@ -49,10 +88,10 @@
                                 </div>
                                 <div class="col-5 form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input class="form-control rounded-0" type="text" name="nombre" value="" placeholder="Nombre"><br />
+                                    <input class="form-control rounded-0" type="text" name="nombre" <%=SetValueName(usuario.getNombre())%> placeholder="Nombre"><br />
 
                                     <label for="apellidos">Apellidos</label>
-                                    <input class="form-control rounded-0" type="text" name="apellidos" value="" placeholder="Apellidos"><br />
+                                    <input class="form-control rounded-0" type="text" name="apellidos" <%=SetValueName(usuario.getApellidos())%> placeholder="Apellidos"><br />
 
                                 </div>
                             </div>
@@ -61,11 +100,11 @@
                             <div class="row m-auto">
                                 <div class="col form-group">
                                     <label for="alias">Alias</label>
-                                    <input class="form-control rounded-0" type="text" name="alias" value="" placeholder="Alias"><br />
+                                    <input class="form-control rounded-0" type="text" name="alias" <%=SetValueName(usuario.getAlias())%> placeholder="Alias"><br />
                                 </div>
                                 <div class="col form-group">
                                     <label for="correo">Correo</label>
-                                    <input class="form-control rounded-0" type="text" name="correo" value="" placeholder="Nombre@mail.com"><br />
+                                    <input class="form-control rounded-0" type="text" name="email" <%=SetValueName(usuario.getEmail())%> placeholder="Nombre@mail.com"><br />
                                 </div>
                             </div>
                         </div>
@@ -281,7 +320,7 @@
                                         <option value="Solomon Islands">Solomon Islands</option>
                                         <option value="Somalia">Somalia</option>
                                         <option value="South Africa">South Africa</option>
-                                        <option value="Spain">Spain</option>
+                                        <option value="Spain" selected>Spain</option>
                                         <option value="Sri Lanka">Sri Lanka</option>
                                         <option value="Sudan">Sudan</option>
                                         <option value="Suriname">Suriname</option>
@@ -326,11 +365,11 @@
                                 </div>
                                 <div class="col form-group">
                                     <label for="telefono">Teléfono</label>
-                                    <input class="form-control rounded-0" type="text" name="telefono" value="" placeholder="64473920923"><br />
+                                    <input class="form-control rounded-0" type="number" name="telefono" <%=SetValueName(usuario.getTelefono())%> placeholder="64473920923"><br />
                                 </div>
                                 <div class="form-group text-center col">
                                     <label for="edad">Edad</label>
-                                    <input type="number"class="form-control rounded-0 w-50 text-center m-auto"  name="edad" value="" min="0" max="999" placeholder="21"><br />
+                                    <input type="date" class="form-control rounded-0 w-50 text-center m-auto"  name="fechaNacimiento" <%=SetValueName(usuario.getEdad())%> min="1920-01-01" <%="max='"+ft.format(new Date())+"'"%>><br />
                                 </div>
                             </div>
                         </div>
