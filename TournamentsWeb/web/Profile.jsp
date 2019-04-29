@@ -30,10 +30,10 @@
             <%  
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                 
-                Date edad= new Date();                
-                java.sql.Date parseDate= new java.sql.Date(edad.getTime());                
-                Usuario usuario = new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
-                usuario.setEdad(parseDate);
+                /*Date edad= new Date();                
+                java.sql.Date parseDate= new java.sql.Date(edad.getTime());    */            
+                Usuario usuario = (Usuario)session.getAttribute("user");//new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
+                //usuario.setEdad(parseDate);
             
             %>
             <%!
