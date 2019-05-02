@@ -10,15 +10,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="user" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
 <jsp:setProperty name="user" property="*"></jsp:setProperty>
-<% if(request.getParameter("nombre")!=null){%>
-    
+<% if(request.getParameter("nombre")!=null){%>    
     <jsp:forward page="/Controlador/ModificarUsuario"/>    
 <%}%>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
         <title>Mi Perfil</title>
         <%@include file="/includes/headerLinks.html" %>         
     </head>
@@ -27,14 +26,14 @@
             <%@include file="/includes/header.jsp" %>           
             <%@include file="/includes/headerPerfil.jsp" %>             
         </header>
+        
             <%  
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                 
-                Date edad= new SimpleDateFormat("yyyy/MM/dd").parse(new Date().toString());
-                java.sql.Date parseDate= new java.sql.Date(edad.getTime());
-                user.setEdad(parseDate);
-                Usuario usuario = new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
-                usuario.setEdad(parseDate);
+                /*Date edad= new Date();                
+                java.sql.Date parseDate= new java.sql.Date(edad.getTime());    */            
+                Usuario usuario = (Usuario)session.getAttribute("user");//new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
+                //usuario.setEdad(parseDate);
             
             %>
             <%!
@@ -383,6 +382,6 @@
                 </div>
             </main>
 
-            <%@include file="/includes/footer.html"%>
+            <%@include file="/includes/footer.html"%>          
     </body>
 </html>

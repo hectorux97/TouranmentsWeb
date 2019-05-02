@@ -11,30 +11,29 @@
     <head>
        
         <title>TounamentsWeb</title>
+       
+        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
         <%@include file="/includes/headerLinks.html" %>
-         <style>
-            .bd-placeholder-img {
-              font-size: 1.125rem;
-              text-anchor: middle;
-              -webkit-user-select: none;
-              -moz-user-select: none;
-              -ms-user-select: none;
-              user-select: none;
-            }
+        <style>
+           .bd-placeholder-img {
+             font-size: 1.125rem;
+             text-anchor: middle;
+             -webkit-user-select: none;
+             -moz-user-select: none;
+             -ms-user-select: none;
+             user-select: none;
+           }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-    </style>
+           @media (min-width: 768px) {
+               .bd-placeholder-img-lg {
+                   font-size: 3.5rem;
+               }
+           }
+        </style>
     </head>
     <body>
-        <header>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-            <link href="style.css" rel="stylesheet">
+        <header>           
             
             <%@include file="/includes/header.jsp" %>   
         </header>
@@ -259,7 +258,6 @@
             </main>
         
         <%@include file="/includes/footer.html" %>
-        <script src="vendor/jquery/jquery.js" ></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="vendor/bootstrap/js/bootstrap.js" ></script>
+        
     </body>
 </html>

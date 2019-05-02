@@ -21,7 +21,7 @@ public class GestorUsuario {
         
             if(user.getAlias().equals(checkUser.getAlias()) && user.getPassword().equals(checkUser.getPassword())){
                 
-                return user;
+                return checkUser;
             }
         
         /*if(user.getNombre().equals("asdadf") && user.getPassword().equals("d")){
@@ -42,13 +42,14 @@ public class GestorUsuario {
     }
     
     public Usuario Modificar(Usuario user){
-         UsuarioDAO udao=new UsuarioDAO();
-        Usuario checkUser=udao.GetUsuario(user.getAlias());
+        UsuarioDAO udao=new UsuarioDAO();
+        Usuario checkUser=udao.GetUsuario(user.getId());
         System.out.println(checkUser.getAlias());
         if(checkUser!=null){
             if(udao.ModificarUsuario(user)){
                 return user;
             }
+            return new Usuario();
         }
         return null;
         

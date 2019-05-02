@@ -48,24 +48,22 @@ public class UsuarioDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM usuarios WHERE ( nombreUsuario LIKE '"+userName+"')");
            
             if(rs.next()){
-                 System.out.println("correct: "+ userName);
-                 int id=rs.getInt("idUsuario");
-                 String alias=rs.getString("nombreUsuario");
-                 String imagen=rs.getString("imagen");
-                 String password=rs.getString("password");
-                 String email=rs.getString("email");
-                 byte poderes=(byte)rs.getInt("tipoUsuario");
-                 Date creacion=rs.getDate("fechaCreacionUsuario");                  
-                 String nombre=rs.getString("nombreReal");                 
-                 String apellidos=rs.getString("apellidosReal");                
-                 String pais=rs.getString("pais");
-                 System.out.println("Next Edad");
-                 
-                 Date edad= rs.getDate("edad");
+                System.out.println("correct: "+ userName);
+                int id=rs.getInt("idUsuario");
+                String alias=rs.getString("nombreUsuario");
+                String imagen=rs.getString("imagen");
+                String password=rs.getString("password");
+                String email=rs.getString("email");
+                byte poderes=(byte)rs.getInt("tipoUsuario");
+                Date creacion=rs.getDate("fechaCreacionUsuario");                  
+                String nombre=rs.getString("nombreReal");                 
+                String apellidos=rs.getString("apellidosReal");                
+                String pais=rs.getString("pais");                
+                Date edad= rs.getDate("edad");
                  
                 System.out.println("Var: "+edad);
                  int tel=rs.getInt("telefono");
-                return new Usuario(id,alias,imagen,password,email,poderes ,creacion,nombre,apellidos,pais,edad,tel);
+                return new Usuario(id,alias,imagen,password,email,poderes ,creacion,nombre,apellidos,pais,new Date(20,10,2019),tel);
             }else{
                 //System.out.println("correct: "+ userName);
                 return null;
@@ -95,21 +93,35 @@ public class UsuarioDAO extends DAOExtend{
 
         try{
             Statement st=conexion.createStatement();
-            st.executeUpdate("UPDATE usuarios SET nombreUsuario ='"+user.getAlias()+"'," 
-                    +"password= '"+user.getPassword()+"',"
-                    +"email= '"+user.getEmail()+"',"
+            if(st.executeUpdate("UPDATE usuarios SET nombreUsuario ='"+user.getAlias()+"'," 
+                    //+"password= '"+user.getPassword()+"',"
+                    +"email= '"+"ASDADS@#asdad"+"',"
                     +"imagen= '"+user.getImageURL()+"',"
                     +"nombreReal= '"+user.getNombre()+"',"
                     +"apellidosReal= '"+user.getApellidos()+"',"
-                    +"edad= "+user.getEdad()+","
+                    +"edad= '"+user.getEdad()+"',"
                     +"pais= '"+user.getPais()+"',"
                     +"telefono= "+user.getTelefono()
-                    +" WHERE idUsuario="+ user.getId()+";");
-            return true;
+                    +" WHERE idUsuario="+ user.getId()+";")>0){
+                 return true;
+            }
+            return false;
         }catch(SQLException e){}
 
         return false;
     }
+     
+        public boolean ModificarPasswordUsuario(Usuario user){
+
+          try{
+              Statement st=conexion.createStatement();
+              st.executeUpdate("UPDATE usuarios SET password= '"+user.getPassword()+"',"                      
+                      +" WHERE idUsuario="+ user.getId()+";");
+              return true;
+          }catch(SQLException e){}
+
+          return false;
+        }
      
      public boolean EliminarUsuario(int usuarioId){
           try{            

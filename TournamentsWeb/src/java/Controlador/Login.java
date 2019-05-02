@@ -36,6 +36,21 @@ public class Login extends HttpServlet {
             
             HttpSession sesion= request.getSession(true);
             sesion.setAttribute("user", user);
+           /* try (PrintWriter out = response.getWriter()) {
+                
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>Servlet NewServlet</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>Var are </h1>");
+                    out.println("<h1>Var are  " + user.getId()+ "</h1>");
+                    //user= gestor.Modificar(user);
+                   // out.println("<h1>Var are  " + user.getId()+ "</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }*/
             if(request.getParameter("remember")!=null){
                 if(request.getParameter("remember").equals("remember")){
 
