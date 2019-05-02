@@ -34,6 +34,17 @@ public class Noticia {
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     }
+    // constructor para INSERTAR de noticias
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia,String tipoNoticia, String autor) {
+    this.titular=titular;
+    this.resumen=resumen;
+    this.imgNoticia=imgNoticia;
+    this.tipoNoticia=tipoNoticia;
+    this.noticiaTexto=noticiaTexto;
+    this.autor=autor;
+    }
+    
+    
     // constructor para los tipos de noticias
     public Noticia (String titular,String resumen,String tipoNoticia,String imgNoticia) {
     this.titular=titular;

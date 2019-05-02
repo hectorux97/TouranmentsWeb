@@ -31,12 +31,11 @@ public class NoticiasDAO extends DAOExtend{
             String texto = minoticia.getNoticiaTexto();
             String img = minoticia.getImgNoticia();
             String tipo = minoticia.getTipoNoticia();
-            Date fecha = minoticia.getFechaNoticia();
             String autor = minoticia.getAutor();
-            int status = minoticia.getStatus();
+            
             
             //He intentado seguir el orden y he aññadido al final fecha y autor 
-            st.executeUpdate("INSERT INTO noticias VALUES (null,'"+titular+"','"+resumen+"','"+texto+"','"+img+"','"+tipo+"','"+fecha+"','"+autor+"','"+status+"')");
+            st.executeUpdate("INSERT INTO noticias VALUES (NULL,'"+titular+"','"+resumen+"','"+texto+"','"+img+"','"+tipo+"','"+autor+"',1,CURRENT_TIMESTAMP())");
            
             return true;
             
