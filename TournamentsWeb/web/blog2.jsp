@@ -44,7 +44,7 @@
             <!-- Author -->
             <p class="lead">
           by
-          <a href="PaginaNoticias?noticia=arrayautor"><%=autor%></a>
+          <a href="PaginaNoticias?noticia=arrayautor&autor=<%=autor%>"><%=autor%></a>
         </p>
         <hr>
             <!-- Date/Time -->
@@ -78,10 +78,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=gamer">#B Gamer</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=gamer">#B Gamer</a>
                   </li>
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=esports">#B ESports</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=esports">#B ESports</a>
                   </li>
                   
                 </ul>
@@ -89,10 +89,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=novedades">#B Novedades</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=novedades">#B Novedades</a>
                   </li>
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo tipoNoticia=review">#B Review</a>
+                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=review">#B Review</a>
                   </li>
                   
                 </ul>
@@ -114,7 +114,7 @@
                 <% String titulo = n.getResumen();%>
                 <% String img = n.getImgNoticia();%>
                 <% String tipo = n.getTipoNoticia();%>
-                <a href="PaginaNoticias?noticia=mostrar idNoticia= <%=id%> tipoNoticia= <%=tipo%>" id="<%=i%>">
+                <a href="PaginaNoticias?noticia=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>&id=<%=i%>">
           <div class="card h-100">
               <img class="card-img-top" src="img/<%=img%>" alt="">
           <div class="card-body">
