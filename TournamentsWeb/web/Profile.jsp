@@ -23,7 +23,10 @@
     </head>
     <body>
         <header>
-            <%@include file="/includes/header.jsp" %>           
+            <%@include file="/includes/header.jsp" %>
+            <div id="alertComplete" class="alert alert-danger text-center" role="alert" style="display:none">
+                Rellene todos los campos <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+            </div>
             <%@include file="/includes/headerPerfil.jsp" %>             
         </header>
         
@@ -68,7 +71,7 @@
 
                 <!--Perfil-->
                 <div>
-                    <form class="left form mx-md-2 my-3 pl-2 rounded" method="post">
+                    <form class="left form mx-md-2 my-3 pl-2 rounded" method="post" onsubmit="return Validate()">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
                             <h1 class="h2">Mi Perfil</h1>
                         </div>
@@ -87,10 +90,10 @@
                                 </div>
                                 <div class="col-5 form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input class="form-control rounded-0" type="text" name="nombre" <%=SetValueName(usuario.getNombre())%> placeholder="Nombre"><br />
+                                    <input id="nombre" class="form-control rounded-0" type="text" name="nombre" <%=SetValueName(usuario.getNombre())%> placeholder="Nombre" minlength="3" maxlength="20"><br />
 
                                     <label for="apellidos">Apellidos</label>
-                                    <input class="form-control rounded-0" type="text" name="apellidos" <%=SetValueName(usuario.getApellidos())%> placeholder="Apellidos"><br />
+                                    <input id="apellidos" class="form-control rounded-0" type="text" name="apellidos" <%=SetValueName(usuario.getApellidos())%> placeholder="Apellidos" minlength="6" maxlength="50"><br />
 
                                 </div>
                             </div>
@@ -99,11 +102,11 @@
                             <div class="row m-auto">
                                 <div class="col form-group">
                                     <label for="alias">Alias</label>
-                                    <input class="form-control rounded-0" type="text" name="alias" <%=SetValueName(usuario.getAlias())%> placeholder="Alias"><br />
+                                    <input id="alias" class="form-control rounded-0" type="text" name="alias" <%=SetValueName(usuario.getAlias())%> placeholder="Alias"minlength="3" maxlength="45"><br />
                                 </div>
                                 <div class="col form-group">
                                     <label for="correo">Correo</label>
-                                    <input class="form-control rounded-0" type="text" name="email" <%=SetValueName(usuario.getEmail())%> placeholder="Nombre@mail.com"><br />
+                                    <input id="correo" class="form-control rounded-0" type="email" name="email" <%=SetValueName(usuario.getEmail())%> placeholder="Nombre@mail.com"><br />
                                 </div>
                             </div>
                         </div>
@@ -364,11 +367,11 @@
                                 </div>
                                 <div class="col form-group">
                                     <label for="telefono">Teléfono</label>
-                                    <input class="form-control rounded-0" type="number" name="telefono" <%=SetValueName(usuario.getTelefono())%> placeholder="64473920923"><br />
+                                    <input id="telefono" class="form-control rounded-0" type="number" name="telefono" <%=SetValueName(usuario.getTelefono())%> placeholder="64473920923"min="100000000" max="999999999"><br />
                                 </div>
                                 <div class="form-group text-center col">
                                     <label for="edad">Edad</label>
-                                    <input type="date" class="form-control rounded-0 w-50 text-center m-auto"  name="fechaNacimiento" <%=SetValueName(usuario.getEdad())%> min="1920-01-01" <%="max='"+ft.format(new Date())+"'"%>><br />
+                                    <input id="edad" type="date" class="form-control rounded-0 w-50 text-center m-auto"  name="fechaNacimiento" <%=SetValueName(usuario.getEdad())%> min="1920-01-01" <%="max='"+ft.format(new Date())+"'"%>><br />
                                 </div>
                             </div>
                         </div>
@@ -381,7 +384,62 @@
                     </form>
                 </div>
             </main>
-
+            <script>
+            
+            /* var alias= document.getElementById("alias");
+             var nombre= document.getElementById("nombre");
+             var email= document.getElementById("email");*/
+            var alertComplete=document.getElementById("alertComplete");
+            var nombre= document.getElementById("nombre");
+            var nombreInitialValue=nombre.value;
+            var apellidos= document.getElementById("apellidos");
+            var apellidosInitialValue=apellidos.value;
+            var alias= document.getElementById("alias");
+            var aliasInitialValue=alias.value;
+            var correo= document.getElementById("correo");
+            var correoInitialValue=correo.value;
+            var edad= document.getElementById("edad");
+            var edadInitialValue=edad.value;
+            var telefono= document.getElementById("telefono");
+            var telfonoInitialValue=telefono.value;
+           
+            var Validate= function(){
+     
+                if(correo.value===""){
+                    correo.value=correoInitialValue;
+                }      
+               
+                if(nombre.value===""){
+                    nombre.value=nombreInitialValue;
+                }
+                if(!nombreRE.test(nombre.value)){
+                    return false;
+                }
+                if(apellidos.value===""){
+                    apellidos.value=apellidosInitialValue;
+                }
+                if(!apellidosRE.test(apellidos.value)){
+                    return false;
+                }
+                
+                if(alias.value===""){
+                    alias.value=aliasInitialValue;
+                }
+                if(!nombreRE.test(alias.value)){
+                    return false;
+                }
+                if(edad.value===""){
+                    edad.value=edadInitialValue;
+                }
+                
+                if(telefono.value===""){
+                    telefono.value=telfonoInitialValue;
+                }               
+                return true;
+             };
+            
+           
+        </script>
             <%@include file="/includes/footer.html"%>          
     </body>
 </html>
