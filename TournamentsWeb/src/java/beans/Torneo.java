@@ -22,37 +22,41 @@ public class Torneo {
     private Date fechaInicio;
     private Usuario creador;
     private ArrayList<Usuario> participantes;
-
+    private Juego juego;
     public Torneo() {
     }
 
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Usuario creador) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Usuario creador, Juego juego) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
         this.creador = creador;
+        this.juego=juego;
     }
 
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Usuario creador, ArrayList<Usuario> participantes) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Usuario creador, ArrayList<Usuario> participantes, Juego juego) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
         this.creador = creador;
         this.participantes = participantes;
+        this.juego= juego;
     }
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Juego juego) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
+        this.juego= juego;
         
     }
 
-    public Torneo(String nombre, Usuario creador) {
+    public Torneo(String nombre, Usuario creador, Juego juego) {
         this.nombre = nombre;
         this.creador=creador;
+        this.juego= juego;
     }
 
     public int getId() {
@@ -95,6 +99,20 @@ public class Torneo {
         this.creador = creador;
     }
 
+    public Juego getJuego() {
+        return juego;
+    }
+    
+    public String getJuegoName(){
+        return juego.getNombre();
+    }
+    
+    public void setJuego(Juego juego) {
+        this.juego = juego;
+    }
+
+    
+    
     public ArrayList<Usuario> getParticipantes() {
         return participantes;
     }

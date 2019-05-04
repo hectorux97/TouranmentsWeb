@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import beans.Juego;
 import beans.Torneo;
 import beans.Usuario;
 import java.sql.*;
@@ -24,13 +25,15 @@ public class TorneoDAO extends DAOExtend{
     public boolean GuardarNuevoTorneo(Torneo torneo){
 
         try{           
-            PreparedStatement ps=conexion.prepareStatement("INSERT INTO torneos(nombreTorneo,fechaPublicacion,fechaInicio) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=conexion.prepareStatement("INSERT INTO torneos(nombreTorneo,fechaPublicacion,fechaInicio,juego) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,torneo.getNombre());
             ps.setDate(2,(java.sql.Date)torneo.getFechaPublicacion());	
-            ps.setDate(3,(java.sql.Date)torneo.getFechaInicio());	
+            ps.setDate(3,(java.sql.Date)torneo.getFechaInicio());
+            ps.setString(4, torneo.getJuegoName());
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
             Statement st= conexion.createStatement();
+            //Set the creator of the tournament
             st.executeUpdate("INSERT INTO torneoforusuario VALUES ("
                     +rs.getInt("idTorneos")+","
                     +torneo.getCreador().getId()+")");
@@ -58,7 +61,7 @@ public class TorneoDAO extends DAOExtend{
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idTorneo  =  "+rs.getInt("idTorneos")+")");                
                 UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(result.getInt("idUsuario"));
-            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),user);
+            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),user, new Juego(rs.getString("juego")));
             }else{
                 return null;
             }
@@ -72,7 +75,7 @@ public class TorneoDAO extends DAOExtend{
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM torneos");
             if(rs.next()){
-                Torneo t= new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"));
+                Torneo t= new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
                 listaTorneos.add(t);              
                 
             }
@@ -91,7 +94,7 @@ public class TorneoDAO extends DAOExtend{
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idTorneo  =  "+idTorneo+")");                
                 UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(result.getInt("idUsuario"));
-            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),user,GetParticipantes(idTorneo));
+            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),user,GetParticipantes(idTorneo), new Juego(rs.getString("juego")));
             }else{
                 return null;
             }
@@ -105,7 +108,7 @@ public class TorneoDAO extends DAOExtend{
         try{
             Statement st=conexion.createStatement();
             st.executeUpdate("UPDATE torneos SET nombreTorneo ='"+torneo.getNombre()+"'," 
-                    +"fechaInicio= "+torneo.getFechaInicio()+";");
+                    +"fechaInicio= '"+torneo.getFechaInicio()+"';");
             return true;
         }catch(SQLException e){}
 
