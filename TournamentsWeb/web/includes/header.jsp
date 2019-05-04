@@ -1,5 +1,7 @@
 
 
+<%@page import="beans.Usuario"%>
+
 <nav class="navbar navbar-expand-md fixed-top w-100 p-0 h-md-10 front" style="margin:0px;">
     <!--Standard header-->
     <div class="navbar-item w-100 h-10 ">
@@ -34,9 +36,10 @@
                 <!--Right Part-->
                 <ul class="nav-item pl-0 mr-4" >
                     <!--Perfil Part!-->
-                    <%if(session.getAttribute("user")!=null){%>
+                    <%  Usuario userHeader=(Usuario)session.getAttribute("user");
+                        if(userHeader!=null){%>
                     <li class=" active">
-                        <img class="perfilImage" src="../img/IconoWeb.png" alt="perfilImage"/>
+                        <img class="perfilImage" <%="src='"+(userHeader.getImageURL()!=""?userHeader.getImageURL():"../img/perfil/IconoWeb.png")+"'"%> alt="perfilImage"/>
                         
                         <ul class="navbar-nav mr-auto" style="display:inline">
                             <li class="nav-item active shadow-sm collapse show" id="NoramlPerfilDropdown">

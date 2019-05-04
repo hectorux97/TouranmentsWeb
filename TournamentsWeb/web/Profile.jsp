@@ -52,7 +52,7 @@
                      if(s!="" && s!=null){
                          res+=s;
                      }  
-                res+="'";
+                    res+="'";
                 return res;
                 }
                 String SetValueName(Date s){
@@ -61,7 +61,7 @@
                         SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                         res+=ft.format(s);
                      }  
-                res+="'";
+                    res+="'";
                 return res;
                 }
                 String SetValueName(int s){
@@ -69,7 +69,7 @@
                      if(s!=0){
                          res+=s;
                      }  
-                res+="'";
+                    res+="'";
                 return res;
                 }
                 %>
