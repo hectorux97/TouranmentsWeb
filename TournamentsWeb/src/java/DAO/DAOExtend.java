@@ -16,11 +16,11 @@ public class DAOExtend {
     protected Connection conexion;
     
     public DAOExtend(){
-        System.out.println("XXC");
+      
         conexion=getConection();
-        if(conexion==null){
+        /*if(conexion==null){
             System.out.println("XXF");
-        }
+        }*/
     }
     protected Connection getConection() {
         

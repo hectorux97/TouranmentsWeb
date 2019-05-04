@@ -43,13 +43,13 @@ public class GestorUsuario {
     
     public Usuario Modificar(Usuario user){
         UsuarioDAO udao=new UsuarioDAO();
-        Usuario checkUser=udao.GetUsuario(user.getId());
-        System.out.println(checkUser.getAlias());
-        if(checkUser!=null){
+        //Usuario checkUser=udao.GetUsuario(user.getId());
+       // System.out.println(checkUser.getAlias());
+        if(udao.CheckUserExist(user.getAlias())){
             if(udao.ModificarUsuario(user)){
                 return user;
             }
-            return new Usuario();
+            return null;
         }
         return null;
         

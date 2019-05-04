@@ -4,10 +4,16 @@
     Author     : hector
 --%>
 
+<%@page import="beans.Juego"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.GlobalInfoDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%if(request.getSession(false)==null){%>
+     <jsp:forward page="/Login.jsp"/>
+<%}%>
 <jsp:useBean id="user" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
 <jsp:setProperty name="user" property="*"></jsp:setProperty>
 <% if(request.getParameter("nombre")!=null){%>    
@@ -32,9 +38,10 @@
         
             <%  
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
-                
+                GlobalInfoDAO info= new GlobalInfoDAO();
+                ArrayList<Juego> juegos= info.GetJuegos();
                 /*Date edad= new Date();                
-                java.sql.Date parseDate= new java.sql.Date(edad.getTime());    */            
+                java.sql.Date parseDate= new java.sql.Date(edad.getTime());    */                  
                 Usuario usuario = (Usuario)session.getAttribute("user");//new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
                 //usuario.setEdad(parseDate);
             
@@ -375,8 +382,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group text-center pb-2">
+                        <div class="form-group">
+                        <% int i=0;
+                            for(Juego j:juegos){%>
+                            <label for="edad">Nick <%=j.getNombre() %></label>
+                            <input <%="id='nickJuego"+i+"'"%> type="text" class="form-control rounded-0 w-25 "  <%="name='nicksJuegos'"%> <%=SetValueName(usuario.getNick(j.getNombre()))%> minlength="1" maxlength="45"><br />
+                        <%}%>    
+                        </div>
+                        <div class="form-group pb-2">
                             <div class="inclinado w-25 m-auto ">
                                 <input class="nav-link text-center m-auto" type="submit" name="submit" value="Guardar Cambios">
                             </div>
