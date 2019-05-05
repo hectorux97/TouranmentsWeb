@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import DAO.PartidoDAO;
+import beans.Partido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,18 +35,30 @@ public class ModificarPartido extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModificarPartido</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModificarPartido at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        HttpSession session = request.getSession(false);
+            if (session != null) {
+                int id = Integer.parseInt(request.getParameter("idPartido"));
+                PartidoDAO pDAO = new PartidoDAO();
+                Partido p = pDAO.GetPartido(id);
+                Partido requestP= (Partido)request.getAttribute("partido");                
+                if (p != null && requestP!=null) {
+                    p.setPuntosUsuario1(requestP.getPuntosUsuario1());
+                    p.setPuntosUsuario2(requestP.getPuntosUsuario2());
+                    p.setImgUrl(requestP.getImgUrl());
+                    if(pDAO.ActualizarPartido(p)){
+                    //session.setAttribute("partido", p);
+                    response.sendRedirect("/MisPartidos.jsp");
+                    }else{
+                         response.sendRedirect("/MisPartidos.jsp?error=ERROR_ON_UPDATE");
+                    }
+                   /* RequestDispatcher dispatcher = request.getRequestDispatcher("/Partidos.jsp");
+                    dispatcher.forward(request, response);*/
+                } else {
+                    response.sendRedirect("/MostrarPartido.java?idPartido="+id+"&error=ERROR_UPDATE");
+                }
+            } else {
+                response.sendRedirect("/index.jsp?error=SESSION_EXPIRED");
+            }        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

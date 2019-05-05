@@ -54,7 +54,8 @@ public class PartidoDAO extends DAOExtend {
                 Usuario u1= uDAO.GetUsuario(rs.getInt("idUsuario1"));
                 Usuario u2= uDAO.GetUsuario(rs.getInt("idUsuario2"));
                 Partido p= new Partido(rs.getInt("idPartido"),t, rs.getInt("idTorneo"), u1, rs.getInt("idUsuario1"), u2, rs.getInt("idUsuario2"),
-                                            rs.getInt("usuario1Points"),rs.getInt("usuario2Points"), rs.getInt("ronda"), rs.getDate("fechaJuego"), rs.getString("img"), rs.getInt("estado"));                 
+                                            rs.getInt("usuario1Points"),rs.getInt("usuario2Points"), rs.getInt("ronda"), rs.getDate("fechaJuego"), rs.getString("img"), rs.getInt("estado"));
+                partidos.add(p);
             }
             
            
@@ -62,4 +63,17 @@ public class PartidoDAO extends DAOExtend {
         return partidos;        
     }
     
+     public boolean ActualizarPartido(Partido p){
+         try {
+            Statement st = conexion.createStatement();
+           
+            st.executeUpdate("REPLACE INTO partido(usuario1Points,usuario2Points,img) VALUES("+p.getPuntosUsuario1()+","
+                    + p.getPuntosUsuario2()+",'" 
+                    + p.getImgUrl()+"');");
+            
+            return true;
+           
+        } catch (SQLException e) {}
+        return false;
+     }
 }

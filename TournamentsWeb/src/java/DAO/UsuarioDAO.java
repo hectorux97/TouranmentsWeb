@@ -82,7 +82,7 @@ public class UsuarioDAO extends DAOExtend{
     public Usuario GetUsuario(int userID) {
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE ( idUsuario LIKE '" + userID + "')");
+            ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE  idUsuario =" + userID );
             if (rs.next()) {
                 Usuario user= new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"), rs.getString("imagen"), rs.getString("password"),
                         rs.getString("email"), (byte) rs.getInt("tipoUsuario"), rs.getDate("fechaCreacionUsuario"), rs.getString("nombreReal"),

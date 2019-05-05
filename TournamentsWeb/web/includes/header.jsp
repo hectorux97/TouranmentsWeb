@@ -65,8 +65,8 @@
                             <li class="nav-item active rightHeader" >
                                 <a class="nav-link" href="../Login.jsp">Login</a>
                             </li>
-                            <li class="nav-item disable" style="height:27px;">
-                                <hr />
+                            <li class="nav-item disable" style="height:12px;background-color:#6d7582;width:1.6px">
+                               
                             </li>
                             <li class="nav-item active rightHeader">
                                 <a class="nav-link " href="../Register.jsp">Register</a>

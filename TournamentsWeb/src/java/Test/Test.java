@@ -7,10 +7,12 @@ package Test;
 
 import DAO.GlobalInfoDAO;
 import DAO.NickUsuarioDAO;
+import DAO.TorneoDAO;
 import DAO.UsuarioDAO;
 import Gestor.GestorUsuario;
 import beans.Juego;
 import beans.NickUsuario;
+import beans.Torneo;
 import beans.Usuario;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -36,9 +38,9 @@ public class Test {
             ArrayList<NickUsuario> nicks= new ArrayList<>();
             nicks.add(new NickUsuario(new Juego("CSGO"),"ASD"));
             nickUser.GuardarNicks(nicks, 1);*/
-          UsuarioDAO userDAO= new UsuarioDAO();
+       /*   UsuarioDAO userDAO= new UsuarioDAO();
           Usuario user = userDAO.GetUsuario(1);
-       String[] nicks= new String[6];
+        String[] nicks= new String[6];
        nicks[1]="ASA";
        nicks[5]="TTDS";
          // nicks.add(new NickUsuario(new Juego("CSGO"),"Nombre"));
@@ -49,12 +51,16 @@ public class Test {
             //System.out.println("El nick es "+nicks.get(0).juego.);
         if(user!=null){
             System.out.println("Succes");
-        }
+        }*/
         /*if(!user.getNicks().isEmpty()){
           System.out.println("El nick es "+user.getEdad());
         }*/
-            
+        TorneoDAO tDAO= new TorneoDAO();
+        Torneo t= tDAO.GetTorneo(1);  
         
+        if(t!=null){
+            System.out.println("Succes");
+        }
         
     }
     

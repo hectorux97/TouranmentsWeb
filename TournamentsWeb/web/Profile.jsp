@@ -4,12 +4,11 @@
     Author     : hector
 --%>
 
-<%@page import="beans.Juego"%>
+<%@page import="beans.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.GlobalInfoDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-<%@page import="beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%if(request.getSession(false)==null){%>
      <jsp:forward page="/Login.jsp"/>

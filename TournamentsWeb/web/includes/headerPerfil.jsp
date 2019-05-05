@@ -1,11 +1,9 @@
 
 <%@page import="beans.Usuario"%>
-<% if(request.getSession(false)==null){%>
-     <jsp:forward page="/Login.jsp"/>    
-<%}
-    Usuario user = (Usuario) session.getAttribute("user");
+<% 
+   // Usuario user = (Usuario) session.getAttribute("user");
    // if (user.getPrivilegios() == 0) {
-if(user.getPrivilegios() == 0){%>
+if(true){%>
 <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">
     <ul class="nav flex-column text-center sidebar-sticky" style="background-color: #2d3238;width:100%;">
         <li class="nav-item menuAdmin  shadow-sm ">
@@ -18,8 +16,8 @@ if(user.getPrivilegios() == 0){%>
                 Mis Torenos <span class="sr-only"></span>
             </a>
         </li>
-        <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="/Controlador/MostrarMisPartidos">
+        <li class="nav-item menuAdmin shadow-sm ">
+            <a class="nav-link active" href="MisPartidos.jsp">
                 Mis Partidos <span class="sr-only"></span>
             </a>
         </li>

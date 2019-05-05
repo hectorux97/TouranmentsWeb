@@ -89,12 +89,17 @@ public class TorneoDAO extends DAOExtend{
      public Torneo GetTorneo(int idTorneo){
          try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE ( idTorneos  =  "+idTorneo+")");
+            ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE  idTorneos  =  "+idTorneo);
+            System.out.println("Get Torneo");
             if(rs.next()){
-                ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idTorneo  =  "+idTorneo+")");                
-                UsuarioDAO creador= new UsuarioDAO();
-                Usuario user=creador.GetUsuario(result.getInt("idUsuario"));
-            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),user,GetParticipantes(idTorneo), new Juego(rs.getString("juego")));
+                System.out.println("SET Torneo");
+                st=conexion.createStatement();
+                ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE  idTorneo  =  "+idTorneo);
+                if(result.next()){                
+                    UsuarioDAO creador= new UsuarioDAO();
+                    Usuario user= creador.GetUsuario(result.getInt("idUsuario"));
+                    return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Usuario(), GetParticipantes(idTorneo), new Juego(rs.getString("juego")));
+                }
             }else{
                 return null;
             }

@@ -6,10 +6,11 @@
 
 <%@page import="beans.Juego"%>
 <%@page import="java.sql.Date"%>
-<%@page import="beans.Usuario"%>
-<%@page import="beans.Torneo"%>
-<%@page import="beans.Partido"%>
+<%@page import="beans.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%if(request.getSession(false)==null){%>
+     <jsp:forward page="/Login.jsp"/>
+<%}%>
 <jsp:useBean id="partido" class="beans.Partido" scope="request" type="beans.Partido"></jsp:useBean>
 <jsp:setProperty name="partido" property="*"></jsp:setProperty>
 <% if(request.getParameter("imgUrl")!=null){%>    
@@ -28,8 +29,8 @@
             <%@include file="/includes/header.jsp" %>     
         </header>
         <%
-            Partido p = new Partido(1,new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png",0);//(Partido) request.getAttribute("partido");
-
+            Partido p = (Partido) session.getAttribute("partido");//new Partido(1,new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png",0);//
+            //p.setTorneo(new Torneo("Happy", new Usuario(), new Juego("CSGO")));
         %>
 
         <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind">
@@ -52,13 +53,13 @@
                                 <td>
                                     <img <%="src='" + p.getUsuario1().getImageURL() + "'"%> class="imagenavatar text-center">
                                     <br>
-                                    <h4 class="text-center">as<%=p.getUsuario1().getNick(p.getTorneo().getJuegoName())%></h4>
+                                    <h4 class="text-center"><%=p.getUsuario1().getNick(p.getTorneo().getJuegoName())%></h4>
                                 </td>
                                 <td class="versuspartido"> <span> VS </span></td>
                                 <td> 
                                     <img <%="src='" + p.getUsuario1().getImageURL() + "'"%> class="imagenavatar text-center">
                                     <br>
-                                    <h4 class="text-center">as<%=p.getUsuario2().getNick(p.getTorneo().getJuegoName())%></h4>
+                                    <h4 class="text-center"><%=p.getUsuario2().getNick(p.getTorneo().getJuegoName())%></h4>
                                 </td>
                             </tr>
                             <tr>

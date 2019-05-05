@@ -46,13 +46,14 @@ public class MostrarMisPartidos extends HttpServlet {
             Usuario user= (Usuario)session.getAttribute("user");           
             
             if(user==null){
-                response.sendRedirect("Profile.jsp?error=USER_MISSING");               
+                response.sendRedirect("/Login.jsp?error=USER_MISSING");               
             }else{               
                 PartidoDAO pDAO= new PartidoDAO();
                 ArrayList<Partido> partidos= pDAO.GetPartidos(user.getId());                            
                 request.setAttribute("listaPartidos", partidos);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-                dispatcher.forward(request, response);                
+                response.sendRedirect("/MisPartidos.jsp");
+                /*RequestDispatcher dispatcher = request.getRequestDispatcher("");
+                dispatcher.forward(request, response);*/                
             }
        }else{
             response.sendRedirect("/index.jsp?error=SESSION_EXPIRED");
