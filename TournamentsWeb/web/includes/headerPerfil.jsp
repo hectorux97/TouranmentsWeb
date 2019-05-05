@@ -1,8 +1,11 @@
 
 <%@page import="beans.Usuario"%>
-<% //Usuario user = (Usuario) session.getAttribute("user");
+<% if(request.getSession(false)==null){%>
+     <jsp:forward page="/Login.jsp"/>    
+<%}
+    Usuario user = (Usuario) session.getAttribute("user");
    // if (user.getPrivilegios() == 0) {
-if(true){%>
+if(user.getPrivilegios() == 0){%>
 <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">
     <ul class="nav flex-column text-center sidebar-sticky" style="background-color: #2d3238;width:100%;">
         <li class="nav-item menuAdmin  shadow-sm ">
@@ -16,7 +19,7 @@ if(true){%>
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="Mis Partidos.html">
+            <a class="nav-link active" href="/Controlador/MostrarMisPartidos">
                 Mis Partidos <span class="sr-only"></span>
             </a>
         </li>
@@ -52,8 +55,8 @@ if(true){%>
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="#">
-                Partidos Activos <span class="sr-only">(current)</span>
+            <a class="nav-link active" href="/Controlador/MostrarMisPartidos">
+                Mis Partidos <span class="sr-only">(current)</span>
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">

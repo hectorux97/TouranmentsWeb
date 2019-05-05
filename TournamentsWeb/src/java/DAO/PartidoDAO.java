@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
-import beans.Juego;
-import beans.NickUsuario;
-import beans.Usuario;
+import beans.*;
 import java.sql.*;
 import java.util.ArrayList;
 /**
@@ -19,7 +17,49 @@ public class PartidoDAO extends DAOExtend {
         conexion = getConection();       
     }
     
+    public Partido GetPartido(int id){
+        
+         try {
+            Statement st = conexion.createStatement();
+           
+            ResultSet rs= st.executeQuery("SELECT * FROM partido WHERE idPartido="+id);
+            if(rs.next()){
+                TorneoDAO tDAO= new TorneoDAO();
+                Torneo t= tDAO.GetTorneo(rs.getInt("idTorneo"));
+                UsuarioDAO uDAO= new UsuarioDAO();
+                Usuario u1= uDAO.GetUsuario(rs.getInt("idUsuario1"));
+                Usuario u2= uDAO.GetUsuario(rs.getInt("idUsuario2"));
+                Partido p= new Partido(rs.getInt("idPartido"),t, rs.getInt("idTorneo"), u1, rs.getInt("idUsuario1"), u2, rs.getInt("idUsuario2"),
+                                            rs.getInt("usuario1Points"),rs.getInt("usuario2Points"), rs.getInt("ronda"), rs.getDate("fechaJuego"), rs.getString("img"), rs.getInt("estado"));
+                 return p;
+            }else{
+                 return null;
+            }
+            
+           
+        } catch (SQLException e) {}
+        return null;        
+    }
     
-    
+     public ArrayList<Partido> GetPartidos(int id){
+        ArrayList<Partido> partidos= new ArrayList<>();
+         try {
+            Statement st = conexion.createStatement();
+           
+            ResultSet rs= st.executeQuery("SELECT * FROM partido WHERE idUsuario1="+id+" OR idUsuario2="+id);
+            while(rs.next()){
+                TorneoDAO tDAO= new TorneoDAO();
+                Torneo t= tDAO.GetTorneo(rs.getInt("idTorneo"));
+                UsuarioDAO uDAO= new UsuarioDAO();
+                Usuario u1= uDAO.GetUsuario(rs.getInt("idUsuario1"));
+                Usuario u2= uDAO.GetUsuario(rs.getInt("idUsuario2"));
+                Partido p= new Partido(rs.getInt("idPartido"),t, rs.getInt("idTorneo"), u1, rs.getInt("idUsuario1"), u2, rs.getInt("idUsuario2"),
+                                            rs.getInt("usuario1Points"),rs.getInt("usuario2Points"), rs.getInt("ronda"), rs.getDate("fechaJuego"), rs.getString("img"), rs.getInt("estado"));                 
+            }
+            
+           
+        } catch (SQLException e) {}
+        return partidos;        
+    }
     
 }

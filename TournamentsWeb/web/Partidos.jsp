@@ -28,7 +28,7 @@
             <%@include file="/includes/header.jsp" %>     
         </header>
         <%
-            Partido p = new Partido(new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png");//(Partido) request.getAttribute("partido");
+            Partido p = new Partido(1,new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png",0);//(Partido) request.getAttribute("partido");
 
         %>
 

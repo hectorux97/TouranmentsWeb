@@ -11,6 +11,7 @@ import java.sql.Date;
  */
 public class Partido {
     
+    private int id;
     private Torneo torneo;
     private int idTorneo;
     private Usuario usuario1;
@@ -22,11 +23,14 @@ public class Partido {
     private int ronda;
     private Date fechaInicio;
     private String imgUrl;
-
+    
+    private int estado;
+    
     public Partido() {
     }
 
-    public Partido(Torneo torneo, int idTorneo, Usuario usuario1, int idUsuario1, Usuario usuario2, int idUsuario2, int puntosUsuario1, int puntosUsuario2, int ronda, Date fechaInicio, String imgUrl) {
+    public Partido(int id,Torneo torneo, int idTorneo, Usuario usuario1, int idUsuario1, Usuario usuario2, int idUsuario2, int puntosUsuario1, int puntosUsuario2, int ronda, Date fechaInicio, String imgUrl, int estado) {
+        this.id=id;
         this.torneo = torneo;
         this.idTorneo = idTorneo;
         this.usuario1 = usuario1;
@@ -38,6 +42,15 @@ public class Partido {
         this.ronda = ronda;
         this.fechaInicio= fechaInicio;
         this.imgUrl= imgUrl;
+        this.estado=estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Torneo getTorneo() {
@@ -127,5 +140,25 @@ public class Partido {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }   
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    
+    public String getEstadoConversion(){
+        switch(estado){
+            case 0:
+                return "No comenzado";
+            case 1:
+                return "En partida";
+             case 2:
+                return "Finalizado";
+        }
+        return "Error";
+    }
     
 }
