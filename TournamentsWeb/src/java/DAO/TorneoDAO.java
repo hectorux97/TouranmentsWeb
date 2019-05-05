@@ -113,7 +113,7 @@ public class TorneoDAO extends DAOExtend{
         try{
             Statement st=conexion.createStatement();
             st.executeUpdate("UPDATE torneos SET nombreTorneo ='"+torneo.getNombre()+"'," 
-                    +"fechaInicio= '"+torneo.getFechaInicio()+"';");
+                    +"fechaInicio= '"+torneo.getFechaInicio()+"' WHERE idTorneos="+torneo.getId()+";");
             return true;
         }catch(SQLException e){}
 

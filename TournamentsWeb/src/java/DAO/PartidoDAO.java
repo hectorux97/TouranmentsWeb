@@ -67,10 +67,12 @@ public class PartidoDAO extends DAOExtend {
          try {
             Statement st = conexion.createStatement();
            
-            st.executeUpdate("REPLACE INTO partido(usuario1Points,usuario2Points,img) VALUES("+p.getPuntosUsuario1()+","
-                    + p.getPuntosUsuario2()+",'" 
-                    + p.getImgUrl()+"');");
-            
+            st.executeUpdate("UPDATE partido SET usuario1Points="+p.getPuntosUsuario1()
+                    +",usuario2Points="+p.getPuntosUsuario2()
+                    +",img='"+p.getImgUrl()
+                    +"',estado="+2
+                    +" WHERE idPartido="+p.getId());
+            System.out.println("DONE");
             return true;
            
         } catch (SQLException e) {}

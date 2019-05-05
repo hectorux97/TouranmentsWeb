@@ -5,6 +5,7 @@
  */
 package beans;
 import java.sql.Date;
+import java.util.Calendar;
 /**
  *
  * @author hector
@@ -150,8 +151,17 @@ public class Partido {
     }
     
     public String getEstadoConversion(){
+        
+        
+        
         switch(estado){
-            case 0:
+            case 0:              
+                java.util.Date currentDate= Calendar.getInstance().getTime();
+                Date today= new Date(currentDate.getTime());
+                if(!today.before(getFechaInicio())){
+                    estado=1;
+                    return "En partida";
+                }
                 return "No comenzado";
             case 1:
                 return "En partida";

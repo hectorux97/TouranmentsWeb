@@ -7,11 +7,13 @@ package Test;
 
 import DAO.GlobalInfoDAO;
 import DAO.NickUsuarioDAO;
+import DAO.PartidoDAO;
 import DAO.TorneoDAO;
 import DAO.UsuarioDAO;
 import Gestor.GestorUsuario;
 import beans.Juego;
 import beans.NickUsuario;
+import beans.Partido;
 import beans.Torneo;
 import beans.Usuario;
 import java.sql.Date;
@@ -55,13 +57,25 @@ public class Test {
         /*if(!user.getNicks().isEmpty()){
           System.out.println("El nick es "+user.getEdad());
         }*/
-        TorneoDAO tDAO= new TorneoDAO();
+       /* TorneoDAO tDAO= new TorneoDAO();
         Torneo t= tDAO.GetTorneo(1);  
         
         if(t!=null){
             System.out.println("Succes");
-        }
-        
+        }*/
+         PartidoDAO pDAO = new PartidoDAO();
+                Partido p = pDAO.GetPartido(1);
+                Partido requestP= pDAO.GetPartido(1);               
+                if (p != null && requestP!=null) {
+                    p.setPuntosUsuario1(requestP.getPuntosUsuario1());
+                    p.setPuntosUsuario2(requestP.getPuntosUsuario2());
+                    p.setImgUrl(requestP.getImgUrl());
+                     System.out.println("Funciona de momento");
+                     if(pDAO.ActualizarPartido(p)){
+                         System.out.println("Succes");
+                     }
+                }
+               
     }
     
     

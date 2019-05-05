@@ -11,8 +11,8 @@
 <%if(request.getSession(false)==null){%>
      <jsp:forward page="/Login.jsp"/>
 <%}%>
-<jsp:useBean id="partido" class="beans.Partido" scope="request" type="beans.Partido"></jsp:useBean>
-<jsp:setProperty name="partido" property="*"></jsp:setProperty>
+<jsp:useBean id="partidoShow" class="beans.Partido" scope="request" type="beans.Partido"></jsp:useBean>
+<jsp:setProperty name="partidoShow" property="*"></jsp:setProperty>
 <% if(request.getParameter("imgUrl")!=null){%>    
     <jsp:forward page="/Controlador/ModificarPartido"/>    
 <%}%>
@@ -29,7 +29,7 @@
             <%@include file="/includes/header.jsp" %>     
         </header>
         <%
-            Partido p = (Partido) session.getAttribute("partido");//new Partido(1,new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png",0);//
+            Partido p = (Partido)session.getAttribute("partido");//new Partido(1,new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png",0);//
             //p.setTorneo(new Torneo("Happy", new Usuario(), new Juego("CSGO")));
         %>
 
@@ -76,10 +76,10 @@
                         </table>
                         <br>
                         <h2>Captura de pantalla:</h2><br>
-                        <img <%="src='" + p.getImgUrl() + "'"%>>
+                        <img <%="src='" + ((!p.getImgUrl().equals(""))?p.getImgUrl():"/img/defaultVictory.png") + "'"%>>
                     </div>
 
-                    <!-- Aqui Finaliza el acordeon -->
+                    <%if(p.getEstado()<2){%>
                     <div class="col-md-4 col-lg-5">
                         <div class="form rounded">
                             <h4 class="card-header"><b>Introducir resultado</b></h4>
@@ -92,7 +92,7 @@
                                         <div class="row m-auto">
 
                                             <label for="puntosUusario1"><%=p.getUsuario1().getNick(p.getTorneo().getJuegoName())%>:</label>
-                                            <input id="puntosUusario1" class="form-control rounded-0" type="number" name="puntosUusario1"  placeholder="2">
+                                            <input id="puntosUusario1" class="form-control rounded-0" type="number" name="puntosUsuario1"  placeholder="2">
 
                                             <label for="puntosUsuario2"><%=p.getUsuario2().getNick(p.getTorneo().getJuegoName())%>:</label>
                                             <input id="puntosUsuario2" class="form-control rounded-0" type="number" name="puntosUsuario2"  placeholder="2">
@@ -110,6 +110,7 @@
                             </div>
                         </div>
                     </div>
+                    <%}%>
                 </div>
                 <div class="container" style="height:100px;">
                 </div>

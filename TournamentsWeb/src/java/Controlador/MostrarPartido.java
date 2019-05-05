@@ -49,8 +49,8 @@ public class MostrarPartido extends HttpServlet {
                 Partido p = pDAO.GetPartido(id);
                 
                 if (p != null) {
-                    session.setAttribute("partido", p);
-                    response.sendRedirect("/Partidos.jsp");
+                    session.setAttribute("partido", p);                    
+                    response.sendRedirect("/Partidos.jsp?valle="+p.getPuntosUsuario1());
                    /* RequestDispatcher dispatcher = request.getRequestDispatcher("/Partidos.jsp");
                     dispatcher.forward(request, response);*/
                 } else {

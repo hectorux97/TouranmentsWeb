@@ -139,6 +139,9 @@ hr{
     color:white;
     -webkit-transform: skewX(-20deg);
 }
+.menuAdmin  >a:hover{
+    color:#a8c916;    
+}
 li.menuAdmin > a:before{
   content: "";
   position: absolute;
@@ -147,7 +150,7 @@ li.menuAdmin > a:before{
   bottom: 0;
   left: -50%;
   background-color: #a8c916;
-  visibility: hidden;
+  visibility: hidden;  
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transition: all 0.3s ease-in-out 0s;
