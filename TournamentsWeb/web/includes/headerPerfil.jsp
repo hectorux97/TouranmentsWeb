@@ -27,7 +27,7 @@ if(true){%>
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="/Controlador/LogOut">
                 Log Out <span class="sr-only"></span>
             </a>
         </li>
@@ -58,7 +58,7 @@ if(true){%>
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="/Controlador/LogOut">
                 Log Out <span class="sr-only">(current)</span>
             </a>
         </li>
