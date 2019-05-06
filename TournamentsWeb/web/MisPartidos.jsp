@@ -22,6 +22,7 @@
             Usuario user= (Usuario)session.getAttribute("user");
             PartidoDAO pDAO= new PartidoDAO();
             ArrayList<Partido> partidos= pDAO.GetPartidos(user.getId());
+            session.setMaxInactiveInterval(1200);
         %>
         <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind text-center" >
        

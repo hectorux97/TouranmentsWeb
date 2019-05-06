@@ -35,7 +35,7 @@ public class GestorUsuario {
         Usuario checkUser=udao.GetUsuario(user.getAlias());
         if(checkUser==null){
             if(udao.GuardarNuevoUsuario(user)){
-            return user;
+                return user;
             }
         }
         return null;

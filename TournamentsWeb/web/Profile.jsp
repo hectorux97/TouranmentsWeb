@@ -41,7 +41,8 @@
                 ArrayList<Juego> juegos= info.GetJuegos();
                 /*Date edad= new Date();                
                 java.sql.Date parseDate= new java.sql.Date(edad.getTime());    */                  
-                Usuario usuario = (Usuario)session.getAttribute("user");//new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);
+                Usuario usuario = (Usuario)session.getAttribute("user");//new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);                
+                session.setMaxInactiveInterval(1200);
                 //usuario.setEdad(parseDate);
             
             %>
@@ -108,7 +109,7 @@
                             <div class="row m-auto">
                                 <div class="col form-group">
                                     <label for="alias">Alias</label>
-                                    <input id="alias" class="form-control rounded-0" type="text" name="alias" <%=SetValueName(usuario.getAlias())%> placeholder="Alias"minlength="3" maxlength="45"><br />
+                                    <input id="alias" class="form-control rounded-0" type="text" name="alias" <%=SetValueName(usuario.getAlias())%> placeholder="Alias" minlength="3" maxlength="45"><br />
                                 </div>
                                 <div class="col form-group">
                                     <label for="correo">Correo</label>

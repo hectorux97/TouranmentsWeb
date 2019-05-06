@@ -36,8 +36,10 @@
                 <!--Right Part-->
                 <ul class="nav-item pl-0 mr-4" >
                     <!--Perfil Part!-->
-                    <%  Usuario userHeader=(Usuario)session.getAttribute("user");
-                        if(userHeader!=null){%>
+                    <%  
+                        if(request.getSession(false)!=null && session.getAttribute("user")!=null){
+                            Usuario userHeader=(Usuario)session.getAttribute("user");
+                    %>
                     <li class=" active">
                         <img class="perfilImage" <%="src='"+(userHeader.getImageURL()!=""?userHeader.getImageURL():"../img/perfil/IconoWeb.png")+"'"%> alt="perfilImage"/>
                         

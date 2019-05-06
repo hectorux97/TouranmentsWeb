@@ -22,10 +22,12 @@ public class UsuarioDAO extends DAOExtend{
 
         try {
             Statement st = conexion.createStatement();
-            st.executeUpdate("INSERT INTO usuarios(nombreUsuario,password,email) VALUES ('"
-                    + user.getNombre() + "','"
+            st.executeUpdate("INSERT INTO usuarios(nombreUsuario,password,email,telefono,nombreReal) VALUES ('"
+                    + user.getAlias()+ "','"
                     + user.getPassword() + "','"
-                    + user.getEmail() + "')");
+                    + user.getEmail() +"',"
+                    + user.getTelefono()+",'"
+                    + user.getNombre()+ "')");
             return true;
         } catch (SQLException e) {
         }
@@ -63,7 +65,6 @@ public class UsuarioDAO extends DAOExtend{
                 String apellidos = rs.getString("apellidosReal");
                 String pais = rs.getString("pais");
                 Date edad = rs.getDate("edad");
-
                 int tel = rs.getInt("telefono");
                 Usuario user=new Usuario(id, alias, imagen, password, email, poderes, creacion, nombre, apellidos, pais, edad, tel);
                 NickUsuarioDAO nickDAO= new NickUsuarioDAO();

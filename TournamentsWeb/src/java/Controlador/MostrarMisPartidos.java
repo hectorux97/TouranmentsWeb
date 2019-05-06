@@ -43,6 +43,7 @@ public class MostrarMisPartidos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session= request.getSession(false);
         if(session!=null){
+           
             Usuario user= (Usuario)session.getAttribute("user");           
             
             if(user==null){

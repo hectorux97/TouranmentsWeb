@@ -29,6 +29,7 @@
             <%@include file="/includes/header.jsp" %>     
         </header>
         <%
+            session.setMaxInactiveInterval(800);
             Partido p = (Partido)session.getAttribute("partido");//new Partido(1,new Torneo("Happy", new Usuario(), new Juego("CSGO")), 1, new Usuario("Fer", "", ""), 1, new Usuario("Fer", "", ""), 2, 1, 2, 0, new Date(2000 - 01 - 01), "/img/avatar.png",0);//
             //p.setTorneo(new Torneo("Happy", new Usuario(), new Juego("CSGO")));
         %>
