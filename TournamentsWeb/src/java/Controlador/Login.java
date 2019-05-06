@@ -57,10 +57,13 @@ public class Login extends HttpServlet {
                     response.addCookie( new Cookie("remember", "true"));
                     response.addCookie( new Cookie("user", user.getAlias()));
                     response.addCookie( new Cookie("password", user.getPassword()));
+                }else{
+                     response.addCookie( new Cookie("remember", "false"));
                 }
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("/index.jsp");
+            /*RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);*/
             
         }else{
             response.sendRedirect("Login.jsp?Error=USER_PASSWORD_ERROR");

@@ -39,7 +39,7 @@ public class LogOut extends HttpServlet {
             session.invalidate();  
             }catch(IllegalStateException e){}
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
