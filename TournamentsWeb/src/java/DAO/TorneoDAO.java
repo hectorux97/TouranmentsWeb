@@ -107,6 +107,23 @@ public class TorneoDAO extends DAOExtend{
 
         return null;
     }
+       public ArrayList<Torneo> GetTorneos(String nombreJuego){
+         try{
+            ArrayList<Torneo> listaTorneos= new ArrayList<>();
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE juego LIKE '"+nombreJuego+"'");
+            while (rs.next()){
+                Torneo t= new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
+                listaTorneos.add(t);              
+                
+            }
+                return listaTorneos ;
+           
+        }catch(SQLException e){}
+
+        return null;
+    }
+    
     
      public boolean ModificarTorneo(Torneo torneo){
 

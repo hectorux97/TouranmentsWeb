@@ -58,6 +58,10 @@ public class Torneo {
         this.creador=creador;
         this.juego= juego;
     }
+     public Torneo(Juego juego) {
+        
+        this.juego= juego;
+    }
 
     public int getId() {
         return id;
