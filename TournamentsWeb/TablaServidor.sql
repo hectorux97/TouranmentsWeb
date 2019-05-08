@@ -36,6 +36,7 @@ CREATE TABLE `juegos` (
 
 LOCK TABLES `juegos` WRITE;
 /*!40000 ALTER TABLE `juegos` DISABLE KEYS */;
+INSERT INTO `juegos` VALUES ('ClashRoyal'),('CSGO'),('Fifa'),('LeagueOfLegends'),('Rainbow Six');
 /*!40000 ALTER TABLE `juegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,6 +143,7 @@ DROP TABLE IF EXISTS `torneoforusuario`;
 CREATE TABLE `torneoforusuario` (
   `idUsuario` int(11) NOT NULL,
   `idTorneo` int(11) NOT NULL,
+  `posicionEmparejamiento` tinyint(3) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`,`idTorneo`),
   KEY `Foreign_torneoID_idx` (`idTorneo`),
   CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`),
@@ -183,6 +185,7 @@ CREATE TABLE `torneos` (
 
 LOCK TABLES `torneos` WRITE;
 /*!40000 ALTER TABLE `torneos` DISABLE KEYS */;
+INSERT INTO `torneos` VALUES (1,'Fest','2019-01-06 00:00:00','2019-03-06','CSGO');
 /*!40000 ALTER TABLE `torneos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +209,9 @@ CREATE TABLE `usuarios` (
   `pais` varchar(30) DEFAULT NULL,
   `telefono` int(13) DEFAULT NULL,
   `tipoUsuario` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idUsuario`,`nombreUsuario`)
+  PRIMARY KEY (`idUsuario`,`nombreUsuario`),
+  UNIQUE KEY `nombreUsuario_UNIQUE` (`nombreUsuario`),
+  UNIQUE KEY `idUsuario_UNIQUE` (`idUsuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -216,6 +221,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'asdf','d','jhddf@sdf.com',NULL,'2009-01-01 00:00:00','Fer','Gr','1998-07-23','Spain',23233323,0),(2,'asdfd','d','jhddf@sdf.com',NULL,'2009-01-01 00:00:00','Fere','Grrt','1998-07-23','Spain',23237773,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -228,4 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-07 22:49:32
+-- Dump completed on 2019-05-08 12:35:55

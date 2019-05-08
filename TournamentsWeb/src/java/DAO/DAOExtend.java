@@ -27,7 +27,7 @@ public class DAOExtend {
         Connection con;  
         try{
             Class.forName("com.mysql.jdbc.Driver");             
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tournamentsmanager","root","");          
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tournamentsmanager","root","root");          
             return con;
         }catch(SQLException | ClassNotFoundException e){}    
         return null;

@@ -8,6 +8,7 @@ package DAO;
 import beans.Juego;
 import beans.Torneo;
 import beans.Usuario;
+import beans.UsuarioForTorneo;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -31,12 +32,8 @@ public class TorneoDAO extends DAOExtend{
             ps.setDate(3,(java.sql.Date)torneo.getFechaInicio());
             ps.setString(4, torneo.getJuegoName());
             ps.executeUpdate();
-            ResultSet rs=ps.getGeneratedKeys();
-            Statement st= conexion.createStatement();
-            //Set the creator of the tournament
-            st.executeUpdate("INSERT INTO torneoforusuario VALUES ("
-                    +rs.getInt("idTorneos")+","
-                    +torneo.getCreador().getId()+")");
+            ResultSet rs=ps.getGeneratedKeys();          
+            //Set the creator of the tournament           
             return true;
         }catch(SQLException e){}
 
@@ -59,9 +56,9 @@ public class TorneoDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE ( nombreTorneo LIKE '"+nombreTorneo+"')");
             if(rs.next()){
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idTorneo  =  "+rs.getInt("idTorneos")+")");                
-                UsuarioDAO creador= new UsuarioDAO();
-                Usuario user=creador.GetUsuario(result.getInt("idUsuario"));
-            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),user, new Juego(rs.getString("juego")));
+               /* UsuarioDAO creador= new UsuarioDAO();
+                Usuario user=creador.GetUsuario(result.getInt("idUsuario"));*/
+            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
             }else{
                 return null;
             }
@@ -96,9 +93,8 @@ public class TorneoDAO extends DAOExtend{
                 st=conexion.createStatement();
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE  idTorneo  =  "+idTorneo);
                 if(result.next()){                
-                    UsuarioDAO creador= new UsuarioDAO();
-                    Usuario user= creador.GetUsuario(result.getInt("idUsuario"));
-                    return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Usuario(), GetParticipantes(idTorneo), new Juego(rs.getString("juego")));
+                    
+                    return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), GetParticipantes(idTorneo), new Juego(rs.getString("juego")));
                 }
             }else{
                 return null;
@@ -137,16 +133,17 @@ public class TorneoDAO extends DAOExtend{
         return false;
     }
      
-    public ArrayList<Usuario> GetParticipantes(int idTorneo){
-        ArrayList<Usuario> participantes=new ArrayList<>();
+    public ArrayList<UsuarioForTorneo> GetParticipantes(int idTorneo){
+        ArrayList<UsuarioForTorneo> participantes=new ArrayList<>();
         try{            
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idTorneos  =  "+idTorneo+")");
+            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneos = "+idTorneo);
             while(rs.next()){
                                
                 UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(rs.getInt("idUsuario"));
-                participantes.add(user);
+                UsuarioForTorneo idUsuario= new UsuarioForTorneo(user,rs.getInt("posicionEmparejamiento"));
+                participantes.add(idUsuario);
             } 
             return participantes;
         }catch(SQLException e){}
@@ -157,7 +154,7 @@ public class TorneoDAO extends DAOExtend{
     public boolean EliminarParticipante(int idParticipante){
         try{            
             Statement st=conexion.createStatement();
-            st.executeQuery("DELETE FROM usuariointorneo WHERE ( idUsuario = "+idParticipante+")");
+            st.executeQuery("DELETE FROM usuariofortorneo WHERE idUsuario = "+idParticipante);
            
             return true;
         }catch(SQLException e){}
@@ -168,8 +165,8 @@ public class TorneoDAO extends DAOExtend{
     public boolean EliminarTorneo(int idTorneo){
           try{            
             Statement st=conexion.createStatement();
-            st.executeQuery("DELETE FROM usuariointorneo WHERE ( idTorneo = "+idTorneo+")");
             st.executeQuery("DELETE FROM torneos WHERE ( idTorneos = "+idTorneo+")");
+            st=conexion.createStatement();
             st.executeQuery("DELETE FROM torneoforusuario WHERE ( idTorneo = "+idTorneo+")");
            
             return true;

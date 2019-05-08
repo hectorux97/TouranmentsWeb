@@ -82,8 +82,7 @@ public class NoticiasDAO extends DAOExtend{
          try{
             Statement st=conexion.createStatement();
             st.executeUpdate("SET status = 0 WHERE idNoticias ='"+idNot+"'"); 
-            return true;
-            
+            return true;            
         }catch(SQLException e){}
         
         return false;
