@@ -19,7 +19,7 @@ public class GestorUsuario {
         Usuario checkUser=udao.GetUsuario(user.getAlias());
         
         
-            if(user.getAlias().equals(checkUser.getAlias()) && user.getPassword().equals(checkUser.getPassword())){
+            if(checkUser!=null && user.getAlias().equals(checkUser.getAlias()) && user.getPassword().equals(checkUser.getPassword())){
                 
                 return checkUser;
             }

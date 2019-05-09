@@ -5,6 +5,7 @@
   border-radius:10px;
   border-width: 2px;
   background-color: #3d444c;
+  cursor: pointer ;
 }
 .perfilImageButton{
       background-color: Transparent;
@@ -134,4 +135,12 @@ background-color: #6c737c;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 80%; /* Full width (cover the whole page) */
+  height: 70%; /* Full height (cover the whole page) */  
+  background-color: rgba(200,200,200,0.8); /* Black background with opacity */
+  margin-bottom:5em;
+  margin-left: -0.3em;
 }

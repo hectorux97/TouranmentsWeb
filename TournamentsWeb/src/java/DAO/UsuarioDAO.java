@@ -108,7 +108,7 @@ public class UsuarioDAO extends DAOExtend{
            st.executeUpdate("UPDATE usuarios SET nombreUsuario ='" + user.getAlias() + "',"
                     //+"password= '"+user.getPassword()+"',"
                     + "email= '" + user.getEmail() + "',"
-                    + "imagen= '" + "SDSD" + "',"
+                    + "imagen= '" + user.getImageURL() + "',"
                     + "nombreReal= '" + user.getNombre() + "',"
                     + "apellidosReal= '" + user.getApellidos() + "',"
                     + "edad= '" + user.getEdad() + "',"

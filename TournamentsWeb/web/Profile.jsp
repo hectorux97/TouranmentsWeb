@@ -4,6 +4,7 @@
     Author     : hector
 --%>
 
+<%@page import="java.io.File"%>
 <%@page import="beans.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.GlobalInfoDAO"%>
@@ -28,17 +29,31 @@
     </head>
     <body>
         <header>
+             
             <%@include file="/includes/header.jsp" %>
             <div id="alertComplete" class="alert alert-danger text-center" role="alert" style="display:none">
                 Rellene todos los campos <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
             </div>
-            <%@include file="/includes/headerPerfil.jsp" %>             
+            <%@include file="/includes/headerPerfil.jsp" %>  
+          
         </header>
         
             <%  
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                 GlobalInfoDAO info= new GlobalInfoDAO();
                 ArrayList<Juego> juegos= info.GetJuegos();
+                ArrayList<String> urlImg = new ArrayList();
+                String path="E:/Usuario/Documents/UnityProyects/TouranmentsWeb/TournamentsWeb/web/img/perfil";
+                File imageDir = new File(path);  
+                for(File imageFile : imageDir.listFiles()){  
+                    String imageFileName = imageFile.getName();  
+
+                        // add this images name to the list we are building up  
+                    urlImg.add("/img/perfil/"+imageFileName);  
+
+                }  
+                
+                //ArrayList<String> urlImg= info.GetImgURL();
                 /*Date edad= new Date();                
                 java.sql.Date parseDate= new java.sql.Date(edad.getTime());    */                  
                 Usuario usuario = (Usuario)session.getAttribute("user");//new Usuario(1, "asdadf","", "X",(byte)0, "asdad@gmail.com",parseDate);                
@@ -79,6 +94,18 @@
                 <!--Perfil-->
                 <div>
                     <form class="left form mx-md-2 my-3 pl-2 rounded" method="post" onsubmit="return Validate()">
+                         <nav class="navbar-item front overlay " id="imagePanel" style="visibility: hidden;">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-dark ml-md-2 mr-md-2">
+                            <h1 class="h2" style="color:black">Seleccione imagegn de Perfil</h1>
+                            </div>
+                             <div class="d-flex align-content-start flex-wrap w-100 h-100">
+                                 <%for(String s:urlImg){%>
+                                 <img class="m-2 p-2 border border-dark"<%="src='"+s+"'"%> style="height:100px;width:100px;border-width: 3px;" onclick="OneClick(this)"/>
+                                 <%}%>
+                                
+                             </div>
+                           
+                         </nav>
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
                             <h1 class="h2">Mi Perfil</h1>
                         </div>
@@ -89,10 +116,9 @@
                         <div class="form-group row-1 mb-0">
                             <div class="row m-auto">
                                 <div class="col-2 form-group">
-                                    <button type="button"class="perfilImageButton" name="button">
-                                        <a href="#">
-                                            <img class="perfilImageButtonImg" src="../img/IconoWeb.png"/>
-                                        </a>
+                                    <button type="button"class="perfilImageButton" name="button">                                       
+                                        <img id="imgPerfil" class="perfilImageButtonImg" <%="src='"+usuario.getImageURL()+"'"%> onclick="ShowPanel();"/> 
+                                        <input id="imgPerfilInput" type="text" name="imageURL" <%=SetValueName((usuario.getImageURL()!=""?usuario.getImageURL():"/img/perfil/IconoWeb.png"))%>  style="visibility: hidden;"><br />
                                     </button>
                                 </div>
                                 <div class="col-5 form-group">
@@ -384,7 +410,7 @@
                         </div>
                         <div class="form-group">
                         <% int i=0;
-                            for(Juego j:juegos){%>
+                            for(Juego j:juegos){ %>
                             <label for="edad">Nick <%=j.getNombre() %></label>
                             <input <%="id='nickJuego"+i+"'"%> type="text" class="form-control rounded-0 w-25 "  <%="name='nicksJuegos'"%> <%=SetValueName(usuario.getNick(j.getNombre()))%> minlength="1" maxlength="45"><br />
                         <%}%>    
@@ -402,6 +428,9 @@
             /* var alias= document.getElementById("alias");
              var nombre= document.getElementById("nombre");
              var email= document.getElementById("email");*/
+            var img= document.getElementById("imgPerfil");
+            
+            var imgInput= document.getElementById("imgPerfilInput");
             var alertComplete=document.getElementById("alertComplete");
             var nombre= document.getElementById("nombre");
             var nombreInitialValue=nombre.value;
@@ -416,8 +445,11 @@
             var telefono= document.getElementById("telefono");
             var telfonoInitialValue=telefono.value;
            
+            var onImageSelection=false;
             var Validate= function(){
-     
+                if(onImageSelection){
+                    return false;
+                }
                 if(correo.value===""){
                     correo.value=correoInitialValue;
                 }      
@@ -450,8 +482,42 @@
                 }               
                 return true;
              };
+            var panelImg= document.getElementById("imagePanel");
+            function OneClick(obj){
+                 img.src=obj.src;
+                imgInput.value=obj.src;
+                if(panelImg.style.visibility==="visible"){
+                panelImg.style.visibility=("hidden");
+                }else{
+                    panelImg.style.visibility=("visible");
+                }
+               
+            }
+            var ShowPanel= function(){
+                if(panelImg.style.visibility=="visible"){
+                panelImg.style.visibility=("hidden");
+                }else{
+                    panelImg.style.visibility=("visible");
+                }
+            };
+            function SetImgURL(value){
+                img.src=value.src;
+                imgInput.value=value.src;
+            };
+            function ValidateIMG(src){
+            var im = new Image(100,100);
+                im.onload = function() {
+                    // code to set the src on success
+                   SetImgURL(src);
+                };
+                im.onerror = function() {
+                    // doesn't exist or error loading
+                    alert('no image');
+                };
+
+                im.src = src; // fires off loading of image
+            };
             
-           
         </script>
             <%@include file="/includes/footer.html"%>          
     </body>

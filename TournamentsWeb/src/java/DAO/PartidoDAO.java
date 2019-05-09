@@ -13,8 +13,7 @@ import java.util.ArrayList;
  */
 public class PartidoDAO extends DAOExtend {
     
-    public PartidoDAO() {
-        conexion = getConection();       
+    public PartidoDAO() {             
     }
     
     public Partido GetPartido(int id){

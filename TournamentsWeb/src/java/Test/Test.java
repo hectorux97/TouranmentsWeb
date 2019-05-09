@@ -65,7 +65,8 @@ public class Test {
         }*/
          PartidoDAO pDAO = new PartidoDAO();
                 Partido p = pDAO.GetPartido(1);
-                Partido requestP= pDAO.GetPartido(1);               
+                 System.out.println("F");
+               /* Partido requestP= pDAO.GetPartido(1);               
                 if (p != null && requestP!=null) {
                     p.setPuntosUsuario1(requestP.getPuntosUsuario1());
                     p.setPuntosUsuario2(requestP.getPuntosUsuario2());
@@ -74,7 +75,7 @@ public class Test {
                      if(pDAO.ActualizarPartido(p)){
                          System.out.println("Succes");
                      }
-                }
+                }*/
                
     }
     
