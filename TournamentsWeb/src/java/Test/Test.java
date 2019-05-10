@@ -63,6 +63,7 @@ public class Test {
         if(t!=null){
             System.out.println("Succes");
         }*/
+<<<<<<< Updated upstream
          PartidoDAO pDAO = new PartidoDAO();
                 Partido p = pDAO.GetPartido(1);
                  System.out.println("F");
@@ -74,10 +75,22 @@ public class Test {
                      System.out.println("Funciona de momento");
                      if(pDAO.ActualizarPartido(p)){
                          System.out.println("Succes");
+=======
+         TorneoDAO torneo = new TorneoDAO();
+         System.out.println( torneo.GetTorneo(1));
+                       PartidoDAO partido = new PartidoDAO();
+                                    ArrayList<Partido> listaPartidos = partido.GetPartidos();
+                                    for (Partido p  : listaPartidos) {
+                                        
+                                    System.out.println( p.getTorneo());
+                                    
+                                       
+                                    }
+>>>>>>> Stashed changes
                      }
                 }*/
                
-    }
     
     
-}
+    
+
