@@ -19,7 +19,7 @@
         <%@include file="/includes/header.jsp" %>
     </header>
     <body>
-        <%String tit = request.getParameter("tipo");%>
+        <%String tit = request.getParameter("tipoNoticia");%>
 
         <!-- Page Content -->
   <div class="container">
@@ -50,11 +50,11 @@
           <div class="card-body">
             <h2 class="card-title"><%=titulo%></h2>
             <p class="card-text"><%=res%></p>
-            <a href="PaginaNoticias?noticias=mostrar idNoticia= <%=id%>" class="btn btn-primary">Read More &rarr;</a>
+            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
               Publicado el: <%=date%> por
-              <a href="PaginaNoticias?noticias=autor autor= <%=autor%>"><%=autor%></a>
+              <a href="PaginaNoticias?no=autor&autor=<%=autor%>"><%=autor%></a>
           </div>
           </div>
         <%}%>
@@ -62,7 +62,6 @@
     </div>
     </div>
 
-        
         
         
         

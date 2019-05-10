@@ -112,6 +112,7 @@ public class NoticiasDAO extends DAOExtend{
                 
                 minoticia.setFechaNoticia(rs.getDate(9));
                 minoticia.setAutor(rs.getString("autor"));
+                minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 listaTipoNoticias.add(minoticia);
             }
             
@@ -195,6 +196,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setFechaNoticia(rs.getDate(9));
                 minoticia.setAutor(rs.getString("autor"));
+                minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 listaAutorNoticias.add(minoticia);
             }
             
@@ -224,7 +226,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 minoticia.setAutor(rs.getString("autor"));
                 minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
-                
+                minoticia.setNoticiaTexto(rs.getString("noticiaTexto"));
                 listaRecomendadasNoticias.add(minoticia);
             }
             return listaRecomendadasNoticias;

@@ -41,7 +41,7 @@
                 <% String tipo = n.getTipoNoticia();%>
 
         
-                <a href="PaginaNoticias?noticia=mostrar&idNot=<%=id%>">
+                <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>">
                     <header class="jumbotron my-4" style="background-image:url(img/<%=img%>)">
       <h1 class="display-3"><%=titulo%></h1>
       <p class="lead"><%=res%></p>
@@ -55,7 +55,7 @@
       
     <div class="card-group">
          <div class="col-lg-4 col-md-6 mb-4">
-             <a href="PaginaNoticias?noticia=tipoNoticia&tipoNoticia=esports">    
+             <a href="PaginaNoticias?no=tipo&tipoNoticia=esports">    
         <div class="card h-100">
           <img class="card-img-top" src="img/ESports_files/22364914234_2dcc351e62_n.jpg" alt="">
           <div class="card-body">
@@ -67,7 +67,7 @@
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-          <a href="PaginaNoticias?noticia=tipoNoticia&tipoNoticia=novedades"> 
+          <a href="PaginaNoticias?no=tipo&tipoNoticia=novedades"> 
         <div class="card h-100">
           <img class="card-img-top" src="img/anno_1800.jpg" alt="">
           <div class="card-body">
@@ -79,7 +79,7 @@
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-          <a href="PaginaNoticias?noticia=tipoNoticia&tipoNoticia=review">
+          <a href="PaginaNoticias?no=tipo&tipoNoticia=review">
         <div class="card h-100" href="#">
           <img class="card-img-top" src="img/reviewlogo.png" alt="">
           <div class="card-body">
@@ -118,11 +118,11 @@
           <div class="card-body">
               <h2 class="card-title"><%=titulo%></h2>
               <p class="card-text"><%=res%></p>
-            <a href="PaginaNoticias?noticias=mostrar&idNoticia=<%=id%>" class="btn btn-primary">Read More &rarr;</a>
+            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
             Publicado el <%=date%> por
-            <a href="PaginaNoticias?noticias=autor&autor=<%=autor%>"><%=autor%></a>
+            <a href="PaginaNoticias?no=autor&autor=<%=autor%>"><%=autor%></a>
           </div>
         </div>
         <%}%>

@@ -21,11 +21,12 @@
     <body>
         <!-- Recuperamos la noticia -->
     <% ArrayList noticias =(ArrayList)request.getAttribute("noticias");
-        for(int i=0;i<1;i++){
+        int i = 0;
+        for(i=0;i<1;i++){
             Noticia n=(Noticia)noticias.get(i);%>
                 <% int id = n.getIdNot(); %>
-                <% String res = n.getTitular();%>
-                <% String titulo = n.getResumen();%>
+                <% String res = n.getResumen();%>
+                <% String titulo = n.getTitular();%>
                 <% String texto = n.getNoticiaTexto();%>
                 <% String img = n.getImgNoticia();%>
                 <% String autor = n.getAutor();%>
@@ -44,11 +45,11 @@
             <!-- Author -->
             <p class="lead">
           by
-          <a href="PaginaNoticias?noticia=arrayautor&autor=<%=autor%>"><%=autor%></a>
+          <a href="PaginaNoticias?no=autor&autor=<%=autor%>"><%=autor%></a>
         </p>
         <hr>
             <!-- Date/Time -->
-        <p class="getdate" id="getdate">Publicado el <%=date%> </p>
+        <p class="getdate" id="getdate">Publicado el blblblb <%=date%> </p>
         
         <hr>
         <!-- Preview Image -->
@@ -77,11 +78,9 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
+                  
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=gamer">#B Gamer</a>
-                  </li>
-                  <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=esports">#B ESports</a>
+                    <a href="PaginaNoticias?no=tipo&tipoNoticia=esports">#B ESports</a>
                   </li>
                   
                 </ul>
@@ -89,10 +88,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=novedades">#B Novedades</a>
+                    <a href="PaginaNoticias?no=tipo&tipoNoticia=novedades">#B Novedades</a>
                   </li>
                   <li>
-                    <a href="PaginadeNoticias?noticia=arraytipo&tipoNoticia=review">#B Review</a>
+                    <a href="PaginaNoticias?no=tipo&tipoNoticia=review">#B Review</a>
                   </li>
                   
                 </ul>
@@ -107,14 +106,17 @@
         
         <div class="card my-4">
           <h5 class="card-header">Quizás te interese...</h5>
-          <%for(int i=1;i<3;i++){
-            Noticia n=(Noticia)noticias.get(i);%>
-                <% int id = n.getIdNot(); %>
-                <% String res = n.getTitular();%>
-                <% String titulo = n.getResumen();%>
-                <% String img = n.getImgNoticia();%>
-                <% String tipo = n.getTipoNoticia();%>
-                <a href="PaginaNoticias?noticia=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>&id=<%=i%>">
+          <% for(i=1;i<3;i++){
+            Noticia n2=(Noticia)noticias.get(i);%>
+                <% int id = n2.getIdNot(); %>
+                <% String res = n2.getTitular();%>
+                <% String titulo = n2.getResumen();%>
+                <% String texto = n2.getNoticiaTexto();%>
+                <% String img = n2.getImgNoticia();%>
+                <% String autor = n2.getAutor();%>
+                <% Date date = n2.getFechaNoticia();%>
+                <% String tipo = n2.getTipoNoticia();%> 
+                <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" id="<%=i%>">
           <div class="card h-100">
               <img class="card-img-top" src="img/<%=img%>" alt="">
           <div class="card-body">
