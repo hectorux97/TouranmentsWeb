@@ -21,7 +21,7 @@
                         <a class="nav-link text-center" href="../index.jsp">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="#">Noticias</a>
+                        <a class="nav-link text-center" href="PaginaNoticias?no=inicionoticias&idNoticia=3">Noticias</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
                         <a class="nav-link text-center" href="#">Competiciones</a>
