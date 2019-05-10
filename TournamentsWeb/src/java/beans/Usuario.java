@@ -1,5 +1,6 @@
 
 package beans;
+import DAO.GlobalInfoDAO;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,6 +43,7 @@ public class Usuario {
         this.pais = user.pais;
         this.edad = user.edad;
         this.telefono = user.telefono;
+        this.nicks=user.nicks;
    
     }
 
@@ -58,9 +60,11 @@ public class Usuario {
         this.pais = pais;
         this.edad = edad;
         this.telefono = telefono;
+        this.nicks= new ArrayList<>();
     }
 
     public Usuario() {
+        this.nicks= new ArrayList<>();
     }
 
     public Usuario(int id, String alias,String password, String image,byte privilegios, String email, Date fechaCreacion) {
@@ -71,12 +75,14 @@ public class Usuario {
         this.privilegios=privilegios;
         this.email = email;
         this.fechaCreacion = fechaCreacion;
+        this.nicks= new ArrayList<>();
     }
 
     public Usuario(String alias, String password, String email) {
         this.alias = alias;
         this.password = password;
         this.email = email;
+        this.nicks= new ArrayList<>();
     }
     
     //GETTER & SETTER
@@ -164,6 +170,7 @@ public class Usuario {
     public Date getEdad() {
         return edad;
     }
+   
 
     public void setEdad(Date edad) {
         this.edad = edad;
@@ -190,6 +197,28 @@ public class Usuario {
 
     public void setNicks(ArrayList<NickUsuario> nicks) {
         this.nicks = nicks;
+    }
+    public void setNicks(String[] nicksAlias){
+        GlobalInfoDAO info= new GlobalInfoDAO();
+        ArrayList<Juego> juegos= info.GetJuegos();
+        this.nicks= new ArrayList<>();
+        for(int i=0;i<juegos.size();i++){
+            if(nicksAlias.length-1>=i){
+            this.nicks.add(new NickUsuario(juegos.get(i),nicksAlias[i]));
+            }
+        }
+        
+    }
+    public String getNick(String nombreJuego){
+        
+        if(nicks!=null && !nicks.isEmpty()){
+            for (NickUsuario n : nicks) {
+                if (n.juego.getNombre().equals(nombreJuego)) {
+                    return n.nombre;
+                }
+            }
+        }
+        return "";
     }
     
 }

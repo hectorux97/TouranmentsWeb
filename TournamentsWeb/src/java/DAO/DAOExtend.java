@@ -14,22 +14,27 @@ import java.sql.*;
 public class DAOExtend {
     
     protected Connection conexion;
-    
+    boolean count;
     public DAOExtend(){
-        System.out.println("XXC");
-        conexion=getConection();
-        if(conexion==null){
-            System.out.println("XXF");
+        if(!count){
+            count=true;
+           conexion=getConection();
         }
+        /*if(conexion==null){
+            System.out.println("XXF");
+        }*/
     }
     protected Connection getConection() {
         
-        Connection con;  
+        Connection con;
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");             
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tournamentsmanager","root","");          
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tournamentsmanager","root","");   
+            System.out.println("Conexion_Stablished");
             return con;
-        }catch(SQLException | ClassNotFoundException e){}    
+        }catch(SQLException | ClassNotFoundException e){}
+        System.out.println("Conexion_Failed");
         return null;
     }
 }

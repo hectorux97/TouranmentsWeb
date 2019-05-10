@@ -20,39 +20,35 @@ public class Torneo {
     private String nombre;
     private Date fechaPublicacion;
     private Date fechaInicio;
-    private Usuario creador;
-    private ArrayList<Usuario> participantes;
-
+    private ArrayList<UsuarioForTorneo> participantes;
+    private Juego juego;
     public Torneo() {
     }
 
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Usuario creador) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Juego juego) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
-        this.creador = creador;
+        this.juego=juego;
     }
 
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Usuario creador, ArrayList<Usuario> participantes) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio,ArrayList<UsuarioForTorneo> participantes, Juego juego) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
-        this.creador = creador;
         this.participantes = participantes;
-    }
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fechaPublicacion = fechaPublicacion;
-        this.fechaInicio = fechaInicio;
-        
-    }
+        this.juego= juego;
+    }    
 
-    public Torneo(String nombre, Usuario creador) {
+    public Torneo(String nombre,Juego juego) {
         this.nombre = nombre;
-        this.creador=creador;
+        this.juego= juego;
+    }
+     public Torneo(Juego juego) {
+        
+        this.juego= juego;
     }
 
     public int getId() {
@@ -85,30 +81,36 @@ public class Torneo {
 
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
+    }   
+
+    public Juego getJuego() {
+        return juego;
+    }
+    
+    public String getJuegoName(){
+        return juego.getNombre();
+    }
+    
+    public void setJuego(Juego juego) {
+        this.juego = juego;
     }
 
-    public Usuario getCreador() {
-        return creador;
-    }
-
-    public void setCreador(Usuario creador) {
-        this.creador = creador;
-    }
-
-    public ArrayList<Usuario> getParticipantes() {
+    
+    
+    public ArrayList<UsuarioForTorneo> getParticipantes() {
         return participantes;
     }
 
-    public void setParticipantes(ArrayList<Usuario> participantes) {
+    public void setParticipantes(ArrayList<UsuarioForTorneo> participantes) {
         this.participantes = participantes;
     }
     
-    public void addParticipantes(ArrayList<Usuario> participantes) {
-        for(Usuario u:participantes){
+    public void addParticipantes(ArrayList<UsuarioForTorneo> participantes) {
+        for(UsuarioForTorneo u:participantes){
             this.participantes.add(u);
         }    
     }
-     public void addParticipantes(Usuario participantes) {        
+     public void addParticipantes(UsuarioForTorneo participantes) {        
         this.participantes.add(participantes);        
     }
 }

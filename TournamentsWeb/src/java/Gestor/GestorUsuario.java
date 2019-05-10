@@ -19,7 +19,7 @@ public class GestorUsuario {
         Usuario checkUser=udao.GetUsuario(user.getAlias());
         
         
-            if(user.getAlias().equals(checkUser.getAlias()) && user.getPassword().equals(checkUser.getPassword())){
+            if(checkUser!=null && user.getAlias().equals(checkUser.getAlias()) && user.getPassword().equals(checkUser.getPassword())){
                 
                 return checkUser;
             }
@@ -35,7 +35,7 @@ public class GestorUsuario {
         Usuario checkUser=udao.GetUsuario(user.getAlias());
         if(checkUser==null){
             if(udao.GuardarNuevoUsuario(user)){
-            return user;
+                return user;
             }
         }
         return null;
@@ -43,13 +43,13 @@ public class GestorUsuario {
     
     public Usuario Modificar(Usuario user){
         UsuarioDAO udao=new UsuarioDAO();
-        Usuario checkUser=udao.GetUsuario(user.getId());
-        System.out.println(checkUser.getAlias());
-        if(checkUser!=null){
+        //Usuario checkUser=udao.GetUsuario(user.getId());
+       // System.out.println(checkUser.getAlias());
+        if(udao.CheckUserExist(user.getAlias())){
             if(udao.ModificarUsuario(user)){
                 return user;
             }
-            return new Usuario();
+            return null;
         }
         return null;
         

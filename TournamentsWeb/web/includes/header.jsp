@@ -1,5 +1,7 @@
 
 
+<%@page import="beans.Usuario"%>
+
 <nav class="navbar navbar-expand-md fixed-top w-100 p-0 h-md-10 front" style="margin:0px;">
     <!--Standard header-->
     <div class="navbar-item w-100 h-10 ">
@@ -34,9 +36,12 @@
                 <!--Right Part-->
                 <ul class="nav-item pl-0 mr-4" >
                     <!--Perfil Part!-->
-                    <%if(session.getAttribute("user")!=null){%>
+                    <%  
+                        if(request.getSession(false)!=null && session.getAttribute("user")!=null){
+                            Usuario userHeader=(Usuario)session.getAttribute("user");
+                    %>
                     <li class=" active">
-                        <img class="perfilImage" src="../img/IconoWeb.png" alt="perfilImage"/>
+                        <img class="perfilImage" <%="src='"+(userHeader.getImageURL()==""?userHeader.getImageURL():"img/perfil/IconoWeb.png")+"'"%> alt="perfilImage"/>
                         
                         <ul class="navbar-nav mr-auto" style="display:inline">
                             <li class="nav-item active shadow-sm collapse show" id="NoramlPerfilDropdown">
@@ -46,7 +51,7 @@
                                     <ul class="dropdown-menu ">
                                         <li class="dropdown-item"><a  class="nav-link text-white" href="#">Mis Torneos</a></li>
                                         <li class="dropdown-item"><a  class="nav-link text-white" href="../Profile.jsp">Perfil</a></li>
-                                        <li class="dropdown-item"><a  class="nav-link text-white" href="#">Log out</a></li>
+                                        <li class="dropdown-item"><a  class="nav-link text-white" href="/Controlador/LogOut">Log out</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -62,8 +67,8 @@
                             <li class="nav-item active rightHeader" >
                                 <a class="nav-link" href="../Login.jsp">Login</a>
                             </li>
-                            <li class="nav-item disable" style="height:27px;">
-                                <hr />
+                            <li class="nav-item disable" style="height:12px;background-color:#6d7582;width:1.6px">
+                               
                             </li>
                             <li class="nav-item active rightHeader">
                                 <a class="nav-link " href="../Register.jsp">Register</a>

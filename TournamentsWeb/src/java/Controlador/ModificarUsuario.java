@@ -38,14 +38,20 @@ public class ModificarUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session= request.getSession();
+        HttpSession session= request.getSession(false);
         if(session!=null){
-            Usuario user= (Usuario)request.getAttribute("user");  
+            Usuario user= (Usuario)request.getAttribute("user");
+            String[] nicks= request.getParameterValues("nicksJuegos");
             
             if(user==null){
                 response.sendRedirect("Profile.jsp?error=USER_MISSING");               
             }else{
-                user.setId(1);//((Usuario)session.getAttribute("user")).getId());
+                user.setId(((Usuario)session.getAttribute("user")).getId());
+                user.setNicks(nicks);
+              /*  if(user.getNicks().size()>0){
+                     response.sendRedirect("Profile.jsp?error=HAY_NICKS_"+user.getNicks().size());
+                     return;
+                }*/
                 GestorUsuario gestor=new GestorUsuario();
                 try {
                     Date edad= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fechaNacimiento"));
@@ -53,9 +59,9 @@ public class ModificarUsuario extends HttpServlet {
                     user.setEdad(parseDate);
                 }catch(ParseException e){}
 
-                
+                user= gestor.Modificar(user);
                 if(user!=null){            
-
+                    session.setAttribute("user", user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                     dispatcher.forward(request, response);
 

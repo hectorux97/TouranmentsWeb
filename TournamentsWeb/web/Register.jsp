@@ -37,21 +37,20 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                 </div>
-                                <input name="nombre" class="form-control" placeholder="Nombre" type="text" required>
+                                <input name="nombre" class="form-control" placeholder="Nombre" type="text" minlength="3" maxlength="20" required>
                             </div> <!-- form-group// -->
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                 </div>
                                 <!--fa fa-envelope-->
-                                <input name="alias" class="form-control" placeholder="Nombre de Usuario" type="text" required>
+                                <input name="alias" class="form-control" placeholder="Nombre de Usuario" type="text" minlength="3" maxlength="45" required>
                             </div> <!-- form-group// -->
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                                 </div>
                                 <input id="email" name="email" class="form-control" placeholder="nombre@gmail.com" type="email" required>
-
                             </div>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
@@ -65,7 +64,7 @@
                                     <option value="2">+198</option>
                                     <option value="3">+701</option>
                                 </select>-->
-                                <input id="telefono" name="telefono" class="form-control" placeholder="Teléfono Movil" type="number" required>
+                                <input id="telefono" name="telefono" class="form-control" placeholder="Teléfono Movil" type="number" min="100000000" max="999999999" required>
                             </div> <!-- form-group// -->
 
                             <!-- form-group end.// -->
@@ -74,13 +73,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                 </div>
-                                <input id="password" name="password" class="form-control" placeholder="Crear Contraseña" type="password" onkeyup ="CheckPassword();" required>
+                                <input id="password" name="password" class="form-control" placeholder="Crear Contraseña" type="password" onkeyup ="CheckPassword();" minlength="6" maxlength="45" required>
                             </div> <!-- form-group// -->
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                 </div>
-                                <input id="password2" name="password2" class="form-control" placeholder="Repetir Contraseña" type="password" onkeyup ="CheckPassword();" required>
+                                <input id="password2" name="password2" class="form-control" placeholder="Repetir Contraseña" type="password" onkeyup ="CheckPassword();" minlength="6" maxlength="45" required>
                             </div> <!-- form-group// -->                                      
                             <div class="form-group">
                                 <button id="submit" type="submit" class="btn btn-primary btn-block" > Crear Cuenta  </button>

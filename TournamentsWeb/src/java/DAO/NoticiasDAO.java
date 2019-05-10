@@ -74,6 +74,7 @@ public class NoticiasDAO extends DAOExtend{
     public boolean eliminarNoticia(int idNot){
          try{
             Statement st=conexion.createStatement();
+
             st.executeUpdate("UPDATE noticias SET status = 0 WHERE idNoticias ='"+idNot+"'"); 
             return true;
             

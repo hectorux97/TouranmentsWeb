@@ -121,64 +121,73 @@
 
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row menujuegos">
-                        <ul class="navbar navbar-expand-md  navbar-center">
-                            <% GlobalInfoDAO info = new GlobalInfoDAO();
-                                ArrayList<Juego> listaJuegos = info.GetJuegos();
-                                for (Juego j : listaJuegos) {%>
-                            <li class="menujuegos">
-                                <img <%="src='" + j.getImagenUrlNombre() + "'"%> class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                </img>
-                            </li> 
-                            <%}%>
-                            <!-- <li class="menujuegos">
-                               <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                               </img>
-                             </li>
-                             <li class=" menujuegos">
-                               <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                               </img>
-                             </li>
-                             <li class=" menujuegos ">
-                              <img src="img/fortnite.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                               </img>
-                             </li>
-                             <li class="menujuegos">
-                               <img src="img/lol.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                               </img>
-                             </li>
-                                     <li class="menujuegos">
-                               <img src="img/rainbow.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                               </img>
-                             </li>-->
-                        </ul>
+                <div id="toogleContainer">
+                    <div class="container card">
+                        <div class="row menujuegos">
+                            <ul class="navbar navbar-expand-md  navbar-center">
+                                <% GlobalInfoDAO info = new GlobalInfoDAO();
+                                    ArrayList<Juego> listaJuegos = info.GetJuegos();
+                                    for (Juego j : listaJuegos) {%>
+                                <li class="menujuegos">
+                                    <img <%="src='" + j.getImagenUrlNombre() + "'"%> class="logojuegotorneo" data-toggle="collapse" data-target=<%="'#" + j.getNombre() + "'"%> <%="href='#" + j.getNombre() + "'"%> role="button" aria-expanded="false" aria-controls=<%="'" + j.getNombre() + "'"%>  data-parent="#toogleContainer">
+                                    </img>
+                                </li> 
+                                <%}%>
+                                <!-- <li class="menujuegos">
+                                   <img src="img/clash.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                   </img>
+                                 </li>
+                                 <li class=" menujuegos">
+                                   <img src="img/fifa.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                   </img>
+                                 </li>
+                                 <li class=" menujuegos ">
+                                  <img src="img/fortnite.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                   </img>
+                                 </li>
+                                 <li class="menujuegos">
+                                   <img src="img/lol.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                   </img>
+                                 </li>
+                                         <li class="menujuegos">
+                                   <img src="img/rainbow.png" class="logojuegotorneo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                   </img>
+                                 </li>-->
+                            </ul>
+                        </div>
                     </div>
-                
-                    <div class="collapse" id="collapseExample">
+                                 <div class="accordion-group">
+                    <% 
+                    for (Juego j : listaJuegos) {
+                        %>                    
+                    <div class="collapse" <%="id='" + j.getNombre() + "'"%>>
                         <div class="card card-body">
                             <table id="ultimostorneos">
                                 <% TorneoDAO torneo = new TorneoDAO();
-                                ArrayList<Torneo> listaTorneos = torneo.GetTorneo();
-                                for (Torneo t : listaTorneos) {%>
-                            <tr>
+                                    ArrayList<Torneo> listaTorneos = torneo.GetTorneos(j.getNombre());
+                                    for (Torneo t : listaTorneos) {%>
+                                <tr>
                                     <td><i class="fa fa-instagram"></i></td>
                                     <td><%=  t.getFechaInicio()%></td>
                                     <td><img class="icono" src="img/lolico.png"></img></td>
                                     <td><a href="torneo1.html"><%=  t.getNombre()%></a></td>
                                     <td><span> 9 equipos </span></td>
                                 </tr>
-                            <%}%>
-                                
-                                
-
+                                <%}%>
                             </table>
                         </div>
                     </div>
+                                 </div>     
+
+                    <%}%>
+                </div>               
 
 
 
-                </div>
+
+
+
+
                 <div class="container margendivs">
 
                     <div class="container">
@@ -188,7 +197,7 @@
                                 <table id="partidos" class="centrartabla">
                                     <tr class="partido">
                                         <td class="juego">
-                                            <img class="logojuego" src="img/csgo.png"></img>
+                                            <img class="logojuego" src="img\juegos\CSGO\CSGONombre.png"></img>
                                         </td>
                                         <td class="local">
                                             <img class="logolocal" src="img/arctic.png"></img><br>
@@ -206,7 +215,7 @@
                                     </tr>
                                     <tr class="partido">
                                         <td class="juego">
-                                            <img class="logojuego" src="img/csgo.png"></img>
+                                            <img class="logojuego" src="img\juegos\CSGO\CSGONombre.png"></img>
                                         </td>
                                         <td class="local">
                                             <img class="logolocal" src="img/arctic.png"></img><br>
@@ -224,7 +233,7 @@
                                     </tr>
                                     <tr class="partido">
                                         <td class="juego">
-                                            <img class="logojuego" src="img/csgo.png"></img>
+                                            <img class="logojuego" src="img\juegos\CSGO\CSGONombre.png"></img>
                                         </td>
                                         <td class="local">
                                             <img class="logolocal" src="img/arctic.png"></img><br>

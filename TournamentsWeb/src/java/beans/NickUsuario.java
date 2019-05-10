@@ -11,6 +11,16 @@ package beans;
  */
 public class NickUsuario {
     
-    Juego juego;
-    String nombre;
+    public Juego juego;
+    public String nombre;
+
+    public NickUsuario() {
+    }
+
+    public NickUsuario(Juego juego, String nombre) {
+        this.juego = juego;
+        this.nombre = nombre;
+    }
+    
+    
 }
