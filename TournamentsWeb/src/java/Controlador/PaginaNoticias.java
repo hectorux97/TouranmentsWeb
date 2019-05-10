@@ -5,22 +5,23 @@
  */
 package Controlador;
 
+import DAO.NoticiasDAO;
+import beans.Noticia;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DAO.NoticiasDAO;
-import beans.Noticia;
-import java.util.Date;
-import java.util.ArrayList;
 
 /**
  *
  * @author JF
  */
+@WebServlet(name = "PaginaNoticias", urlPatterns = {"/PaginaNoticias"})
 public class PaginaNoticias extends HttpServlet {
 
     /**
@@ -36,65 +37,72 @@ public class PaginaNoticias extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String noticia = request.getParameter("noticia");
+        String not = request.getParameter("no");
         
-        if (noticia.equals("mostrar")) {
-            NoticiasDAO notiDAO = new NoticiasDAO();
-            ArrayList noticias;
-            String tipo = request.getParameter("tipoNoticia");
-            int id = Integer.parseInt(request.getParameter("idNoticia"));
-            noticias = notiDAO.getNoticiaYRecomendadas(tipo, id);
-            request.setAttribute("noticias", noticias);
-            RequestDispatcher rd=request.getRequestDispatcher("/blog2.jsp");
-            rd.forward(request,response);
-        }  
-        
-        else if (noticia.equals("insertar")) {
-                 NoticiasDAO notiDAO = new NoticiasDAO();
-                 Noticia noti = (Noticia)request.getAttribute("noticia");
-                 boolean aux = notiDAO.subirNoticia(noti);
-                 if(aux==true){
-                ///Ver mejor con las cosas de clase
-                 }
-                 else {
-                //Poner lo del error
-                 }
-            response.sendRedirect("index.jsp"); // por poner algo
-            
+        switch (not) {
+            case "mostrar":
+                {
+                    NoticiasDAO notiDAO = new NoticiasDAO();
+                    ArrayList noti;
+                    String tipo = request.getParameter("tipoNoticia");
+                    int id = Integer.parseInt(request.getParameter("idNoticia"));
+                    noti = notiDAO.getNoticiaYRecomendadas(tipo, id);
+                    request.setAttribute("noticias", noti);
+                    RequestDispatcher rd=request.getRequestDispatcher("/blog2.jsp");
+                    rd.forward(request,response);
+                    break;
+                }
+            case "insertar":
+                {
+                    NoticiasDAO notiDAO = new NoticiasDAO();
+                    Noticia noti = (Noticia)request.getAttribute("noticia");
+                    boolean aux = notiDAO.subirNoticia(noti);
+                    if(aux==true){
+                        ///Ver mejor con las cosas de clase
+                    }
+                    else {
+                        //Poner lo del error
+                    }  response.sendRedirect("index.jsp"); // por poner algo
+                    break;
+                }
+            case "tipo":
+                {
+                    NoticiasDAO notiDAO = new NoticiasDAO();
+                    ArrayList noti;
+                    String tipo = request.getParameter("tipoNoticia");
+                    noti = notiDAO.getNotiasTipo(tipo);
+                    request.setAttribute("noticias", noti);
+                    RequestDispatcher rd=request.getRequestDispatcher("/posttipo.jsp");
+                    rd.forward(request,response);
+                    break;
+                }
+            case "autor":
+                {
+                    NoticiasDAO notiDAO = new NoticiasDAO();
+                    ArrayList noti;
+                    String autor = request.getParameter("autor");
+                    noti = notiDAO.getNoticiasAutor(autor);
+                    request.setAttribute("noticias", noti);
+                    RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
+                    rd.forward(request,response);
+                    break;
+                }
+            case "inicionoticias":
+                {
+                    NoticiasDAO notiDAO = new NoticiasDAO();
+                    ArrayList noti;
+                    int id = Integer.parseInt(request.getParameter("idNoticia"));
+                    noti = notiDAO.getNoticiaInicial(id);
+                    request.setAttribute("noticias", noti);
+                    RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
+                    rd.forward(request,response);
+                    break;
+                }
+            default:
+                break;
         }
-        if (noticia.equals("inicionoticias")) {
-            
-        }
         
-        if (noticia.equals("tipo")) {
-            NoticiasDAO notiDAO = new NoticiasDAO();
-            ArrayList noticias;
-            String tipo = request.getParameter("tipoNoticia");
-            noticias = notiDAO.getNotiasTipo(tipo);
-            request.setAttribute("noticias", noticias);
-            RequestDispatcher rd=request.getRequestDispatcher("/posttipo.jsp");
-            rd.forward(request,response);
-        } 
-        if (noticia.equals("autor")) {
-            NoticiasDAO notiDAO = new NoticiasDAO();
-            ArrayList noticias;
-            String autor = request.getParameter("autor");
-            noticias = notiDAO.getNoticiasAutor(autor);
-            request.setAttribute("noticias", noticias);
-            RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
-            rd.forward(request,response);
-        } 
-        if (noticia.equals("inicionoticias")) {
-            NoticiasDAO notiDAO = new NoticiasDAO();
-            ArrayList noticias;
-            int id = Integer.parseInt(request.getParameter("idNoticia"));
-            noticias = notiDAO.getNoticiaInicial(id);
-            request.setAttribute("noticias", noticias);
-            RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
-            rd.forward(request,response);
-        }
-        
-    }
+     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
