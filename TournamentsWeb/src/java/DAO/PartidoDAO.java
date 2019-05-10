@@ -61,6 +61,27 @@ public class PartidoDAO extends DAOExtend {
         } catch (SQLException e) {}
         return partidos;        
     }
+     public ArrayList<Partido> GetPartidos(){
+        ArrayList<Partido> partidos= new ArrayList<>();
+         try {
+            Statement st = conexion.createStatement();
+           
+            ResultSet rs= st.executeQuery("SELECT * FROM partido ");
+            while(rs.next()){
+                TorneoDAO tDAO= new TorneoDAO();
+                Torneo t= tDAO.GetTorneo(rs.getInt("idTorneo"));
+                UsuarioDAO uDAO= new UsuarioDAO();
+                Usuario u1= uDAO.GetUsuario(rs.getInt("idUsuario1"));
+                Usuario u2= uDAO.GetUsuario(rs.getInt("idUsuario2"));
+                Partido p= new Partido(rs.getInt("idPartido"),t, rs.getInt("idTorneo"), u1, rs.getInt("idUsuario1"), u2, rs.getInt("idUsuario2"),
+                                            rs.getInt("usuario1Points"),rs.getInt("usuario2Points"), rs.getInt("ronda"), rs.getDate("fechaJuego"), rs.getString("img"), rs.getInt("estado"));
+                partidos.add(p);
+            }
+            
+           
+        } catch (SQLException e) {}
+        return partidos;        
+    }
     
      public boolean ActualizarPartido(Partido p){
          try {

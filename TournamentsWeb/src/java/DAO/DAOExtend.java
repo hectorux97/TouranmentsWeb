@@ -30,8 +30,10 @@ public class DAOExtend {
         
         try{
             Class.forName("com.mysql.jdbc.Driver");             
+
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tournamentsmanager","root","");   
             System.out.println("Conexion_Stablished");
+
             return con;
         }catch(SQLException | ClassNotFoundException e){}
         System.out.println("Conexion_Failed");

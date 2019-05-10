@@ -63,9 +63,15 @@ filter: grayscale(0);
 .partido{
 	-webkit-transition:background-color 0.5s;
 }
+.letrasjugadores {
+	font-size:15px;
+}
 .logolocal {
 	height:75px;
 	margin:10px;
+}
+.juego {
+	width:20%;
 }
 .margendivs {
 	margin-top:50px;
@@ -89,7 +95,8 @@ filter: grayscale(0);
 width:20%;
 }
 .visitante {
-width:40%;
+width:20%;
+margin-right:50px
 
 }
 .logojuego{

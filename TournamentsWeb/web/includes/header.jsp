@@ -24,10 +24,10 @@
                         <a class="nav-link text-center" href="PaginaNoticias?no=inicionoticias&idNoticia=3">Noticias</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="#">Competiciones</a>
+                        <a class="nav-link text-center" href="../index.jsp">Competiciones</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="#">TV</a>
+                        <a class="nav-link text-center" href="../tv.html">TV</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
                         <a class="nav-link text-center" href="#">Contacto</a>

@@ -1,4 +1,6 @@
 
+<%@page import="beans.Partido"%>
+<%@page import="DAO.PartidoDAO"%>
 <%@page import="beans.Torneo"%>
 <%@page import="DAO.TorneoDAO"%>
 <%@page import="beans.GlobalInfo"%>
@@ -193,62 +195,30 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7">
-                                <h2 class="tituloseccion text-center">Ultimos partidos</h2>
+                                <h2 class="tituloseccion text-center">Proximos partidos</h2>
                                 <table id="partidos" class="centrartabla">
+                                    <% PartidoDAO partido = new PartidoDAO();
+                                    ArrayList<Partido> listaPartidos = partido.GetPartidos();
+                                    for (Partido p  : listaPartidos) {%>
                                     <tr class="partido">
                                         <td class="juego">
-                                            <img class="logojuego" src="img\juegos\CSGO\CSGONombre.png"></img>
+                                            <img class="logojuego" <%="src='" + p.getTorneo().getJuego().getImagenUrlNombre() + "'"%>></img>
                                         </td>
                                         <td class="local">
-                                            <img class="logolocal" src="img/arctic.png"></img><br>
-                                            <span>Arctic Gaming </span>
+                                            <img class="logolocal" <%="src='" + p.getUsuario1().getImageURL() + "'"%> ></img><br>
+                                    <center><span class="letrasjugadores"><%=  p.getUsuario1().getAlias() %> </span></center>
                                         </td>
                                         <td class="versus">
-                                            <span class="fechapartido">04/03/2019 13:00</span><br>
+                                            <span class="fechapartido"><%=  p.getFechaInicio() %></span><br>
                                             VS
                                         </td>
 
                                         <td class="visitante">
-                                            <img class="logovisitante" src="img/heretics.png"></img><br>
-                                            <span>Team Heretics </span>
+                                            <img class="logovisitante"  <%="src='" + p.getUsuario2().getImageURL() + "'"%>></img><br>
+                                        <center> <span class="letrasjugadores"><%=  p.getUsuario2().getAlias() %> </span></center>
                                         </td>
                                     </tr>
-                                    <tr class="partido">
-                                        <td class="juego">
-                                            <img class="logojuego" src="img\juegos\CSGO\CSGONombre.png"></img>
-                                        </td>
-                                        <td class="local">
-                                            <img class="logolocal" src="img/arctic.png"></img><br>
-                                            <span>Arctic Gaming </span>
-                                        </td>
-                                        <td class="versus">
-                                            <span class="fechapartido">04/03/2019 13:00</span><br>
-                                            VS
-                                        </td>
-
-                                        <td class="visitante">
-                                            <img class="logovisitante" src="img/heretics.png"></img><br>
-                                            <span>Team Heretics </span>
-                                        </td>
-                                    </tr>
-                                    <tr class="partido">
-                                        <td class="juego">
-                                            <img class="logojuego" src="img\juegos\CSGO\CSGONombre.png"></img>
-                                        </td>
-                                        <td class="local">
-                                            <img class="logolocal" src="img/arctic.png"></img><br>
-                                            <span>Arctic Gaming </span>
-                                        </td>
-                                        <td class="versus">
-                                            <span class="fechapartido">04/03/2019 13:00</span><br>
-                                            VS
-                                        </td>
-
-                                        <td class="visitante">
-                                            <img class="logovisitante" src="img/heretics.png"></img><br>
-                                            <span>Team Heretics </span>
-                                        </td>
-                                    </tr>
+                                    <%}%>
                                 </table>
                             </div>
                             <div class="col-md-5 centrarmovil">

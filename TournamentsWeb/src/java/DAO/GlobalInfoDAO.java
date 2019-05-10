@@ -26,7 +26,7 @@ public class GlobalInfoDAO extends DAOExtend{
         try{
            
             Statement st=conexion.createStatement();
-            st.executeUpdate("INSERT INTO Juegos VALUES ('"+juego+"')");
+            st.executeUpdate("INSERT INTO juegos VALUES ('"+juego+"')");
             return true;
         }catch(SQLException e){}
         
@@ -36,7 +36,7 @@ public class GlobalInfoDAO extends DAOExtend{
     public boolean CheckJuegoExist(String juego){
          try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM Juegos WHERE ( nombreJuego LIKE '"+juego+"')");
+            ResultSet rs= st.executeQuery("SELECT * FROM juegos WHERE ( nombreJuego LIKE '"+juego+"')");
             return rs.next();
            
         }catch(SQLException e){}
@@ -49,7 +49,7 @@ public class GlobalInfoDAO extends DAOExtend{
         ArrayList<Juego> listaJuegos= new ArrayList<>();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM Juegos ");
+            ResultSet rs= st.executeQuery("SELECT * FROM juegos ");
             
             while(rs.next()){
                 Juego j= new Juego(rs.getString("nombreJuego"));
