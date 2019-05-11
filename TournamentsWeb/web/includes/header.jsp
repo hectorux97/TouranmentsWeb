@@ -48,8 +48,7 @@
                                 <div class="dropdown inclinado perfil">
                                     <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
                                         <span class="caret"></span></a>
-                                    <ul class="dropdown-menu ">
-                                        <li class="dropdown-item"><a  class="nav-link text-white" href="#">Mis Torneos</a></li>
+                                    <ul class="dropdown-menu ">                                        
                                         <li class="dropdown-item"><a  class="nav-link text-white" href="../Profile.jsp">Perfil</a></li>
                                         <li class="dropdown-item"><a  class="nav-link text-white" href="/Controlador/LogOut">Log out</a></li>
                                     </ul>

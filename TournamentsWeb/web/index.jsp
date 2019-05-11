@@ -172,7 +172,7 @@
                                     <td><i class="fa fa-instagram"></i></td>
                                     <td><%=  t.getFechaInicio()%></td>
                                     <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html"><%=  t.getNombre()%></a></td>
+                                    <td><a href="Torneo.jsp?idTorneo=<%=t.getId()%>"><%=  t.getNombre()%></a></td>
                                     <td><span> 9 equipos </span></td>
                                 </tr>
                                 <%}%>

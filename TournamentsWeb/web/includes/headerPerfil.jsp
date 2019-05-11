@@ -1,9 +1,9 @@
 
 <%@page import="beans.Usuario"%>
 <% 
-   // Usuario user = (Usuario) session.getAttribute("user");
-   // if (user.getPrivilegios() == 0) {
-if(true){%>
+    Usuario userHeader=(Usuario)session.getAttribute("user");
+    if (userHeader.getPrivilegios() == (byte)0) {
+/*if(true){*/%>
 <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">
     <ul class="nav flex-column text-center sidebar-sticky" style="background-color: #2d3238;width:100%;">
         <li class="nav-item menuAdmin  shadow-sm ">

@@ -26,11 +26,13 @@ public class TorneoDAO extends DAOExtend{
     public boolean GuardarNuevoTorneo(Torneo torneo){
 
         try{           
-            PreparedStatement ps=conexion.prepareStatement("INSERT INTO torneos(nombreTorneo,fechaPublicacion,fechaInicio,juego) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=conexion.prepareStatement("INSERT INTO torneos(nombreTorneo,fechaPublicacion,fechaInicio,juego,reglas,premio) VALUES (?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,torneo.getNombre());
             ps.setDate(2,(java.sql.Date)torneo.getFechaPublicacion());	
             ps.setDate(3,(java.sql.Date)torneo.getFechaInicio());
             ps.setString(4, torneo.getJuegoName());
+            ps.setString(5, torneo.getReglas());
+            ps.setString(6, torneo.getPremio());
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();          
             //Set the creator of the tournament           
@@ -58,7 +60,8 @@ public class TorneoDAO extends DAOExtend{
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE ( idTorneo  =  "+rs.getInt("idTorneos")+")");                
                /* UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(result.getInt("idUsuario"));*/
-            return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
+                 //Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego
+                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
             }else{
                 return null;
             }
@@ -72,7 +75,7 @@ public class TorneoDAO extends DAOExtend{
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM torneos");
             if(rs.next()){
-                Torneo t= new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
+                Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
                 listaTorneos.add(t);              
                 
             }
@@ -89,13 +92,13 @@ public class TorneoDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE  idTorneos  =  "+idTorneo);
             System.out.println("Get Torneo");
             if(rs.next()){
-                System.out.println("SET Torneo");
-                st=conexion.createStatement();
+                //System.out.println("SET Torneo");
+                /*st=conexion.createStatement();
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE  idTorneo  =  "+idTorneo);
                 if(result.next()){                
-                    
-                    return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), GetParticipantes(idTorneo), new Juego(rs.getString("juego")));
-                }
+                    */
+                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Juego(rs.getString("juego")));
+                //}
             }else{
                 return null;
             }
@@ -109,7 +112,7 @@ public class TorneoDAO extends DAOExtend{
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE juego LIKE '"+nombreJuego+"'");
             while (rs.next()){
-                Torneo t= new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
+                Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")));
                 listaTorneos.add(t);              
                 
             }
@@ -126,7 +129,10 @@ public class TorneoDAO extends DAOExtend{
         try{
             Statement st=conexion.createStatement();
             st.executeUpdate("UPDATE torneos SET nombreTorneo ='"+torneo.getNombre()+"'," 
-                    +"fechaInicio= '"+torneo.getFechaInicio()+"' WHERE idTorneos="+torneo.getId()+";");
+                    +"reglas='"+torneo.getReglas()+"',"
+                    +"premio='"+torneo.getPremio()+"',"
+                    +"fechaInicio= '"+torneo.getFechaInicio()
+                    +"' WHERE idTorneos="+torneo.getId()+";");
             return true;
         }catch(SQLException e){}
 
@@ -162,15 +168,15 @@ public class TorneoDAO extends DAOExtend{
         return false;
     }
     
-    public boolean EliminarTorneo(int idTorneo){
-          try{            
-            Statement st=conexion.createStatement();
-            st.executeQuery("DELETE FROM torneos WHERE ( idTorneos = "+idTorneo+")");
-            st=conexion.createStatement();
-            st.executeQuery("DELETE FROM torneoforusuario WHERE ( idTorneo = "+idTorneo+")");
-           
+    public boolean EliminarTorneo(int idTorneo) {
+        try {
+            Statement st = conexion.createStatement();
+            st.executeQuery("DELETE FROM torneoforusuario WHERE ( idTorneo = " + idTorneo + ")");
+            st = conexion.createStatement();
+            st.executeQuery("DELETE FROM torneos WHERE ( idTorneos = " + idTorneo + ")");
             return true;
-        }catch(SQLException e){}
+        } catch (SQLException e) {
+        }
 
         return false;
     }

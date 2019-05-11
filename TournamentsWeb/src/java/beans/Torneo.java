@@ -18,6 +18,8 @@ public class Torneo {
     
     private int id;
     private String nombre;
+    private String reglas;
+    private String premio;
     private Date fechaPublicacion;
     private Date fechaInicio;
     private ArrayList<UsuarioForTorneo> participantes;
@@ -25,6 +27,28 @@ public class Torneo {
     public Torneo() {
     }
 
+    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego) {
+        this.id = id;
+        this.nombre = nombre;
+        this.reglas = reglas;
+        this.premio = premio;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaInicio = fechaInicio;
+        this.participantes = participantes;
+        this.juego = juego;
+    }
+
+    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, Juego juego) {
+        this.id = id;
+        this.nombre = nombre;
+        this.reglas = reglas;
+        this.premio = premio;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaInicio = fechaInicio;
+        this.juego = juego;
+    }
+    
+    
     public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Juego juego) {
         this.id = id;
         this.nombre = nombre;
@@ -93,6 +117,22 @@ public class Torneo {
     
     public void setJuego(Juego juego) {
         this.juego = juego;
+    }
+
+    public String getReglas() {
+        return reglas;
+    }
+
+    public void setReglas(String reglas) {
+        this.reglas = reglas;
+    }
+
+    public String getPremio() {
+        return premio;
+    }
+
+    public void setPremio(String premio) {
+        this.premio = premio;
     }
 
     
