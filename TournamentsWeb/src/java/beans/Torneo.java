@@ -24,10 +24,11 @@ public class Torneo {
     private Date fechaInicio;
     private ArrayList<UsuarioForTorneo> participantes;
     private Juego juego;
+    private byte estado;
     public Torneo() {
     }
 
-    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego) {
+    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado) {
         this.id = id;
         this.nombre = nombre;
         this.reglas = reglas;
@@ -36,9 +37,10 @@ public class Torneo {
         this.fechaInicio = fechaInicio;
         this.participantes = participantes;
         this.juego = juego;
+        this.estado= estado;
     }
 
-    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, Juego juego) {
+    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, Juego juego, byte estado) {
         this.id = id;
         this.nombre = nombre;
         this.reglas = reglas;
@@ -49,7 +51,7 @@ public class Torneo {
     }
     
     
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Juego juego) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio, Juego juego , byte estado) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
@@ -57,7 +59,7 @@ public class Torneo {
         this.juego=juego;
     }
 
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio,ArrayList<UsuarioForTorneo> participantes, Juego juego) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio,ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
@@ -135,6 +137,26 @@ public class Torneo {
         this.premio = premio;
     }
 
+    public byte getEstado() {
+        return estado;
+    }
+
+    public void setEstado(byte estado) {
+        this.estado = estado;
+    }
+    
+    public String getEstadoNombre(){
+        
+        switch(estado){
+            
+            case 0:
+                return "Sin comenzar";           
+            case 7:
+                return "Finalizado";
+            default:
+                return "Comenzado";
+        }
+    }
     
     
     public ArrayList<UsuarioForTorneo> getParticipantes() {
