@@ -2,23 +2,44 @@
   `nombreJuego` varchar(20) NOT NULL,
   PRIMARY KEY (`nombreJuego`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `nickjuegos` (
-  `nombreJuego` varchar(25) NOT NULL,
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreUsuario` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(305) NOT NULL,
+  `imagen` varchar(200) NOT NULL DEFAULT '',
+  `fechaCreacionUsuario` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nombreReal` varchar(20) DEFAULT NULL,
+  `apellidosReal` varchar(50) DEFAULT NULL,
+  `edad` date DEFAULT '2000-01-01',
+  `pais` varchar(30) DEFAULT NULL,
+  `telefono` int(13) DEFAULT NULL,
+  `tipoUsuario` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idUsuario`,`nombreUsuario`),
+  UNIQUE KEY `nombreUsuario_UNIQUE` (`nombreUsuario`),
+  UNIQUE KEY `idUsuario_UNIQUE` (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `torneos` (
+  `idTorneos` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreTorneo` varchar(45) NOT NULL,
+  `fechaPublcicacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fechaInicio` date DEFAULT NULL,
+  `juego` varchar(20) NOT NULL,
+  `reglas` text NOT NULL,
+  `premio` varchar(100) NOT NULL DEFAULT '',
+  `estado` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`idTorneos`,`juego`),
+  KEY `fk_juegoTorneo` (`juego`),
+  CONSTRAINT `fk_juegoTorneo` FOREIGN KEY (`juego`) REFERENCES `juegos` (`nombreJuego`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `torneoforusuario` (
   `idUsuario` int(11) NOT NULL,
-  `nick` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`nombreJuego`,`idUsuario`),
-  KEY `usuarioFK` (`idUsuario`),
-  CONSTRAINT `juegoFK` FOREIGN KEY (`nombreJuego`) REFERENCES `juegos` (`nombreJuego`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `usuarioFK` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE TABLE `noticias` (
-  `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
-  `titular` varchar(45) NOT NULL,
-  `resumen` varchar(300) NOT NULL,
-  `noticiaTexto` longtext NOT NULL,
-  `imagenNoticia` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idNoticias`)
+  `idTorneo` int(11) NOT NULL,
+  `posicionEmparejamiento` tinyint(3) DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`,`idTorneo`),
+  KEY `Foreign_torneoID_idx` (`idTorneo`),
+  CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`),
+  CONSTRAINT `Foreign_usuarioID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `partido` (
   `idPartido` int(11) NOT NULL AUTO_INCREMENT,
@@ -35,64 +56,28 @@ CREATE TABLE `partido` (
   KEY `FK_idTorneo` (`idTorneo`),
   KEY `FK_jugador1` (`idUsuario1`),
   KEY `FK_jugador2` (`idUsuario2`),
-  CONSTRAINT `FK_idTorneo` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_jugador1` FOREIGN KEY (`idUsuario1`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_jugador2` FOREIGN KEY (`idUsuario2`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-CREATE TABLE `torneoforjuego` (
-  `nombreJuego` varchar(45) NOT NULL,
-  `idTorneo` int(11) NOT NULL,
-  PRIMARY KEY (`nombreJuego`,`idTorneo`),
-  KEY `torneoFK` (`idTorneo`),
-  CONSTRAINT `juego_FK` FOREIGN KEY (`nombreJuego`) REFERENCES `juegos` (`nombreJuego`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `torneoFK` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_idTorneo` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`),
+  CONSTRAINT `FK_jugador1` FOREIGN KEY (`idUsuario1`) REFERENCES `usuarios` (`idUsuario`),
+  CONSTRAINT `FK_jugador2` FOREIGN KEY (`idUsuario2`) REFERENCES `usuarios` (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE TABLE `torneoforusuario` (
-  `idUsuario` int(11) NOT NULL,
-  `idTorneo` int(11) NOT NULL,
-  PRIMARY KEY (`idUsuario`,`idTorneo`),
-  KEY `Foreign_torneoID_idx` (`idTorneo`),
-  CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Foreign_usuarioID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `noticias` (
+  `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
+  `titular` varchar(70) NOT NULL,
+  `resumen` varchar(300) NOT NULL,
+  `noticiaTexto` longtext NOT NULL,
+  `imagenNoticia` varchar(45) DEFAULT NULL,
+  `tipoNoticia` varchar(45) DEFAULT NULL,
+  `autor` varchar(45) DEFAULT NULL,
+  `status` TINYINT(1) DEFAULT '1',
+  `fechaNoticia` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idNoticias`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE TABLE `torneos` (
-  `idTorneos` int(11) NOT NULL AUTO_INCREMENT,
-  `nombreTorneo` varchar(45) NOT NULL,
-  `fechaPublcicacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fechaInicio` date DEFAULT NULL,
-  `juego` varchar(20) NOT NULL,
-  PRIMARY KEY (`idTorneos`,`juego`),
-  KEY `fk_juegoTorneo` (`juego`),
-  CONSTRAINT `fk_juegoTorneo` FOREIGN KEY (`juego`) REFERENCES `juegos` (`nombreJuego`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-CREATE TABLE `usuariointorneo` (
+CREATE TABLE `nickjuegos` (
+  `nombreJuego` varchar(25) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `idTorneo` int(11) NOT NULL,
-  PRIMARY KEY (`idUsuario`,`idTorneo`),
-  KEY `Foreign_torneoID` (`idTorneo`),
-  CONSTRAINT `Foreign_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Foreign_userID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE TABLE `usuarios` (
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombreUsuario` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `email` varchar(305) NOT NULL,
-  `imagen` varchar(300) DEFAULT NULL,
-  `fechaCreacionUsuario` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `nombreReal` varchar(20) DEFAULT NULL,
-  `apellidosReal` varchar(50) DEFAULT NULL,
-  `edad` date DEFAULT '2000-01-01',
-  `pais` varchar(30) DEFAULT NULL,
-  `telefono` int(13) DEFAULT NULL,
-  `tipoUsuario` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idUsuario`,`nombreUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-CREATE TABLE `usuariotonoticia` (
-  `idUsuario` int(11) NOT NULL,
-  `idNoticia` int(11) NOT NULL,
-  PRIMARY KEY (`idUsuario`,`idNoticia`),
-  KEY `FK_noticiaID` (`idNoticia`),
-  CONSTRAINT `FK_noticiaID` FOREIGN KEY (`idNoticia`) REFERENCES `noticias` (`idNoticias`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_userID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `nick` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`nombreJuego`,`idUsuario`),
+  KEY `usuarioFK` (`idUsuario`),
+  CONSTRAINT `juegoFK` FOREIGN KEY (`nombreJuego`) REFERENCES `juegos` (`nombreJuego`),
+  CONSTRAINT `usuarioFK` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
