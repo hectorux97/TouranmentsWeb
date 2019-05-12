@@ -158,11 +158,11 @@
                             </ul>
                         </div>
                     </div>
-                                 <div class="accordion-group">
+                                 
                     <% 
                     for (Juego j : listaJuegos) {
                         %>                    
-                    <div class="collapse" <%="id='" + j.getNombre() + "'"%>>
+                    <div class="collapse" data-parent="#toogleContainer" <%="id='" + j.getNombre() + "'"%>>
                         <div class="card card-body">
                             <table id="ultimostorneos">
                                 <% TorneoDAO torneo = new TorneoDAO();
@@ -179,7 +179,7 @@
                             </table>
                         </div>
                     </div>
-                                 </div>     
+                                     
 
                     <%}%>
                 </div>               

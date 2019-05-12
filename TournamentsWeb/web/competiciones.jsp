@@ -17,7 +17,17 @@
     <head>
        
         <title>TounamentsWeb</title>
-       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="icon" type="image/png" href="img/IconoWeb.png">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link type="text/javascript" href="competiciones.js">
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
         <%@include file="/includes/headerLinks.html" %>
@@ -27,35 +37,33 @@
             
             <%@include file="/includes/header.jsp" %>   
         </header>
-        <div class="row">
+        <div class="w-100">
 		<div class="container-fluid separador backgroundImage menubar">
 			<h1 class="separadorletras"> Nuestras Competiciones</h1>
 			<h5 class="separadorletras"> Torneos diarios en cada uno de los juegos </h5>
 		</div>
 	</div>
-	<div class="w-100">
+	<div class="w-100" id="accordion">
+        
 	<ul class="w-100" style="margin-top:15px;">
-	<li class="juegos " id="juego1" data-toggle="collapse" href="#ClashRoyal" role="button" aria-expanded="true" aria-controls="torneos1" ></li>
-	<li class="juegos" id="juego2" data-toggle="collapse" href="#Fortnite" role="button" aria-expanded="true" aria-controls="torneos1" ></li>
-	<li class="juegos" id="juego3" data-toggle="collapse" href="#LeagueOfLegends" role="button" aria-expanded="false" aria-controls="#LeagueOfLegends" data-target="#LeagueOfLegends" ></li>
-	<li class="juegos " id="juego4" data-toggle="collapse" href="#Fifa" role="button" aria-expanded="false" aria-controls="torneos1" ></li>
-	<li class="juegos " id="juego5" data-toggle="collapse" href="#RainBow6" role="button" aria-expanded="false" aria-controls="torneos1"></li>
+	<li class="juegos panel "   id="juego1" data-toggle="collapse" href="#ClashRoyal" role="button" aria-expanded="false" aria-controls="ClashRoyal" ></li>
+	<li class="juegos panel" id="juego2" data-toggle="collapse" href="#CSGO" role="button" aria-expanded="false" aria-controls="CSGO" ></li>
+	<li class="juegos panel"   id="juego3" data-toggle="collapse" href="#LeagueOfLegends" role="button" aria-expanded="false" aria-controls="LeagueOfLegends" ></li>
+	<li class="juegos panel"  id="juego4" data-toggle="collapse" href="#Fifa" role="button" aria-expanded="false" aria-controls="Fifa" ></li>
+	<li class="juegos panel"  id="juego5" data-toggle="collapse" href="#RainbowSix" role="button" aria-expanded="true" aria-controls="RainbowSix"></li>
 	</ul>
-	</div>
-        <div class="accordion-group">
+	
+       
         <% GlobalInfoDAO info2 = new GlobalInfoDAO();
                                     ArrayList<Juego> listaJuegos = info2.GetJuegos();
                                      %>
-                                      <% 
+                                      
+                    <% 
                     for (Juego j : listaJuegos) {
-                        %>      
-	
-	 <div class="collapse" <%="id='" + j.getNombre() + "'"%>>
-           
-                   
-           <div class="card card-body">
-               <table id="ultimostorneos2" class="textomovil">
-                            
+                        %>                    
+                    <div class="collapse" data-parent="#accordion" <%="id='" + j.getNombre() + "'"%> >
+                        <div class="card card-body" <%="data-parent='#" + j.getNombre() + "'"%>>
+                            <table id="ultimostorneos">
                                 <% TorneoDAO torneo = new TorneoDAO();
                                     ArrayList<Torneo> listaTorneos = torneo.GetTorneos(j.getNombre());
                                     for (Torneo t : listaTorneos) {%>
@@ -67,16 +75,15 @@
                                     <td><span> 9 equipos </span></td>
                                 </tr>
                                 <%}%>
-                                  
-	
-	</table>
-        
-  </div>
-</div>
-                             
-	
-                                 <%}%>
-                                 </div>
+                            </table>
+                        </div>
+                    </div>
+               
+
+                    <%}%>
+                     </div>  
+                
+                
 	<div class="container" style="height:100px;">
 	</div>
 	<div class="container" style="height:100px;">
