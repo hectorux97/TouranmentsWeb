@@ -80,7 +80,7 @@ public class PaginaNoticias extends HttpServlet {
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
                     ArrayList noti;
-                    String autor = request.getParameter("autor");
+                    int autor = Integer.parseInt(request.getParameter("autor"));
                     noti = notiDAO.getNoticiasAutor(autor);
                     request.setAttribute("noticias", noti);
                     RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");

@@ -17,8 +17,8 @@ public class Noticia {
     private String imgNoticia;
     private String tipoNoticia;
     private Date fechaNoticia;
-    private String autor;
-    private int status;
+    private int idAutor; //usiario
+    private boolean status;
     
     //he añadido 2 variables más y estoy pensando en poner otra que sea boolean destacada
     //hay que cambiar la tabla
@@ -35,15 +35,14 @@ public class Noticia {
     this.tipoNoticia=tipoNoticia;
     }
     // constructor para INSERTAR de noticias
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia,String tipoNoticia, String autor) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia,String tipoNoticia, int idAutor) {
     this.titular=titular;
     this.resumen=resumen;
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     this.noticiaTexto=noticiaTexto;
-    this.autor=autor;
+    this.idAutor=idAutor;
     }
-    
     
     // constructor para los tipos de noticias
     public Noticia (String titular,String resumen,String tipoNoticia,String imgNoticia) {
@@ -54,14 +53,14 @@ public class Noticia {
     }
     
     // constructor para las noticias en jsp independiente
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, String autor, int status) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, int idAutor, boolean status) {
     this.titular=titular;
     this.resumen=resumen;
     this.noticiaTexto=noticiaTexto;
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     this.fechaNoticia=fechaNoticia;
-    this.autor=autor;
+    this.idAutor=idAutor;
     this.status=status;
     }
     //Creo que en ambos constructores no es necesario añadir el id de la noticia, 
@@ -139,19 +138,19 @@ public class Noticia {
         this.fechaNoticia = fechaNoticia;
     }
 
-    public String getAutor() {
-        return autor;
+    public int getIdAutor() {
+        return idAutor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setIdAutor(int idAutor) {
+        this.idAutor = idAutor;
     }
 
-    public int getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
     

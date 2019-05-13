@@ -32,11 +32,11 @@
         for(int i=0;i<1;i++){
             Noticia n=(Noticia)noticias.get(i);%>
                 <% int id = n.getIdNot(); %>
-                <% String res = n.getTitular();%>
-                <% String titulo = n.getResumen();%>
+                <% String titulo = n.getTitular();%>
+                <% String res = n.getResumen();%>
                 <% String texto = n.getNoticiaTexto();%>
                 <% String img = n.getImgNoticia();%>
-                <% String autor = n.getAutor();%>
+                <% int autor = n.getIdAutor();%>
                 <% Date date = n.getFechaNoticia();%>
                 <% String tipo = n.getTipoNoticia();%>
 
@@ -107,11 +107,11 @@
           <% for(int i=1;i<5;i++){
             Noticia n=(Noticia)noticias.get(i);%>
                 <% int id = n.getIdNot(); %>
-                <% String res = n.getTitular();%>
-                <% String titulo = n.getResumen();%>
+                <% String titulo = n.getTitular();%>
+                <% String res = n.getResumen();%>
                 <% String texto = n.getNoticiaTexto();%>
                 <% String img = n.getImgNoticia();%>
-                <% String autor = n.getAutor();%>
+                <% int autor = n.getIdAutor();%>
                 <% Date date = n.getFechaNoticia();%>
                 <% String tipo = n.getTipoNoticia();%>  
                 <img class="card-img-top" src="img/<%=img%>" alt="Card image cap">

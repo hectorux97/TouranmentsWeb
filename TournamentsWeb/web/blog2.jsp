@@ -29,7 +29,7 @@
                 <% String titulo = n.getTitular();%>
                 <% String texto = n.getNoticiaTexto();%>
                 <% String img = n.getImgNoticia();%>
-                <% String autor = n.getAutor();%>
+                <% int autor = n.getIdAutor();%>
                 <% Date date = n.getFechaNoticia();%>
                 <% String tipo = n.getTipoNoticia();%>
                 
@@ -109,11 +109,11 @@
           <% for(i=1;i<3;i++){
             Noticia n2=(Noticia)noticias.get(i);%>
                 <% int id = n2.getIdNot(); %>
-                <% String res = n2.getTitular();%>
-                <% String titulo = n2.getResumen();%>
+                <% String titulo = n2.getTitular();%>
+                <% String res = n2.getResumen();%>
                 <% String texto = n2.getNoticiaTexto();%>
                 <% String img = n2.getImgNoticia();%>
-                <% String autor = n2.getAutor();%>
+                <% int autor = n2.getIdAutor();%>
                 <% Date date = n2.getFechaNoticia();%>
                 <% String tipo = n2.getTipoNoticia();%> 
                 <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" id="<%=i%>">
