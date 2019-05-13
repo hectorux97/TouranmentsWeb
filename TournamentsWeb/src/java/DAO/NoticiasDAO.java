@@ -6,6 +6,7 @@
 package DAO;
 
 import beans.Noticia;
+import beans.Usuario;
 import java.sql.*;
 import java.util.Date;
 import java.util.ArrayList;
@@ -33,11 +34,11 @@ public class NoticiasDAO extends DAOExtend{
             String tipo = minoticia.getTipoNoticia();
             //Usuario us = new Usuario();
             //UsuarioDAO user = new UsuarioDAO();
-            int autor = minoticia.getIdAutor();
+            Usuario autor = minoticia.getAutor();
             
             
             //He intentado seguir el orden y he aññadido al final fecha y autor 
-            st.executeUpdate("INSERT INTO noticias VALUES (NULL,'"+titular+"','"+resumen+"','"+texto+"','"+img+"','"+tipo+"','"+autor+"',true,CURRENT_TIMESTAMP())");
+            st.executeUpdate("INSERT INTO noticias VALUES (NULL,'"+titular+"','"+resumen+"','"+texto+"','"+img+"','"+tipo+"','"+autor.getId()+"',true,CURRENT_TIMESTAMP())");
            
             return true;
             
@@ -77,7 +78,7 @@ public class NoticiasDAO extends DAOExtend{
          try{
             Statement st=conexion.createStatement();
 
-            st.executeUpdate("UPDATE noticias SET status = 0 WHERE idNoticias ='"+idNot+"'"); 
+            st.executeUpdate("UPDATE noticias SET status = 0 WHERE idNoticias ="+idNot+""); 
             return true;
             
         }catch(SQLException e){}
@@ -113,7 +114,8 @@ public class NoticiasDAO extends DAOExtend{
                 //y con esta solo el dia mes y año la dejo por ahora
                 
                 minoticia.setFechaNoticia(rs.getDate(9));
-                minoticia.setIdAutor(rs.getInt("Usuarios_idUsuario"));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 listaTipoNoticias.add(minoticia);
             }
@@ -159,8 +161,8 @@ public class NoticiasDAO extends DAOExtend{
         ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND idNoticias ='"+idNot+"' UNION "
-                    + "(SELECT * FROM noticias WHERE status is true AND idNoticias !='"+idNot+"' ORDER BY idNoticias DESC LIMIT 4)");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND idNoticias ="+idNot+" UNION "
+                    + "(SELECT * FROM noticias WHERE status is true AND idNoticias !="+idNot+" ORDER BY idNoticias DESC LIMIT 4)");
             
             while(rs.next()){ 
                 Noticia minoticia= new Noticia();
@@ -169,7 +171,8 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
-                minoticia.setIdAutor(rs.getInt("Usuarios_idUsuario"));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
                 listaRecomendadasNoticias.add(minoticia);
             
@@ -188,7 +191,7 @@ public class NoticiasDAO extends DAOExtend{
         ArrayList<Noticia> listaAutorNoticias= new ArrayList<>();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND Usuarios_idUsuario ='"+autor+"' LIMIT 4");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND Usuarios_idUsuario ="+autor+" LIMIT 4");
             while(rs.next()){
                 
                 Noticia minoticia= new Noticia();
@@ -197,7 +200,8 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setFechaNoticia(rs.getDate(9));
-                minoticia.setIdAutor(rs.getInt("Usuarios_idUsuario"));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 listaAutorNoticias.add(minoticia);
             }
@@ -218,7 +222,7 @@ public class NoticiasDAO extends DAOExtend{
  
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND idNoticias ='"+idNot+"' UNION (SELECT * FROM noticias WHERE status is true AND tipoNoticia = '"+tipoNoticia+"' AND idNoticias !='"+idNot+"' ORDER BY RAND() LIMIT 2)");
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND idNoticias ="+idNot+" UNION (SELECT * FROM noticias WHERE status is true AND tipoNoticia = '"+tipoNoticia+"' AND idNoticias !="+idNot+" ORDER BY RAND() LIMIT 2)");
             while(rs.next()){ 
                 Noticia minoticia= new Noticia();
                 minoticia.setIdNot(rs.getInt("idNoticias"));
@@ -226,7 +230,8 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
-                minoticia.setIdAutor(rs.getInt("Usuarios_idUsuario"));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
                 minoticia.setNoticiaTexto(rs.getString("noticiaTexto"));
                 listaRecomendadasNoticias.add(minoticia);

@@ -17,7 +17,7 @@ public class Noticia {
     private String imgNoticia;
     private String tipoNoticia;
     private Date fechaNoticia;
-    private int idAutor; //usiario
+    private Usuario autor; //usiario
     private boolean status;
     
     //he añadido 2 variables más y estoy pensando en poner otra que sea boolean destacada
@@ -35,13 +35,13 @@ public class Noticia {
     this.tipoNoticia=tipoNoticia;
     }
     // constructor para INSERTAR de noticias
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia,String tipoNoticia, int idAutor) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia,String tipoNoticia, Usuario idAutor) {
     this.titular=titular;
     this.resumen=resumen;
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     this.noticiaTexto=noticiaTexto;
-    this.idAutor=idAutor;
+    this.autor=idAutor;
     }
     
     // constructor para los tipos de noticias
@@ -53,14 +53,14 @@ public class Noticia {
     }
     
     // constructor para las noticias en jsp independiente
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, int idAutor, boolean status) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, Usuario idAutor, boolean status) {
     this.titular=titular;
     this.resumen=resumen;
     this.noticiaTexto=noticiaTexto;
     this.imgNoticia=imgNoticia;
     this.tipoNoticia=tipoNoticia;
     this.fechaNoticia=fechaNoticia;
-    this.idAutor=idAutor;
+    this.autor=idAutor;
     this.status=status;
     }
     //Creo que en ambos constructores no es necesario añadir el id de la noticia, 
@@ -138,12 +138,12 @@ public class Noticia {
         this.fechaNoticia = fechaNoticia;
     }
 
-    public int getIdAutor() {
-        return idAutor;
+    public Usuario getAutor() {
+        return autor;
     }
 
-    public void setIdAutor(int idAutor) {
-        this.idAutor = idAutor;
+    public void setAutor(Usuario idAutor) {
+        this.autor = idAutor;
     }
 
     public boolean getStatus() {

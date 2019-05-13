@@ -12,59 +12,58 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <%@include file="/includes/headerLinks.html" %>
-        
+
     </head>
-    
-    <header>
-        <%@include file="/includes/header.jsp" %>
-    </header>
+
+
     <body>
+        
+        <header>
+            <%@include file="/includes/header.jsp" %>
+        </header>
         <%String tit = request.getParameter("tipoNoticia");%>
 
         <!-- Page Content -->
-  <div class="container">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Entries Column -->
+                <div class="col-md-12"> 
+                    <h1 class="my-4"><%=tit%></h1>
 
-    <div class="row">
+                    <!-- Blog Post -->
+                    <% ArrayList noticias = (ArrayList) request.getAttribute("noticias");
+            for (int i = 0; i < noticias.size(); i++) {
+                Noticia n = (Noticia) noticias.get(i);%>
+                    <% int id = n.getIdNot(); %>
+                    <% String titulo = n.getTitular();%>
+                    <% String res = n.getResumen();%>
+                    <% String texto = n.getNoticiaTexto();%>
+                    <% String img = n.getImgNoticia();%>
+                    <% String autorNombre = n.getAutor().getAlias();%>
+                    <% int idAutor = n.getAutor().getId();%>
+                    <% Date date = n.getFechaNoticia();%>
+                    <% String tipo = n.getTipoNoticia();%>
+                    <a href=""></a>
+                    <div class="card mb-4">
+                        <img class="card-img-top m-1" src="img/<%=img%>" alt="Card image cap">
+                        <div class="card-body m-2">
+                            <h2 class="card-title"><%=titulo%></h2>
+                            <p class="card-text"><%=res%></p>
+                            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Publicado el: <%=date%> por
+                            <a href="PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
+                        </div>
+                    </div>
+                    <%}%>
+                </div> 
+            </div>
+        </div>
 
-      <!-- Blog Entries Column -->
-      <div class="col-md-12">
 
-          <h1 class="my-4"><%=tit%>
-        </h1>
 
-        <!-- Blog Post -->
-        <% ArrayList noticias =(ArrayList)request.getAttribute("noticias");
-        for(int i=0;i<noticias.size();i++){
-            Noticia n=(Noticia)noticias.get(i);%>
-                <% int id = n.getIdNot(); %>
-                <% String titulo = n.getTitular();%>
-                <% String res = n.getResumen();%>
-                <% String texto = n.getNoticiaTexto();%>
-                <% String img = n.getImgNoticia();%>
-                <% int autor = n.getIdAutor();%>
-                <% Date date = n.getFechaNoticia();%>
-                <% String tipo = n.getTipoNoticia();%>
-                <a href=""></a>
-        <div class="card mb-4">
-            <img class="card-img-top" src="img/<%=img%>" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title"><%=titulo%></h2>
-            <p class="card-text"><%=res%></p>
-            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-              Publicado el: <%=date%> por
-              <a href="PaginaNoticias?no=autor&autor=<%=autor%>"><%=autor%></a>
-          </div>
-          </div>
-        <%}%>
-    </div> 
-    </div>
-    </div>
 
-        
-        
-        
         <%@include file="/includes/footer.html" %>
     </body> 
 </html>
