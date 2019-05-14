@@ -176,121 +176,70 @@ filter: grayscale(0);
 	
 	
 }
-#juego1 {
+#ClashRoyal {
 	 background: url(img/juego1.png) no-repeat; 
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 
 
 }
-#juego2{
+#Fortnite{
 	background: url(img/juego2.png) no-repeat;
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;	
 
 }
-#juego3 {
+#LeagueOfLegends {
 	background: url(img/juego3.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego4 {
+#Fifa {
 	background: url(img/juego4.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego5 {
+#RainbowSix {
 	background: url(img/juego5.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego1:hover {
+#CSGO {
+	background: url(img/juego6.png) no-repeat; 
+		 transition: all .7s ease;
+-webkit-transition: all .7s ease;
+}
+#ClashRoyal:hover {
 	 background: url(img/hover1.png) no-repeat; 
 	 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego2:hover{
+#Fortnite:hover{
 	background: url(img/hover2.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego3:hover {
+#LeagueOfLegends:hover {
 	background: url(img/hover3.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego4:hover {
+#Fifa:hover {
 	background: url(img/hover4.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-#juego5:hover {
+#RainbowSix:hover {
 	background: url(img/hover5.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
-.juego1 {
-	 background: url(img/juego1.png) no-repeat; 
-	 transition: all .7s ease;
+#CSGO:hover {
+	background: url(img/hover6.png) no-repeat; 
+		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
-width:350px;
-height:200px;
+}
 
-}
-.juego2{
-	background: url(img/juego2.png) no-repeat;
-	 transition: all .7s ease;
--webkit-transition: all .7s ease;	
-width:350px;
-height:200px;
-
-}
-.juego3 {
-	background: url(img/juego3.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-width:350px;
-height:200px;
-}
-.juego4 {
-	background: url(img/juego4.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-width:350px;
-height:200px;
-}
-.juego5 {
-	background: url(img/juego5.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-width:350px;
-height:200px;
-}
-.juego1:hover {
-	 background: url(img/hover1.png) no-repeat; 
-	 	 transition: all .7s ease;
--webkit-transition: all .7s ease;
-}
-.juego2:hover{
-	background: url(img/hover2.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-}
-.juego3:hover {
-	background: url(img/hover3.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-}
-.juego4:hover {
-	background: url(img/hover4.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-}
-.juego5:hover {
-	background: url(img/hover5.png) no-repeat; 
-		 transition: all .7s ease;
--webkit-transition: all .7s ease;
-}
 .competicionesmargen {
 	margin-top:500px;
 }

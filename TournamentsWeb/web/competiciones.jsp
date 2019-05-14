@@ -46,11 +46,15 @@
 	<div class="w-100" id="accordion">
         
 	<ul class="w-100" style="margin-top:15px;">
-	<li class="juegos panel "   id="juego1" data-toggle="collapse" href="#ClashRoyal" role="button" aria-expanded="false" aria-controls="ClashRoyal" ></li>
-	<li class="juegos panel" id="juego2" data-toggle="collapse" href="#CSGO" role="button" aria-expanded="false" aria-controls="CSGO" ></li>
-	<li class="juegos panel"   id="juego3" data-toggle="collapse" href="#LeagueOfLegends" role="button" aria-expanded="false" aria-controls="LeagueOfLegends" ></li>
-	<li class="juegos panel"  id="juego4" data-toggle="collapse" href="#Fifa" role="button" aria-expanded="false" aria-controls="Fifa" ></li>
-	<li class="juegos panel"  id="juego5" data-toggle="collapse" href="#RainbowSix" role="button" aria-expanded="true" aria-controls="RainbowSix"></li>
+	<li <% GlobalInfoDAO info = new GlobalInfoDAO();
+                                    ArrayList<Juego> listaJuegos2 = info.GetJuegos();
+                                    for (Juego j : listaJuegos2) {%>
+                                
+                                   <li class="juegos panel "   <%="id='" + j.getNombre() + "'"%> data-toggle="collapse" <%="href='#collapse" + j.getNombre() + "'"%> role="button" aria-expanded="true" <%="aria-controls='" + j.getNombre() + "'"%> ></li>
+                                    
+                                </li> 
+                                <%}%>
+	
 	</ul>
 	
        
@@ -61,7 +65,7 @@
                     <% 
                     for (Juego j : listaJuegos) {
                         %>                    
-                    <div class="collapse" data-parent="#accordion" <%="id='" + j.getNombre() + "'"%> >
+                    <div class="collapse" data-parent="#accordion" <%="id='collapse" + j.getNombre() + "'"%> >
                         <div class="card card-body" <%="data-parent='#" + j.getNombre() + "'"%>>
                             <table id="ultimostorneos">
                                 <% TorneoDAO torneo = new TorneoDAO();
