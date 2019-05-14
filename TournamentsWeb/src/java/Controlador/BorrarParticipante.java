@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author hector
  */
-@WebServlet(name = "BorrarParticipante", urlPatterns = {"/BorrarParticipante"})
+@WebServlet(urlPatterns = {"/Controlador/BorrarParticipante"})
 public class BorrarParticipante extends HttpServlet {
 
     /**

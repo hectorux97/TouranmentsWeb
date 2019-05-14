@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author JF
  */
-@WebServlet(name = "MostrarMisNoticias", urlPatterns = {"/MostrarMisNoticias"})
+@WebServlet(urlPatterns = {"/Controlador/MostrarMisNoticias"})
 public class MostrarMisNoticias extends HttpServlet {
 
     /**
@@ -48,7 +48,7 @@ public class MostrarMisNoticias extends HttpServlet {
                 NoticiasDAO nDAO= new NoticiasDAO();
                 ArrayList<Noticia> noticias= nDAO.getNoticiasAutor(user.getId());                            
                 request.setAttribute("listaNoticias", noticias);
-                response.sendRedirect("/AdminMisNoticias.jsp");
+                response.sendRedirect("AdminMisNoticias.jsp");
                 /*RequestDispatcher dispatcher = request.getRequestDispatcher("");
                 dispatcher.forward(request, response);*/                
             }

@@ -29,7 +29,7 @@
                             <ul class="list-unstyled mb-0">
 
                                 <li>
-                                    <a href="PaginaNoticias?no=tipo&tipoNoticia=esports">#B ESports</a>
+                                    <a href="/Controlador/PaginaNoticias?no=tipo&tipoNoticia=esports">#B ESports</a>
                                 </li>
 
                             </ul>
@@ -37,10 +37,10 @@
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="PaginaNoticias?no=tipo&tipoNoticia=novedades">#B Novedades</a>
+                                    <a href="/Controlador/PaginaNoticias?no=tipo&tipoNoticia=novedades">#B Novedades</a>
                                 </li>
                                 <li>
-                                    <a href="PaginaNoticias?no=tipo&tipoNoticia=review">#B Review</a>
+                                    <a href="/Controlador/PaginaNoticias?no=tipo&tipoNoticia=review">#B Review</a>
                                 </li>
 
                             </ul>
@@ -77,7 +77,7 @@
                     <!-- Author -->
                     <p class="lead">
                         by
-                        <a href="PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
+                        <a href="/Controlador/PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
                     </p>
                     <hr>
                     <!-- Date/Time -->
@@ -113,7 +113,7 @@
                 <% String img = n2.getImgNoticia();%>               
                 <% Date date = n2.getFechaNoticia();%>
                 <% String tipo = n2.getTipoNoticia();%> 
-                <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" id="<%=i%>">
+                <a href="/Controlador/PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" id="<%=i%>">
                     <div class="card h-100">
                         <img class="card-img-top w-50 m-auto" src="img/<%=img%>" alt="" >
                         <div class="card-body">

@@ -43,7 +43,7 @@
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="AdminMisNoticias.jsp">
                 Noticias <span class="sr-only">(current)</span>
             </a>
         </li>

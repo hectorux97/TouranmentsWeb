@@ -86,7 +86,7 @@ public class UsuarioDAO extends DAOExtend{
             ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE  idUsuario =" + userID );
             if (rs.next()) {
                 Usuario user= new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"), rs.getString("imagen"), rs.getString("password"),
-                        rs.getString("email"), (byte) rs.getInt("tipoUsuario"), rs.getDate("fechaCreacionUsuario"), rs.getString("nombreReal"),
+                        rs.getString("email"), (byte) rs.getByte("tipoUsuario"), rs.getDate("fechaCreacionUsuario"), rs.getString("nombreReal"),
                         rs.getString("apellidosReal"), rs.getString("pais"), rs.getDate("edad"), rs.getInt("telefono"));
                   // =new Usuario(id, alias, imagen, password, email, poderes, creacion, nombre, apellidos, pais, new Date(20, 10, 2019), tel);
                 NickUsuarioDAO nickDAO= new NickUsuarioDAO();

@@ -49,11 +49,11 @@
                         <div class="card-body m-2">
                             <h2 class="card-title"><%=titulo%></h2>
                             <p class="card-text"><%=res%></p>
-                            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
+                            <a href="/Controlador/PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Publicado el: <%=date%> por
-                            <a href="PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
+                            <a href="/Controlador/PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
                         </div>
                     </div>
                     <%}%>

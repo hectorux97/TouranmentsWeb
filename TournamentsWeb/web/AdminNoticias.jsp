@@ -8,10 +8,10 @@ page import="beans.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
-<% if(request.getParameter("idAutor")!=null){%>
+<% if(request.getParameter("titular")!=null){%>
 <!-- Con esta primera linea comentada funciona cuando es IdAutor que es un int, antes de cambiarlo por Usuario-->
     <!jsp:forward page="/PaginaNoticias?no=insertar"/> 
-    <jsp:forward page="/NewNoticia"/> 
+    <jsp:forward page="/Controlador/NewNoticia"/> 
 <%}%>
 <!DOCTYPE html>
 <html>
@@ -22,38 +22,8 @@ page import="beans.*"%>
     <body>
         <header>
             <%@include file="/includes/header.jsp" %>
-        
-            <!--Things of Admin ELIMINAR PARA EL RESTO-->
-  <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">
-    <ul class="nav flex-column text-center sidebar-sticky" style="background-color: #2d3238;width:100%;">
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="Admin_MiPerfil.html">
-          Mi Perfil <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="Admin_Noticias.html">
-          Noticias <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="Admin_Torneo.html">
-          Torneos <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
-          Partidos Activos <span class="sr-only">(current)</span>
-          </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
-          Log Out <span class="sr-only">(current)</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</header>
+            <%@include file="/includes/headerPerfil.jsp" %>       
+        </header>
 
 <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind" >
   <!--Cabecera-->
@@ -97,15 +67,12 @@ page import="beans.*"%>
           
           <label for="noticiaTexto">Noticia</label>
           <textarea name="noticiaTexto" rows="10" class="form-control rounded-0 w-75" placeholder="Escribe el cuerpo de la noticia"></textarea>
-          
-          
-          
         </div>
 
     
       <div class="form-group text-center pb-2">
         <div class="inclinado w-25 m-auto ">
-          <input type="submit" placeholder="Publicar">
+            <input class="nav-link text-center m-auto" type="submit" name="submit" value="Publicar">
         </div>
       </div>
     </div>

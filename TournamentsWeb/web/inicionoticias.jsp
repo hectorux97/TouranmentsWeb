@@ -39,7 +39,7 @@
             <% String tipo = n.getTipoNoticia();%>
 
 
-            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>">
+            <a href="/Controlador/PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>">
                 <header class="jumbotron my-4" style="background-image:url(img/<%=img%>)">
                     <h1 class="display-3"><%=titulo%></h1>
                     <p class="lead"><%=res%></p>
@@ -53,7 +53,7 @@
 
             <div class="card-group">
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="PaginaNoticias?no=tipo&tipoNoticia=esports">    
+                    <a href="/Controlador/PaginaNoticias?no=tipo&tipoNoticia=esports">    
                         <div class="card h-100">
                             <img class="card-img-top" src="img/ESports_files/22364914234_2dcc351e62_n.jpg" alt="">
                             <div class="card-body">
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="PaginaNoticias?no=tipo&tipoNoticia=novedades"> 
+                    <a href="/Controlador/PaginaNoticias?no=tipo&tipoNoticia=novedades"> 
                         <div class="card h-100">
                             <img class="card-img-top" src="img/anno_1800.jpg" alt="">
                             <div class="card-body">
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="PaginaNoticias?no=tipo&tipoNoticia=review">
+                    <a href="/Controlador/PaginaNoticias?no=tipo&tipoNoticia=review">
                         <div class="card h-100" href="#">
                             <img class="card-img-top" src="img/reviewlogo.png" alt="">
                             <div class="card-body">
@@ -113,11 +113,11 @@
                         <div class="card-body">
                             <h2 class="card-title"><%=titulo%></h2>
                             <p class="card-text"><%=res%></p>
-                            <a href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
+                            <a href="/Controlador/PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" class="btn btn-primary">Read More &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Publicado el <%=date%> por
-                            <a href="PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
+                            <a href="/Controlador/PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
                         </div>
                     </div>
                     <%}%>

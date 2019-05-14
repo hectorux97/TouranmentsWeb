@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author JF
  */
-@WebServlet(name = "NewNoticia", urlPatterns = {"/NewNoticia"})
+@WebServlet(urlPatterns = {"/Controlador/NewNoticia"})
 public class NewNoticia extends HttpServlet {
 
     /**
@@ -39,7 +39,7 @@ public class NewNoticia extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         
-		if(session != null){
+            if(session != null){
                     
                 //Como creo que deberia funcionar    
 		Usuario user = (Usuario)session.getAttribute("usuario");
@@ -71,11 +71,11 @@ public class NewNoticia extends HttpServlet {
                 
 		//user= gestion.recuperarUsuario(user.getNombre());
 		session.setAttribute("usuario",user);// opcional
-		response.sendRedirect("/MostrarMisNoticias");
-		}else{
+		response.sendRedirect("AdminMisNoticias.jsp");
+            }else{
 			
-			response.sendRedirect("login.html");
-		}
+                response.sendRedirect("login.html");
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
