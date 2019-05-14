@@ -55,15 +55,25 @@ public class PaginaNoticias extends HttpServlet {
             case "insertar":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
-                    Noticia noti = (Noticia)request.getAttribute("noticia");
-                    boolean aux = notiDAO.subirNoticia(noti);
-                    if(aux==true){
+                    Noticia noti = (Noticia)request.getAttribute("notic");
+                    //boolean aux = 
+                    notiDAO.subirNoticia(noti);
+                    //if(aux==true){
                         ///Ver mejor con las cosas de clase
-                    }
-                    else {
+                    //}
+                    //else {
                         //Poner lo del error
-                    }  response.sendRedirect("index.jsp"); // por poner algo
+                    //}  
+                    response.sendRedirect("index.jsp"); // por poner algo
                     break;
+                }
+                //Añadido  
+            case "borrar":
+                {
+                    NoticiasDAO notDAO = new NoticiasDAO();
+                    int id = Integer.parseInt(request.getParameter("idNoticia"));
+                    notDAO.eliminarNoticia(id);
+                    response.sendRedirect("AdminMisNoticias.jsp");
                 }
             case "tipo":
                 {
