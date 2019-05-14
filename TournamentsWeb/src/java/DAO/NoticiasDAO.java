@@ -86,6 +86,28 @@ public class NoticiasDAO extends DAOExtend{
         return false;
     }
     
+    public boolean ModificarNoticia(Noticia minoticia) {
+
+        try {
+            Statement st = conexion.createStatement();
+           st.executeUpdate("UPDATE noticias SET titular ='" + minoticia.getTitular() + "',"
+                    + "resumen= '" + minoticia.getResumen()+ "',"
+                    + "noticiaTexto= '" + minoticia.getNoticiaTexto()+ "',"
+                    + "imagenNoticia= '" + minoticia.getImgNoticia()+ "',"
+                    + "tipoNoticia = '" + minoticia.getTipoNoticia()+ "',"
+                    + "fechaNoticia = CURRENT_TIMESTAMP()"
+                    + " WHERE idNoticias =" + minoticia.getIdNot() + ";");
+           
+            //NickUsuarioDAO nickDAO= new NickUsuarioDAO();
+            //return nickDAO.GuardarNicks(user.getNicks(), user.getId());              
+            return true;
+          
+        } catch (SQLException e) {
+        }
+
+        return false;
+    }
+    
     //Mostrar Noticias por Tipología
     //Aqui vienen los cambios que podríamos hacer con el formato date
     

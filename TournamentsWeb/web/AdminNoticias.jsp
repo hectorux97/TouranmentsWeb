@@ -4,7 +4,7 @@
     Author     : JF
 --%>
 
-page import="beans.*"%>
+<%@page import="beans.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
