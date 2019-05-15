@@ -50,9 +50,9 @@ public class PaginaNoticias extends HttpServlet {
                     request.setAttribute("noticias", noti);
                     RequestDispatcher rd=request.getRequestDispatcher("/blog2.jsp");
                     rd.forward(request,response);
-                    
+                    break;
                 }
-                break;
+                
             case "insertar":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
@@ -66,9 +66,9 @@ public class PaginaNoticias extends HttpServlet {
                         //Poner lo del error
                     //}  
                     response.sendRedirect("/index.jsp"); // por poner algo
-                   
+                    break;  
                 }
-                 break;
+                 
                 //Añadido  
             case "borrar":
                 {
@@ -76,8 +76,9 @@ public class PaginaNoticias extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("idNoticia"));
                     notDAO.eliminarNoticia(id);
                     response.sendRedirect("/AdminMisNoticias.jsp");
+                    break;
                 }
-                 break;
+                 
             case "tipo":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
@@ -87,9 +88,9 @@ public class PaginaNoticias extends HttpServlet {
                     request.setAttribute("noticias", noti);
                     RequestDispatcher rd=request.getRequestDispatcher("/posttipo.jsp");
                     rd.forward(request,response);
-                    
+                    break;
                 }
-                break;
+                
             case "autor":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
@@ -100,9 +101,10 @@ public class PaginaNoticias extends HttpServlet {
                     
                     
                     RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
-                    rd.forward(request,response);              
+                    rd.forward(request,response);  
+                    break;
                 }
-                break;
+                
                 //añadido
                 case "modificarnoticia":
                 {
@@ -110,8 +112,9 @@ public class PaginaNoticias extends HttpServlet {
                     Noticia noti = (Noticia)request.getAttribute("notic");
                     notiDAO.ModificarNoticia(noti);
                     response.sendRedirect("/AdminMisNoticias.jsp");
+                    break;
                 }
-                break;
+                
                 case "recuperarnoticia":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
@@ -122,8 +125,9 @@ public class PaginaNoticias extends HttpServlet {
                     //response.sendRedirect("/ModificarNoticia.jsp");
                     RequestDispatcher rd=request.getRequestDispatcher("/ModificarNoticia.jsp");
                     rd.forward(request,response); 
+                    break;
                 }
-                break;
+                
             case "inicionoticias":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
@@ -133,9 +137,9 @@ public class PaginaNoticias extends HttpServlet {
                     request.setAttribute("noticias", noti);
                     RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
                     rd.forward(request,response);
-                    
+                    break;
                 }
-                break;
+                
             default:
                 response.sendRedirect("index.jsp?error=MISS_DIRECTIVE_ERROR");
                 break;

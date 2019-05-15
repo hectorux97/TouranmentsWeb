@@ -86,6 +86,24 @@ public class NoticiasDAO extends DAOExtend{
         return false;
     }
     
+    public Integer buscarAutor (int idNot) {
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND idNoticias ="+idNot+"");
+            
+            if (rs.next()){
+                Noticia minoticia= new Noticia();
+                
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
+
+            return minoticia.getAutor().getId();
+            }
+        }catch(SQLException e){}
+        
+        return null;
+    }
+    
     public Noticia mostrarNoticia(int idNot){
         
         
@@ -100,7 +118,8 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setFechaNoticia(rs.getDate(9));
-                //minoticia.setIdAutor(rs.getInt("Usuarios_idUsuario"));
+                //UsuarioDAO udao= new UsuarioDAO();
+                //minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 minoticia.setNoticiaTexto(rs.getString("noticiaTexto"));
                 

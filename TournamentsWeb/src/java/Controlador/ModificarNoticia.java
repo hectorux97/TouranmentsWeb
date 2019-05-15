@@ -46,10 +46,13 @@ public class ModificarNoticia extends HttpServlet {
                 Usuario user = (Usuario)session.getAttribute("usuario");
                 NoticiasDAO notiDAO = new NoticiasDAO();
                 Noticia noti = (Noticia)request.getAttribute("notic");
-                notiDAO.ModificarNoticia(noti);
+                int id = noti.getIdNot();
+                int autordenoticia = notiDAO.buscarAutor(id);
+                    if((user.getId())==autordenoticia) {
+                        notiDAO.ModificarNoticia(noti);
+                        response.sendRedirect("AdminMisNoticias.jsp");
+                    }
                 
-               
-		response.sendRedirect("AdminMisNoticias.jsp");
             } else{	
                 response.sendRedirect("login.jsp");
             }
