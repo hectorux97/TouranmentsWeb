@@ -26,7 +26,7 @@
             if(request.getSession(false)!=null){
                 Usuario user= (Usuario)session.getAttribute("user");
                 NoticiasDAO nDAO= new NoticiasDAO();
-                ArrayList<Noticia> noticias= nDAO.getNoticiasAutor(user.getId());
+                ArrayList<Noticia> noticias= nDAO.getTodasNoticiasAutor(user.getId());
                 session.setMaxInactiveInterval(1200);
         %>
         

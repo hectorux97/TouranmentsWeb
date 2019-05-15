@@ -8,9 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
-<% if(request.getParameter("titular")!=null){%>
-<!-- Con esta primera linea comentada funciona cuando es IdAutor que es un int, antes de cambiarlo por Usuario-->
-    <!jsp:forward page="/PaginaNoticias?no=insertar"/> 
+<% if(request.getParameter("titular")!=null){%>   
     <jsp:forward page="/Controlador/NewNoticia"/> 
 <%}%>
 <!DOCTYPE html>
@@ -33,10 +31,10 @@
   <form class="left form mx-md-2 my-3 pl-2 rounded" method="post">
     <div class="d-flex flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
       <div class="inclinado ">
-        <a class="nav-link" href="AdminNoticias.jsp">Nueva Noticia</a>
+        <a class="nav-link" href="/AdminNoticias.jsp">Nueva Noticia</a>
       </div>
       <div class="inclinado ">
-        <a class="nav-link" href="AdminMisNoticias.jsp">Mis Noticias</a>
+        <a class="nav-link" href="/AdminMisNoticias.jsp">Mis Noticias</a>
       </div>
       </div>
     <div class="form-group text-center">

@@ -9,9 +9,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
-<% if(request.getParameter("titular")!=null){%>
-    <!jsp:forward page="/Controlador/PaginaNoticias?no=modificarnoticia"/>
-    <jsp:forward page="/Controlador/ModificarNoticia"/>
+<% if(request.getParameter("titular")!=null){%>  
+    <jsp:forward page="/Controlador/ModificarNoticias"/>
 <%}%>
 <!DOCTYPE html>
 <html>
@@ -31,25 +30,24 @@
     //Noticia n = new Noticia();
     //int idNot = Integer.parseInt(request.getParameter("idNoticias"));
     //nDAO.mostrarNoticia(idNot);
-    Noticia n = (Noticia) request.getAttribute("noticias");
-    
+    Noticia n = (Noticia) request.getAttribute("noticia");    
     String tit = n.getTitular();
     String res = n.getResumen();
     String tex = n.getNoticiaTexto();
     String tip = n.getTipoNoticia();
     String img = n.getImgNoticia();
     int id = n.getIdNot();
-    int idAutor = n.getAutor().getId();
+   // int idAutor = n.getAutor().getId();
 %>
 <!--Noticia-->
 <div>
   <form class="left form mx-md-2 my-3 pl-2 rounded" method="post">
     <div class="d-flex flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
       <div class="inclinado ">
-        <a class="nav-link" href="AdminNoticias.jsp">Nueva Noticia</a>
+        <a class="nav-link" href="/AdminNoticias.jsp">Nueva Noticia</a>
       </div>
       <div class="inclinado ">
-        <a class="nav-link" href="/MostrarMisNoticias">Mis Noticias</a>
+        <a class="nav-link" href="/AdminMisNoticias.jsp">Mis Noticias</a>
       </div>
       </div>
     <div class="form-group text-center">

@@ -42,7 +42,7 @@ public class NewNoticia extends HttpServlet {
             if(session != null){
                     
                 //Como creo que deberia funcionar    
-		Usuario user = (Usuario)session.getAttribute("usuario");
+		Usuario user = (Usuario)session.getAttribute("user");
                 NoticiasDAO notiDAO = new NoticiasDAO();
                 Noticia noti = (Noticia)request.getAttribute("notic");
                 noti.setAutor(user);
@@ -69,12 +69,11 @@ public class NewNoticia extends HttpServlet {
                 notiDAO.subirNoticia(not);
 		*/
                 
-		//user= gestion.recuperarUsuario(user.getNombre());
-		session.setAttribute("usuario",user);// opcional
+		//user= gestion.recuperarUsuario(user.getNombre());		
 		response.sendRedirect("AdminMisNoticias.jsp");
             }else{
 			
-                response.sendRedirect("login.html");
+                response.sendRedirect("login.jsp");
             }
     }
 

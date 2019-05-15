@@ -38,7 +38,7 @@ public class NoticiasDAO extends DAOExtend{
             
             
             //He intentado seguir el orden y he aññadido al final fecha y autor 
-            st.executeUpdate("INSERT INTO noticias VALUES (NULL,'"+titular+"','"+resumen+"','"+texto+"','"+img+"','"+tipo+"','"+autor.getId()+"',true,CURRENT_TIMESTAMP())");
+            st.executeUpdate("INSERT INTO noticias VALUES (NULL,'"+titular+"','"+resumen+"','"+texto+"','"+img+"','"+tipo+"',"+autor.getId()+",true,CURRENT_TIMESTAMP())");
            
             return true;
             
@@ -118,8 +118,8 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
                 minoticia.setFechaNoticia(rs.getDate(9));
-                //UsuarioDAO udao= new UsuarioDAO();
-                //minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
                 minoticia.setNoticiaTexto(rs.getString("noticiaTexto"));
                 
@@ -180,7 +180,7 @@ public class NoticiasDAO extends DAOExtend{
                 
                 //y con esta solo el dia mes y año la dejo por ahora
                 
-                minoticia.setFechaNoticia(rs.getDate(9));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
                 UsuarioDAO udao= new UsuarioDAO();
                 minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
@@ -266,7 +266,7 @@ public class NoticiasDAO extends DAOExtend{
                 minoticia.setTitular(rs.getString("titular"));
                 minoticia.setResumen(rs.getString("resumen"));
                 minoticia.setImgNoticia(rs.getString("imagenNoticia"));
-                minoticia.setFechaNoticia(rs.getDate(9));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
                 UsuarioDAO udao= new UsuarioDAO();
                 minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
                 minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
@@ -277,7 +277,34 @@ public class NoticiasDAO extends DAOExtend{
            
         }catch(SQLException e){}
         
-        return null;
+        return listaAutorNoticias;
+    }
+    
+     public ArrayList<Noticia> getTodasNoticiasAutor(int autor){
+        
+        ArrayList<Noticia> listaAutorNoticias= new ArrayList<>();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND Usuarios_idUsuario ="+autor);
+            while(rs.next()){
+                
+                Noticia minoticia= new Noticia();
+                minoticia.setIdNot(rs.getInt("idNoticias"));
+                minoticia.setTitular(rs.getString("titular"));
+                minoticia.setResumen(rs.getString("resumen"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
+                minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
+                listaAutorNoticias.add(minoticia);
+            }
+            
+            return listaAutorNoticias;
+           
+        }catch(SQLException e){}
+        
+        return listaAutorNoticias;
     }
     
     //Para los post de una noticia con sus noticias recomendadas
@@ -307,7 +334,7 @@ public class NoticiasDAO extends DAOExtend{
            
         }catch(SQLException e){}
         
-        return null;
+        return listaRecomendadasNoticias;
     }
 }
 
