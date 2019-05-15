@@ -10,7 +10,7 @@
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
 <% if(request.getParameter("titular")!=null){%>
-    <jsp:forward page="/Controlador/ModificarNoticia"/> 
+    <jsp:forward page="PaginaNoticias?no=modificarnoticia"/> 
 <%}%>
 <!DOCTYPE html>
 <html>
