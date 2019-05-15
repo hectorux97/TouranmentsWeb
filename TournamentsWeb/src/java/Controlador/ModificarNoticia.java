@@ -48,10 +48,10 @@ public class ModificarNoticia extends HttpServlet {
                 Noticia noti = (Noticia)request.getAttribute("notic");
                 notiDAO.ModificarNoticia(noti);
                 
-                session.setAttribute("usuario",user);// opcional
+               
 		response.sendRedirect("AdminMisNoticias.jsp");
             } else{	
-                response.sendRedirect("login.html");
+                response.sendRedirect("login.jsp");
             }
     }
 

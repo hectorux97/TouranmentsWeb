@@ -107,8 +107,9 @@ public class TorneoDAO extends DAOExtend{
         return null;
     }
        public ArrayList<Torneo> GetTorneos(String nombreJuego){
-         try{
             ArrayList<Torneo> listaTorneos= new ArrayList<>();
+         try{
+           
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE juego LIKE '"+nombreJuego+"'");
             while (rs.next()){
@@ -120,7 +121,7 @@ public class TorneoDAO extends DAOExtend{
            
         }catch(SQLException e){}
 
-        return null;
+        return listaTorneos;
     }
     
     

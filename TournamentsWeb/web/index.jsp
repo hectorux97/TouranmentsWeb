@@ -1,12 +1,7 @@
 
-<%@page import="beans.Partido"%>
-<%@page import="DAO.PartidoDAO"%>
-<%@page import="beans.Torneo"%>
-<%@page import="DAO.TorneoDAO"%>
-<%@page import="beans.GlobalInfo"%>
+<%@page import="beans.*"%>
+<%@page import="DAO.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="DAO.GlobalInfoDAO"%>
-<%@page import="beans.Juego"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -14,8 +9,7 @@
        
         <title>TounamentsWeb</title>
        
-        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
+        
         <%@include file="/includes/headerLinks.html" %>
         <style>
            .bd-placeholder-img {
@@ -232,8 +226,6 @@
                     </div>
                 </div>
                 <div style="height:100px;" class=""></div>
-
-
             </main>
         
         <%@include file="/includes/footer.html" %>

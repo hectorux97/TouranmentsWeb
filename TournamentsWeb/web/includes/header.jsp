@@ -18,19 +18,19 @@
             <div class="collapse navbar-collapse"  id="PrincipalHeader">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="index.jsp">Inicio </a>
+                        <a class="nav-link text-center" href="/index.jsp">Inicio </a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="PaginaNoticias?no=inicionoticias&idNoticia=3">Noticias</a>
+                        <a class="nav-link text-center" href="/Controlador/PaginaNoticias?no=inicionoticias&idNoticia=3">Noticias</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="competiciones.jsp">Competiciones</a>
+                        <a class="nav-link text-center" href="/competiciones.jsp">Competiciones</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="tv.html">TV</a>
+                        <a class="nav-link text-center" href="/tv.html">TV</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="#">Contacto</a>
+                        <a class="nav-link text-center" href="/Contacto.jsp">Contacto</a>
                     </li>
                 </ul>
                 <!--Right Part-->

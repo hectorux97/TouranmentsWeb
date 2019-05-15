@@ -36,7 +36,7 @@
         <a class="nav-link" href="AdminNoticias.jsp">Nueva Noticia</a>
       </div>
       <div class="inclinado ">
-        <a class="nav-link" href="/MostrarMisNoticias">Mis Noticias</a>
+        <a class="nav-link" href="AdminMisNoticias.jsp">Mis Noticias</a>
       </div>
       </div>
     <div class="form-group text-center">
