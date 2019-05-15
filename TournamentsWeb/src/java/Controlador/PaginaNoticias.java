@@ -101,6 +101,18 @@ public class PaginaNoticias extends HttpServlet {
                     rd.forward(request,response);                    
                 }
                 break;
+                //añadido
+                case "recuperarnoticia":
+                {
+                    NoticiasDAO notiDAO = new NoticiasDAO();
+                    Noticia noti;
+                    int id = Integer.parseInt(request.getParameter("idNoticia"));
+                    noti = notiDAO.mostrarNoticia(id);
+                    request.setAttribute("noticias", noti);
+                    RequestDispatcher rd=request.getRequestDispatcher("/AdminModificarNoticia.jsp");
+                    rd.forward(request,response); 
+                }
+                break;
             case "inicionoticias":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();

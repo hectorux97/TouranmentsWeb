@@ -51,6 +51,7 @@
         <th scope="col">Tipo</th>
         <th scope="col">Fecha </th>
         <th scope="col">Borrado </th>
+        <th scope="col">Modificar</th>
       </tr>
     </thead>
     <tbody>
@@ -62,6 +63,7 @@
                     <td><%=n.getTipoNoticia() %></td>
                     <td><%=n.getFechaNoticia()%></td>
                     <td><a href="/Controlador/PaginaNoticias?no=borrar&idNoticia=<%=n.getIdNot()%>">Borrar</a></td>
+                    <td><a href="/Controlador/PaginaNoticias?no=recuperarnoticia&idNoticia=<%=n.getIdNot()%>">Modificar</a></td>
                 </tr>
             <%}%>
     </tbody>
