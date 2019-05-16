@@ -22,7 +22,7 @@
         <div class="col-md-4" style="position:absolute;right:0;">
             <!-- Categories Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
+                <h5 class="card-header">Categorías</h5>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
@@ -76,12 +76,12 @@
                     </h1> 
                     <!-- Author -->
                     <p class="lead">
-                        by
+                        Publicado por: 
                         <a href="/Controlador/PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
                     </p>
                     <hr>
                     <!-- Date/Time -->
-                    <p class="getdate" id="getdate">Publicado el blblblb <%=date%> </p>
+                    <p class="getdate" id="getdate">En <%=date%> </p>
 
                     <hr>
                     <!-- Preview Image -->

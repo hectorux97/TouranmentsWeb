@@ -12,7 +12,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <%@include file="/includes/headerLinks.html" %>
-
+        <style>
+    h1 {
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 50px;
+        padding-top: 0.15em;
+        padding-bottom: 0.23em;
+    }
+    div.row {
+                 width: 100%;
+                 margin: 0px;
+                 padding: 0px;
+             }
+</style>
     </head>
 
 
