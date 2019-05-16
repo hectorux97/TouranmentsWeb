@@ -51,7 +51,7 @@
         </div> 
         <div class="container">
         <!-- Recuperamos la noticia -->
-        <% ArrayList noticias = (ArrayList) request.getAttribute("noticias");
+        <% ArrayList noticias = (ArrayList) session.getAttribute("noticias");
             int i = 0;
             for (i = 0; i < 1; i++) {
                 Noticia n = (Noticia) noticias.get(i);%>

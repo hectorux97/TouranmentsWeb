@@ -35,9 +35,12 @@
 
             <!-- Jumbotron Header --- Saco la Noticia destacada -->
 
-            <% ArrayList noticias = (ArrayList) request.getAttribute("noticias");
-    for (int i = 0; i < 1; i++) {
-        Noticia n = (Noticia) noticias.get(i);%>
+            <%  NoticiasDAO notiDAO = new NoticiasDAO();
+                ArrayList noticias;
+                int idNot = Integer.parseInt(request.getParameter("idNoticia"));
+                noticias = notiDAO.getNoticiaInicial(idNot);
+            for (int i = 0; i < 1; i++) {
+            Noticia n = (Noticia) noticias.get(i);%>
             <% int id = n.getIdNot(); %>
             <% String titulo = n.getTitular();%>
             <% String res = n.getResumen();%>
@@ -107,7 +110,7 @@
                     <!-- Blog Post -->
                     
                         <% for (int i = 1; i < 5; i++) {
-                  Noticia n = (Noticia) noticias.get(i);%>
+                        Noticia n = (Noticia) noticias.get(i);%>
                         <% int id = n.getIdNot(); %>
                         <% String titulo = n.getTitular();%>
                         <% String res = n.getResumen();%>

@@ -10,12 +10,14 @@ import beans.Noticia;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.jms.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,9 +49,11 @@ public class PaginaNoticias extends HttpServlet {
                     String tipo = request.getParameter("tipoNoticia");
                     int id = Integer.parseInt(request.getParameter("idNoticia"));
                     noti = notiDAO.getNoticiaYRecomendadas(tipo, id);
-                    request.setAttribute("noticias", noti);
-                    RequestDispatcher rd=request.getRequestDispatcher("/blog2.jsp");
-                    rd.forward(request,response);
+                    HttpSession session= request.getSession();
+                    session.setAttribute("noticias", noti);
+                    response.sendRedirect("/blog2.jsp");
+                   /* RequestDispatcher rd=request.getRequestDispatcher("/blog2.jsp");
+                    rd.forward(request,response);*/
                     break;
                 }
                 
@@ -130,16 +134,13 @@ public class PaginaNoticias extends HttpServlet {
                 
             case "inicionoticias":
                 {
-                    NoticiasDAO notiDAO = new NoticiasDAO();
-                    ArrayList noti;
-                    int id = Integer.parseInt(request.getParameter("idNoticia"));
-                    noti = notiDAO.getNoticiaInicial(id);
-                    request.setAttribute("noticias", noti);
-                    RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
-                    rd.forward(request,response);
-                    break;
+                   
+                    response.sendRedirect("/inicionoticias.jsp?idNoticia="+request.getParameter("idNoticia"));
+                    /*RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
+                    rd.forward(request,response);*/
+                    
                 }
-                
+                break;
             default:
                 response.sendRedirect("index.jsp?error=MISS_DIRECTIVE_ERROR");
                 break;

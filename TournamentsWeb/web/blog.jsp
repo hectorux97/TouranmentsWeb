@@ -19,13 +19,13 @@
     </header>
     <body>
         <!-- Recuperamos la noticia -->
-      <% Noticia mensajes =(Noticia)request.getAttribute("noticia");%>
+      <% Noticia mensajes =(Noticia)session.getAttribute("noticia");%>
       <% int id = mensajes.getIdNot(); %>
       <% String res = mensajes.getTitular();%>
       <% String titulo = mensajes.getResumen();%>
       <% String texto = mensajes.getNoticiaTexto();%>
       <% String img = mensajes.getImgNoticia();%>
-      <% String autor = mensajes.getAutor();%>
+      <% String autor = mensajes.getAutor().getAlias();%>
       <% Date date = mensajes.getFechaNoticia();%>
        
       
