@@ -160,8 +160,15 @@ public class Torneo {
     
     
     public ArrayList<UsuarioForTorneo> getParticipantes() {
+        
         return participantes;
     }
+    public int getParticipantesNum() {
+        return participantes.size();
+        
+       
+    }
+
 
     public void setParticipantes(ArrayList<UsuarioForTorneo> participantes) {
         this.participantes = participantes;

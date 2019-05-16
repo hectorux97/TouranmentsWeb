@@ -74,8 +74,10 @@ public class TorneoDAO extends DAOExtend{
              ArrayList<Torneo> listaTorneos= new ArrayList<>();
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM torneos");
-            if(rs.next()){
+            while(rs.next()){
+                
                 Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"));
+                t.setParticipantes(GetParticipantes(rs.getInt("idTorneos")));
                 listaTorneos.add(t);              
                 
             }
@@ -113,7 +115,9 @@ public class TorneoDAO extends DAOExtend{
             Statement st=conexion.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE juego LIKE '"+nombreJuego+"'");
             while (rs.next()){
+                
                 Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"));
+                t.setParticipantes(GetParticipantes(rs.getInt("idTorneos")));
                 listaTorneos.add(t);              
                 
             }
@@ -166,7 +170,7 @@ public class TorneoDAO extends DAOExtend{
         ArrayList<UsuarioForTorneo> participantes=new ArrayList<>();
         try{            
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneos = "+idTorneo);
+            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo);
             while(rs.next()){
                                
                 UsuarioDAO creador= new UsuarioDAO();

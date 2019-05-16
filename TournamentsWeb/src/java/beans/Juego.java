@@ -37,4 +37,7 @@ public class Juego {
     public String getImagenUrlCompeticion(){
         return "/img/juegos/"+nombre+"/"+nombre+"Competicion.png";
     }
+    public String getImagenUrlIcono(){
+        return "/img/juegos/"+nombre+"/"+nombre+"Icono.png";
+    }
 }
