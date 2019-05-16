@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
          <%@include file="/includes/headerLinks.html" %>
+         <link rel="stylesheet" type="text/css" href="css/notprin.css">
     </head>
     <body>
         <header>
@@ -97,7 +98,7 @@
                     <h1 class="my-4">Últimas Noticias</h1>
 
                     <!-- Blog Post -->
-                    <div class="card mb-4">
+                    
                         <% for (int i = 1; i < 5; i++) {
                   Noticia n = (Noticia) noticias.get(i);%>
                         <% int id = n.getIdNot(); %>
@@ -108,7 +109,8 @@
                         <% String autorNombre = n.getAutor().getAlias();%>
                         <% int idAutor = n.getAutor().getId();%>
                         <% Date date = n.getFechaNoticia();%>
-                        <% String tipo = n.getTipoNoticia();%>  
+                        <% String tipo = n.getTipoNoticia();%> 
+                    <div class="card mb-4">
                         <img class="card-img-top" src="img/<%=img%>" alt="Card image cap">
                         <div class="card-body">
                             <h2 class="card-title"><%=titulo%></h2>
@@ -119,9 +121,9 @@
                             Publicado el <%=date%> por
                             <a href="/Controlador/PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
                         </div>
-                    
+                    </div>
                     <%}%>
-                </div>
+                
                 <!-- /.row -->
             </div> 
            </div>
