@@ -48,7 +48,7 @@
                     </h1>
 
                     <!-- Blog Post -->
-                    <% ArrayList noticias = (ArrayList) request.getAttribute("noticias");
+                    <% ArrayList noticias = (ArrayList) session.getAttribute("noticias");
             for (int i = 0; i < noticias.size(); i++) {
                 Noticia n = (Noticia) noticias.get(i);%>
                     <% int id = n.getIdNot(); %>

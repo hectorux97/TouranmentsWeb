@@ -80,58 +80,51 @@ public class PaginaNoticias extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("idNoticia"));
                     notDAO.eliminarNoticia(id);
                     response.sendRedirect("/AdminMisNoticias.jsp");
-                    break;
+
                 }
-                 
+                break;
             case "tipo":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
                     ArrayList noti;
                     String tipo = request.getParameter("tipoNoticia");
                     noti = notiDAO.getNotiasTipo(tipo);
-                    request.setAttribute("noticias", noti);
-                    RequestDispatcher rd=request.getRequestDispatcher("/posttipo.jsp");
-                    rd.forward(request,response);
-                    break;
+                    HttpSession session = request.getSession();
+                    session.setAttribute("noticias", noti);
+                    
+                    response.sendRedirect("/posttipo.jsp?tipoNoticia="+request.getParameter("tipoNoticia"));
+                    /*RequestDispatcher rd=request.getRequestDispatcher("/posttipo.jsp");
+                    rd.forward(request,response);*/
                 }
-                
+                break;
             case "autor":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
                     ArrayList noti;
                     int idAutor = Integer.parseInt(request.getParameter("autor"));
                     noti = notiDAO.getNoticiasAutor(idAutor);
-                    request.setAttribute("noticias", noti);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("noticias", noti);
+                    response.sendRedirect("/postautor.jsp?autor="+request.getParameter("autor"));
                     
-                    
-                    RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
-                    rd.forward(request,response);  
-                    break;
+                    /*RequestDispatcher rd=request.getRequestDispatcher("/postautor.jsp");
+                    rd.forward(request,response);*/
+
                 }
-                
-                //añadido
-                case "modificarnoticia":
-                {
-                    NoticiasDAO notiDAO = new NoticiasDAO();
-                    Noticia noti = (Noticia)request.getAttribute("notic");
-                    notiDAO.ModificarNoticia(noti);
-                    response.sendRedirect("/AdminMisNoticias.jsp");
-                    break;
-                }
-                
+                break;
                 case "recuperarnoticia":
                 {
                     NoticiasDAO notiDAO = new NoticiasDAO();
                     Noticia noti;
                     int id = Integer.parseInt(request.getParameter("idNoticia"));
                     noti = notiDAO.mostrarNoticia(id);
-                    request.setAttribute("noticia", noti);
-                    //response.sendRedirect("/ModificarNoticia.jsp");
-                    RequestDispatcher rd=request.getRequestDispatcher("/ModificarNoticia.jsp");
-                    rd.forward(request,response); 
-                    break;
+                    HttpSession session = request.getSession();
+                    session.setAttribute("noticias", noti);
+                    response.sendRedirect("/AdminModificarNoticia.jsp");
+                    /*RequestDispatcher rd=request.getRequestDispatcher("/ModificarNoticia.jsp");
+                    rd.forward(request,response);*/
                 }
-                
+                break;
             case "inicionoticias":
                 {
                    

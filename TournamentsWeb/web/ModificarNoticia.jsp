@@ -30,7 +30,7 @@
     //Noticia n = new Noticia();
     //int idNot = Integer.parseInt(request.getParameter("idNoticias"));
     //nDAO.mostrarNoticia(idNot);
-    Noticia n = (Noticia) request.getAttribute("noticia");    
+    Noticia n = (Noticia) session.getAttribute("noticia");    
     String tit = n.getTitular();
     String res = n.getResumen();
     String tex = n.getNoticiaTexto();
