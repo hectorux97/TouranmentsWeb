@@ -171,7 +171,7 @@ public class TorneoDAO extends DAOExtend{
                                
                 UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(rs.getInt("idUsuario"));
-                UsuarioForTorneo idUsuario= new UsuarioForTorneo(user,rs.getInt("posicionEmparejamiento"));
+                UsuarioForTorneo idUsuario= new UsuarioForTorneo(user,rs.getInt("posicionEmparejamiento"),rs.getBoolean("expulsado"));
                 participantes.add(idUsuario);
             } 
             return participantes;

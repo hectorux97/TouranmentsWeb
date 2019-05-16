@@ -13,13 +13,15 @@ public class UsuarioForTorneo {
     
     private Usuario user;
     private int posicion;
+    private boolean dentro;
 
     public UsuarioForTorneo() {
     }
 
-    public UsuarioForTorneo(Usuario user, int posicion) {
+    public UsuarioForTorneo(Usuario user, int posicion, boolean dentro) {
         this.user = user;
         this.posicion = posicion;
+        this.dentro=dentro;
     }
 
     public Usuario getUser() {
@@ -36,6 +38,14 @@ public class UsuarioForTorneo {
 
     public void setPosicion(int posicion) {
         this.posicion = posicion;
+    }
+
+    public boolean isDentro() {
+        return dentro;
+    }
+
+    public void setDentro(boolean dentro) {
+        this.dentro = dentro;
     }
     
     
