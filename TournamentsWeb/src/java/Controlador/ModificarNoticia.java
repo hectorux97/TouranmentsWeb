@@ -49,6 +49,14 @@ public class ModificarNoticia extends HttpServlet {
                 int id = noti.getIdNot();
                 int autordenoticia = notiDAO.buscarAutor(id);
                     if((user.getId())==autordenoticia) {
+                        //Esto es para poder meter acentos y eñes con el useBean al modificar
+                        String titu = new String(request.getParameter("titular").getBytes("ISO-8859-1"),"UTF-8");
+                        String resu = new String(request.getParameter("resumen").getBytes("ISO-8859-1"),"UTF-8");
+                        String t = new String(request.getParameter("noticiaTexto").getBytes("ISO-8859-1"),"UTF-8");
+                        noti.setTitular(titu);
+                        noti.setResumen(resu);
+                        noti.setNoticiaTexto(t);
+                        
                         notiDAO.ModificarNoticia(noti);
                         response.sendRedirect("AdminMisNoticias.jsp");
                     }

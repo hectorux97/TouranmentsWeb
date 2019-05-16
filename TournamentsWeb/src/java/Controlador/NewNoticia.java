@@ -46,6 +46,14 @@ public class NewNoticia extends HttpServlet {
                 NoticiasDAO notiDAO = new NoticiasDAO();
                 Noticia noti = (Noticia)request.getAttribute("notic");
                 noti.setAutor(user);
+                    //Esto es para poder meter eñes y acentos en la noticia desde el useBean
+                    String titu = new String(request.getParameter("titular").getBytes("ISO-8859-1"),"UTF-8");
+                    String resu = new String(request.getParameter("resumen").getBytes("ISO-8859-1"),"UTF-8");
+                    String t = new String(request.getParameter("noticiaTexto").getBytes("ISO-8859-1"),"UTF-8");
+                    noti.setTitular(titu);
+                    noti.setResumen(resu);
+                    noti.setNoticiaTexto(t);
+                    
                 notiDAO.subirNoticia(noti);
                     
                     
