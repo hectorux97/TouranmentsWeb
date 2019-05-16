@@ -91,11 +91,24 @@
                                 <div class="container">
                                     <div class="split">                                         
                                         <% if(torneo.getEstado()!=0){
-                                            ArrayList<UsuarioForTorneo> participantes= tdao.GetParticipantes(id);
-                                            for(int i=0;i<=4;i++){%>
+                                            ArrayList<UsuarioForTorneo> participantes= tdao.GetParticipantes(id);%>
+                                            <%! ArrayList<UsuarioForTorneo> GetParticipantesOnRound(ArrayList<UsuarioForTorneo> part,int ronda){
+                                                ArrayList<UsuarioForTorneo> participes= new ArrayList<>();
+                                                
+                                                for(UsuarioForTorneo p:part){
+                                                    if(p.getPosicion())
+                                                    participes.add(p);
+                                                }
+                                                
+                                                return participes;
+                                            }%>
+                                            <%for(int i=0;i<=4;i++){
+                                                %>
                                                 <div class="round">
                                                 <div class="round-details">Ronda <%=i+1%><br/></div>
-                                                <%for(int e=0;e<Math.pow(2, 4-i);e++){%>
+                                                <%  int index=0;
+                                                    for(int e=0;e<Math.pow(2, 4-i);e++){
+                                                     UsuarioForTorneo p= participantes.get(index);%>
                                                     <ul class="matchup m-auto inclinado w-75 p-0" style="margin-bottom:2px;">
                                                         <li class="team team-top winner m-1" style="display: block">Duke <span class="score">76</span></li>
                                                         <hr style="height:1px;margin:0 10%;width: 80%;background-color: #a8c916;">
