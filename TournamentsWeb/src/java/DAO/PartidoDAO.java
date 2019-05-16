@@ -98,4 +98,27 @@ public class PartidoDAO extends DAOExtend {
         } catch (SQLException e) {}
         return false;
      }
+     
+     public Partido GetPartido(int idUsuario1, int idUsuario2){
+          try {
+            Statement st = conexion.createStatement();
+           
+            ResultSet rs= st.executeQuery("SELECT * FROM partido WHERE idUsuario1="+idUsuario1+" AND idUsuario2="+idUsuario2);
+            if(rs.next()){
+                TorneoDAO tDAO= new TorneoDAO();
+                Torneo t= tDAO.GetTorneo(rs.getInt("idTorneo"));
+                UsuarioDAO uDAO= new UsuarioDAO();
+                Usuario u1= uDAO.GetUsuario(idUsuario1);
+                Usuario u2= uDAO.GetUsuario(idUsuario2);
+                Partido p= new Partido(rs.getInt("idPartido"),t, rs.getInt("idTorneo"), u1, idUsuario1, u2, idUsuario2,
+                                            rs.getInt("usuario1Points"),rs.getInt("usuario2Points"), rs.getInt("ronda"), rs.getDate("fechaJuego"), rs.getString("img"), rs.getInt("estado"));
+                 return p;
+            }else{
+                 return null;
+            }
+            
+           
+        } catch (SQLException e) {}
+        return null;       
+     }
 }

@@ -61,7 +61,7 @@ public class TorneoDAO extends DAOExtend{
                /* UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(result.getInt("idUsuario"));*/
                  //Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego
-                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"));
+                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"),rs.getInt("maximoJugadores"));
             }else{
                 return null;
             }
@@ -76,7 +76,7 @@ public class TorneoDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM torneos");
             while(rs.next()){
                 
-                Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"));
+                Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"),rs.getInt("maximoJugadores"));
                 t.setParticipantes(GetParticipantes(rs.getInt("idTorneos")));
                 listaTorneos.add(t);              
                 
@@ -99,7 +99,7 @@ public class TorneoDAO extends DAOExtend{
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE  idTorneo  =  "+idTorneo);
                 if(result.next()){                
                     */
-                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Juego(rs.getString("juego")),rs.getByte("estado"));
+                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Juego(rs.getString("juego")),rs.getByte("estado"),rs.getInt("maximoJugadores"));
                 //}
             }else{
                 return null;
@@ -116,7 +116,7 @@ public class TorneoDAO extends DAOExtend{
             ResultSet rs= st.executeQuery("SELECT * FROM torneos WHERE juego LIKE '"+nombreJuego+"'");
             while (rs.next()){
                 
-                Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"));
+                Torneo t=  new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"), new Juego(rs.getString("juego")),rs.getByte("estado"),rs.getInt("maximoJugadores"));
                 t.setParticipantes(GetParticipantes(rs.getInt("idTorneos")));
                 listaTorneos.add(t);              
                 
@@ -175,7 +175,7 @@ public class TorneoDAO extends DAOExtend{
                                
                 UsuarioDAO creador= new UsuarioDAO();
                 Usuario user=creador.GetUsuario(rs.getInt("idUsuario"));
-                UsuarioForTorneo idUsuario= new UsuarioForTorneo(user,rs.getInt("posicionEmparejamiento"),rs.getBoolean("expulsado"));
+                UsuarioForTorneo idUsuario= new UsuarioForTorneo(user,rs.getInt("posicionEmparejamiento"),rs.getInt("ronda"));
                 participantes.add(idUsuario);
             } 
             return participantes;

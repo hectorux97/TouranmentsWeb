@@ -13,15 +13,16 @@ public class UsuarioForTorneo {
     
     private Usuario user;
     private int posicion;
-    private boolean dentro;
+    private int ronda;
 
     public UsuarioForTorneo() {
+        user= new Usuario();
     }
 
-    public UsuarioForTorneo(Usuario user, int posicion, boolean dentro) {
+    public UsuarioForTorneo(Usuario user, int posicion, int dentro) {
         this.user = user;
         this.posicion = posicion;
-        this.dentro=dentro;
+        this.ronda=dentro;
     }
 
     public Usuario getUser() {
@@ -40,12 +41,12 @@ public class UsuarioForTorneo {
         this.posicion = posicion;
     }
 
-    public boolean isDentro() {
-        return dentro;
+    public int getRonda() {
+        return ronda;
     }
 
-    public void setDentro(boolean dentro) {
-        this.dentro = dentro;
+    public void setRonda(int dentro) {
+        this.ronda = dentro;
     }
     
     

@@ -25,10 +25,11 @@ public class Torneo {
     private ArrayList<UsuarioForTorneo> participantes;
     private Juego juego;
     private byte estado;
+    private int maximoJugadores;
     public Torneo() {
     }
 
-    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado) {
+    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado, int maximoJugadores) {
         this.id = id;
         this.nombre = nombre;
         this.reglas = reglas;
@@ -38,9 +39,10 @@ public class Torneo {
         this.participantes = participantes;
         this.juego = juego;
         this.estado= estado;
+        this.maximoJugadores=maximoJugadores;
     }
 
-    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, Juego juego, byte estado) {
+    public Torneo(int id, String nombre, String reglas, String premio, Date fechaPublicacion, Date fechaInicio, Juego juego, byte estado, int maximoJugadores) {
         this.id = id;
         this.nombre = nombre;
         this.reglas = reglas;
@@ -48,6 +50,7 @@ public class Torneo {
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
         this.juego = juego;
+        this.maximoJugadores=maximoJugadores;
     }
     
     
@@ -59,13 +62,14 @@ public class Torneo {
         this.juego=juego;
     }
 
-    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio,ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado) {
+    public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio,ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado, int maximoJugadores) {
         this.id = id;
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
         this.participantes = participantes;
         this.juego= juego;
+        this.maximoJugadores=maximoJugadores;
     }    
 
     public Torneo(String nombre,Juego juego) {
@@ -157,6 +161,15 @@ public class Torneo {
                 return "Comenzado";
         }
     }
+
+    public int getMaximoJugadores() {
+        return maximoJugadores;
+    }
+
+    public void setMaximoJugadores(int maximoJugadores) {
+        this.maximoJugadores = maximoJugadores;
+    }
+    
     
     
     public ArrayList<UsuarioForTorneo> getParticipantes() {

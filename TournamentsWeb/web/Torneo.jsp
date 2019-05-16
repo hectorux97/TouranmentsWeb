@@ -9,11 +9,12 @@
 <%@page import="DAO.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%if (request.getParameter("idTorneo") == null) {%>
-<jsp:forward page="index.jsp"/>    
+<jsp:forward page="/index.jsp"/>    
 <%} else {
     int id = Integer.parseInt(request.getParameter("idTorneo"));
     TorneoDAO tdao = new TorneoDAO();
     Torneo torneo = tdao.GetTorneo(id);
+    PartidoDAO pdao= new PartidoDAO();
 %>
 <!DOCTYPE html>
 <html>
@@ -91,30 +92,43 @@
                                 <div class="container">
                                     <div class="split">                                         
                                         <% if(torneo.getEstado()!=0){
-                                            ArrayList<UsuarioForTorneo> participantes= tdao.GetParticipantes(id);%>
+                                            ArrayList<UsuarioForTorneo> participantes= tdao.GetParticipantes(id);%>                                            
                                             <%! ArrayList<UsuarioForTorneo> GetParticipantesOnRound(ArrayList<UsuarioForTorneo> part,int ronda){
                                                 ArrayList<UsuarioForTorneo> participes= new ArrayList<>();
                                                 
                                                 for(UsuarioForTorneo p:part){
-                                                    if(p.getPosicion())
-                                                    participes.add(p);
+                                                    if(p.getRonda()>= ronda){
+                                                        participes.add(p);
+                                                    }
                                                 }
                                                 
                                                 return participes;
                                             }%>
-                                            <%for(int i=0;i<=4;i++){
+                                            <%  Double val=Math.log(torneo.getMaximoJugadores()/2)/Math.log(2);
+                                                int numRondas= val.intValue();
+                                                for(int i=0;i<=numRondas;i++){
                                                 %>
                                                 <div class="round">
                                                 <div class="round-details">Ronda <%=i+1%><br/></div>
-                                                <%  int index=0;
-                                                    for(int e=0;e<Math.pow(2, 4-i);e++){
-                                                     UsuarioForTorneo p= participantes.get(index);%>
+                                                <%  //int index=0;
+                                                    ArrayList<UsuarioForTorneo> pas =GetParticipantesOnRound(participantes,i);                                                    
+                                                    for(int e=0;e<Math.pow(2, numRondas-i);e+=2){
+                                                        Partido p= new Partido();
+                                                        if(pas.size()>=e+1){
+                                                             p= pdao.GetPartido(pas.get(e).getUser().getId(), pas.get(e+1).getUser().getId());
+                                                        }else {%>
+                                                           <jsp:forward page="/index.jsp?ERROR=ERROR_GESTION_PARTIDOS"/>     
+                                                        <%}
+                                                       /* UsuarioForTorneo p= new UsuarioForTorneo();
+                                                        if(pas.size()>e){
+                                                             p= pas.get(index);
+                                                        }*/%>
                                                     <ul class="matchup m-auto inclinado w-75 p-0" style="margin-bottom:2px;">
-                                                        <li class="team team-top winner m-1" style="display: block">Duke <span class="score">76</span></li>
+                                                        <li class="team team-top <%= (p.getPuntosUsuario1()>p.getPuntosUsuario2())?"winner":""%> m-1" style="display: block"><%=p.getUsuario1().getAlias()%> <span class="score"><%=p.getPuntosUsuario1() %></span></li>
                                                         <hr style="height:1px;margin:0 10%;width: 80%;background-color: #a8c916;">
-                                                        <li class="team team-bottom m-1" style="display: block"><a style="color:white;">Virginia<span class="score">82</span></a></li>
+                                                        <li class="team team-bottom <%= (p.getPuntosUsuario1()<p.getPuntosUsuario2())?"winner":""%> m-1" style="display: block"><%=p.getUsuario2().getAlias()%><span class="score"><%=p.getPuntosUsuario2() %></span></li>
                                                     </ul>
-                                                <div style="height:10px"></div>
+                                                    <div style="height:10px"></div>
                                                 <%}%>
                                                  </div>
                                             <%}%>

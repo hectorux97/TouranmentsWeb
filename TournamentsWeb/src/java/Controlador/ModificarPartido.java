@@ -6,7 +6,7 @@
 package Controlador;
 
 import DAO.PartidoDAO;
-import beans.Partido;
+import beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,26 +36,29 @@ public class ModificarPartido extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
-            if (session != null) {
-                //int id = ().getId();
-                PartidoDAO pDAO = new PartidoDAO();
-                Partido requestP= (Partido)request.getAttribute("partidoShow");                
-                Partido p = (Partido)session.getAttribute("partido");//pDAO.GetPartido(requestP.getId());
-               
-                if (p != null && requestP!=null) {
-                    p.setPuntosUsuario1(requestP.getPuntosUsuario1());
-                    p.setPuntosUsuario2(requestP.getPuntosUsuario2());
-                    p.setImgUrl(requestP.getImgUrl());
-                    if(pDAO.ActualizarPartido(p)){
-                        session.setAttribute("partido", p);
-                        response.sendRedirect("/Partidos.jsp?");
-                    }else{
-                         response.sendRedirect("/MisPartidos.jsp?error=ERROR_UPDATE");
+            if (session != null && session.getAttribute("user")!=null) {
+                Usuario user=(Usuario)session.getAttribute("user");
+                if(user.getPrivilegios()>0){
+                    //int id = ().getId();
+                    PartidoDAO pDAO = new PartidoDAO();
+                    Partido requestP= (Partido)request.getAttribute("partidoShow");                
+                    Partido p = (Partido)session.getAttribute("partido");//pDAO.GetPartido(requestP.getId());
+
+                    if (p != null && requestP!=null) {
+                        p.setPuntosUsuario1(requestP.getPuntosUsuario1());
+                        p.setPuntosUsuario2(requestP.getPuntosUsuario2());
+                        p.setImgUrl(requestP.getImgUrl());
+                        if(pDAO.ActualizarPartido(p)){
+                            session.setAttribute("partido", p);
+                            response.sendRedirect("/Partidos.jsp?");
+                        }else{
+                             response.sendRedirect("/MisPartidos.jsp?error=ERROR_UPDATE");
+                        }
+                       /* RequestDispatcher dispatcher = request.getRequestDispatcher("/Partidos.jsp");
+                        dispatcher.forward(request, response);*/
+                    } else {
+                        response.sendRedirect("/MostrarPartido.java?idPartido="+p.getId()+"&error=ERROR_UPDATE");
                     }
-                   /* RequestDispatcher dispatcher = request.getRequestDispatcher("/Partidos.jsp");
-                    dispatcher.forward(request, response);*/
-                } else {
-                    response.sendRedirect("/MostrarPartido.java?idPartido="+p.getId()+"&error=ERROR_UPDATE");
                 }
             } else {
                 response.sendRedirect("/index.jsp?error=SESSION_EXPIRED");

@@ -11,9 +11,9 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%if(request.getSession(false)==null){%>
+<%if(request.getSession(false)==null && session.getAttribute("user")==null){%>
      <jsp:forward page="/Login.jsp"/>
-<%}%>
+<%}else{%>
 <jsp:useBean id="user" class="beans.Usuario" scope="request" type="beans.Usuario"></jsp:useBean>
 <jsp:setProperty name="user" property="*"></jsp:setProperty>
 <% if(request.getParameter("nombre")!=null){%>    
@@ -522,3 +522,4 @@
             <%@include file="/includes/footer.html"%>          
     </body>
 </html>
+<%}%>

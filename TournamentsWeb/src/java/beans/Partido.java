@@ -28,6 +28,8 @@ public class Partido {
     private int estado;
     
     public Partido() {
+        usuario1= new Usuario();
+        usuario2= new Usuario();
     }
 
     public Partido(int id,Torneo torneo, int idTorneo, Usuario usuario1, int idUsuario1, Usuario usuario2, int idUsuario2, int puntosUsuario1, int puntosUsuario2, int ronda, Date fechaInicio, String imgUrl, int estado) {

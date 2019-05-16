@@ -39,7 +39,7 @@ public class ModificarUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session= request.getSession(false);
-        if(session!=null){
+        if(session!=null && session.getAttribute("user")!=null){
             Usuario user= (Usuario)request.getAttribute("user");
             String[] nicks= request.getParameterValues("nicksJuegos");
             

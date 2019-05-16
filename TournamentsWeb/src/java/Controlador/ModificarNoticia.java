@@ -43,12 +43,12 @@ public class ModificarNoticia extends HttpServlet {
             if(session != null){
                 //Aquí lo que me comentaste de si era admin, que no se si es automatico o hay 
                 //que especificarlo aquí también
-                Usuario user = (Usuario)session.getAttribute("usuario");
+                Usuario user = (Usuario)session.getAttribute("user");
                 NoticiasDAO notiDAO = new NoticiasDAO();
                 Noticia noti = (Noticia)request.getAttribute("notic");
                 int id = noti.getIdNot();
                 int autordenoticia = notiDAO.buscarAutor(id);
-                    if((user.getId())==autordenoticia) {
+                    if(user.getId()==autordenoticia) {
                         //Esto es para poder meter acentos y eñes con el useBean al modificar
                         String titu = new String(request.getParameter("titular").getBytes("ISO-8859-1"),"UTF-8");
                         String resu = new String(request.getParameter("resumen").getBytes("ISO-8859-1"),"UTF-8");
