@@ -12,6 +12,13 @@
         <title>JSP Page</title>
          <%@include file="/includes/headerLinks.html" %>
          <link rel="stylesheet" type="text/css" href="css/notprin.css">
+         <style>
+             div.row {
+                 width: 100%;
+                 margin: 0px;
+                 padding: 0px;
+             }
+         </style>
     </head>
     <body>
         <header>
