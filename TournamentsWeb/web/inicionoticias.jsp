@@ -119,11 +119,12 @@
                             Publicado el <%=date%> por
                             <a href="/Controlador/PaginaNoticias?no=autor&autor=<%=idAutor%>"><%=autorNombre%></a>
                         </div>
-                    </div>
+                    
                     <%}%>
                 </div>
                 <!-- /.row -->
             </div> 
+           </div>
         </div>
         <!-- /.container -->
         <%@include file="/includes/footer.html" %>
