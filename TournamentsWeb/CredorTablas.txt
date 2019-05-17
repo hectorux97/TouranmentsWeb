@@ -28,19 +28,11 @@ CREATE TABLE `torneos` (
   `reglas` text NOT NULL,
   `premio` varchar(100) NOT NULL DEFAULT '',
   `estado` tinyint(1) DEFAULT '0',
+  `maximoJugadores` tinyint(3) NOT NULL DEFAULT '16',
   PRIMARY KEY (`idTorneos`,`juego`),
   KEY `fk_juegoTorneo` (`juego`),
   CONSTRAINT `fk_juegoTorneo` FOREIGN KEY (`juego`) REFERENCES `juegos` (`nombreJuego`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-CREATE TABLE `torneoforusuario` (
-  `idUsuario` int(11) NOT NULL,
-  `idTorneo` int(11) NOT NULL,
-  `posicionEmparejamiento` tinyint(3) DEFAULT NULL,
-  PRIMARY KEY (`idUsuario`,`idTorneo`),
-  KEY `Foreign_torneoID_idx` (`idTorneo`),
-  CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`),
-  CONSTRAINT `Foreign_usuarioID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `partido` (
   `idPartido` int(11) NOT NULL AUTO_INCREMENT,
   `idTorneo` int(11) NOT NULL,
@@ -59,19 +51,31 @@ CREATE TABLE `partido` (
   CONSTRAINT `FK_idTorneo` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`),
   CONSTRAINT `FK_jugador1` FOREIGN KEY (`idUsuario1`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `FK_jugador2` FOREIGN KEY (`idUsuario2`) REFERENCES `usuarios` (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `torneoforusuario` (
+  `idUsuario` int(11) NOT NULL,
+  `idTorneo` int(11) NOT NULL,
+  `posicionEmparejamiento` tinyint(3) DEFAULT NULL,
+  `ronda` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`idUsuario`,`idTorneo`),
+  KEY `Foreign_torneoID_idx` (`idTorneo`),
+  CONSTRAINT `F_torneoID` FOREIGN KEY (`idTorneo`) REFERENCES `torneos` (`idTorneos`),
+  CONSTRAINT `Foreign_usuarioID` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `noticias` (
   `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
-  `titular` varchar(70) NOT NULL,
-  `resumen` varchar(300) NOT NULL,
+  `titular` varchar(100) NOT NULL,
+  `resumen` text NOT NULL,
   `noticiaTexto` longtext NOT NULL,
-  `imagenNoticia` varchar(45) DEFAULT NULL,
+  `imagenNoticia` text,
   `tipoNoticia` varchar(45) DEFAULT NULL,
-  `autor` varchar(45) DEFAULT NULL,
-  `status` TINYINT(1) DEFAULT '1',
+  `Usuarios_idUsuario` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `fechaNoticia` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idNoticias`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idNoticias`),
+  KEY `fk_Noticias_Usuarios_idx` (`Usuarios_idUsuario`),
+  CONSTRAINT `fk_Noticias_Usuarios` FOREIGN KEY (`Usuarios_idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 CREATE TABLE `nickjuegos` (
   `nombreJuego` varchar(25) NOT NULL,
   `idUsuario` int(11) NOT NULL,
