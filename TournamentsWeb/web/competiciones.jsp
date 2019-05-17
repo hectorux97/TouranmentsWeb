@@ -72,11 +72,11 @@
                                     ArrayList<Torneo> listaTorneos = torneo.GetTorneos(j.getNombre());
                                     for (Torneo t : listaTorneos) {%>
                                 <tr>
-                                    <td><i class="fa fa-instagram"></i></td>
+                                    <td><img class="icono" src="img/copa.png"></td>
                                     <td><%=  t.getFechaInicio()%></td>
-                                    <td><img class="icono" src="img/lolico.png"></img></td>
-                                    <td><a href="torneo1.html"><%=  t.getNombre()%></a></td>
-                                    <td><span> 9 equipos </span></td>
+                                    <td><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></img></td>
+                                    <td><a href="Torneo.jsp?idTorneo=<%=t.getId()%>"><%=  t.getNombre()%></a></td>
+                                    <td><span> <%=  t.getParticipantesNum()%> Participantes </span></td>
                                 </tr>
                                 <%}%>
                             </table>

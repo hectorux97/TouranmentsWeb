@@ -26,16 +26,14 @@ public class TorneoDAO extends DAOExtend{
     public boolean GuardarNuevoTorneo(Torneo torneo){
 
         try{           
-            PreparedStatement ps=conexion.prepareStatement("INSERT INTO torneos(nombreTorneo,fechaPublicacion,fechaInicio,juego,reglas,premio) VALUES (?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1,torneo.getNombre());
-            ps.setDate(2,(java.sql.Date)torneo.getFechaPublicacion());	
-            ps.setDate(3,(java.sql.Date)torneo.getFechaInicio());
-            ps.setString(4, torneo.getJuegoName());
-            ps.setString(5, torneo.getReglas());
-            ps.setString(6, torneo.getPremio());
-            ps.executeUpdate();
-            ResultSet rs=ps.getGeneratedKeys();          
-            //Set the creator of the tournament           
+           Statement st = conexion.createStatement();
+            st.executeUpdate("INSERT INTO torneos (`nombreTorneo`,`fechaInicio`,`juego`,`reglas`,`premio`,`maximoJugadores`) VALUES ('"
+                    + torneo.getNombre()+ "','"
+                    + torneo.getFechaInicio() + "','"
+                    + torneo.getJuegoName()+"','"
+                    + torneo.getReglas()+"','"
+                    + torneo.getPremio()+"',"
+                    + torneo.getMaximoJugadores()+ ")");
             return true;
         }catch(SQLException e){}
 
