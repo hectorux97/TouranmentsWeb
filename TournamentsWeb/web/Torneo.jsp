@@ -131,8 +131,7 @@
                                                     <div style="height:10px"></div>
                                                 <%}%>
                                                  </div>
-                                            <%}%>
-                                        <%}%>
+                                            <%}%>                                        
                                     </div>
                                 </div>
                             </section>
@@ -140,7 +139,7 @@
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br><br><br>
 
                                     <ul>
-                                        <% ArrayList<UsuarioForTorneo> participantes = tdao.GetParticipantes(id);
+                                        <% //ArrayList<UsuarioForTorneo> participantes = tdao.GetParticipantes(id);
                                         for (UsuarioForTorneo participante : participantes) {%>
                                         <li><img class="imagenavatar" src="<%=participante.getUser().getImageURL()%>"><br>
                                             <span class="m-auto" id="nombreusuario">Jugador 1</span></li> 
