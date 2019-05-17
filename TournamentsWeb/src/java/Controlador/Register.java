@@ -28,10 +28,7 @@ public class Register extends HttpServlet {
         GestorUsuario gestor=new GestorUsuario();
         user= gestor.Register(user);
         if(user!=null){            
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
-           
+             response.sendRedirect("/index.jsp");    
         }else{
             response.sendRedirect("Register.jsp?error=PASSWORD_USER_ERROR");
         }

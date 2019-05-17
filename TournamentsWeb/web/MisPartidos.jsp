@@ -2,7 +2,7 @@
 <%@page import="java.util.*" %>
 <%@page import="beans.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%if(request.getSession(false)==null){%>
+<%if(request.getSession(false)==null && session.getAttribute("user")==null){%>
      <jsp:forward page="/Login.jsp"/>
 <%}%>
 <!DOCTYPE html>

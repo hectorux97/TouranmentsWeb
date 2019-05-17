@@ -6,6 +6,9 @@
 
 <%@page import="beans.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%if(request.getSession(false)==null && session.getAttribute("user")==null){%>
+     <jsp:forward page="/Login.jsp"/>
+<%}else{%>
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
 <% if(request.getParameter("titular")!=null){%>   
@@ -81,3 +84,4 @@
             <%@include file="/includes/footer.html" %>
     </body>
 </html>
+<%}%>

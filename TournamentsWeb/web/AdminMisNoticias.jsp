@@ -9,6 +9,9 @@
 <%@page import="beans.Usuario"%>
 <%@page import="beans.Noticia"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%if(request.getSession(false)==null && session.getAttribute("user")==null){%>
+     <jsp:forward page="/Login.jsp"/>
+<%}else{%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -83,3 +86,4 @@
     <%@include file="/includes/footer.html" %>
     </body>
 </html>
+<%}%>

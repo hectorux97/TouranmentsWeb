@@ -36,7 +36,7 @@ public class Inscripcion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session=request.getSession(false);
-        if(session.getAttribute("user")!=null){
+        if(session!=null && session.getAttribute("user")!=null){
            Usuario user=(Usuario)session.getAttribute("user");
            TorneoDAO tdao= new TorneoDAO();
            int id=Integer.parseInt(request.getParameter("id"));

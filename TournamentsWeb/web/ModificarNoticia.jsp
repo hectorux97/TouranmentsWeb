@@ -9,6 +9,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="notic" class="beans.Noticia" scope="request" type="beans.Noticia"></jsp:useBean>
 <jsp:setProperty name="notic" property="*"></jsp:setProperty>
+<%if(request.getSession(false)==null && session.getAttribute("user")==null){%>
+     <jsp:forward page="/Login.jsp"/>
+<%}else{%>
 <% if(request.getParameter("titular")!=null){%>  
     <jsp:forward page="/Controlador/ModificarNoticias"/>
 <%}%>
@@ -100,3 +103,4 @@
             <%@include file="/includes/footer.html" %>
     </body>
 </html>
+<%}%>
