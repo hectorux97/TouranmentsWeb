@@ -18,8 +18,10 @@ public class GestorTorneos {
         TorneoDAO torneos=new TorneoDAO();
         Torneo t= torneos.GetTorneo(torneo.getNombre());
         
-        if(torneo.getId()!=t.getId()){
-            if (torneos.GuardarNuevoTorneo(torneo)) {return torneo;}
+        if(t==null){
+            if (torneos.GuardarNuevoTorneo(torneo)) {
+                return torneo;
+            }
           
         }
         

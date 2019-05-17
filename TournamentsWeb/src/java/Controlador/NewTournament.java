@@ -26,32 +26,34 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hector
  */
-@WebServlet(name = "NewTournament", urlPatterns = {"/Controlador/NewTournament"})
+@WebServlet(urlPatterns = {"/Controlador/NewTournament"})
 public class NewTournament extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            Torneo torneo= (Torneo)request.getAttribute("torneo");
-            Juego juego= new Juego (request.getParameter("nombrejuego"));
-            torneo.setJuego(juego);
-        GestorTorneos gestor=new GestorTorneos();
-       try {
-                    Date edad= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fechaInicio2"));
-                    java.sql.Date parseDate= new java.sql.Date(edad.getTime());
-                    torneo.setFechaInicio(parseDate);
-                }catch(ParseException e){} 
-        torneo= gestor.NuevoTorneo(torneo);
-        if(torneo!=null){            
-            
+
+        /* TODO output your page here. You may use following sample code. */
+        Torneo torneo = (Torneo) request.getAttribute("torneo");
+        Juego juego = new Juego(request.getParameter("nombrejuego"));
+        torneo.setJuego(juego);
+        GestorTorneos gestor = new GestorTorneos();
+        try {
+            Date edad = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fechaInicio2"));
+            java.sql.Date parseDate = new java.sql.Date(edad.getTime());
+            torneo.setFechaInicio(parseDate);
+        } catch (ParseException e) {
+        }
+       
+        torneo = gestor.NuevoTorneo(torneo);
+        if (torneo != null) {
+
             response.sendRedirect("/AdministrarTorneos.jsp");
-           
-        }else{
+
+        } else {
             response.sendRedirect("Register.jsp?error=PASSWORD_USER_ERROR");
         }
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

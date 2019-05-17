@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="torneo" class="beans.Torneo" scope="request" type="beans.Torneo"></jsp:useBean>
-    <jsp:setProperty name="torneo" property="*"></jsp:setProperty>
-        <% if(request.getParameter("nombreTorneo")!=null){%>
+<jsp:setProperty name="torneo" property="*"></jsp:setProperty>
+<% if(request.getParameter("nombre")!=null){%>
     <jsp:forward page="/Controlador/NewTournament"/>    
 <%}%>
 <%@page import="beans.Partido"%>
@@ -172,42 +172,39 @@
     <br />
     <div class="form-group row-1 mb-0 ml-4">
         <div class="form-group">
-          <label for="nombre">Nombre Torneo</label>
-          <input class="form-control rounded-0 w-25" type="text" name="nombre" value="" placeholder="Nombre"><br />
+            <label for="nombre">Nombre Torneo</label>
+            <input class="form-control rounded-0 w-25" type="text" name="nombre" value="" placeholder="Nombre"><br />
 
-         
-		  
-		  <label for="fechaInicio2">Fecha de inicio</label>
-          <input class="form-control rounded-0 w-25" type="date" name="fechaInicio2" value="" placeholder="AAAA-MM-DD"><br />
-		  
-		 
 
-          <label for="reglas">Reglas del torneo</label>
-          <textarea name="reglas" rows="10" class="form-control rounded-0 w-75" placeholder="Reglas"></textarea>
-		  
-		  <label for="maximoJugadores">Numero maximo de Jugadores</label>
-          <input class="form-control rounded-0 w-25" type="text" name="maximoJugadores" value="" placeholder="N� maximo de jugadores"><br />
-		  
-		  <label for="premio">Premio</label>
-          <input class="form-control rounded-0 w-25" type="text" name="premio" value="" placeholder="Premio"><br />
-		  
-		  <label for="nombrejuego">Juego del torneo</label>
-          <select name="nombrejuego"class="selectpicker form-control rounded-0">
-              <option disabled value="">Juego</option>
-              <% GlobalInfoDAO info = new GlobalInfoDAO();
-                                    ArrayList<Juego> listaJuegos = info.GetJuegos();
-                                    for (Juego j : listaJuegos) {%>
-                                <option <%="value='" + j.getNombre()+ "'"%>> <%=j.getNombre()%></option>
-                                <%}%>
-          
-    
-		  </select>
+
+            <label for="fechaInicio2">Fecha de inicio</label>
+            <input class="form-control rounded-0 w-25" type="date" name="fechaInicio2" value="" placeholder="AAAA-MM-DD"><br />
+
+
+
+            <label for="reglas">Reglas del torneo</label>
+            <textarea name="reglas" rows="10" class="form-control rounded-0 w-75" placeholder="Reglas"></textarea>
+
+            <label for="maximoJugadores">Numero maximo de Jugadores</label>
+            <input class="form-control rounded-0 w-25" type="text" name="maximoJugadores" value="" placeholder="Nº maximo de jugadores"><br />
+
+            <label for="premio">Premio</label>
+            <input class="form-control rounded-0 w-25" type="text" name="premio" value="" placeholder="Premio"><br />
+
+            <label for="nombrejuego">Juego del torneo</label>
+            <select name="nombrejuego" class="selectpicker form-control rounded-0">
+                <option disabled value="">Juego</option>
+                <% GlobalInfoDAO info = new GlobalInfoDAO();
+                  ArrayList<Juego> listaJuegos = info.GetJuegos();
+                  for (Juego j : listaJuegos) {%>
+                <option <%="value='" + j.getNombre() + "'"%>> <%=j.getNombre()%></option>
+                <%}%>
+            </select>
         </div>
 
    
       <div class="form-group text-center pb-2">
-          <button class="inclinado w-25 m-auto "type="submit">Publicar Torneo</button>
-          
+          <button class="inclinado w-25 m-auto "type="submit">Publicar Torneo</button>          
       </div>
     </div>
   </form>

@@ -24,12 +24,12 @@ public class TorneoDAO extends DAOExtend{
     }
     
     public boolean GuardarNuevoTorneo(Torneo torneo){
-
+        
         try{           
-           Statement st = conexion.createStatement();
-            st.executeUpdate("INSERT INTO torneos (`nombreTorneo`,`fechaInicio`,`juego`,`reglas`,`premio`,`maximoJugadores`) VALUES ('"
+            Statement st = conexion.createStatement();
+            st.executeUpdate("INSERT INTO torneos (nombreTorneo,fechaInicio,juego,reglas,premio,maximoJugadores) VALUES ('"
                     + torneo.getNombre()+ "','"
-                    + torneo.getFechaInicio() + "','"
+                    + torneo.getFechaInicio()+"','"
                     + torneo.getJuegoName()+"','"
                     + torneo.getReglas()+"','"
                     + torneo.getPremio()+"',"
