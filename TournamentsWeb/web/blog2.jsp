@@ -19,7 +19,7 @@
             <%@include file="/includes/header.jsp" %>
         </header>
         <!-- Sidebar Widgets Column -->
-        <div class="col-md-4" style="position:absolute;right:0;">
+        <div class="col-md-4 front" style="position:absolute;right:0;">
             <!-- Categories Widget -->
             <div class="card my-4">
                 <h5 class="card-header">Categorías</h5>

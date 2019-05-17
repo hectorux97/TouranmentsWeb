@@ -27,7 +27,7 @@
                         <a class="nav-link text-center" href="/competiciones.jsp">Competiciones</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
-                        <a class="nav-link text-center" href="/tv.html">TV</a>
+                        <a class="nav-link text-center" href="/TV.jsp">TV</a>
                     </li>
                     <li class="nav-item active inclinado shadow-sm">
                         <a class="nav-link text-center" href="/Contacto.jsp">Contacto</a>

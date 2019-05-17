@@ -158,16 +158,16 @@
                         %>                    
                     <div class="collapse" data-parent="#toogleContainer" <%="id='" + j.getNombre() + "'"%>>
                         <div class="card card-body">
-                            <table id="ultimostorneos">
+                            <table id="ultimostorneos" class="table">
                                 <% TorneoDAO torneo = new TorneoDAO();
                                     ArrayList<Torneo> listaTorneos = torneo.GetTorneos(j.getNombre());
                                     for (Torneo t : listaTorneos) {%>
-                                <tr>
-                                    <td><img class="icono" src="img/copa.png"></td>
-                                    <td><%=  t.getFechaInicio()%></td>
-                                    <td><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></img></td>
-                                    <td><a href="Torneo.jsp?idTorneo=<%=t.getId()%>"><%=  t.getNombre()%></a></td>
-                                    <td><span> <%=  t.getParticipantesNum()%> Participantes </span></td>
+                                <tr class="col-md-8">
+                                    
+                                    <td ><img class="icono" src="img/copa.png">     <%=  t.getFechaInicio()%></td>
+                                    <td ><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></img></td>
+                                    <td ><a href="Torneo.jsp?idTorneo=<%=t.getId()%>"><%=  t.getNombre()%></a></td>
+                                    <td ><span> <%=  t.getParticipantesNum()%> Participantes </span></td>
                                 </tr>
                                 <%}%>
                             </table>
