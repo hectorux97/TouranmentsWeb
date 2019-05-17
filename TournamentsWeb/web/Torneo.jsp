@@ -93,17 +93,7 @@
                                     <div class="split">                                         
                                         <% if(torneo.getEstado()!=0){
                                             ArrayList<UsuarioForTorneo> participantes= tdao.GetParticipantes(id);%>                                            
-                                            <%! ArrayList<UsuarioForTorneo> GetParticipantesOnRound(ArrayList<UsuarioForTorneo> part,int ronda){
-                                                ArrayList<UsuarioForTorneo> participes= new ArrayList<>();
-                                                
-                                                for(UsuarioForTorneo p:part){
-                                                    if(p.getRonda()>= ronda){
-                                                        participes.add(p);
-                                                    }
-                                                }
-                                                
-                                                return participes;
-                                            }%>
+                                            
                                             <%  Double val=Math.log(torneo.getMaximoJugadores()/2)/Math.log(2);
                                                 int numRondas= val.intValue();
                                                 for(int i=0;i<=numRondas;i++){
@@ -131,7 +121,8 @@
                                                     <div style="height:10px"></div>
                                                 <%}%>
                                                  </div>
-                                            <%}%>                                        
+                                            <%}%>  
+                                            <%}%> 
                                     </div>
                                 </div>
                             </section>
@@ -139,7 +130,7 @@
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br><br><br>
 
                                     <ul>
-                                        <% //ArrayList<UsuarioForTorneo> participantes = tdao.GetParticipantes(id);
+                                        <% ArrayList<UsuarioForTorneo> participantes = tdao.GetParticipantes(id);
                                         for (UsuarioForTorneo participante : participantes) {%>
                                         <li><img class="imagenavatar" src="<%=participante.getUser().getImageURL()%>"><br>
                                             <span class="m-auto" id="nombreusuario">Jugador 1</span></li> 
@@ -216,3 +207,14 @@
 </body>
 </html>
 <%}%>
+<%! ArrayList<UsuarioForTorneo> GetParticipantesOnRound(ArrayList<UsuarioForTorneo> part,int ronda){
+                                                ArrayList<UsuarioForTorneo> participes= new ArrayList<UsuarioForTorneo>();
+                                                
+                                                for(UsuarioForTorneo p:part){
+                                                    if(p.getRonda()>= ronda){
+                                                        participes.add(p);
+                                                    }
+                                                }
+                                                
+                                                return participes;
+                                            }%>
