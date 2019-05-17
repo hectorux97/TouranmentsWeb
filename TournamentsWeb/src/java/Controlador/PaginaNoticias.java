@@ -70,9 +70,9 @@ public class PaginaNoticias extends HttpServlet {
                         //Poner lo del error
                     //}  
                     response.sendRedirect("/index.jsp"); // por poner algo
-                    break;  
+  
                 }
-                 
+                break;
                 //Añadido  
             case "borrar":
                 {
@@ -80,7 +80,14 @@ public class PaginaNoticias extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("idNoticia"));
                     notDAO.eliminarNoticia(id);
                     response.sendRedirect("/AdminMisNoticias.jsp");
-
+                }
+                break;
+            case "destacar":
+                {
+                    NoticiasDAO notDAO = new NoticiasDAO();
+                    int id = Integer.parseInt(request.getParameter("idNoticia"));
+                    notDAO.destacarNoticia(id);
+                    response.sendRedirect("AdminMisNoticias.jsp");
                 }
                 break;
             case "tipo":
@@ -128,7 +135,7 @@ public class PaginaNoticias extends HttpServlet {
             case "inicionoticias":
                 {
                    
-                    response.sendRedirect("/inicionoticias.jsp?idNoticia="+request.getParameter("idNoticia"));
+                    response.sendRedirect("/inicionoticias.jsp");
                     /*RequestDispatcher rd=request.getRequestDispatcher("/inicionoticias.jsp");
                     rd.forward(request,response);*/
                     

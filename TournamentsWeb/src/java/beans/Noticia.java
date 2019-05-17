@@ -18,7 +18,7 @@ public class Noticia {
     private String tipoNoticia;
     private Date fechaNoticia;
     private Usuario autor; //usiario
-    private boolean status;
+    private int status;
     
     //he añadido 2 variables más y estoy pensando en poner otra que sea boolean destacada
     //hay que cambiar la tabla
@@ -53,7 +53,7 @@ public class Noticia {
     }
     
     // constructor para las noticias en jsp independiente
-    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, Usuario idAutor, boolean status) {
+    public Noticia (String titular,String resumen,String noticiaTexto,String imgNoticia, String tipoNoticia,Date fechaNoticia, Usuario idAutor, int status) {
     this.titular=titular;
     this.resumen=resumen;
     this.noticiaTexto=noticiaTexto;
@@ -146,11 +146,11 @@ public class Noticia {
         this.autor = idAutor;
     }
 
-    public boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
     

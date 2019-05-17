@@ -86,6 +86,17 @@ public class NoticiasDAO extends DAOExtend{
         return false;
     }
     
+    public boolean destacarNoticia(int idNot){
+         try{
+            Statement st=conexion.createStatement();
+            st.executeUpdate("UPDATE noticias SET status = 2, fechaNoticia = CURRENT_TIMESTAMP() WHERE idNoticias ='"+idNot+"'"); 
+            return true;
+            
+        }catch(SQLException e){}
+        
+        return false;
+    }
+    
     public Integer buscarAutor (int idNot) {
         try{
             Statement st=conexion.createStatement();
@@ -223,13 +234,13 @@ public class NoticiasDAO extends DAOExtend{
     
     
     // Para las noticias de la pagina inicial, aparecerá una por su id y el resto son las ultimas noticias subidas
-    public ArrayList<Noticia> getNoticiaInicial(int idNot){
+    public ArrayList<Noticia> getNoticiaInicial(){
         
         ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
         try{
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM noticias WHERE status is true AND idNoticias ="+idNot+" UNION "
-                    + "(SELECT * FROM noticias WHERE status is true AND idNoticias !="+idNot+" ORDER BY idNoticias DESC LIMIT 4)");
+            ResultSet rs= st.executeQuery("(SELECT * FROM noticias WHERE status = 2 ORDER BY fechaNoticia DESC LIMIT 1) UNION "
+                    + "(SELECT * FROM noticias WHERE status = 1  ORDER BY idNoticias DESC LIMIT 4)");
             
             while(rs.next()){ 
                 Noticia minoticia= new Noticia();

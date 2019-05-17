@@ -37,8 +37,8 @@
 
             <%  NoticiasDAO notiDAO = new NoticiasDAO();
                 ArrayList noticias;
-                int idNot = Integer.parseInt(request.getParameter("idNoticia"));
-                noticias = notiDAO.getNoticiaInicial(idNot);
+                //int idNot = Integer.parseInt(request.getParameter("idNoticia"));
+                noticias = notiDAO.getNoticiaInicial();
             for (int i = 0; i < 1; i++) {
             Noticia n = (Noticia) noticias.get(i);%>
             <% int id = n.getIdNot(); %>
