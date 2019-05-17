@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Angel
  */
-@WebServlet(name = "NewJuego", urlPatterns = {"Controlador/NewJuego"})
+@WebServlet(urlPatterns = {"/Controlador/NewJuego"})
 public class NewJuego extends HttpServlet {
 
     /**
