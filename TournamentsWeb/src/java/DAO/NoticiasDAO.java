@@ -263,6 +263,37 @@ public class NoticiasDAO extends DAOExtend{
         return null;
     }
     
+    //Para el Index
+    
+    public ArrayList<Noticia> getIndexNoticias(){
+        
+        ArrayList<Noticia> listaRecomendadasNoticias= new ArrayList<>();
+        try{
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("(SELECT * FROM noticias WHERE status = 2 ORDER BY fechaNoticia DESC LIMIT 3) UNION "
+                    + "(SELECT * FROM noticias WHERE status = 1  ORDER BY idNoticias DESC LIMIT 3)");
+            
+            while(rs.next()){ 
+                Noticia minoticia= new Noticia();
+                minoticia.setIdNot(rs.getInt("idNoticias"));
+                minoticia.setTitular(rs.getString("titular"));
+                minoticia.setResumen(rs.getString("resumen"));
+                minoticia.setImgNoticia(rs.getString("imagenNoticia"));
+                minoticia.setTipoNoticia(rs.getString("tipoNoticia"));
+                UsuarioDAO udao= new UsuarioDAO();
+                minoticia.setAutor(udao.GetUsuario(rs.getInt("Usuarios_idUsuario")));
+                minoticia.setFechaNoticia(rs.getDate("fechaNoticia"));
+                listaRecomendadasNoticias.add(minoticia);
+            
+            }
+            
+            return listaRecomendadasNoticias;
+           
+        }catch(SQLException e){}
+        
+        return null;
+    }
+    
     //Para cuando pulsamos en un autor que nos salgan sus noticias
     public ArrayList<Noticia> getNoticiasAutor(int autor){
         

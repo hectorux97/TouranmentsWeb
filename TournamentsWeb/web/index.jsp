@@ -1,4 +1,5 @@
 
+<%@page import="java.util.Date"%>
 <%@page import="beans.*"%>
 <%@page import="DAO.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,6 +36,9 @@
         </header>
       
             <main role="main ">
+                 <%NoticiasDAO notiDAO = new NoticiasDAO();
+                ArrayList noticias;
+                noticias = notiDAO.getIndexNoticias();%>
 
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -42,31 +46,30 @@
       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
     </ol>
+      
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/fondo1.jpg" class="d-block w-100" alt="...">
+        
+        <%for(int i=0;i<3;i++){
+        Noticia n=(Noticia)noticias.get(i);%>
+                <% int id = n.getIdNot(); %>
+                <% String titulo = n.getTitular();%>
+                <% String res = n.getResumen();%>
+                <% String texto = n.getNoticiaTexto();%>
+                <% String img = n.getImgNoticia();%>
+                <% Date date = n.getFechaNoticia();%>
+                <% String tipo = n.getTipoNoticia();%>
+                
+      <div class="carousel-item <%=(i==(0)?"active":" ")%>">
+          <img src="img/<%=img%>" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h2>First slide label</h2>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+          <h2><%=titulo%></h2>
+          <p><%=res%></p>
+          <p><a class="btn btn-lg btn-primary" href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" role="button">Ver Más</a></p>
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="img/fondo2.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h2>Titulo</h2>
-          <p>Descripcion Nulla vitae elit libero, a pharetra augue mollis interdum.Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/fondo3.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h2>Third slide label</h2>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-        </div>
-      </div>
+      <%}%>
+        
+        
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -88,24 +91,29 @@
 
 
     <div class="row w-100">
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        
+      <div class="card-group">
+        <%for(int i=3;i<6;i++){
+        Noticia n=(Noticia)noticias.get(i);%>
+                <% int id = n.getIdNot(); %>
+                <% String titulo = n.getTitular();%>
+                <% String res = n.getResumen();%>
+                <% String texto = n.getNoticiaTexto();%>
+                <% String img = n.getImgNoticia();%>
+                <% Date date = n.getFechaNoticia();%>
+                <% String tipo = n.getTipoNoticia();%>
+      <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+        <img class="card-img-top" src="img/<%=img%>" alt="">
+        <div class="card-body">
+        <h2 class="card-title"><%=titulo%></h2>
+        <p class="card-text"><%=res%></p>
+        <p><a class="btn btn-secondary" href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" role="button">Ver &raquo;</a></p>
+        </div>
+        </div>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img" width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img " width="350" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+      <%}%>
+      
     </div><!-- /.row -->
 	</div>
 
