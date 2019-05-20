@@ -23,8 +23,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-       
+      
         <title>Mi Perfil</title>
+        
         <%@include file="/includes/headerLinks.html" %>         
     </head>
     <body>
@@ -37,14 +38,16 @@
             <%@include file="/includes/headerPerfil.jsp" %>  
           
         </header>
-        
+            
             <%  
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                 GlobalInfoDAO info= new GlobalInfoDAO();
                 ArrayList<Juego> juegos= info.GetJuegos();
                 ArrayList<String> urlImg = new ArrayList();
-                String path="E:/Usuario/Documents/UnityProyects/TouranmentsWeb/TournamentsWeb/web/img/perfil";
-                File imageDir = new File(path);  
+                
+                String helper =  getServletContext().getRealPath("/")+"\\img\\perfil";                
+                //String path="E:/Usuario/Documents/UnityProyects/TouranmentsWeb/TournamentsWeb/web/img/perfil";
+                File imageDir = new File(helper);  
                 for(File imageFile : imageDir.listFiles()){  
                     String imageFileName = imageFile.getName();  
 

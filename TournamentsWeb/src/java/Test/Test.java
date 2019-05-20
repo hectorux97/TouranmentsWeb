@@ -16,6 +16,7 @@ import beans.NickUsuario;
 import beans.Partido;
 import beans.Torneo;
 import beans.Usuario;
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -36,14 +37,16 @@ public class Test {
     public static void main(String[] args){
         
        
-        Torneo t= new Torneo();
+        /*Torneo t= new Torneo();
         t.setNombre("Nombre");
         t.setJuego(new Juego("CSGO"));
         t.setMaximoJugadores(16);
         t.setReglas("reglas");
         t.setPremio("premio");
         TorneoDAO tdao= new TorneoDAO();
-        tdao.GuardarNuevoTorneo(t);
+        tdao.GuardarNuevoTorneo(t);*/
+       /* File currentDirFile = new File("");
+        System.out.println( );*/
 
 
     }

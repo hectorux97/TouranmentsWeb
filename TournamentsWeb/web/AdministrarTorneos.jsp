@@ -46,11 +46,11 @@
                                     <td ><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></img></td>
                                     <td > <span>  <%=  t.getNombre()%> </span> </td>
                                     <td ><button href="Torneo.jsp?idTorneo=<%=t.getId()%>">Generar Partidos </button></td>
-                                    <td ><select name="nombrejuego" class="selectpicker  rounded-0" style="width: 150px;">
+                                    <td ><select name="nombrejuego" class="selectpicker  rounded-0" style="width: 150px;" onchange="redirect()">
                                         <option disabled value="0">Juego</option>
-                                        <option value="0">Sin Comenzar</option>
-                                        <option value="1">Comenzado</option>
-                                        <option value="3">Finalizado</option>
+                                        <option value="0" <%=(t.getEstado()==0?"selected":"")%> >Sin Comenzar</option>
+                                        <option value="1" <%=(t.getEstado()==1?"selected":"")%> >Comenzado</option>
+                                        <option value="3" <%=(t.getEstado()==3?"selected":"")%> >Finalizado</option>
                                         </select></td>
                                 </tr>
                                 <%}%>
@@ -59,6 +59,13 @@
   </form>
 </main>
  <%@include file="/includes/footer.html" %>
-  
+ <script>
+     
+     var redirect= function(){
+         
+         
+     };
+     
+ </script>
 </body>
 </html>

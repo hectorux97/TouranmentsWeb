@@ -132,7 +132,7 @@ position: relative;
           background-position:top;
           background-repeat: repeat,round;
           background-size:auto;
-          background-image:url("img/rejilla3.png"), -webkit-linear-gradient(left,
+          background-image:url("../img/rejilla3.pngs"), -webkit-linear-gradient(left,
     rgba(0,0,0,0.4) 0%,
     rgba(0,0,0,0) 30%,
     rgba(0,0,0,0) 70%,
@@ -177,65 +177,65 @@ filter: grayscale(0);
 	
 }
 #ClashRoyal {
-	 background: url(img/juego1.png) no-repeat; 
+	 background: url(../img/juego1.png) no-repeat; 
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 
 
 }
 #Fortnite{
-	background: url(img/juego2.png) no-repeat;
+	background: url(../img/juego2.png) no-repeat;
 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;	
 
 }
 #LeagueOfLegends {
-	background: url(img/juego3.png) no-repeat; 
+	background: url(../img/juego3.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #Fifa {
-	background: url(img/juego4.png) no-repeat; 
+	background: url(../img/juego4.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #RainbowSix {
-	background: url(img/juego5.png) no-repeat; 
+	background: url(../img/juego5.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #CSGO {
-	background: url(img/juego6.png) no-repeat; 
+	background: url(../img/juego6.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #ClashRoyal:hover {
-	 background: url(img/hover1.png) no-repeat; 
+	 background: url(../img/hover1.png) no-repeat; 
 	 	 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #Fortnite:hover{
-	background: url(img/hover2.png) no-repeat; 
+	background: url(../img/hover2.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #LeagueOfLegends:hover {
-	background: url(img/hover3.png) no-repeat; 
+	background: url(../img/hover3.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #Fifa:hover {
-	background: url(img/hover4.png) no-repeat; 
+	background: url(../img/hover4.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #RainbowSix:hover {
-	background: url(img/hover5.png) no-repeat; 
+	background: url(../img/hover5.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
 #CSGO:hover {
-	background: url(img/hover6.png) no-repeat; 
+	background: url(../img/hover6.png) no-repeat; 
 		 transition: all .7s ease;
 -webkit-transition: all .7s ease;
 }
