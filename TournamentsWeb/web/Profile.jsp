@@ -24,7 +24,7 @@
 <html>
     <head>
       
-        <title>Mi Perfil</title>
+        <title>Perfil</title>
         
         <%@include file="/includes/headerLinks.html" %>         
     </head>

@@ -5,7 +5,7 @@
 <html>
     <head>
        
-        <title>TounamentsWeb</title>
+        <title>Mis Torneos</title>
         <%@include file="/includes/headerLinks.html" %>
     </head>
     <body>

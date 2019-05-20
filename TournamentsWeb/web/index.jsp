@@ -8,9 +8,7 @@
 <html>
     <head>
        
-        <title>TounamentsWeb</title>
-       
-        
+        <title>TounamentsWeb</title>    
         <%@include file="/includes/headerLinks.html" %>
         <style>
            .bd-placeholder-img {

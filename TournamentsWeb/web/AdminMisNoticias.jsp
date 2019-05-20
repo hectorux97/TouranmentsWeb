@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TounamentsWeb</title>
+        <title>Gestión Noticias</title>
         <%@include file="/includes/headerLinks.html" %>
     </head>
     

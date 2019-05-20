@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TounamentsWeb</title>
+        <title>Gestor Torneos</title>
         <%@include file="includes/headerLinks.html" %>
     </head>
     <body>
