@@ -46,18 +46,18 @@ public class GenerarPartidos extends HttpServlet {
         
         GestorTorneos gestor = new GestorTorneos();
         boolean correcto;
-       if (torneo.getEstado()==0) {
-       correcto=gestor.IniciarTorneo(torneo);
-       }
-       else {
-       correcto=gestor.AvanzarRonda(torneo);
-       }
+        if (torneo.getEstado()==0) {
+            correcto=gestor.IniciarTorneo(torneo);
+        }
+        else {
+            correcto=gestor.AvanzarRonda(torneo);
+        }
         if (correcto) {
 
             response.sendRedirect("/AdministrarTorneos.jsp");
 
         } else {
-            response.sendRedirect("Register.jsp?error=PASSWORD_USER_ERROR");
+            response.sendRedirect("/Register.jsp?error=PASSWORD_USER_ERROR");
         }
        
         }

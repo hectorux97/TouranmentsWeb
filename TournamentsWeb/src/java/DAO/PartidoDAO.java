@@ -20,12 +20,11 @@ public class PartidoDAO extends DAOExtend {
          try {
             Statement st = conexion.createStatement();
            
-            st.executeUpdate("INSERT INTO partido(idTorneo,idUsuario1,idUsuario2, ronda) VALUES '"
-                    +p.getIdTorneo()+"',"
+            st.executeUpdate("INSERT INTO partido(idTorneo,idUsuario1,idUsuario2, ronda) VALUES ("
+                    +p.getIdTorneo()+","
                     +p.getIdUsuario1()+","
                     +p.getIdUsuario2()+","
-                    +p.getRonda());
-                    
+                    +p.getRonda()+")");
             
            return true;
         } catch (SQLException e) {}

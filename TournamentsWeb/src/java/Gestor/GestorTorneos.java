@@ -55,18 +55,18 @@ public class GestorTorneos {
         int numParticpantes=participantes.size();
         int i=0;
         for(int e=0; i<numPartidos;i++,e+=2){
-                int u1=-1;
-                int u2=-1;
-                if(numParticpantes>e){
-                    u1=participantes.get(e).getUser().getId();
-                }
-                if(numParticpantes>e+1){
-                    u2=participantes.get(e+1).getUser().getId();
-                }
-                Partido p= new Partido(torneo.getId(),u1,u2,ronda+1);
-                if(!pdao.CrearPartido(p)){
-                    break;
-                } 
+            int u1=-1;
+            int u2=-1;
+            if(numParticpantes>e){
+                u1=participantes.get(e).getUser().getId();
+            }
+            if(numParticpantes>e+1){
+                u2=participantes.get(e+1).getUser().getId();
+            }
+            Partido p= new Partido(torneo.getId(),u1,u2,ronda);
+            if(!pdao.CrearPartido(p)){
+                break;
+            } 
         }
         if(i==numPartidos){
             return true;

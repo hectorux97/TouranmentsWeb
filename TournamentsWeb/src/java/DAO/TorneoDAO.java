@@ -179,7 +179,7 @@ public class TorneoDAO extends DAOExtend{
         ArrayList<UsuarioForTorneo> participantes=new ArrayList<>();
         try{            
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo+" ORDER BY posicionEmparejamiento ASC");
+            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo);
             while(rs.next()){
                                
                 UsuarioDAO creador= new UsuarioDAO();
