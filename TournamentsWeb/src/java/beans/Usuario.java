@@ -65,6 +65,8 @@ public class Usuario {
 
     public Usuario() {
         this.nicks= new ArrayList<>();
+        this.id=-1;
+        this.alias="NO Participant";
     }
 
     public Usuario(int id, String alias,String password, String image,byte privilegios, String email, Date fechaCreacion) {

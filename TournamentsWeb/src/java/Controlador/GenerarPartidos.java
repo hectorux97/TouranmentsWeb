@@ -54,7 +54,7 @@ public class GenerarPartidos extends HttpServlet {
         }
         if (correcto) {
 
-            response.sendRedirect("/AdministrarTorneos.jsp");
+            response.sendRedirect("/AdministrarTorneos.jsp?re="+(torneo.getEstado()==0?"NO":"SI"));
 
         } else {
             response.sendRedirect("/Register.jsp?error=PASSWORD_USER_ERROR");

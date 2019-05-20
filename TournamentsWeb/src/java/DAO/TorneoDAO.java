@@ -109,7 +109,7 @@ public class TorneoDAO extends DAOExtend{
                 ResultSet result= st.executeQuery("SELECT * FROM torneoforusuario WHERE  idTorneo  =  "+idTorneo);
                 if(result.next()){                
                     */
-                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Juego(rs.getString("juego")),rs.getByte("estado"),rs.getInt("maximoJugadores"));
+                return new Torneo(rs.getInt("idTorneos"),rs.getString("nombreTorneo"),rs.getString("reglas"),rs.getString("premio"),rs.getDate("fechaPublcicacion"),rs.getDate("fechaInicio"),new Juego(rs.getString("juego")),(byte)rs.getInt("estado"),rs.getInt("maximoJugadores"));
                 //}
             }else{
                 return null;
@@ -179,7 +179,7 @@ public class TorneoDAO extends DAOExtend{
         ArrayList<UsuarioForTorneo> participantes=new ArrayList<>();
         try{            
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo);
+            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo+" ORDER BY posicionEmparejamiento ASC");
             while(rs.next()){
                                
                 UsuarioDAO creador= new UsuarioDAO();

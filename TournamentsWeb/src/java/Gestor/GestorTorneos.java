@@ -94,7 +94,7 @@ public class GestorTorneos {
                if(numParticpantes>e+1){
                    u2=participantes.get(e+1).getUser().getId();
                }
-                Partido p= new Partido(torneo.getId(),u1,u2,ronda+1);
+                Partido p= new Partido(torneo.getId(),u1,u2,ronda);
                 if(!pdao.CrearPartido(p)){
                     break;
                 }    

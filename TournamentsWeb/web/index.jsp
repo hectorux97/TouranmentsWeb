@@ -87,7 +87,7 @@
   ================================================== -->
   <!-- Noticias. -->
 
-  <div class="">
+  <div class="container">
     <div class="row w-100">
         
       <div class="card-group">
@@ -114,6 +114,7 @@
       
     </div><!-- /.row -->
 	</div>
+  </div>
 
                 <!-- Competiciones -->
                 <div class="w-100">
@@ -199,7 +200,9 @@
                                 <table id="partidos" class="centrartabla">
                                     <% PartidoDAO partido = new PartidoDAO();
                                     ArrayList<Partido> listaPartidos = partido.GetPartidos();
-                                    for (Partido p  : listaPartidos) {%>
+                                    for (int i=0;i<3;i++) {
+                                        if(listaPartidos.size()>i){
+                                            Partido p=listaPartidos.get(i); %>
                                     <tr class="partido">
                                         <td class="juego">
                                             <img class="logojuego" <%="src='" + p.getTorneo().getJuego().getImagenUrlNombre() + "'"%>></img>
@@ -218,7 +221,7 @@
                                         <center> <span class="letrasjugadores"><%=  p.getUsuario2().getAlias() %> </span></center>
                                         </td>
                                     </tr>
-                                    <%}%>
+                                    <%}}%>
                                 </table>
                             </div>
                             <div class="col-md-5 centrarmovil">

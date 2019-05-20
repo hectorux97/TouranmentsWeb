@@ -94,25 +94,27 @@
                                         <% if(torneo.getEstado()!=0){
                                             ArrayList<UsuarioForTorneo> participantes= tdao.GetParticipantes(id);%>                                            
                                             
-                                            <%  Double val=Math.log(torneo.getMaximoJugadores()/2)/Math.log(2);
-                                                int numRondas= val.intValue();
-                                                for(int i=0;i<=numRondas;i++){
+                                            <%  //Double val=torneo.getMaximoJugadores()/2f;
+                                                int numRondas= Math.floorDiv( torneo.getMaximoJugadores(), 2);
+                                                for(int i=0;i<numRondas;i++){
                                                 %>
                                                 <div class="round">
                                                 <div class="round-details">Ronda <%=i+1%><br/></div>
                                                 <%  //int index=0;
-                                                    ArrayList<UsuarioForTorneo> pas =GetParticipantesOnRound(participantes,i);                                                    
+                                                    ArrayList<UsuarioForTorneo> pas =GetParticipantesOnRound(participantes,i);
+                                                    if(pas!=null){
+                                                    int size=pas.size();
                                                     for(int e=0;e<Math.pow(2, numRondas-i);e+=2){
                                                         Partido p= new Partido();
-                                                        if(pas.size()>=e+1){
-                                                             p= pdao.GetPartido(pas.get(e).getUser().getId(), pas.get(e+1).getUser().getId());
-                                                        }else {%>
-                                                           <jsp:forward page="/index.jsp?ERROR=ERROR_GESTION_PARTIDOS"/>     
-                                                        <%}
-                                                       /* UsuarioForTorneo p= new UsuarioForTorneo();
-                                                        if(pas.size()>e){
-                                                             p= pas.get(index);
-                                                        }*/%>
+                                                        int u1=-1;
+                                                        int u2=-1;
+                                                        if(size > (e)){
+                                                             u1=pas.get(e).getUser().getId();
+                                                        }
+                                                        if( size > (e+1)){
+                                                            u2=pas.get(e+1).getUser().getId();
+                                                        }
+                                                        p= pdao.GetPartido(u1,u2);%>
                                                     <ul class="matchup m-auto inclinado w-75 p-0" style="margin-bottom:2px;">
                                                         <li class="team team-top <%= (p.getPuntosUsuario1()>p.getPuntosUsuario2())?"winner":""%> m-1" style="display: block"><%=p.getUsuario1().getAlias()%> <span class="score"><%=p.getPuntosUsuario1() %></span></li>
                                                         <hr style="height:1px;margin:0 10%;width: 80%;background-color: #a8c916;">
@@ -121,7 +123,18 @@
                                                     <div style="height:10px"></div>
                                                 <%}%>
                                                  </div>
-                                            <%}%>  
+                                            <%} else{
+                                                for(int e=0;e<Math.pow(2, numRondas-i);e+=2){
+                                                       %>
+                                                    <ul class="matchup m-auto inclinado w-75 p-0" style="margin-bottom:2px;">
+                                                        <li class="team team-top m-1" style="display: block">- <span class="score"></span></li>
+                                                        <hr style="height:1px;margin:0 10%;width: 80%;background-color: #a8c916;">
+                                                        <li class="team team-bottom m-1" style="display: block">-<span class="score"></span></li>
+                                                    </ul>
+                                                    <div style="height:10px"></div>
+                                                <%}%>
+                                                 </div>
+                                            <%}}%>  
                                             <%}%> 
                                     </div>
                                 </div>
@@ -133,7 +146,7 @@
                                         <% ArrayList<UsuarioForTorneo> participantes = tdao.GetParticipantes(id);
                                         for (UsuarioForTorneo participante : participantes) {%>
                                         <li><img class="imagenavatar" src="<%=participante.getUser().getImageURL()%>"><br>
-                                            <span class="m-auto" id="nombreusuario">Jugador 1</span></li> 
+                                            <span class="m-auto" id="nombreusuario"><%=participante.getUser().getAlias()%></span></li> 
                                             <%}%>
                                     </ul>
                                     <br><br>
@@ -151,7 +164,7 @@
                                     if (session.getAttribute("user") != null) {
                                         Usuario user = (Usuario) session.getAttribute("user");
                                         can = !tdao.CheckParticipante(torneo.getId(), user);
-                                }
+                                    }
                             }
                             if (can) {%>
                         <div class="col-md-3 mt-2">
@@ -215,6 +228,8 @@
                                                         participes.add(p);
                                                     }
                                                 }
-                                                
+                                                if(participes.isEmpty() ){
+                                                    return null;
+                                                }
                                                 return participes;
                                             }%>

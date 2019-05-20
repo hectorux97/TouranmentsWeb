@@ -50,6 +50,7 @@ public class Torneo {
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
         this.juego = juego;
+        this.estado= estado;
         this.maximoJugadores=maximoJugadores;
     }
     
@@ -60,6 +61,7 @@ public class Torneo {
         this.fechaPublicacion = fechaPublicacion;
         this.fechaInicio = fechaInicio;
         this.juego=juego;
+        this.estado= estado;
     }
 
     public Torneo(int id, String nombre, Date fechaPublicacion, Date fechaInicio,ArrayList<UsuarioForTorneo> participantes, Juego juego, byte estado, int maximoJugadores) {
@@ -69,6 +71,7 @@ public class Torneo {
         this.fechaInicio = fechaInicio;
         this.participantes = participantes;
         this.juego= juego;
+        this.estado= estado;
         this.maximoJugadores=maximoJugadores;
     }    
 
