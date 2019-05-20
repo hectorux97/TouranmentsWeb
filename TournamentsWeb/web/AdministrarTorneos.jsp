@@ -43,9 +43,9 @@
                                 <tr class="col-md-8">
                                     
                                     <td ><img class="icono" src="img/copa.png">     <%=  t.getFechaInicio()%></td>
-                                    <td ><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></img></td>
+                                    <td ><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></td>
                                     <td > <span>  <%=  t.getNombre()%> </span> </td>
-                                    <td ><button href="Torneo.jsp?idTorneo=<%=t.getId()%>">Generar Partidos </button></td>
+                                    <td ><a class="btn-primary" href="/Controlador/GenerarPartidos?idTorneo=<%=t.getId()%>">Generar Partidos </a></td>
                                     <td ><select name="nombrejuego" class="selectpicker  rounded-0" style="width: 150px;" onchange="redirect()">
                                         <option disabled value="0">Juego</option>
                                         <option value="0" <%=(t.getEstado()==0?"selected":"")%> >Sin Comenzar</option>
