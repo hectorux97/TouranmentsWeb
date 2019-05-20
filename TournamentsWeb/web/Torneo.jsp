@@ -100,6 +100,7 @@
                                                 %>
                                                 <div class="round">
                                                 <div class="round-details">Ronda <%=i+1%><br/></div>
+                                                    <div >
                                                 <%  //int index=0;
                                                     ArrayList<UsuarioForTorneo> pas =GetParticipantesOnRound(participantes,i);
                                                     if(pas!=null){
@@ -122,7 +123,7 @@
                                                     </ul>
                                                     <div style="height:10px"></div>
                                                 <%}%>
-                                                 </div>
+                                                 
                                             <%} else{
                                                 for(int e=0;e<Math.pow(2, numRondas-i);e+=2){
                                                        %>
@@ -133,6 +134,7 @@
                                                     </ul>
                                                     <div style="height:10px"></div>
                                                 <%}%>
+                                                </div>
                                                  </div>
                                             <%}}%>  
                                             <%}%> 

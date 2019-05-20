@@ -167,9 +167,9 @@ public class PartidoDAO extends DAOExtend {
                 int puntosUsuario1= rs.getInt("usuario1Points");
                 int puntosUsuario2= rs.getInt("usuario2Points");
                 int usuarioGanador;
-                st = conexion.createStatement();
+                Statement s = conexion.createStatement();
                 usuarioGanador=rs.getInt("idUsuario"+((puntosUsuario1>puntosUsuario2)?1:2));               
-                st.executeUpdate("UPDATE torneoforusuario SET ronda="+(rs.getInt("ronda")+1)+" WHERE idUsuario="+usuarioGanador);
+                s.executeUpdate("UPDATE torneoforusuario SET ronda="+(rs.getInt("ronda")+1)+" WHERE idUsuario="+usuarioGanador);
                 return true;
             }           
         }catch (SQLException e) {}
