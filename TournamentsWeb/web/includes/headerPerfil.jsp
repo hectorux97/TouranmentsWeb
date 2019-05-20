@@ -1,7 +1,11 @@
 
 <%@page import="beans.Usuario"%>
 <% 
+    if(session==null || session.getAttribute("user")==null){%>
+         <jsp:forward page="/Controlador/Login"/>   
+    <%}
     Usuario userHeader=(Usuario)session.getAttribute("user");
+    
     if (userHeader.getPrivilegios() == (byte)0) {
 /*if(true){*/%>
 <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">

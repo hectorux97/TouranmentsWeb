@@ -81,7 +81,7 @@ public class PartidoDAO extends DAOExtend {
          try {
             Statement st = conexion.createStatement();
            
-            ResultSet rs= st.executeQuery("SELECT * FROM partido ");
+            ResultSet rs= st.executeQuery("SELECT * FROM partido LIMIT 40");
             while(rs.next()){
                 TorneoDAO tDAO= new TorneoDAO();
                 Torneo t= tDAO.GetTorneo(rs.getInt("idTorneo"));

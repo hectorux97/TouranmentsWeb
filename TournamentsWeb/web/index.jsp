@@ -62,7 +62,7 @@
         <div class="carousel-caption d-none d-md-block">
           <h2><%=titulo%></h2>
           <p><%=res%></p>
-          <p><a class="btn btn-lg btn-primary" href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" role="button">Ver Más</a></p>
+          <p><a class="btn btn-lg btn-primary" href="/Controlador/PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" role="button">Ver Más</a></p>
         </div>
       </div>
       <%}%>
@@ -100,11 +100,11 @@
                 <% String tipo = n.getTipoNoticia();%>
       <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
-        <img class="card-img-top" src="<%=img%>" alt="">
+        <img class="card-img-top" src="<%=img%>" alt="" style="width:300;height:200;">
         <div class="card-body">
         <h2 class="card-title"><%=titulo%></h2>
         <p class="card-text"><%=res%></p>
-        <p><a class="btn btn-secondary" href="PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" role="button">Ver &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="/Controlador/PaginaNoticias?no=mostrar&idNoticia=<%=id%>&tipoNoticia=<%=tipo%>" role="button">Ver &raquo;</a></p>
         </div>
         </div>
       </div><!-- /.col-lg-4 -->

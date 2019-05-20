@@ -41,7 +41,7 @@
                             Usuario userHeader=(Usuario)session.getAttribute("user");
                     %>
                     <li class=" active">
-                        <img class="perfilImage" <%="src='"+(userHeader.getImageURL()==""?userHeader.getImageURL():"img/perfil/IconoWeb.png")+"'"%> alt="perfilImage"/>
+                        <img class="perfilImage" <%="src='"+(userHeader.getImageURL()!=""?userHeader.getImageURL():"img/perfil/IconoWeb.png")+"'"%> alt="perfilImage"/>
                         
                         <ul class="navbar-nav mr-auto" style="display:inline">
                             <li class="nav-item active shadow-sm collapse show" id="NoramlPerfilDropdown">

@@ -46,7 +46,7 @@
                                     <td ><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></td>
                                     <td > <span>  <%=  t.getNombre()%> </span> </td>
                                     <td ><a class="btn-primary" href="/Controlador/GenerarPartidos?idTorneo=<%=t.getId()%>">Generar Partidos </a></td>
-                                    <td ><select name="nombrejuego" class="selectpicker  rounded-0" style="width: 150px;" onchange="redirect()">
+                                    <td ><select name="nombrejuego" class="selectpicker  rounded-0" style="width: 150px;" onchange="redirect(this,<%=t.getId() %>)">
                                         <option disabled value="0">Juego</option>
                                         <option value="0" <%=(t.getEstado()==0?"selected":"")%> >Sin Comenzar</option>
                                         <option value="1" <%=(t.getEstado()==1?"selected":"")%> >Comenzado</option>
@@ -63,7 +63,7 @@
      
      var redirect= function(){
          
-         
+         window.location.href("/Controlador/");
      };
      
  </script>
