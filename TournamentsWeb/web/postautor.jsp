@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
         <title>Noticias</title>
         <%@include file="/includes/headerLinks.html" %>
         <style>

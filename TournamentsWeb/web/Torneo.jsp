@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Torneo <%=torneo.getNombre()%></title>       
+        <title>Torneo</title>       
         <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet/css">
         
