@@ -20,11 +20,11 @@
        if (torneos != null){
     %>	
         <h1 style="color: #a8c916">Mis Torneos</h1>
-	<div id="Torneos" class="container"style="background-color: #779442;">
-	   <table style="width:100%; background-color: #ffb82c; overflow: scroll;"class="table">
+	<div id="Torneos" class="container" style="background-color: #779442;">
+	   <table style="width:100%; background-color: #ffb82c; overflow: scroll;" class="table">
              <thead>
                <tr>
-                 <th>NTorneo</th> 
+                 <th>Torneo</th> 
                  <th>fecha de publicacion</th>
                  <th>Fecha de inicio</th>
                  <th>Credador</th>
