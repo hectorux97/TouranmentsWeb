@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author angel
  */
-@WebServlet(name = "GenerarPartidos", urlPatterns = {"Controlador/GenerarPartidos"})
+@WebServlet(urlPatterns = {"/Controlador/GenerarPartidos"})
 public class GenerarPartidos extends HttpServlet {
 
     /**
