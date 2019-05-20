@@ -1,4 +1,4 @@
-<%@page import="java.util.*" %>
+<%@page import="java.util.*"%>
 <%@page import="beans.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,12 +10,10 @@
     </head>
     <body>
         <header>
-            <%@include file="/includes/header.jsp" %>
-           
-            
-            <%@include file="/includes/headerUser.html"%>
+            <%@include file="/includes/header.jsp"%>
+            <%@include file="/includes/headerPerfil.jsp"%>
         </header>
-            <%@include file="/includes/HeaderJugador.html"%>
+           
              <center>
 	<section role="main" style="overflow: scroll;">
     <% ArrayList torneos=(ArrayList)request.getAttribute("torneos");
@@ -40,15 +38,14 @@
            <tr>
                <td><%=t.getNombre()%></td>
                <td><%=t.getFechaPublicacion()%></td>
-               <td><%=t.getFechaInicio()%></td>
-               <td><%=t.getCreador().getAlias()%></td>
+               <td><%=t.getFechaInicio()%></td>               
            </tr>
     
            </table>
 <br/><br/>
 <%}}else {%> <div>
              <h1>No esta inscrito en ningun torneo actualmente</h1>
-             <a style="color: #a8c916; " href="competiciones.html">Inscribete a uno ahora</a>
+             <a style="color: #a8c916; " href="competiciones.jsp">Inscribete a uno ahora</a>
               </div>
  <%}%>      
 </center>

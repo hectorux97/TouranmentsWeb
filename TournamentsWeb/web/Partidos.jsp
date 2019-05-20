@@ -22,11 +22,12 @@
 
         <title>Partido</title>
         <%@include file="/includes/headerLinks.html" %>
-        <%@include file="/includes/headerPerfil.jsp" %> 
+       
     </head>
     <body>
         <header>
-            <%@include file="/includes/header.jsp" %>     
+            <%@include file="/includes/header.jsp" %> 
+            <%@include file="/includes/headerPerfil.jsp" %> 
         </header>
         <%
             session.setMaxInactiveInterval(800);
