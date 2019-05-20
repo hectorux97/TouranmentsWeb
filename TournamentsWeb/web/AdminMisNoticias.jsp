@@ -26,7 +26,7 @@
         </header>
         
         <%
-            if(request.getSession(false)!=null){
+            if(request.getSession(false)!=null && session.getAttribute("user")!=null){
                 Usuario user= (Usuario)session.getAttribute("user");
                 NoticiasDAO nDAO= new NoticiasDAO();
                 ArrayList<Noticia> noticias= nDAO.getTodasNoticiasAutor(user.getId());
@@ -35,7 +35,7 @@
         
         <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind" >
   <!--Cabecera-->
-        <%if (noticias != null && !noticias.isEmpty()) {%>
+       
 <!--Perfil-->
 <div>  
     <div class="left form mx-md-2 my-3 pl-2 rounded">
@@ -47,6 +47,7 @@
         <a class="nav-link" href="AdminMisNoticias.jsp">Mis Noticias</a>
       </div>
     </div>
+         <%if (noticias != null && !noticias.isEmpty()) {%>
     <table id="table" class="table w-75 border-bottom">
       <thead class="thead-dark">
       <tr class="">
@@ -74,12 +75,7 @@
     </tbody>
     </table>
 
-    <div class="form-group text-center pb-2 row">
-     
-      <div class="inclinado w-25 m-auto " >
-        <a class="nav-link " href="AdminNoticias.jsp">Nueva Noticia</a>
-      </div>
-    </div>
+   
     </div>
 </div>
     <%}%>
