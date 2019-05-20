@@ -87,7 +87,7 @@ public class PaginaNoticias extends HttpServlet {
                     NoticiasDAO notDAO = new NoticiasDAO();
                     int id = Integer.parseInt(request.getParameter("idNoticia"));
                     notDAO.destacarNoticia(id);
-                    response.sendRedirect("AdminMisNoticias.jsp");
+                    response.sendRedirect("/AdminMisNoticias.jsp");
                 }
                 break;
             case "tipo":

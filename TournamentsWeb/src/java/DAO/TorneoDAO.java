@@ -39,7 +39,19 @@ public class TorneoDAO extends DAOExtend{
 
         return false;
     }
+    
+    public boolean CambiarEstadoTorneo(int id,int estado){
+        
+        try{           
+            Statement st = conexion.createStatement();
+            st.executeUpdate("UPDATE torneos SET estado="+estado+" WHERE idTorneos="+id);
+            return true;
+        }catch(SQLException e){}
 
+        return false;
+        
+    }
+    
     public boolean CheckTorneoExist(String nombreTorneo){
          try{
             Statement st=conexion.createStatement();
@@ -145,9 +157,8 @@ public class TorneoDAO extends DAOExtend{
     public boolean AddParticipante(int idTorneo, Usuario participante){
          try{            
             Statement st=conexion.createStatement();
-            st.executeUpdate("INSERT INTO torneoforusuario(idUusario,idTorneo,value) VALUES("+participante.getId()+","
-            +idTorneo+","+
-            +GetParticipantes(idTorneo).size()+")");
+            st.executeUpdate("INSERT INTO torneoforusuario(idUusario,idTorneo) VALUES("+participante.getId()+","
+            +idTorneo+")");
             
             return true;
         }catch(SQLException e){}
@@ -168,7 +179,24 @@ public class TorneoDAO extends DAOExtend{
         ArrayList<UsuarioForTorneo> participantes=new ArrayList<>();
         try{            
             Statement st=conexion.createStatement();
-            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo+" ORDER BY posicionEmparejamiento");
+            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo+" ORDER BY posicionEmparejamiento ASC");
+            while(rs.next()){
+                               
+                UsuarioDAO creador= new UsuarioDAO();
+                Usuario user=creador.GetUsuario(rs.getInt("idUsuario"));
+                UsuarioForTorneo idUsuario= new UsuarioForTorneo(user,rs.getInt("posicionEmparejamiento"),rs.getInt("ronda"));
+                participantes.add(idUsuario);
+            } 
+            return participantes;
+        }catch(SQLException e){}
+
+        return participantes;
+    }
+    public ArrayList<UsuarioForTorneo> GetParticipantes(int idTorneo, int ronda){
+        ArrayList<UsuarioForTorneo> participantes=new ArrayList<>();
+        try{            
+            Statement st=conexion.createStatement();
+            ResultSet rs= st.executeQuery("SELECT * FROM torneoforusuario WHERE idTorneo = "+idTorneo+" AND ronda="+ronda+" ORDER BY posicionEmparejamiento ASC");
             while(rs.next()){
                                
                 UsuarioDAO creador= new UsuarioDAO();
@@ -186,14 +214,6 @@ public class TorneoDAO extends DAOExtend{
         try{            
             Statement st=conexion.createStatement();
             st.executeQuery("DELETE FROM usuariofortorneo WHERE idUsuario = "+idParticipante+"AND idTorneo="+idTorneo);
-            
-            ArrayList<UsuarioForTorneo> users=GetParticipantes(idTorneo);
-            for(UsuarioForTorneo user:users){
-            st=conexion.createStatement();
-            st.executeUpdate("REPLACE INTO torneoforusuario(idUusario,idTorneo,value) VALUES("+user.getUser().getId()+","
-            +idTorneo+","+
-            +GetParticipantes(idTorneo).size()+")");
-            }
             return true;
         }catch(SQLException e){}
 

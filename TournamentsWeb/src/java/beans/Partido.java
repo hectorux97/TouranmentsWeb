@@ -47,7 +47,13 @@ public class Partido {
         this.imgUrl= imgUrl;
         this.estado=estado;
     }
-
+     public Partido(int idTorneo,int idUsuario1, int idUsuario2,int ronda) {
+       
+        this.idTorneo = idTorneo;        
+        this.idUsuario1 = idUsuario1;
+        this.idUsuario2 = idUsuario2;
+        this.ronda = ronda;
+    }
     public int getId() {
         return id;
     }
@@ -153,9 +159,6 @@ public class Partido {
     }
     
     public String getEstadoConversion(){
-        
-        
-        
         switch(estado){
             case 0:              
                 java.util.Date currentDate= Calendar.getInstance().getTime();
@@ -168,7 +171,9 @@ public class Partido {
             case 1:
                 return "En partida";
              case 2:
-                return "Finalizado";
+                return "Pendiente de Validar";
+             case 3:
+                 return "Finalizado";
         }
         return "Error";
     }

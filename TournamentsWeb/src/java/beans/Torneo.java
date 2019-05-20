@@ -155,7 +155,7 @@ public class Torneo {
             
             case 0:
                 return "Sin comenzar";           
-            case 7:
+            case 2:
                 return "Finalizado";
             default:
                 return "Comenzado";

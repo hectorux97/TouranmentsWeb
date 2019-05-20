@@ -5,10 +5,20 @@
  */
 package Gestor;
 
+import DAO.*;
+import beans.*;
+
 /**
  *
  * @author hector
  */
 public class GestorPartidos {
+    
+    public boolean ValidarPartido(int p){
+        
+        PartidoDAO pdao= new PartidoDAO();
+        
+       return pdao.ValidarPartido(p);
+    }
     
 }

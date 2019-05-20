@@ -60,7 +60,7 @@
                 <% String tipo = n.getTipoNoticia();%>
                 
       <div class="carousel-item <%=(i==(0)?"active":" ")%>">
-          <img src="img/<%=img%>" class="d-block w-100" alt="...">
+          <img src="<%=img%>" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h2><%=titulo%></h2>
           <p><%=res%></p>
@@ -87,9 +87,7 @@
   ================================================== -->
   <!-- Noticias. -->
 
-  <div class="container">
-
-
+  <div class="">
     <div class="row w-100">
         
       <div class="card-group">
@@ -104,7 +102,7 @@
                 <% String tipo = n.getTipoNoticia();%>
       <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
-        <img class="card-img-top" src="img/<%=img%>" alt="">
+        <img class="card-img-top" src="<%=img%>" alt="">
         <div class="card-body">
         <h2 class="card-title"><%=titulo%></h2>
         <p class="card-text"><%=res%></p>
