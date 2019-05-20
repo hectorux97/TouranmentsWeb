@@ -1,15 +1,10 @@
 <%-- 
-    Document   : AdministrarTorneos
-    Created on : 17-may-2019, 10:49:17
-    Author     : Angel
+    Document   : ModificarTorneos
+    Created on : 20-may-2019, 15:25:27
+    Author     : angel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="torneo" class="beans.Torneo" scope="request" type="beans.Torneo"></jsp:useBean>
-<jsp:setProperty name="torneo" property="*"></jsp:setProperty>
-<% if(request.getParameter("nombre")!=null){%>
-    <jsp:forward page="/Controlador/NewTournament"/>    
-<%}%>
 <%@page import="beans.Partido"%>
 <%@page import="DAO.PartidoDAO"%>
 <%@page import="beans.Torneo"%>
@@ -25,183 +20,45 @@
         <%@include file="includes/headerLinks.html" %>
     </head>
     <body>
-    <header>
-  <nav class="navbar navbar-expand-md fixed-top w-100 p-0 h-md-10 front border border-bottom border-dark" style="margin:0px;">
-    <!--Standard header-->
-    <div class="navbar-item w-100 h-10">
-      <div class="navbar front" style="background-color: #2d3238;">
-        <!--Buttons collapsed header-->
-        <img class="mainLogo" src="../img/IconoWeb.png" alt=""/>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#PrincipalHeader,#NoramlPerfilDropdown,#CollapsePerfilDropdown" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
-          <i class="fas fa-bars" style="font-size:40px;color:#e1e4ea;" ></i>
-        </button>
-        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#leftMenu" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
-          <i class="fas  fa-user-circle" style="font-size:40px;color:#e1e4ea;" ></i>
-        </button>
-        <!--Normal Header-->
-        <div class="collapse navbar-collapse"  id="PrincipalHeader">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="../index.html">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="../noticias.html">Noticias</a>
-            </li>
-            <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="../competiciones.html">Competiciones</a>
-            </li>
-            <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="../tv.html">TV</a>
-            </li>
-            <li class="nav-item active inclinado shadow-sm">
-              <a class="nav-link text-center" href="../contacto.html">Contacto</a>
-            </li>
-          </ul>
-          <!--Right Part-->
-          <ul class="nav-item pl-0 mr-4" >
-            <!--Perfil Part!-->
-            <li class=" active">
-              <img class="perfilImage" src="../img/IconoWeb.png" alt="perfilImage"/>
-              <ul class="navbar-nav mr-auto" style="display:inline">
-                <li class="nav-item active collapse show" id="NoramlPerfilDropdown">
-                  <div class="dropdown inclinado perfil shadow-sm">
-                    <a class="nav-link" data-toggle="dropdown" href="#">Mi Perfil
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu ">
-                      <li class="dropdown-item"><a  class="nav-link text-white" href="#">Mis Torneos</a></li>
-                      <li class="dropdown-item"><a  class="nav-link text-white" href="#">Perfil</a></li>
-                      <li class="dropdown-item"><a  class="nav-link text-white" href="#">Log out</a></li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item active inclinado shadow-sm collapse perfil" id="CollapsePerfilDropdown">
-                  <a class="nav-link" href="#">Mi Perfil</a>
-                </li>
-              </ul>
-            </li>
-              <!--Login Register Part!-->
-            <li class=" active" style="display:none">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active rightHeader" >
-                  <a class="nav-link" href="Login.html">Login</a>
-                </li>
-                <li class="nav-item disable">
-                <hr />
-                </li>
-                <li class="nav-item active rightHeader">
-                  <a class="nav-link " href="regis.html">Register</a>
-                </li>
-              </ul>
-            </li>
-            <!--Icons part-->
-            <li class="active">
-              <ul class="">
-                <li class="active" >
-                  <a class="mr-1" href="#">
-                    <i class="fa fa-facebook-official" style="font-size:24px;color:#3B5998; "></i>
-                  </a>
-                </li>
-                <li class="active" >
-                  <a class="mr-1" href="#">
-                    <i class="fa fa-instagram" style="font-size:24px;color:#3F729B; "></i>
-                  </a>
-                </li>
-                <li class="active" >
-                  <a class="mr-1" href="#">
-                    <i class="fa fa-twitter-square" style="font-size:24px;color:#55ACEE; "></i>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
-    <!--Things of Admin ELIMINAR PARA EL RESTO-->
-  <div class=" navbar-item collapse-sm show front col-md-2 p-0" id="leftMenu" style="position:fixed;">
-    <ul class="nav flex-column text-center sidebar-sticky" style="background-color: #2d3238;width:100%;">
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="Admin_MiPerfil.html">
-          Mi Perfil <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="Admin_Noticias.html">
-          Noticias <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="Admin_Torneo.html">
-          Torneos <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
-          Partidos Activos <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item menuAdmin  shadow-sm ">
-        <a class="nav-link active" href="#">
-          Log Out <span class="sr-only">(current)</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</header>
+        <header>
+            <%@include file="/includes/header.jsp"%>
+            <%@include file="/includes/headerPerfil.jsp"%>
+        </header>
         <main role="main" class="col-md-9  ml-sm-auto col-lg-10 p-0 behind" >
   <!--Cabecera-->
 
 <!--Torneo-->
 <div>
   <form class="left form mx-md-2 my-3 pl-2 rounded"  method="post">
-     <%@include file="/includes/MenuTorneo.html" %>
+    <%@include file="/includes/MenuTorneo.html" %>
     <div class="form-group text-center">
 
     </div>
     <br />
-    <div class="form-group row-1 mb-0 ml-4">
-        <div class="form-group">
-            <label for="nombre">Nombre Torneo</label>
-            <input class="form-control rounded-0 w-25" type="text" name="nombre" value="" placeholder="Nombre"><br />
-
-
-
-            <label for="fechaInicio2">Fecha de inicio</label>
-            <input class="form-control rounded-0 w-25" type="date" name="fechaInicio2" value="" placeholder="AAAA-MM-DD"><br />
-
-
-
-            <label for="reglas">Reglas del torneo</label>
-            <textarea name="reglas" rows="10" class="form-control rounded-0 w-75" placeholder="Reglas"></textarea>
-
-            <label for="maximoJugadores">Numero maximo de Jugadores</label>
-            <input class="form-control rounded-0 w-25" type="text" name="maximoJugadores" value="" placeholder="Nº maximo de jugadores"><br />
-
-            <label for="premio">Premio</label>
-            <input class="form-control rounded-0 w-25" type="text" name="premio" value="" placeholder="Premio"><br />
-
-            <label for="nombrejuego">Juego del torneo</label>
-            <select name="nombrejuego" class="selectpicker form-control rounded-0">
-                <option disabled value="">Juego</option>
-                <% GlobalInfoDAO info = new GlobalInfoDAO();
-                  ArrayList<Juego> listaJuegos = info.GetJuegos();
-                  for (Juego j : listaJuegos) {%>
-                <option <%="value='" + j.getNombre() + "'"%>> <%=j.getNombre()%></option>
-                <%}%>
-            </select>
-        </div>
-
-   
-      <div class="form-group text-center pb-2">
-          <button class="inclinado w-25 m-auto "type="submit">Publicar Torneo</button>          
-      </div>
-    </div>
+    <table class="table">
+        <tbody>
+<% TorneoDAO torneo = new TorneoDAO();
+                                    ArrayList<Torneo> listaTorneos = torneo.GetTorneo();
+                                    for (Torneo t : listaTorneos) {%>
+                                <tr class="col-md-8">
+                                    
+                                    <td ><img class="icono" src="img/copa.png">     <%=  t.getFechaInicio()%></td>
+                                    <td ><img class="icono" <%="src='" + t.getJuego().getImagenUrlIcono() + "'"%>></img></td>
+                                    <td > <span>  <%=  t.getNombre()%> </span> </td>
+                                    <td ><button href="Torneo.jsp?idTorneo=<%=t.getId()%>">Generar Partidos </button></td>
+                                    <td ><select name="nombrejuego" class="selectpicker  rounded-0" style="width: 150px;">
+                                        <option disabled value="0">Juego</option>
+                                        <option value="0">Sin Comenzar</option>
+                                        <option value="1">Comenzado</option>
+                                        <option value="3">Finalizado</option>
+                                        </select></td>
+                                </tr>
+                                <%}%>
+                                </tbody>
+    </table> 
   </form>
-</div>
 </main>
  <%@include file="/includes/footer.html" %>
   
 </body>
 </html>
-

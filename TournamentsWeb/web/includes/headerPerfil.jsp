@@ -44,7 +44,7 @@
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="/AdministrarTorneos.jsp">
+            <a class="nav-link active" href="/PublicarTorneos.jsp">
                 Torneos <span class="sr-only">(current)</span>
             </a>
         </li>
