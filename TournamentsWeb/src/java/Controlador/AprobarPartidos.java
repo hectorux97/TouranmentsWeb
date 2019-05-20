@@ -57,7 +57,7 @@ public class AprobarPartidos extends HttpServlet {
         }
         if (correcto) {
 
-            response.sendRedirect("/AdministrarTorneos.jsp?re="+(partido.getEstado()==2?"NO":"SI"));
+            response.sendRedirect("/AdministrarPartidos.jsp?re="+(partido.getEstado()==2?"NO":"SI"));
 
         } else {
             response.sendRedirect("/Register.jsp?error=PASSWORD_USER_ERROR");

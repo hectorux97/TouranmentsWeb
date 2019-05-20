@@ -54,7 +54,7 @@
                                     <td ><img class="icono" src="img/copa.png">     <%=  p.getUsuario1().getAlias()%> VS <%=  p.getUsuario1().getAlias()%> </td>
                                     <td ><span><%=  p.getPuntosUsuario1()%> - <%=  p.getPuntosUsuario2() %></span></td>
                                     <td > <a  href="<%=  p.getImgUrl()%>"> Enlace Imagen del partido </a> </td>
-                                    <td ><button href="Torneo.jsp?idTorneo=">Aprobar Partido </button></td>
+                                    <td ><a class="btn-danger" href="/Controlador/AprobarPartidos?idPartido=<%=p.getId()%>">Aprobar Partido </a></td>
                                     
                                 </tr>
                                 <%}%>
