@@ -103,7 +103,7 @@
                             </div>
                              <div class="d-flex align-content-start flex-wrap w-100 h-100">
                                  <%for(String s:urlImg){%>
-                                 <img class="m-2 p-2 border border-dark"<%="src='"+s+"'"%> style="height:100px;width:100px;border-width: 3px;" onclick="OneClick(this)"/>
+                                 <img class="m-2 p-2 border rounded border-dark"<%="src='"+s+"'"%> style="height:100px;width:100px;border-width: 3px;" onclick="OneClick(this)"/>
                                  <%}%>
                                 
                              </div>
