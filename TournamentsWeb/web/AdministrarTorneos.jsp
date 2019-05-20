@@ -155,17 +155,7 @@
 <!--Torneo-->
 <div>
   <form class="left form mx-md-2 my-3 pl-2 rounded"  method="post">
-    <div class="d-flex flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom ml-md-2 mr-md-2">
-      <div class="inclinado ">
-        <a class="nav-link" href="#">Publicar Torneo</a>
-      </div>
-	  <div class="inclinado ">
-        <a class="nav-link" href="Admin_MisNoticias.html">Administrar Torneos</a>
-      </div>
-         <div class="inclinado ">
-        <a class="nav-link" href="Admin_MisNoticias.html">Publicar Juego</a>
-      </div>
-    </div>
+     <%@include file="/includes/MenuTorneo.html" %>
     <div class="form-group text-center">
 
     </div>

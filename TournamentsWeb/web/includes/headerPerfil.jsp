@@ -12,8 +12,8 @@
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="Mis Torneos.html">
-                Mis Torenos <span class="sr-only"></span>
+            <a class="nav-link active" href="/TorneosJugador.jsp">
+                Mis Torneos <span class="sr-only"></span>
             </a>
         </li>
         <li class="nav-item menuAdmin shadow-sm ">
@@ -21,11 +21,7 @@
                 Mis Partidos <span class="sr-only"></span>
             </a>
         </li>
-        <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="/Soporte.html">
-                Soporte <span class="sr-only"></span>
-            </a>
-        </li>
+      
         <li class="nav-item menuAdmin  shadow-sm ">
             <a class="nav-link active" href="/Controlador/LogOut">
                 Log Out <span class="sr-only"></span>
@@ -53,7 +49,7 @@
             </a>
         </li>
         <li class="nav-item menuAdmin  shadow-sm ">
-            <a class="nav-link active" href="/Controlador/MostrarMisPartidos">
+            <a class="nav-link active" href="/AdministrarPartidos.jsp">
                 Mis Partidos <span class="sr-only">(current)</span>
             </a>
         </li>
