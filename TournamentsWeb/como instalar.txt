@@ -1,0 +1,10 @@
+- Hay que importar el archivo tournamentsmanager.sql
+- Abre workbench
+- Crear el SCHEMA tournamentsmanager
+- Ir a server -> data import
+- Seleccionar import from self-contained file , le das a los tres puntitos y seleccionas tournamentsmanager.sql
+- Le damos a Start Import y listo ya tienes tu base de datos importada.
+
+Ya podemos compilar el proyecto y todo funciona correcto.
+
+Cualquier duda escribir a angel.angulo95@gmail.com
